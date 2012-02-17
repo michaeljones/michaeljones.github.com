@@ -1,142 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Michael Jones</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Michael Jones">
+    <head>
+        <meta charset="utf-8">
+        <title>Michael Jones</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Michael Jones">
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-      }
-    </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <!-- Le styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="extra.css" rel="stylesheet">
+        <style>
+            body {
+                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+            }
+        </style>
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-  </head>
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    </head>
 
-  <body>
+    <body>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Michael Jones</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="container">
+            <h1>Michael Jones</h1>
 
-		<h2>Current Status</h2>
+            <h2>Current Status</h2>
 
-        <p>I work at <a href="http://www.wetafx.co.nz">Weta Digital</a> in Wellington, New Zealand.</p>
+            <p>I work at <a href="http://www.wetafx.co.nz">Weta Digital</a> in Wellington, New Zealand.</p>
+            <p>For further information you can check my profiles on <a
+                href="https://github.com/michaeljones">Github</a> and <a
+                href="http://www.linkedin.com/in/mpjones">Linked-in</a>.</p>
 
-        <h2>Profiles</h2>
 
-        <p><a href="https://github.com">Github</a></p>
-        <p><a href="http://www.linkedin.com/in/mpjones">Linked-in</a></p>
+            <h2>Open Source</h2>
 
-        <h2>Open Source</h2>
+            <h3>Computer Graphics</h3>
 
-        <h3>Computer Graphics</h3>
-
-        <div class="row">
-            <div class="span6">
-                <h4><a href="https://github.com/michaeljones/alembic-fs">Alembic FS</a></h4>
-                <p>A FUSE filesystem for Alembic files.</p>
-                <p>It allow you to mount an Alembic file as a directory and
-                explore the contents as a hierarchy of subdirectories and
-                files.</p>
-                <p>Language: <strong>C++</strong></p>
+            <div class="row padded">
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/alembic-fs">Alembic FS</a></h4>
+                    <p>A FUSE filesystem for Alembic files.</p>
+                    <p>It allow you to mount an Alembic file as a directory and
+                    explore the contents as a hierarchy of subdirectories and
+                    files.</p>
+                    <p>Language: <strong>C++</strong></p>
+                </div>
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/kdtree">Kd-tree</a></h4>
+                    <p>A basic implementation of a Kd-tree.</p>
+                    <p>Templated on the data type and number of dimensions.</p>
+                    <p>Language: <strong>C++</strong></p>
+                </div>
             </div>
-            <div class="span6">
-                <h4><a href="https://github.com/michaeljones/kdtree">Kd-tree</a></h4>
-                <p>A basic implementation of a Kd-tree.</p>
-                <p>Language: <strong>C++</strong></p>
+
+            <h3>Sphinx</h3>
+
+            <div class="row padded">
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/breathe">Breathe</a></h4>
+                    <p>A Doxygen-Sphinx bridge.</p>
+                    <p>An extension to reStructuredText and Sphinx which is able to
+                    read and format the contents of Doxygen XML files. It extends
+                    Sphinx's support for displaying language &amp; API
+                    documentation to all the languages support by Doxygen.
+                    Development has a strong emphasis on supporting C++.</p>
+                    <p>Language: <strong>Python</strong></p>
+                </div>
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/sphinx-to-github">Sphinx to Github</a></h4>
+                    <p>Convert Sphinx output for use with Github pages</p>
+                    <p>A Sphinx extension and command line tool that prepares the
+                    output of Sphinx to be suitable for use with Github pages.</p>
+                    <p>Language: <strong>Python</strong></p>
+                </div>
             </div>
-        </div>
 
-        <h3>Sphinx</h3>
+            <h3>Minor</h3>
 
-        <div class="row">
-            <div class="span4">
-                <h4><a href="https://github.com/michaeljones/breathe">Breathe</a></h4>
-                <p>A Doxygen-Sphinx bridge.</p>
-                <p>An extension to reStructuredText and Sphinx which is able to
-                read and format the contents of Doxygen XML files. It extends
-                Sphinx's support for displaying language &amp; API
-                documentation to all the languages support by Doxygen.
-                Development has a strong emphasis on supporting C++.</p>
-                <p>Language: <strong>Python</strong></p>
+            <div class="row padded">
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/porter">Porter</a></h4>
+                    <p>A map-based import hook for Python.</p>
+                    <p>Supports encoding the module name and its location into a
+                    PYTHONPATH-like environment variable which is parsed at runtime
+                    and used for faster imports.  Aimed at avoiding the standard
+                    Python linear search through the PYTHONPATH to find a module
+                    which can be slow for large numbers of entries over a
+                    network.</p>
+                    <p>Language: <strong>Python</strong></p>
+                </div>
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/sphinx-xref">Sphinx-xref</a></h4>
+                    <p>Restructured text role for keyword based external links.</p>
+                    <p>Enables a documentation strategy in which the maintainers of
+                    a project can publish a Python module with up to date
+                    links for documentation based on keywords.  Other projects
+                    wanting to link to the appropriate documentation only need to
+                    use the keywords and latest published module to stay up to
+                    date.</p>
+                    <p>Language: <strong>Python</strong></p>
+                </div>
             </div>
-            <div class="span4">
-                <h4><a href="https://github.com/michaeljones/sphinx-to-github">Sphinx to Github</a></h4>
-                <p></p>
-                <p></p>
-                <p>Language: <strong>Python</strong></p>
+            <div class="row padded">
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones/maya-plugin-handler">Maya Plugin Handler</a></h4>
+                    <p>Helper classes for initializePlugin &amp; unintializePlugin.</p>
+                    <p>Aims to reduce code duplication between the two
+                    associated functions by abstracting down to a single set of
+                    calls.</p>
+                    <p>Provides inheritance based approach as well as
+                    experimental basic template meta-programming approach.</p>
+                    <p>Language: <strong>C++</strong></p>
+                </div>
+                <div class="span6">
+                    <h4><a href="https://github.com/michaeljones">And many more...</a></h4>
+                </div>
             </div>
-            <div class="span4">
-                <h4><a href="https://github.com/michaeljones/sphinx-xref">Sphinx-xref</a></h4>
-                <p></p>
-                <p></p>
-                <p>Language: <strong>Python</strong></p>
-            </div>
-        </div>
 
-        <h3>Other:</h3>
+            <hr>
 
-        <div class="row">
-            <div class="span6">
-                <h4><a href="https://github.com/michaeljones/porter">Porter</a></h4>
-                <p></p>
-                <p></p>
-                <p>Language: <strong>Python</strong></p>
-            </div>
-            <div class="span6">
-                <h4><a href="https://github.com/michaeljones/maya-plugin-handler">Maya Plugin Handler</a></h4>
-                <p></p>
-                <p></p>
-                <p>Language: <strong>C++</strong></p>
-            </div>
-        </div>
+            <footer>
+                <p>&copy; Michael Jones 2012. Using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> from Twitter.</p>
+            </footer>
 
+        </div> <!-- /container -->
 
-    </div> <!-- /container -->
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+        <script src="assets/js/bootstrap-carousel.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-
-  </body>
+    </body>
 </html>
