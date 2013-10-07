@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="michaeljones.github.io/blog/" rel="alternate"></link><link href="michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>michaeljones.github.io/blog/</id><updated>2013-10-07T15:01:00+13:00</updated><entry><title>Journal - Day 1</title><link href="michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-07T15:01:00+13:00</updated><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;I have managed to get this &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; based blog
 up. I choose Pelican because a simple google unearthed &lt;a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html"&gt;this&lt;/a&gt; from
 pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
@@ -11,10 +11,10 @@ for me.&lt;/p&gt;
 forgotten memories and referring to &lt;a class="reference external" href="http://learnyouahaskell.com/"&gt;Learn You a Haskell&lt;/a&gt;. My efforts are stumbling and awkward and
 nothing works first time.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="michaeljones.github.io/blog/video-taste-of-haskell-part-1.html"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
+&lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="http://michaeljones.github.io/blog/video-taste-of-haskell-part-1.html"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry><entry><title>Beginning</title><link href="michaeljones.github.io/blog/beginning.html" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:beginning.html</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
+</summary></entry><entry><title>Beginning</title><link href="http://michaeljones.github.io/blog/beginning.html" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:beginning.html</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
 to mark my progress and keep on track. I am currently far from clear about what
 to work on but I have a few loose ideas:&lt;/p&gt;
 &lt;ul&gt;
