@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="michaeljones.github.io/blog/" rel="alternate"></link><link href="michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>michaeljones.github.io/blog/</id><updated>2013-10-07T15:01:00+13:00</updated><entry><title>Journal - Day 1</title><link href="michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;I have managed to get this &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; based blog
+up. I choose Pelican because a simple google unearthed &lt;a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html"&gt;this&lt;/a&gt; from
+pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
+for me.&lt;/p&gt;
+&lt;p&gt;Plus I like rst.&lt;/p&gt;
+&lt;p&gt;Things, like URLs, might chop and change for a bit whilst I figure this out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Done the first 7 of the 99 Haskell Problems with a combination of half
+forgotten memories and referring to &lt;a class="reference external" href="http://learnyouahaskell.com/"&gt;Learn You a Haskell&lt;/a&gt;. My efforts are stumbling and awkward and
+nothing works first time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="michaeljones.github.io/blog/video-taste-of-haskell-part-1.html"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</summary></entry><entry><title>Beginning</title><link href="michaeljones.github.io/blog/beginning.html" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:beginning.html</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
+to mark my progress and keep on track. I am currently far from clear about what
+to work on but I have a few loose ideas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Experiment with the &lt;a class="reference external" href="http://www.rust-lang.org/"&gt;Rust&lt;/a&gt; language and get a
+feel for how to compares with C++.&lt;/p&gt;
+&lt;p&gt;I am keen to pursue Rust as I have a reasonable and growing amount of
+experience with C++ and would love to see a replacement with equal power but
+less cruft.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Explore &lt;a class="reference external" href="http://clojure.org/"&gt;Clojure&lt;/a&gt; as a lisp and a language on the JVM.&lt;/p&gt;
+&lt;p&gt;I have been watching some of Rich Hickey's Greatest Hits and still yearn for
+that moment of enlightenment which legend suggests is brought on by
+understanding lisp.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Become familiar with Haskell and work through the &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/H-99:_Ninety-Nine_Haskell_Problems"&gt;99 Haskell problems&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;More and more the functional approaches to coding intrigue me and feel like
+the correct way forward. What can be more functional than Haskell?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Continue to support &lt;a class="reference external" href="https://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My Sphinx-Doxygen bridge project which has a small community of users and a
+low but steady stream of requests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Push forward with development on build and environment system prototype built
+on &lt;a class="reference external" href="martine.github.io/ninja"&gt;Ninja&lt;/a&gt; and inspired by &lt;a class="reference external" href="https://github.com/nerdvegas/rez"&gt;Rez&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A prototype built at my last place of work seemed to have curious potential to
+it. I'd like to push it to the point where it succeeds or breaks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Explore programming with audio.&lt;/p&gt;
+&lt;p&gt;I have a few musical outlets in my life and I find myself increasingly
+interested in how it is represented in data and how malleable it might be in
+that form.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Help with my brother's &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;Rig Controls&lt;/a&gt; project.&lt;/p&gt;
+&lt;p&gt;It has promise and a family connection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Improve my knowledge of Open GL &amp;amp; SDL.&lt;/p&gt;
+&lt;p&gt;I have been in graphics for too long without getting to grips with either.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</summary></entry></feed>

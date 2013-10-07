@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="michaeljones.github.io/blog/" rel="alternate"></link><link href="michaeljones.github.io/blog/feeds/video.atom.xml" rel="self"></link><id>michaeljones.github.io/blog/</id><updated>2013-10-07T19:01:00+13:00</updated><entry><title>Video: Taste of Haskell - Part 1</title><link href="michaeljones.github.io/blog/video-taste-of-haskell-part-1.html" rel="alternate"></link><updated>2013-10-07T19:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:video-taste-of-haskell-part-1.html</id><summary type="html">&lt;p&gt;An &lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701"&gt;OSCON 2007 talk&lt;/a&gt;
+introducing Haskell to imperative programmers by Simon Peyton Jones.&lt;/p&gt;
+&lt;p&gt;I like his pacing and attitude and I think there is a reasonable amount to be
+learnt despite the fact that the slides are not provided on the site or
+displayed in the video. I am sure they can be tracked down.&lt;/p&gt;
+&lt;p&gt;I can't tell at the moment how much I understood purely from the quality of the
+talk and how much from the previous efforts I've made to get to grips with
+Haskell.&lt;/p&gt;
+</summary><category term="haskell"></category></entry></feed>
