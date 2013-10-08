@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-07T15:01:00+13:00</updated><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-08T10:01:00+13:00</updated><entry><title>Journal - Day 2</title><link href="http://michaeljones.github.io/blog/journal-day-2.html" rel="alternate"></link><updated>2013-10-08T10:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-08:journal-day-2.html</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue 99 Haskell Problems and reach no. 20.&lt;/li&gt;
+&lt;li&gt;Chase up support tickets #65 &amp;amp; #66 on Breathe.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Reached problem no. 17. Definitely learning a bit more about haskell whilst
+still only juggling lists in various ways. I would kill for some easily
+approachable code that did some real work but all in good time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ticket #66 remains inactive.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ticket #65 resulted in more work than anticipated as the problem is
+non-standard. Potential for interesting work for fixing it but it took a while
+to get back into the Breathe set up which I have neglected for a while.&lt;/p&gt;
+&lt;p&gt;Getting to play around with virtualenv a little more though which is something
+I've been late in picking up.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;I have managed to get this &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; based blog
 up. I choose Pelican because a simple google unearthed &lt;a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html"&gt;this&lt;/a&gt; from
 pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
