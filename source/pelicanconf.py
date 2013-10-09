@@ -13,6 +13,12 @@ USE_FOLDER_AS_CATEGORY = False
 
 DEFAULT_LANG = u'en'
 
+DELETE_OUTPUT_DIRECTORY = True
+
+# Url Controls
+ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
