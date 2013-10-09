@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-08T10:01:00+13:00</updated><entry><title>Journal - Day 2</title><link href="http://michaeljones.github.io/blog/journal-day-2.html" rel="alternate"></link><updated>2013-10-08T10:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-08:journal-day-2.html</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-09T09:01:00+13:00</updated><entry><title>Journal - Day 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/journal-day-3/" rel="alternate"></link><updated>2013-10-09T09:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-09:posts/2013/10/09/journal-day-3/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue &lt;strong&gt;99 Haskell Problems&lt;/strong&gt; and reach #25.&lt;/li&gt;
+&lt;li&gt;Finish up work for Breathe ticket &lt;strong&gt;#65&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Listen to &lt;strong&gt;A Taste of Haskell - Part 2&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Reached Haskell Problem #26 but only by skipping the ones involving random
+numbers which I did at the recommendations of this post.&lt;/li&gt;
+&lt;li&gt;Finished up &lt;strong&gt;#65&lt;/strong&gt; on Breathe which turned out to be easier than expected. I
+still do not understand the constructors for the docutils node classes.&lt;/li&gt;
+&lt;li&gt;Watched the second part of &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-2/"&gt;A Taste of Haskell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Also watched an &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/"&gt;introductory talk&lt;/a&gt; on Rust.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="todo"&gt;
+&lt;h2&gt;Todo&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Email docutils list for explanation of constructors.&lt;/li&gt;
+&lt;li&gt;Extend folder navigation script to source python virtualenv where desirable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Video: Rust - InfoQ</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/" rel="alternate"></link><updated>2013-10-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-09:posts/2013/10/09/video-rust-infoq/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Rust"&gt;Short talk&lt;/a&gt; about the Rust
+programming language from Mozilla. Excellent broad overview of the language
+which gives a feel for what inspired it and what it is trying to achieve.&lt;/p&gt;
+&lt;p&gt;To a C++ programmer that is growing frustrated with the growing complexity of
+the language, Rust feels like it is a good thing.&lt;/p&gt;
+&lt;p&gt;References the following blogs for more information:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://smallcultfollowing.com/babysteps/"&gt;Baby Steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pcwalton.github.com"&gt;pcwalton&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</summary><category term="rust"></category></entry><entry><title>Journal - Day 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/08/journal-day-2/" rel="alternate"></link><updated>2013-10-08T10:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-08:posts/2013/10/08/journal-day-2/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue 99 Haskell Problems and reach no. 20.&lt;/li&gt;
@@ -23,7 +59,7 @@ I've been late in picking up.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Video: Taste of Haskell - Part 1</title><link href="http://michaeljones.github.io/blog/video-taste-of-haskell-part-1.html" rel="alternate"></link><updated>2013-10-07T19:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:video-taste-of-haskell-part-1.html</id><summary type="html">&lt;p&gt;An &lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701"&gt;OSCON 2007 talk&lt;/a&gt;
+</summary></entry><entry><title>Video: Taste of Haskell - Part 1</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-1/" rel="alternate"></link><updated>2013-10-07T19:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:posts/2013/10/07/video-taste-of-haskell-part-1/</id><summary type="html">&lt;p&gt;An &lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701"&gt;OSCON 2007 talk&lt;/a&gt;
 introducing Haskell to imperative programmers by Simon Peyton Jones.&lt;/p&gt;
 &lt;p&gt;I like his pacing and attitude and I think there is a reasonable amount to be
 learnt despite the fact that the slides are not provided on the site or
@@ -31,7 +67,7 @@ displayed in the video. I am sure they can be tracked down.&lt;/p&gt;
 &lt;p&gt;I can't tell at the moment how much I understood purely from the quality of the
 talk and how much from the previous efforts I've made to get to grips with
 Haskell.&lt;/p&gt;
-</summary><category term="haskell"></category></entry><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/journal-day-1.html" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:journal-day-1.html</id><summary type="html">&lt;ul&gt;
+</summary><category term="haskell"></category></entry><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/journal-day-1/" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:posts/2013/10/07/journal-day-1/</id><summary type="html">&lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;I have managed to get this &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; based blog
 up. I choose Pelican because a simple google unearthed &lt;a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html"&gt;this&lt;/a&gt; from
 pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
@@ -43,10 +79,10 @@ for me.&lt;/p&gt;
 forgotten memories and referring to &lt;a class="reference external" href="http://learnyouahaskell.com/"&gt;Learn You a Haskell&lt;/a&gt;. My efforts are stumbling and awkward and
 nothing works first time.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="http://michaeljones.github.io/blog/video-taste-of-haskell-part-1.html"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
+&lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-1/"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry><entry><title>Beginning</title><link href="http://michaeljones.github.io/blog/beginning.html" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:beginning.html</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
+</summary></entry><entry><title>Beginning</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/beginning/" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:posts/2013/10/07/beginning/</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
 to mark my progress and keep on track. I am currently far from clear about what
 to work on but I have a few loose ideas:&lt;/p&gt;
 &lt;ul&gt;
@@ -86,4 +122,13 @@ that form.&lt;/p&gt;
 &lt;p&gt;I have been in graphics for too long without getting to grips with either.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry></feed>
+</summary></entry><entry><title>Video: Taste of Haskell - Part 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-2/" rel="alternate"></link><updated>2013-10-07T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-07:posts/2013/10/07/video-taste-of-haskell-part-2/</id><summary type="html">&lt;p&gt;Second half of the Simon Peyton-Jones' introduction to Haskell. If I was not
+convinced before, I am now; this is a really excellent talk to give you some
+background to Haskell and some pleasantly gentle steps towards understanding it.&lt;/p&gt;
+&lt;p&gt;Provides examples of pure functions and combining them with code that needs to
+do the IO before going on to discuss the wider Haskell community.&lt;/p&gt;
+&lt;p&gt;I really love his presentation manner. It is quite disarming.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-ii-330372"&gt;Talk&lt;/a&gt;
+and &lt;a class="reference external" href="http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-tutorial/"&gt;slides&lt;/a&gt;
+(required as the video does not show them.)&lt;/p&gt;
+</summary><category term="haskell"></category></entry></feed>
