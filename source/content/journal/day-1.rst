@@ -21,6 +21,6 @@ Journal - Day 1
   nothing works first time.
 
 * I watched `Simon Peyton-Jones - A Taste of Haskell Part I
-  <{filename}video-taste-of-haskell-part-1.rst>`_.
+  <{filename}/video/video-taste-of-haskell-part-1.rst>`_.
 
 
