@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Journal - Day 5</title>
+        <title>Journal - Day 6</title>
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css" />
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DevBlog Atom Feed" />
 
@@ -24,14 +24,14 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://michaeljones.github.io/blog/posts/2013/10/11/journal-day-5/" rel="bookmark"
-           title="Permalink to Journal - Day 5">Journal - Day 5</a></h1>
+        <a href="http://michaeljones.github.io/blog/posts/2013/10/14/journal-day-6/" rel="bookmark"
+           title="Permalink to Journal - Day 6">Journal - Day 6</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2013-10-11T00:00:00">
-                Fri 11 October 2013
+        <abbr class="published" title="2013-10-14T00:00:00">
+                Mon 14 October 2013
         </abbr>
 
         <address class="vcard author">
@@ -42,19 +42,32 @@
 </footer><!-- /.post-info -->      <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
-<li>Read first 6 chapters of Learn You a Haskell for Great Good.</li>
-<li>Further investigate quickstart issue for Breathe.</li>
+<li>Finish chapter 6 and read chapter 7 from Learn You a Haskell.</li>
+<li>Look into supporting the image syntax from Doxygen in Breathe. <a class="reference external" href="https://github.com/michaeljones/breathe/issues/67">Ticket</a>.</li>
+<li>Compile a program which reads a yaml file using the <a class="reference external" href="http://hackage.haskell.org/package/yaml">yaml</a> library in Haskell.</li>
 </ul>
 </div>
 <div class="section" id="results">
 <h2>Results</h2>
-<ul class="simple">
-<li>Read the first 4 chapters of Learn You a Haskell.</li>
-<li>Pushed a fix for a possible KeyError in the project handling code for Breathe.</li>
-<li>Took a cursory look at contributing to the Libre Office project. Their
-<a class="reference external" href="http://www.libreoffice.org/developers/">developers</a> page is the place to start with their <a class="reference external" href="https://wiki.documentfoundation.org/Easy_Hacks">easy hacks</a> page being an
-early target, I imagine. I have no particular love for the Libre Office project,
-but a great deal of respect as I have used it often.</li>
+<ul>
+<li><p class="first">Finished chapter 6, read chapter 7 and half of chapter 8. It is a really good
+book.</p>
+</li>
+<li><p class="first">Made a first pass at supporting image syntax in Breathe. Pushed changes for
+review by user.</p>
+</li>
+<li><p class="first">Compiled a program which pulls in the Yaml package but I have not figured out
+how to use it yet. I did learn about the <tt class="docutils literal"><span class="pre">-package</span></tt> flag for <tt class="docutils literal">ghc</tt> though
+which is a step:</p>
+<pre class="literal-block">
+ghc -package yaml blah.hs
+</pre>
+<p>Then you can do:</p>
+<pre class="literal-block">
+import qualified Data.Yaml as Y
+</pre>
+<p>In your actual program.</p>
+</li>
 </ul>
 </div>
 
