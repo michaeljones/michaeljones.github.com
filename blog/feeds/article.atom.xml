@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/article.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-17T00:00:00+13:00</updated><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
+the visual effects industry so it gets used for all kinds of glue between other
+programs and for interfaces for tools.&lt;/p&gt;
+&lt;p&gt;In this role, I've never had to set up a server or do a deployment of a some
+kind of complete unit and so whilst I have been aware of &lt;a class="reference external" href="http://www.virtualenv.org/en/latest/"&gt;virtualenv&lt;/a&gt; I've never
+seen the need for it in my life.&lt;/p&gt;
+&lt;p&gt;Of course, being a Python programmer, I've wanted to pull in third-party
+libraries and it rarely seems appropriate, and is sometimes impossible, to
+install them into the central &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt; area on the machine. So a while ago, I
+adopted the convention of maintaining a &lt;tt class="docutils literal"&gt;$HOME/local&lt;/tt&gt; folder in which I kept a
+mini &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt; hierarchy with my various required bits of software.&lt;/p&gt;
+&lt;p&gt;This works because &lt;a class="reference external" href="http://www.pip-installer.org/en/latest/"&gt;pip&lt;/a&gt; and &lt;a class="reference external" href="http://pythonhosted.org/distribute/easy_install.html"&gt;easy_install&lt;/a&gt; take some form of &lt;tt class="docutils literal"&gt;prefix&lt;/tt&gt; arguments
+to allow for targeted installs. &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; requires the slightly less than obvious
+use of the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;install-option&lt;/span&gt;&lt;/tt&gt; flag like so:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+pip install --install-option=&amp;quot;--prefix=$HOME/local&amp;quot; &amp;lt;module name&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;But it is something you can get used to.&lt;/p&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;$HOME/local/bin&lt;/tt&gt; and corresponding Python module install location are
+then added to my &lt;tt class="docutils literal"&gt;PATH&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;PYTHONPATH&lt;/tt&gt; respectively in my &lt;tt class="docutils literal"&gt;.zshrc&lt;/tt&gt; and
+all is well. Kind of.&lt;/p&gt;
+&lt;div class="section" id="the-problem"&gt;
+&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;This works pretty well. It is manageable. But the point where it started to fall
+apart for me is when I wanted multiple versions of the same Python module
+installed. This pretty much works. Python bootstraps tend to specify the exact
+version they want via &lt;tt class="docutils literal"&gt;pkg_resources&lt;/tt&gt; and some installs provide bootstrap
+scripts with different suffixes for the different versions so we can pick and
+choose to some degree.&lt;/p&gt;
+&lt;p&gt;The issue is that some modules, or tools, like &lt;a class="reference external" href="http://sphinx-doc.org"&gt;Sphinx&lt;/a&gt; provide a boostrapped
+executable without a suffix or at least one which is called without the suffix
+by standard workflow tools (like the Makefile that Sphinx generates.) The
+trouble encountered here is that the module version that the executable ends up
+being from the last version of Sphinx that you installed.&lt;/p&gt;
+&lt;p&gt;This is fine in the usual update track of simply replacing the last version with
+something newer and shinier, however it fails if you ever want to go back to the
+last version. This is relevant in two ways:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;If you want to test a new alpha/beta release whilst still being able to go
+back to stable.&lt;/li&gt;
+&lt;li&gt;If you want to test a module under Python 3 whilst still being able to go
+back to Python 2.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-solution"&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;Fortunately other people have encountered this issue and written &lt;a class="reference external" href="http://www.virtualenv.org/en/latest/"&gt;virtualenv&lt;/a&gt;.
+The design seems to be that instead of a single centralised install location for
+all your Python modules, you create as many individual install locations as you
+need for the different requirements of your projects.&lt;/p&gt;
+&lt;p&gt;This might be one location per project, or a shared location for some projects
+with common settings and other locations for more specific ones. How to do this?
+Virtualenv makes it pretty easy. Once it is installed, just run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+virtualenv &amp;lt;location name&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+virtualenv python-2.7.4
+&lt;/pre&gt;
+&lt;p&gt;And it will create a small &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt; style hierarchy in a folder called
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;python-2.7.4&lt;/span&gt;&lt;/tt&gt; in your current directory. I haven't come up with a better
+naming convention than the Python version yet but really it should be dictated
+by the requirements of the project.&lt;/p&gt;
+&lt;p&gt;Virtualenv creates the hierarchy, installs a copy of the current Python
+interpreter that you are using, the standard library, as well as &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;easy_install&lt;/tt&gt; and sets up some scripts which can be sourced to add the
+hierarchy to your environment. From there you source the environment
+scripts as so:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+source python-2.7.4/bin/activate
+&lt;/pre&gt;
+&lt;p&gt;And then you're ready to go.&lt;/p&gt;
+&lt;p&gt;The presence of &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; in this new location makes it fantastically easy to install new
+modules to that virtual environment. The &lt;tt class="docutils literal"&gt;activate&lt;/tt&gt; script will put that
+&lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; executable on your &lt;tt class="docutils literal"&gt;PATH&lt;/tt&gt; and invocations of it will install modules
+to your new environment.&lt;/p&gt;
+&lt;p&gt;So then, whenever you have a project with a particular set of requirements,
+create a new virtualenv location, source the script, &lt;tt class="docutils literal"&gt;pip install&lt;/tt&gt; your
+requirements and away you go.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="minor-issues"&gt;
+&lt;h2&gt;Minor Issues&lt;/h2&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;activate&lt;/tt&gt; scripts do not attempt to set or change your &lt;tt class="docutils literal"&gt;PYTHONPATH&lt;/tt&gt;.  I
+found this confusing at first but the new install of Python is already hardcoded
+to check its local &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;site-packages&lt;/span&gt;&lt;/tt&gt; directory and everything is installed in
+there so the &lt;tt class="docutils literal"&gt;PYTHONPATH&lt;/tt&gt; is not required.&lt;/p&gt;
+&lt;p&gt;This complicated things when transitioning from my previous set up to using more
+virtualenv locations as my &lt;tt class="docutils literal"&gt;PYTHONPATH&lt;/tt&gt; was still set to my &lt;tt class="docutils literal"&gt;$HOME/local&lt;/tt&gt;
+install which would be preferentially picked up over the modules in the
+virtualenv which rather defeated the point.&lt;/p&gt;
+&lt;p&gt;This is fixable by no longer setting a &lt;tt class="docutils literal"&gt;PYTHONPATH&lt;/tt&gt; in my &lt;tt class="docutils literal"&gt;.zshrc&lt;/tt&gt; but then
+my small workflow scripts started failing as they wanted to find modules in
+&lt;tt class="docutils literal"&gt;$HOME/local&lt;/tt&gt; and that was no longer exposed. My approach to solving this is
+simply to create some additional virtual environments under &lt;tt class="docutils literal"&gt;$HOME/local&lt;/tt&gt;
+which represent a useful grab-bag of modules for these scripts and then write
+a shell wrapper to source the virtual environment &lt;tt class="docutils literal"&gt;activate&lt;/tt&gt; script and then
+run the original Python file.&lt;/p&gt;
+&lt;p&gt;So my, previously Python, &lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; script has now become a shell script which
+looks like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+#!/bin/sh
+
+# Source the appropriate virtualenv
+. /home/mike/local/python/python-2.7.4/bin/activate
+
+jump-impl
+&lt;/pre&gt;
+&lt;p&gt;Where &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;jump-impl&lt;/span&gt;&lt;/tt&gt; contains the contents of the original &lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; script and
+happily finds the &lt;tt class="docutils literal"&gt;yaml&lt;/tt&gt; module that I've installed to the virtual environment
+in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/home/mike/local/python/python-2.7.4&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category></entry></feed>

@@ -3,7 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>DevBlog</title>
-        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css" />
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DevBlog Atom Feed" />
 
         <!--[if IE]>
@@ -15,6 +15,7 @@
         <header id="banner" class="body">
                 <h1><a href="http://michaeljones.github.io/blog/">DevBlog </a></h1>
                 <nav><ul>
+                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
@@ -23,7 +24,209 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/">Journal - Day 7</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/">Discovering Virtualenv</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-17T00:00:00">
+                Thu 17 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p>I've used Python for around 8 years now. It is the main scripting language of
+the visual effects industry so it gets used for all kinds of glue between other
+programs and for interfaces for tools.</p>
+<p>In this role, I've never had to set up a server or do a deployment of a some
+kind of complete unit and so whilst I have been aware of <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a> I've never
+seen the need for it in my life.</p>
+<p>Of course, being a Python programmer, I've wanted to pull in third-party
+libraries and it rarely seems appropriate, and is sometimes impossible, to
+install them into the central <tt class="docutils literal">/usr</tt> area on the machine. So a while ago, I
+adopted the convention of maintaining a <tt class="docutils literal">$HOME/local</tt> folder in which I kept a
+mini <tt class="docutils literal">/usr</tt> hierarchy with my various required bits of software.</p>
+<p>This works because <a class="reference external" href="http://www.pip-installer.org/en/latest/">pip</a> and <a class="reference external" href="http://pythonhosted.org/distribute/easy_install.html">easy_install</a> take some form of <tt class="docutils literal">prefix</tt> arguments
+to allow for targeted installs. <tt class="docutils literal">pip</tt> requires the slightly less than obvious
+use of the <tt class="docutils literal"><span class="pre">install-option</span></tt> flag like so:</p>
+<pre class="literal-block">
+pip install --install-option=&quot;--prefix=$HOME/local&quot; &lt;module name&gt;
+</pre>
+<p>But it is something you can get used to.</p>
+<p>The <tt class="docutils literal">$HOME/local/bin</tt> and corresponding Python module install location are
+then added to my <tt class="docutils literal">PATH</tt> and <tt class="docutils literal">PYTHONPATH</tt> respectively in my <tt class="docutils literal">.zshrc</tt> and
+all is well. Kind of.</p>
+<div class="section" id="the-problem">
+<h2>The Problem</h2>
+<p>This works pretty well. It is manageable. But the point where it started to fall
+apart for me is when I wanted multiple versions of the same Python module
+installed. This pretty much works. Python bootstraps tend to specify the exact
+version they want via <tt class="docutils literal">pkg_resources</tt> and some installs provide bootstrap
+scripts with different suffixes for the different versions so we can pick and
+choose to some degree.</p>
+<p>The issue is that some modules, or tools, like <a class="reference external" href="http://sphinx-doc.org">Sphinx</a> provide a boostrapped
+executable without a suffix or at least one which is called without the suffix
+by standard workflow tools (like the Makefile that Sphinx generates.) The
+trouble encountered here is that the module version that the executable ends up
+being from the last version of Sphinx that you installed.</p>
+<p>This is fine in the usual update track of simply replacing the last version with
+something newer and shinier, however it fails if you ever want to go back to the
+last version. This is relevant in two ways:</p>
+<ol class="arabic simple">
+<li>If you want to test a new alpha/beta release whilst still being able to go
+back to stable.</li>
+<li>If you want to test a module under Python 3 whilst still being able to go
+back to Python 2.</li>
+</ol>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution</h2>
+<p>Fortunately other people have encountered this issue and written <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>.
+The design seems to be that instead of a single centralised install location for
+all your Python modules, you create as many individual install locations as you
+need for the different requirements of your projects.</p>
+<p>This might be one location per project, or a shared location for some projects
+with common settings and other locations for more specific ones. How to do this?
+Virtualenv makes it pretty easy. Once it is installed, just run:</p>
+<pre class="literal-block">
+virtualenv &lt;location name&gt;
+</pre>
+<p>For example:</p>
+<pre class="literal-block">
+virtualenv python-2.7.4
+</pre>
+<p>And it will create a small <tt class="docutils literal">/usr</tt> style hierarchy in a folder called
+<tt class="docutils literal"><span class="pre">python-2.7.4</span></tt> in your current directory. I haven't come up with a better
+naming convention than the Python version yet but really it should be dictated
+by the requirements of the project.</p>
+<p>Virtualenv creates the hierarchy, installs a copy of the current Python
+interpreter that you are using, the standard library, as well as <tt class="docutils literal">pip</tt> and
+<tt class="docutils literal">easy_install</tt> and sets up some scripts which can be sourced to add the
+hierarchy to your environment. From there you source the environment
+scripts as so:</p>
+<pre class="literal-block">
+source python-2.7.4/bin/activate
+</pre>
+<p>And then you're ready to go.</p>
+<p>The presence of <tt class="docutils literal">pip</tt> in this new location makes it fantastically easy to install new
+modules to that virtual environment. The <tt class="docutils literal">activate</tt> script will put that
+<tt class="docutils literal">pip</tt> executable on your <tt class="docutils literal">PATH</tt> and invocations of it will install modules
+to your new environment.</p>
+<p>So then, whenever you have a project with a particular set of requirements,
+create a new virtualenv location, source the script, <tt class="docutils literal">pip install</tt> your
+requirements and away you go.</p>
+</div>
+<div class="section" id="minor-issues">
+<h2>Minor Issues</h2>
+<p>The <tt class="docutils literal">activate</tt> scripts do not attempt to set or change your <tt class="docutils literal">PYTHONPATH</tt>.  I
+found this confusing at first but the new install of Python is already hardcoded
+to check its local <tt class="docutils literal"><span class="pre">site-packages</span></tt> directory and everything is installed in
+there so the <tt class="docutils literal">PYTHONPATH</tt> is not required.</p>
+<p>This complicated things when transitioning from my previous set up to using more
+virtualenv locations as my <tt class="docutils literal">PYTHONPATH</tt> was still set to my <tt class="docutils literal">$HOME/local</tt>
+install which would be preferentially picked up over the modules in the
+virtualenv which rather defeated the point.</p>
+<p>This is fixable by no longer setting a <tt class="docutils literal">PYTHONPATH</tt> in my <tt class="docutils literal">.zshrc</tt> but then
+my small workflow scripts started failing as they wanted to find modules in
+<tt class="docutils literal">$HOME/local</tt> and that was no longer exposed. My approach to solving this is
+simply to create some additional virtual environments under <tt class="docutils literal">$HOME/local</tt>
+which represent a useful grab-bag of modules for these scripts and then write
+a shell wrapper to source the virtual environment <tt class="docutils literal">activate</tt> script and then
+run the original Python file.</p>
+<p>So my, previously Python, <tt class="docutils literal">jump</tt> script has now become a shell script which
+looks like this:</p>
+<pre class="literal-block">
+#!/bin/sh
+
+# Source the appropriate virtualenv
+. /home/mike/local/python/python-2.7.4/bin/activate
+
+jump-impl
+</pre>
+<p>Where <tt class="docutils literal"><span class="pre">jump-impl</span></tt> contains the contents of the original <tt class="docutils literal">jump</tt> script and
+happily finds the <tt class="docutils literal">yaml</tt> module that I've installed to the virtual environment
+in <tt class="docutils literal"><span class="pre">/home/mike/local/python/python-2.7.4</span></tt>.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/17/journal-day-9/" rel="bookmark"
+                           title="Permalink to Journal - Day 9">Journal - Day 9</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-17T00:00:00">
+                Thu 17 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Finish chapter 11 of Learn You a Haskell.</li>
+<li>Write a blog post about virtual env.</li>
+<li>Grab source code for 0ad from <a class="reference external" href="https://github.com/0ad/0ad">github</a>.</li>
+<li>Investigate Breathe ticket <a class="reference external" href="https://github.com/michaeljones/breathe/issues/70">#70</a>.</li>
+</ul>
+</div>
+
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/17/journal-day-9/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/" rel="bookmark"
+                           title="Permalink to Journal - Day 8">Journal - Day 8</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-16T00:00:00">
+                Wed 16 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Finish chapter 9 of Learn You a Haskell and start on chapter 10.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul class="simple">
+<li>Finished chapter 9, read chapter 10 and starter on chapter 11.</li>
+</ul>
+<p>What can I say, it was a sunny day.</p>
+</div>
+
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/" rel="bookmark"
+                           title="Permalink to Journal - Day 7">Journal - Day 7</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-15T00:00:00">
                 Tue 15 October 2013
@@ -34,7 +237,7 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
 
-</footer><!-- /.post-info --><div class="section" id="intentions">
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 8 and read chapter 9 of Learn You a Haskell.</li>
@@ -47,24 +250,10 @@
 <ul class="simple">
 <li>Finished chapter 8 and read half of chapter 9. They are really long chapter, I
 swear.</li>
-<li>I did not yet figure out some basics with Yaml library but editing one of the
-examples given in LYAH allowed me to feel a little more confident about my
-progress with the language.</li>
-<li>Finished up the image support and closed the ticket. The user has further use
-cases but admits that they are non-standard.</li>
-<li>Also played a little bit of 0ad and looked through the contribution pages. I
-have no idea why they are still on svn but they do at least have a github
-<a class="reference external" href="https://github.com/0ad/0ad">mirror</a>. I got beaten pretty hard by the AI and did a panic-quit rather than
-watch my town go down in flames.</li>
-<li>Watched a <a class="reference external" href="http://channel9.msdn.com/Blogs/Charles/Alexandrescu-Bright-Meijer-Moran-Pure-versus-Native-and-much-more">discussion</a> on D &amp; Haskell and their development and ecosystems.</li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<li>I did ...</li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

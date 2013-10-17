@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-15T00:00:00+13:00</updated><entry><title>Journal - Day 7</title><link href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/" rel="alternate"></link><updated>2013-10-15T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-15:posts/2013/10/15/journal-day-7/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-17T00:00:00+13:00</updated><entry><title>Journal - Day 9</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/journal-day-9/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/journal-day-9/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 11 of Learn You a Haskell.&lt;/li&gt;
+&lt;li&gt;Write a blog post about virtual env.&lt;/li&gt;
+&lt;li&gt;Grab source code for 0ad from &lt;a class="reference external" href="https://github.com/0ad/0ad"&gt;github&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Investigate Breathe ticket &lt;a class="reference external" href="https://github.com/michaeljones/breathe/issues/70"&gt;#70&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 8</title><link href="http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/" rel="alternate"></link><updated>2013-10-16T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-16:posts/2013/10/16/journal-day-8/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 9 of Learn You a Haskell and start on chapter 10.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finished chapter 9, read chapter 10 and starter on chapter 11.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What can I say, it was a sunny day.&lt;/p&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 7</title><link href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/" rel="alternate"></link><updated>2013-10-15T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-15:posts/2013/10/15/journal-day-7/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 8 and read chapter 9 of Learn You a Haskell.&lt;/li&gt;

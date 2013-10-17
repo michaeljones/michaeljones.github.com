@@ -1,0 +1,17 @@
+
+@import url("main.css");
+
+/* Custom extensions to the current theme */
+
+tt {
+    margin: 0 2px;
+    padding: 0px 3px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+}
+
+ol {
+    margin-bottom: 1em;
+}
+
