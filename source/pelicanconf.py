@@ -17,6 +17,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Use local theme folder
 THEME = 'theme'
+CSS_FILE = 'custom.css'
 
 # Url Controls
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
