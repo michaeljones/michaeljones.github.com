@@ -15,6 +15,9 @@ DEFAULT_LANG = u'en'
 
 DELETE_OUTPUT_DIRECTORY = True
 
+# Use local theme folder
+THEME = 'theme'
+
 # Url Controls
 ARTICLE_URL = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
