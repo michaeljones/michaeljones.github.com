@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-17T00:00:00+13:00</updated><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-18T00:00:00+13:00</updated><entry><title>Journal - Day 10</title><link href="http://michaeljones.github.io/blog/posts/2013/10/18/journal-day-10/" rel="alternate"></link><updated>2013-10-18T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-18:posts/2013/10/18/journal-day-10/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read through chapter 12 of Learn You a Haskell. Starting on the big scary
+&amp;quot;monads&amp;quot;&lt;/li&gt;
+&lt;li&gt;Grab the 0ad source code from &lt;a class="reference external" href="https://github.com/0ad/0ad"&gt;github&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Investigate the &lt;a class="reference external" href="http://librelist.com/browser//breathe/2013/10/17/doxygenclass-+-members-fails/"&gt;issue&lt;/a&gt; reported on the Breathe mailing list.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finished chapter 12. Monads do not seem very scary when explained well. Of
+course, I might not have understood them at all.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;I grabbed the 0ad source code. The git repository is over a gigabyte of data.
+It is vaguely alarming. I haven't tried to complite it yet but spent a little
+time scanning over the directories to get a feel for the complexity. It is
+impressively larger than anything I've dealt with before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Managed to get a fix out for the reported issue in Breathe will a little back
+and forth.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Watch a &lt;a class="reference external" href="https://www.youtube.com/watch?v=b9FagOVqxmI"&gt;Google TechTalk&lt;/a&gt; on Haskell. A brief introduction by &lt;a class="reference external" href="https://github.com/mzero"&gt;mzero&lt;/a&gt; which is
+really quite a whirlwind tour. I don't think I would recommend it as an
+introduction but it settled in very nicely to the stage of learning I'm at as
+a quick reinforcement of ideas that I have seen so far.&lt;/p&gt;
+&lt;p&gt;I think the time required to properly explain the various common abstractions
+in Haskell makes it enormously hard to do a deep and meaningful
+no-prior-knowledge-required talk about the language.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
 the visual effects industry so it gets used for all kinds of glue between other
 programs and for interfaces for tools.&lt;/p&gt;
 &lt;p&gt;In this role, I've never had to set up a server or do a deployment of a some
@@ -118,6 +151,43 @@ in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/home/mike/local/p
 &lt;li&gt;Write a blog post about virtual env.&lt;/li&gt;
 &lt;li&gt;Grab source code for 0ad from &lt;a class="reference external" href="https://github.com/0ad/0ad"&gt;github&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Investigate Breathe ticket &lt;a class="reference external" href="https://github.com/michaeljones/breathe/issues/70"&gt;#70&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finished chapter 11. Tackling Applicative Functors and Monoids. I am beginning
+to get the feeling that Haskell is not a complex language but there are a lot
+of best practices and design patterns, like Applicative Functors and Monoids,
+that they have built on top of base language which are all required for
+understanding the programs out there.&lt;/p&gt;
+&lt;p&gt;It is like having to learn C++ and the whole &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Design_Patterns"&gt;Gang of Four&lt;/a&gt; before starting
+on a C++ project. Sort of. It is harder, I think, as the C++ syntax is
+relatively minimal in some ways so you'd be able to understand a lot of the
+design patterns without learning them from reference. You might not know
+exactly why they are done but you could see what is happening. I feel like
+that is harder in Haskell but only because the abstractions they build up are
+in some ways more complex and in some ways expressed more tersely which makes
+them less approachable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Wrote &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/"&gt;this blog post&lt;/a&gt; about virtual env. Part of me is appalled by the idea,
+I know how late I am to the virtual env game and none of this should be new
+news, however part of me understands that sometimes random blogs posts can be
+useful to the people who stumble across them and they are always helpful to
+their writer so I'm trying to embrace that style of thought.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Failed to grab the source code for 0ad. I did however play it for a bit and
+managed not to get slaughtered by the first wave of attack.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Failed to investigate Breathe ticket #70.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Forked and started some refactoring work on &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;rigcontrols&lt;/a&gt;. Trying to get a feel
+for the code base and the best direction forward for it. It is revealing my
+lack of familiarity with Qt though I have worked with quite a few basic Qt
+interfaces.&lt;/p&gt;
+&lt;p&gt;The interface is currently Qt 4.8 based. I would be enthusiastic to port it to
+Qt 5 purely out of interest but I don't think that is going to happen.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </summary></entry><entry><title>Journal - Day 8</title><link href="http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/" rel="alternate"></link><updated>2013-10-16T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-16:posts/2013/10/16/journal-day-8/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
