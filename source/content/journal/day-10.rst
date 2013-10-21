@@ -25,7 +25,7 @@ Results
   course, I might not have understood them at all.
 
 * I grabbed the 0ad source code. The git repository is over a gigabyte of data.
-  It is vaguely alarming. I haven't tried to complite it yet but spent a little
+  It is vaguely alarming. I haven't tried to compile it yet but spent a little
   time scanning over the directories to get a feel for the complexity. It is
   impressively larger than anything I've dealt with before.
 
