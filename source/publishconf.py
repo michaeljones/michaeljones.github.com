@@ -13,6 +13,8 @@ from pelicanconf import *
 SITEURL = 'http://michaeljones.github.io/blog'
 RELATIVE_URLS = False
 
+OUTPUT_PATH = '../blog/'
+
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 

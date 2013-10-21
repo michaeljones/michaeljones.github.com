@@ -8,7 +8,7 @@ SITEURL = ''
 
 TIMEZONE = 'Pacific/Auckland'
 
-OUTPUT_PATH = '../blog/'
+OUTPUT_PATH = '../dev-blog/'
 USE_FOLDER_AS_CATEGORY = False
 
 DEFAULT_LANG = u'en'
