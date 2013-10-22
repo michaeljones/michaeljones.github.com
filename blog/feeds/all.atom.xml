@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-18T00:00:00+13:00</updated><entry><title>Journal - Day 10</title><link href="http://michaeljones.github.io/blog/posts/2013/10/18/journal-day-10/" rel="alternate"></link><updated>2013-10-18T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-18:posts/2013/10/18/journal-day-10/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-22T00:00:00+13:00</updated><entry><title>Journal - Day 12</title><link href="http://michaeljones.github.io/blog/posts/2013/10/22/journal-day-12/" rel="alternate"></link><updated>2013-10-22T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-22:posts/2013/10/22/journal-day-12/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read &lt;a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html"&gt;cabal sandbox post&lt;/a&gt; and set up a sandbox area for my Haskell dev
+project. Cabal sandboxes are meant to mimic the Python virtualenv
+functionality.&lt;/li&gt;
+&lt;li&gt;Take a closer look at the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project and try to improve the curve
+performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read the cabal sandbox post and set up a basic sandbox area.&lt;/li&gt;
+&lt;li&gt;Talked through some changes to the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project with my brother.
+Conferring on coding style and some subtleties of Python.&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://github.com/Everzen/RigControls/pull/3"&gt;Improved curve performance&lt;/a&gt; in &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; by switching to a recalculate on
+demand rather than recalculate on change strategy.&lt;/li&gt;
+&lt;li&gt;Read the first page of the &lt;a class="reference external" href="https://www.fpcomplete.com/school/haskell-fast-hard/haskell-fast-hard-part-1"&gt;Learn Haskell Hard &amp;amp; Fast&lt;/a&gt; tutorial. In
+comparison to LYAH, it feels like it is going at a lightning pace and lacks
+the thoroughness required, however it might round out in future sections. It
+is certainly tempting to try to write a Haskell tutorial which explicitly
+skips over particular details early on in order to get to more practical
+examples. It will be interesting to see if this tutorial takes that approach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 11</title><link href="http://michaeljones.github.io/blog/posts/2013/10/21/journal-day-11/" rel="alternate"></link><updated>2013-10-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-21:posts/2013/10/21/journal-day-11/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read through chapter 13 of Learn You a Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read through the chapter of Learn You a Haskell. This is the first chapter
+where I'm beginning to feel unsure of how solid my understanding has been so
+far. It all just about holds together but I'm aware of how little practical
+application I've attempted with the knowledge so far.&lt;/li&gt;
+&lt;li&gt;Found a new &lt;a class="reference external" href="http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/#introduction"&gt;Haskell tutorial&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Refactored use of &lt;tt class="docutils literal"&gt;eval&lt;/tt&gt; in the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project to use a dictorionary
+based factory instead.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>End of Week 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/20/end-of-week-2/" rel="alternate"></link><updated>2013-10-20T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-20:posts/2013/10/20/end-of-week-2/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+&lt;h2&gt;Weekend&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Decided to start looking at the &lt;a class="reference external" href="https://github.com/coreyoconnor/vty"&gt;Vty&lt;/a&gt; module for Haskell based on the
+half-remembered fact that the &lt;a class="reference external" href="https://github.com/yi-editor/yi"&gt;Yi text editor&lt;/a&gt; uses it for its terminal
+front end.&lt;/li&gt;
+&lt;li&gt;Talked through my changes to &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; with my brother.&lt;/li&gt;
+&lt;li&gt;Found a &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/All_About_Monads"&gt;monad tutorial&lt;/a&gt; on the Haskell wiki.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="week-in-review"&gt;
+&lt;h2&gt;Week in Review&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;My attitude towards learning Haskell has shifted as I begin to understand a
+little of its scope. Initial frustration at the helplessness I felt at not
+being able to get anything done has been replaced with an understanding that
+Haskell is not trivial to dive into and a little patience goes a long way.&lt;/p&gt;
+&lt;p&gt;In particular the Learn You a Haskell guide feels particularly brilliantly
+laid out and paced. The concepts are built up gradually in a very manageable
+way and, whilst I am finding it hard to think of interesting programs to write
+with the knowledge I have, there is a definite sense of progress which is
+enough to keep the enthusiasm going.&lt;/p&gt;
+&lt;p&gt;That said, my attempt at the weekend to pick up and write even the most basic
+program using the &lt;a class="reference external" href="https://github.com/coreyoconnor/vty"&gt;Vty&lt;/a&gt; module was an education in the different between theory
+and practice. It is one thing to read a guide book and quite another to find
+your way. Still, a little foolish googling and a few stackoverflow questions
+later and I am starting to see a little clearer.&lt;/p&gt;
+&lt;p&gt;A key issue was that the Vty module does not come with how-to style
+documentation [1] and going from the careful breaks downs of the Learn You a
+Haskell guide to the currently-still-alien pages of the library documentation
+on Haddock was a rather large step. Concepts that I had read about were now
+being presented with unfamiliar content and without the careful reminders
+needed to take it all on board. Still, progress was made, even if in the most
+basic sense and I am a little better equipped than before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Getting into the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project is still primarily reminding me how
+little indepth experience I have with Qt. It is also curious to dive into an
+existing code base with the intention of cleaning it up some what. Nice to
+have the permission but a fresh lesson in how difficult it can be to tackle a
+new and relatively undocumented code base.&lt;/p&gt;
+&lt;p&gt;Possible refactoring would be aided by have test cases but I still have
+trouble understanding how to best tackle those in a GUI application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Whilst I am curious to attempt to contribute to a large project like Libre
+Office, or perhaps 0ad, I am finding it a little daunting and easily telling
+myself that there is no rush with other commitments at the moment. I think
+that it fair. I'd be a fool to take on too much and fail to make significant
+progress in any direction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Supporting incoming user requests on Breathe continues to be of interest. It
+feels productive to keep pushing it forward a little and to try to keep
+updates clean and useful. I still lack the motivation to take a crack at some
+larger issues and reports whilst I have other things to focus on but I am
+tempted to at least start working through the back log a little rather than
+only picking up new tickets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table class="docutils footnote" frame="void" id="id1" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;[1]&lt;/td&gt;&lt;td&gt;It is possibly too low level for that with the &lt;a class="reference external" href="http://jtdaugherty.github.io/vty-ui/"&gt;Vty-UI&lt;/a&gt; library filling
+need for a widget library on top of the core Vty module.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 10</title><link href="http://michaeljones.github.io/blog/posts/2013/10/18/journal-day-10/" rel="alternate"></link><updated>2013-10-18T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-18:posts/2013/10/18/journal-day-10/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read through chapter 12 of Learn You a Haskell. Starting on the big scary
@@ -15,7 +124,7 @@
 course, I might not have understood them at all.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class="first"&gt;I grabbed the 0ad source code. The git repository is over a gigabyte of data.
-It is vaguely alarming. I haven't tried to complite it yet but spent a little
+It is vaguely alarming. I haven't tried to compile it yet but spent a little
 time scanning over the directories to get a feel for the complexity. It is
 impressively larger than anything I've dealt with before.&lt;/p&gt;
 &lt;/li&gt;
