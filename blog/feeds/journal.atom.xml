@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-22T00:00:00+13:00</updated><entry><title>Journal - Day 12</title><link href="http://michaeljones.github.io/blog/posts/2013/10/22/journal-day-12/" rel="alternate"></link><updated>2013-10-22T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-22:posts/2013/10/22/journal-day-12/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-23T00:00:00+13:00</updated><entry><title>Journal - Day 13</title><link href="http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/" rel="alternate"></link><updated>2013-10-23T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-23:posts/2013/10/23/journal-day-13/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Improve &amp;amp; update information on michaeljones.github.io.&lt;/li&gt;
+&lt;li&gt;Grab the source code for &lt;a class="reference external" href="http://gibiansky.github.io/IHaskell/"&gt;IHaskell&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Experiment with the &lt;a class="reference external" href="http://hackage.haskell.org/package/vty-ui"&gt;vty-ui&lt;/a&gt; library&lt;/li&gt;
+&lt;li&gt;Read the final chapter of Learn You a Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Did not update michaeljones.github.io.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Did not grab the source for &lt;a class="reference external" href="http://gibiansky.github.io/IHaskell/"&gt;IHaskell&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;I read the final chapter of Learn You a Haskell which is introducing the idea
+of Zippers. It doesn't really wrap up the tutorial with any kind of conclusion
+which makes it feel like there might be more to come. The FAQ also promises a
+set of accompanying exercises at some point but I think it might have been
+promising that for a while.&lt;/p&gt;
+&lt;p&gt;Still by far the best Haskell tutorial I've come across.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read the majority of the documentation for the &lt;a class="reference external" href="http://hackage.haskell.org/package/vty-ui"&gt;vty-ui&lt;/a&gt; library and built a
+basic &lt;abbr&gt;TUI &amp;lt;Text User Interface&amp;gt;&lt;/abbr&gt; application which uses the List
+functionality from vty-ui. Quite exciting to be writing something new,
+interpreting compile errors and getting things to work. Still early days but
+feels great to be coding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Watched a talk on &lt;a class="reference external" href="http://www.infoq.com/presentations/io-functional-side-effects"&gt;Purely Functional I/O&lt;/a&gt; which covers the pure nature of
+Haskell and introducing some pure ideas into Scala. It is a solid presentation
+which gently covered some very interesting ideas. Again, I wonder how people
+are meant to watch it without a basic understanding of Haskell but maybe it is
+fine. A couple of &lt;em&gt;Ah-Ha!&lt;/em&gt; moments for me: firstly his three stage code
+refactoring example, going from:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Cafe&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="n"&gt;buyCoffee&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;CreditCard&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;Coffee&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt; &lt;span class="k"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nc"&gt;Coffee&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="nc"&gt;Payments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;charge&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;price&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cup&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Where the payment mechanism is hard coded through a singleton which means
+limited modularity and difficulty in testing as you can't substitute a mock
+payments system. To:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Cafe&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="n"&gt;buyCoffee&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;CreditCard&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;Payments&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;Coffee&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt; &lt;span class="k"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nc"&gt;Coffee&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;charge&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;price&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;cup&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Where the payments mechanism is an explicit dependency of the method and has
+to be injected, which allows for greater modularity, but still isn't as
+flexible as it could be as you cannot easily combine payments. To:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Cafe&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="n"&gt;buyCoffee&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;CreditCard&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="k"&gt;:&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Coffee&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Charge&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="k"&gt;=&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;val&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt; &lt;span class="k"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nc"&gt;Coffee&lt;/span&gt;&lt;span class="o"&gt;()&lt;/span&gt;
+    &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cup&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nc"&gt;Charge&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cc&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cup&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;price&lt;/span&gt;&lt;span class="o"&gt;))&lt;/span&gt;
+  &lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In which the &lt;tt class="docutils literal"&gt;buyCoffee&lt;/tt&gt; mechanism is only responsible for returning a
+&lt;tt class="docutils literal"&gt;Charge&lt;/tt&gt; object which can be separately processed and combined if desired
+before the final payment is done.&lt;/p&gt;
+&lt;p&gt;I'm very used to the second set of code from a writing code to test as covered
+in &lt;a class="reference external" href="http://misko.hevery.com/"&gt;Miško Hevery's&lt;/a&gt; &lt;a class="reference external" href="https://www.youtube.com/playlist?list=PLBDAB2BA83BB6588E"&gt;Clean Code&lt;/a&gt; Google Tech Talks, but the third set
+feels like it might just be another step forward and something well worth
+taking on board. The pure functional angle here is that the method only
+creates new objects it doesn't change any state but the pay offs are perhaps
+larger than I would associate with that simple statement.&lt;/p&gt;
+&lt;p&gt;The second &lt;em&gt;Ah-Ha!&lt;/em&gt; moment was hearing again how Haskell handles IO code and
+side-effects. I felt my understanding click a step deeper with this talk.
+Mostly his focus on the fact that IO is possible in a pure way and that is
+whilst Haskell has functions that perform IO and therefore have side-effects,
+they are never executed by the programmers code. Rather, the programmer has
+pure code which passes these IO performing functions around as data and then
+Haskell runtime, whatever is managing the execution of &lt;tt class="docutils literal"&gt;main&lt;/tt&gt;, ultimately
+executes them and passes their results back into the pure code as part of the
+evaluation of the program.&lt;/p&gt;
+&lt;p&gt;He emphasises that pure code is referentially transparent which means that
+every time you run a function with the same arguments it returns the same
+results. Haskell perhaps can be viewed as running pure functions which return
+functions which will do side-effecting actions, but as long as we're only
+talking about returning functions that, if run, would have side-effects, rather
+than actually running those functions ourselves then we are still pure. The
+functions are data that we're passing around which can be done in a manner
+oblivious to their underlying impure nature.&lt;/p&gt;
+&lt;p&gt;To keep a track of what is going on we label these functions with the IO type
+but that is little more than a convention aided by the type system. IO doesn't
+bestow magical powers on the functions.&lt;/p&gt;
+&lt;p&gt;This all may or may not be wrong but it is my current understanding.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 12</title><link href="http://michaeljones.github.io/blog/posts/2013/10/22/journal-day-12/" rel="alternate"></link><updated>2013-10-22T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-22:posts/2013/10/22/journal-day-12/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read &lt;a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html"&gt;cabal sandbox post&lt;/a&gt; and set up a sandbox area for my Haskell dev
