@@ -24,7 +24,67 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/">Journal - Day 13</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/24/journal-day-14/">Journal - Day 14</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-24T00:00:00">
+                Thu 24 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info --><div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Continue working on vty-ui example to at least emulate the functionality of my
+<a class="reference external" href="https://github.com/michaeljones/dotfiles/blob/master/bin/jump">jump</a> helper script.</li>
+<li>Set up basic testsuite for the <a class="reference external" href="https://github.com/Everzen/RigControls">RigControls</a> project.</li>
+<li>Improve &amp; update information on michaeljones.github.io.</li>
+<li>Grab the source code for <a class="reference external" href="https://github.com/gibiansky/IHaskell">IHaskell</a>.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">More work on the Jump project including starting to look at the <a class="reference external" href="http://hackage.haskell.org/package/yaml">yaml</a> package
+for reading my jump config file. As a beginner, I am finding it a struggle to
+start with new packages when they don't have a tutorial section. The tests
+only get you so far. A simple start guide would not go amiss.</p>
+<p>Perhaps this will improve with experience. Perhaps Haskell APIs have a
+structure which I am not familiar enough with yet.</p>
+</li>
+<li><p class="first">Installed <a class="reference external" href="http://nose2.readthedocs.org/en/latest/index.html">nose2</a> to the <a class="reference external" href="https://github.com/Everzen/RigControls">RigControls</a> virtualenv I have and wrote a trivial
+test to test that it was working.</p>
+<p>Required getting PyQt4 working in the virtualenv which, for me, involved
+directly copying the system installed packages as recommended in this
+stackoverflow <a class="reference external" href="http://stackoverflow.com/questions/1961997/is-it-possible-to-add-pyqt4-pyside-packages-on-a-virtualenv-sandbox">response</a>.</p>
+</li>
+<li><p class="first">Investigated Unicode best practices in response to a sphinx-to-github <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github/pull/7">ticket</a>.</p>
+</li>
+<li><p class="first">Updated my development copy of michaeljones.github.io to include more
+information for potential future employers. To act as more of a CV.</p>
+</li>
+<li><p class="first">Did not grab the souce code for <a class="reference external" href="https://github.com/gibiansky/IHaskell">IHaskell</a>. Might give up on that one for the
+moment.</p>
+</li>
+</ul>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/" rel="bookmark"
+                           title="Permalink to Journal - Day 13">Journal - Day 13</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-23T00:00:00">
                 Wed 23 October 2013
@@ -35,7 +95,7 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
 
-</footer><!-- /.post-info --><div class="section" id="intentions">
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Improve &amp; update information on michaeljones.github.io.</li>
@@ -51,93 +111,10 @@
 </li>
 <li><p class="first">Did not grab the source for <a class="reference external" href="http://gibiansky.github.io/IHaskell/">IHaskell</a>.</p>
 </li>
-<li><p class="first">I read the final chapter of Learn You a Haskell which is introducing the idea
-of Zippers. It doesn't really wrap up the tutorial with any kind of conclusion
-which makes it feel like there might be more to come. The FAQ also promises a
-set of accompanying exercises at some point but I think it might have been
-promising that for a while.</p>
-<p>Still by far the best Haskell tutorial I've come across.</p>
-</li>
-<li><p class="first">Read the majority of the documentation for the <a class="reference external" href="http://hackage.haskell.org/package/vty-ui">vty-ui</a> library and built a
-basic <abbr>TUI &lt;Text User Interface&gt;</abbr> application which uses the List
-functionality from vty-ui. Quite exciting to be writing something new,
-interpreting compile errors and getting things to work. Still early days but
-feels great to be coding.</p>
-</li>
-<li><p class="first">Watched a talk on <a class="reference external" href="http://www.infoq.com/presentations/io-functional-side-effects">Purely Functional I/O</a> which covers the pure nature of
-Haskell and introducing some pure ideas into Scala. It is a solid presentation
-which gently covered some very interesting ideas. Again, I wonder how people
-are meant to watch it without a basic understanding of Haskell but maybe it is
-fine. A couple of <em>Ah-Ha!</em> moments for me: firstly his three stage code
-refactoring example, going from:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Cafe</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">buyCoffee</span><span class="o">(</span><span class="n">cc</span><span class="k">:</span> <span class="kt">CreditCard</span><span class="o">)</span><span class="k">:</span> <span class="kt">Coffee</span> <span class="o">=</span> <span class="o">{</span>
-    <span class="k">val</span> <span class="n">cup</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Coffee</span><span class="o">()</span>
-    <span class="nc">Payments</span><span class="o">.</span><span class="n">charge</span><span class="o">(</span><span class="n">cc</span><span class="o">,</span> <span class="n">cup</span><span class="o">.</span><span class="n">price</span><span class="o">)</span>
-    <span class="n">cup</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<p>Where the payment mechanism is hard coded through a singleton which means
-limited modularity and difficulty in testing as you can't substitute a mock
-payments system. To:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Cafe</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">buyCoffee</span><span class="o">(</span><span class="n">cc</span><span class="k">:</span> <span class="kt">CreditCard</span><span class="o">,</span> <span class="n">p</span><span class="k">:</span> <span class="kt">Payments</span><span class="o">)</span><span class="k">:</span> <span class="kt">Coffee</span> <span class="o">=</span> <span class="o">{</span>
-    <span class="k">val</span> <span class="n">cup</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Coffee</span><span class="o">()</span>
-    <span class="n">p</span><span class="o">.</span><span class="n">charge</span><span class="o">(</span><span class="n">cc</span><span class="o">,</span> <span class="n">cup</span><span class="o">.</span><span class="n">price</span><span class="o">)</span>
-    <span class="n">cup</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<p>Where the payments mechanism is an explicit dependency of the method and has
-to be injected, which allows for greater modularity, but still isn't as
-flexible as it could be as you cannot easily combine payments. To:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Cafe</span> <span class="o">{</span>
-  <span class="k">def</span> <span class="n">buyCoffee</span><span class="o">(</span><span class="n">cc</span><span class="k">:</span> <span class="kt">CreditCard</span><span class="o">)</span><span class="k">:</span> <span class="o">(</span><span class="kt">Coffee</span><span class="o">,</span> <span class="kt">Charge</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
-    <span class="k">val</span> <span class="n">cup</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Coffee</span><span class="o">()</span>
-    <span class="o">(</span><span class="n">cup</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Charge</span><span class="o">(</span><span class="n">cc</span><span class="o">,</span> <span class="n">cup</span><span class="o">.</span><span class="n">price</span><span class="o">))</span>
-  <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<p>In which the <tt class="docutils literal">buyCoffee</tt> mechanism is only responsible for returning a
-<tt class="docutils literal">Charge</tt> object which can be separately processed and combined if desired
-before the final payment is done.</p>
-<p>I'm very used to the second set of code from a writing code to test as covered
-in <a class="reference external" href="http://misko.hevery.com/">Miško Hevery's</a> <a class="reference external" href="https://www.youtube.com/playlist?list=PLBDAB2BA83BB6588E">Clean Code</a> Google Tech Talks, but the third set
-feels like it might just be another step forward and something well worth
-taking on board. The pure functional angle here is that the method only
-creates new objects it doesn't change any state but the pay offs are perhaps
-larger than I would associate with that simple statement.</p>
-<p>The second <em>Ah-Ha!</em> moment was hearing again how Haskell handles IO code and
-side-effects. I felt my understanding click a step deeper with this talk.
-Mostly his focus on the fact that IO is possible in a pure way and that is
-whilst Haskell has functions that perform IO and therefore have side-effects,
-they are never executed by the programmers code. Rather, the programmer has
-pure code which passes these IO performing functions around as data and then
-Haskell runtime, whatever is managing the execution of <tt class="docutils literal">main</tt>, ultimately
-executes them and passes their results back into the pure code as part of the
-evaluation of the program.</p>
-<p>He emphasises that pure code is referentially transparent which means that
-every time you run a function with the same arguments it returns the same
-results. Haskell perhaps can be viewed as running pure functions which return
-functions which will do side-effecting actions, but as long as we're only
-talking about returning functions that, if run, would have side-effects, rather
-than actually running those functions ourselves then we are still pure. The
-functions are data that we're passing around which can be done in a manner
-oblivious to their underlying impure nature.</p>
-<p>To keep a track of what is going on we label these functions with the IO type
-but that is little more than a convention aided by the type system. IO doesn't
-bestow magical powers on the functions.</p>
-<p>This all may or may not be wrong but it is my current understanding.</p>
-</li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<li><p class="first">I read the final chapter of Learn You ...</p></li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
