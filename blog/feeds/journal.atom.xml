@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-24T00:00:00+13:00</updated><entry><title>Journal - Day 14</title><link href="http://michaeljones.github.io/blog/posts/2013/10/24/journal-day-14/" rel="alternate"></link><updated>2013-10-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-24:posts/2013/10/24/journal-day-14/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-25T00:00:00+13:00</updated><entry><title>Journal - Day 15</title><link href="http://michaeljones.github.io/blog/posts/2013/10/25/journal-day-15/" rel="alternate"></link><updated>2013-10-25T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-25:posts/2013/10/25/journal-day-15/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue my quest to parse Yaml in Haskell. Or rather, use the data returned
+from the Yaml parser library I'm using (&lt;a class="reference external" href="http://hackage.haskell.org/package/yaml-0.8.5"&gt;yaml&lt;/a&gt;.)&lt;/li&gt;
+&lt;li&gt;Try to write at least one test for &lt;a class="reference external" href="http://github.com/EverZen/RigControls"&gt;RigControls&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continued exploration of the Yaml library but without much success. Determined
+that perhaps it would be productive to journal my failings and hopefully
+eventual success at using this library. Sadly this decision came after a
+little progress so I will have to try to reproduce those first steps in an
+appropriately clueless way.&lt;/li&gt;
+&lt;li&gt;Failed to write any tests. Dammit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 14</title><link href="http://michaeljones.github.io/blog/posts/2013/10/24/journal-day-14/" rel="alternate"></link><updated>2013-10-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-24:posts/2013/10/24/journal-day-14/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue working on vty-ui example to at least emulate the functionality of my
