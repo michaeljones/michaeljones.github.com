@@ -1,5 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/article.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-17T00:00:00+13:00</updated><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/article.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-27T00:00:00+13:00</updated><entry><title>Setting Up a Haskell Project</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/setting-up-a-haskell-project/</id><summary type="html">&lt;p&gt;This is an attempt to share the my initial discoveries on how to set up a
+Haskell project. My plan was to create a small project for an executable written
+in Haskell and I didn't have the first idea where to start.&lt;/p&gt;
+&lt;p&gt;I am new to the language and the ecosystem and this article wanders through my
+discovery process. Skip straight to the &lt;a class="reference internal" href="#review"&gt;review&lt;/a&gt; for a summary.&lt;/p&gt;
+&lt;div class="section" id="note"&gt;
+&lt;h2&gt;Note&lt;/h2&gt;
+&lt;p&gt;This is well covered in the Haskell Wiki on &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program"&gt;How to write a Haskell program&lt;/a&gt;. I
+had not found that guide at the time of working through this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="working-on-ubuntu-13-04"&gt;
+&lt;h2&gt;Working on Ubuntu 13.04&lt;/h2&gt;
+&lt;p&gt;Following some best practices advice, I wanted to get the &lt;a class="reference external" href="http://www.haskell.org/platform/"&gt;Haskell Platform&lt;/a&gt; to
+act as a starting point for development. However for reasons that I do not fully
+understand, Ubuntu 13.04 does not have a version of the Haskell platform (it
+seems to be related to the version of ghc they decided to ship with.)&lt;/p&gt;
+&lt;p&gt;Follow &lt;a class="reference external" href="http://askubuntu.com/a/316465"&gt;these&lt;/a&gt; instructions will get you a working copy of the Haskell Platform
+along with the appropriate version of ghc. It takes a while to compile though!
+I've installed these into the following directories:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$TOOLS/apps/ghc/ghc-7.6.3
+$TOOLS/apps/haskell-platform/haskell-platform-2013.2.0.0
+&lt;/pre&gt;
+&lt;p&gt;For some value of &lt;tt class="docutils literal"&gt;$TOOLS&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="getting-libraries"&gt;
+&lt;h2&gt;Getting Libraries&lt;/h2&gt;
+&lt;p&gt;With that going and in my environment, I made a new project directory for my
+&lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; program:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ mkdir $WORK/jump
+&lt;/pre&gt;
+&lt;p&gt;My project is going to need a terminal interface and some googling comes up with
+&lt;a class="reference external" href="http://hackage.haskell.org/package/vty"&gt;vty&lt;/a&gt; which appears to be some kind of ncurses equivalent for Haskell. So I try:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal install vty
+&lt;/pre&gt;
+&lt;p&gt;Which tells me to run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal update
+&lt;/pre&gt;
+&lt;p&gt;Which tells me that there is a new cabal-install package available that I should
+update to. I initially install this to:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$TOOLS/apps/haskell-packages/cabal-1.18.0.2
+&lt;/pre&gt;
+&lt;p&gt;Using:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+cabal install --prefix=$TOOLS/apps/haskell-packages/cabal-1.18.0.2 cabal-install
+&lt;/pre&gt;
+&lt;p&gt;As I really like subfoldering things but this soon looks like it'll be too
+awkward to manage in my immature set up as each package has its own libraries
+and executables which means a lot of paths to figure out unless they are all
+grouped together.&lt;/p&gt;
+&lt;p&gt;So I install it straight to:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$TOOLS/apps/haskell-packages
+&lt;/pre&gt;
+&lt;p&gt;This seems to work though the central install location bothers me in the same
+way that any centralised collection of dependencies would. Something is going to
+conflict at some point. What I really want is some kind of equivalent to
+Python's &lt;a class="reference external" href="http://www.virtualenv.org"&gt;virtualenv&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="ahhh-sandboxes"&gt;
+&lt;h2&gt;Ahhh Sandboxes&lt;/h2&gt;
+&lt;p&gt;Some googling thankfully finds cabal sandboxes which are very much what I am
+looking forward. &lt;a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html"&gt;This page&lt;/a&gt; is particularly helpful.&lt;/p&gt;
+&lt;p&gt;So I follow the instructions and run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cd $WORK/jump
+$ cabal sandbox init
+&lt;/pre&gt;
+&lt;p&gt;This seems promising. A &lt;tt class="docutils literal"&gt;cabal install vty&lt;/tt&gt; now installs into this local
+sandbox set up and I don't have to worry about shared collections of
+dependencies anymore.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="compiling"&gt;
+&lt;h2&gt;Compiling&lt;/h2&gt;
+&lt;p&gt;Great, I'm ready to start coding. I make a a trivial &lt;tt class="docutils literal"&gt;Main.hs&lt;/tt&gt; file which
+pulls in a &lt;a class="reference external" href="http://hackage.haskell.org/package/vty-ui"&gt;vty-ui&lt;/a&gt; module (it turns out the &lt;tt class="docutils literal"&gt;vty&lt;/tt&gt; is pretty low level and
+vty-ui provide more friendly widgets for building interfaces.)&lt;/p&gt;
+&lt;p&gt;So let's compile:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ ghc --make Main.hs
+&lt;/pre&gt;
+&lt;p&gt;I haven't read up on the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--make&lt;/span&gt;&lt;/tt&gt; flag but it seems like the thing to do.
+Anyway, this doesn't work:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Main.hs:2:8:
+    Could not find module `Graphics.Vty.Widgets.All'
+    Use -v to see a list of the files searched for.
+&lt;/pre&gt;
+&lt;p&gt;No trouble, I've played around with toy &lt;tt class="docutils literal"&gt;ghc&lt;/tt&gt; compiles before. I believe there
+is a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-package&lt;/span&gt;&lt;/tt&gt; flag to provide paths to packages. Cool. Where is the package?
+I run &lt;tt class="docutils literal"&gt;find&lt;/tt&gt; in the sandbox and get a lot of paths like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+./.cabal-sandbox/lib/x86_64-linux-ghc-7.6.3/vty-ui-1.6/Graphics/Vty/Widgets/All.hi
+&lt;/pre&gt;
+&lt;p&gt;My &lt;span class="strike"&gt;spidey&lt;/span&gt; programmer sense is tingling; I've not compiled much in
+Haskell but that doesn't look like something to add to a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-package&lt;/span&gt;&lt;/tt&gt; flag. Too
+much specific data in there. Just a hunch but I start looking around for
+alternatives.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="cabal-build"&gt;
+&lt;h2&gt;Cabal Build&lt;/h2&gt;
+&lt;p&gt;I couldn't see much else to help with &lt;tt class="docutils literal"&gt;ghc&lt;/tt&gt; and it seemed that we were
+pretty neck deep in this sandbox so on reviewing the &lt;a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html"&gt;sandbox guide&lt;/a&gt; from
+earlier I saw the use of:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal build
+&lt;/pre&gt;
+&lt;p&gt;Worth a crack, right? Well, yes, but this was the response:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Package has never been configured. Configuring with default flags. If this
+fails, please run configure manually.
+cabal: No cabal file found.
+Please create a package description file &amp;lt;pkgname&amp;gt;.cabal
+&lt;/pre&gt;
+&lt;p&gt;Ok, we need some kind of configuration file. No idea what goes in it:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ touch jump.cabal
+$ cabal build
+&lt;/pre&gt;
+&lt;p&gt;Progress:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Package has never been configured. Configuring with default flags. If this
+fails, please run configure manually.
+Resolving dependencies...
+cabal: Using 'build-type: Custom' but there is no Setup.hs or Setup.lhs
+script.
+&lt;/pre&gt;
+&lt;p&gt;Ok, lets have a look at the &lt;a class="reference external" href="https://github.com/coreyoconnor/vty"&gt;vty project&lt;/a&gt; on Github and see what they are
+doing. They've got some kind of &lt;tt class="docutils literal"&gt;Setup.lhs&lt;/tt&gt; file with this in it:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+#!/usr/bin/env runhaskell
+&amp;gt; import Distribution.Simple
+&amp;gt; main = defaultMain
+&lt;/pre&gt;
+&lt;p&gt;The &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml"&gt;yaml&lt;/a&gt; project I've been keeping an eye on has something similar. Ok:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cat &amp;lt;&amp;lt; ENDCAT &amp;gt; Test.lhs
+#!/usr/bin/env runhaskell
+&amp;gt; import Distribution.Simple
+&amp;gt; main = defaultMain
+ENDCAT
+$ cabal build
+&lt;/pre&gt;
+&lt;p&gt;And:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Package has never been configured. Configuring with default flags. If this
+fails, please run configure manually.
+Resolving dependencies...
+[1 of 1] Compiling Main             ( Setup.lhs, dist/setup/Main.o )
+Linking ./dist/setup/setup ...
+Configuring ...
+setup: No 'name' field.
+
+No 'version' field.
+
+No executables and no library found. Nothing to do.
+&lt;/pre&gt;
+&lt;p&gt;Ok. Expecting some kind of &lt;tt class="docutils literal"&gt;name&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;version&lt;/tt&gt; fields. This is starting to
+seem like progress so I look at the vty project &lt;tt class="docutils literal"&gt;vty.cabal&lt;/tt&gt; file and we see a
+simple key value set up:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+name:    jump
+version: 0.0.0
+&lt;/pre&gt;
+&lt;p&gt;Vim highlights this which is always a good sign:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal build
+Package has never been configured. Configuring with default flags. If this
+fails, please run configure manually.
+Resolving dependencies...
+Configuring jump-0.0.0...
+setup: No executables and no library found. Nothing to do.
+&lt;/pre&gt;
+&lt;p&gt;More cross referencing with github, this time the &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml"&gt;yaml&lt;/a&gt; project and we add:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+executable jump
+    main-is: Main.hs
+&lt;/pre&gt;
+&lt;p&gt;Now we're on to something. We've got a few more warnings but finally some
+compile errors! Things are happening. Playing around shows that we need to add:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+cabal-version:   &amp;gt;= 1.2
+build-type:      Simple
+&lt;/pre&gt;
+&lt;p&gt;To silence the warnings. A guess-and-test shows that we no longer need the
+&lt;tt class="docutils literal"&gt;Setup.lhs&lt;/tt&gt; file now that we have &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;build-type&lt;/span&gt;&lt;/tt&gt; set to &lt;tt class="docutils literal"&gt;Simple&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="dependency-management"&gt;
+&lt;h2&gt;Dependency Management&lt;/h2&gt;
+&lt;p&gt;So those compile errors? They are actually pretty damned cool if you ask me. The
+first one sets the tone:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Main.hs:1:1:
+    Could not find module `Prelude'
+    It is a member of the hidden package `base'.
+    Perhaps you need to add `base' to the build-depends in your .cabal file.
+&lt;/pre&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;Prelude&lt;/tt&gt; is the essentially default, built-in functionality in Haskell. All
+the functions that you're going to be using all the time so they are just there.
+This is included by default in programs if you do a &lt;tt class="docutils literal"&gt;ghc&lt;/tt&gt; invocation from the
+command line or if you use &lt;tt class="docutils literal"&gt;ghci&lt;/tt&gt; but here we're being asked to explicitly
+declare the dependency.&lt;/p&gt;
+&lt;p&gt;Dependencies are a nightmare if they aren't managed properly so I am in favour
+of this. Additionally it allows this &lt;tt class="docutils literal"&gt;base&lt;/tt&gt; package to changes its contents as
+it versions up and projects can declare the version range they require to
+operate.&lt;/p&gt;
+&lt;p&gt;So the next addition is to add the build dependencies to the &lt;tt class="docutils literal"&gt;executable&lt;/tt&gt;
+section:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+executable jump
+    main-is: src/Main.hs
+    build-depends: base &amp;gt;= 4 &amp;amp;&amp;amp; &amp;lt; 5
+&lt;/pre&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;4&lt;/tt&gt; to &lt;tt class="docutils literal"&gt;5&lt;/tt&gt; range is stoten from the &lt;tt class="docutils literal"&gt;yaml&lt;/tt&gt; project. This gets extended
+in the typical prefixed comma style for further dependencies as the project
+grows:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+executable jump
+    main-is: src/Main.hs
+    build-depends: base &amp;gt;= 4 &amp;amp;&amp;amp; &amp;lt; 5
+                 , vty-ui == 1.6
+                 , vty == 4.7.3
+                 , yaml == 0.8.5.1
+                 , vector == 0.10.9.1
+                 , text == 0.11.3.1
+&lt;/pre&gt;
+&lt;p&gt;Each time you need a new dependency you can &lt;tt class="docutils literal"&gt;cabal install&lt;/tt&gt; it into your
+sandbox and then the &lt;tt class="docutils literal"&gt;cabal build&lt;/tt&gt; command will make sure you have it properly
+specified in your &lt;tt class="docutils literal"&gt;.cabal&lt;/tt&gt; file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="in-review"&gt;
+&lt;span id="review"&gt;&lt;/span&gt;&lt;h2&gt;In Review&lt;/h2&gt;
+&lt;p&gt;If I wanted an introduction to Haskell project setup, coming from a C++ &amp;amp; Python
+background, I would want something like this:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Cabal sandboxes provide a virtualenv style enviroment for project development.
+Your project root directory becomes your sandbox.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Your project &lt;tt class="docutils literal"&gt;.cabal&lt;/tt&gt; file acts a little like a C++ project's &lt;tt class="docutils literal"&gt;Makefile&lt;/tt&gt;.
+It also has some flavours of a Python project's &lt;tt class="docutils literal"&gt;setup.py&lt;/tt&gt; file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;A simple set up thankfully only requires a simple configuration file.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Running &lt;tt class="docutils literal"&gt;cabal build&lt;/tt&gt; is roughly the equivalent of running &lt;tt class="docutils literal"&gt;make&lt;/tt&gt; for a
+C++ project and the cabal sandox/build set up is much easier to manage than a
+Makefile with paths to all the libraries &amp;amp; headers you require for C++. It is
+more of a build system than a Makefile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Build dependencies have to be explicitly declared or else &lt;tt class="docutils literal"&gt;cabal build&lt;/tt&gt;
+won't compile.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Your final &lt;tt class="docutils literal"&gt;.cabal&lt;/tt&gt; file for a simple single file executable project will
+look a little like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+name:            jump
+version:         0.0.0
+cabal-version:   &amp;gt;= 1.8
+build-type:      Simple
+
+executable jump
+    main-is: src/Main.hs
+    build-depends: base &amp;gt;= 4 &amp;amp;&amp;amp; &amp;lt; 5
+                 , vty-ui == 1.6
+                 , vty == 4.7.3
+                 , yaml == 0.8.5.1
+                 , vector == 0.10.9.1
+                 , text == 0.11.3.1
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="haskell cabal"></category></entry><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
 the visual effects industry so it gets used for all kinds of glue between other
 programs and for interfaces for tools.&lt;/p&gt;
 &lt;p&gt;In this role, I've never had to set up a server or do a deployment of a some

@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-25T00:00:00+13:00</updated><entry><title>Journal - Day 15</title><link href="http://michaeljones.github.io/blog/posts/2013/10/25/journal-day-15/" rel="alternate"></link><updated>2013-10-25T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-25:posts/2013/10/25/journal-day-15/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-27T00:00:00+13:00</updated><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+&lt;h2&gt;Weekend&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Watched &lt;a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054"&gt;Escape From the Ivory Tower&lt;/a&gt; presentation by Simon Peyton Jones. It
+is an approachable easy-listening style talk which gives the history of the
+development of Haskell and the goals of the language. No prior knowledge of
+the language required though, as always, it helps.&lt;/li&gt;
+&lt;li&gt;Wrote a &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/"&gt;blog post&lt;/a&gt; about stumbling through a Haskell Project set up. The
+content is perhaps better covered on the &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program"&gt;Haskell Wiki&lt;/a&gt; though I found that too
+late.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="week-in-review"&gt;
+&lt;h2&gt;Week in Review&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Definitely making progress with Haskell but still nowhere near comfortable
+with it. Clueless on how to begin most tasks but at least I can slowly battle
+my way towards something. Work needs to continue both via exercising the
+knowledge I have and also by moving on to other tutorials. &lt;a class="reference external" href="http://book.realworldhaskell.org/"&gt;Real World
+Haskell&lt;/a&gt;
+&amp;amp; &lt;a class="reference external" href="https://www.fpcomplete.com/school/haskell-fast-hard"&gt;Learn Haskell Hard &amp;amp; Fast&lt;/a&gt; might be reasonable guides for this stage,
+especially the former&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Improved the performance of &lt;a class="reference external" href="https://github.com/EverZen/RigControls"&gt;RigControls&lt;/a&gt; and began to toy with the idea of
+tests but, as with any unfamiliar codebase which isn't designed for testing,
+there isn't an easy starting place. Might need more effort than first hoped.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Fixed an issue with &lt;a class="reference external" href="https://github.com/michaeljones/sphinx-to-github"&gt;Sphinx-to-Github&lt;/a&gt; regarding unicode handling. Gave me some
+motivation to read up on unicode a little more and the best practices
+surrounding it and its use in Python. Lessons learned:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Data is &lt;em&gt;decoded&lt;/em&gt; from a particular character-set into unicode point data and
+&lt;em&gt;encoded&lt;/em&gt; the other way.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;You have to write files with a particular encoding. You don't write unicode
+point data to a file, or rather you do, but in one of any number of
+character-sets. There isn't a default.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;You can't find out the encoding of a file unless it has a Byte Order Mark
+(BOM) which tells you. In which case, you need to worry about removing that
+BOM and not interpreting it as text.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Ideally you should know the encoding of the files you are trying to read, if
+you don't you're basicall left trying to guess. UTF-8 is a good first guess.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;You should try to decode as soon as possible so that you're handling
+proper unicode strings in your code rather than ASCII with potentially
+invalid bytes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Python 2.x attempts to read all files as ASCII by default which is the
+source of some head aches with Python 2.x and unicode.&lt;/p&gt;
+&lt;p&gt;You can convert either by decoding the string that you have read or by
+reading via &lt;tt class="docutils literal"&gt;codecs.open&lt;/tt&gt; which provides an option for the encoding as an
+argument.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Python 3.x defaults to reading files at UTF-8 by default and all standard
+strings or unicode by default with the &lt;tt class="docutils literal"&gt;bytestring&lt;/tt&gt; type there to handle
+encoded data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;UTF-8 is best for content which is going to be largely ASCII.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;UTF-16 is best for some languages or purposes where the majority of the
+characters fits into 2 bytes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;UTF-32 is best for the rest. It is also the fastest to deal with as all
+characters takes the same amount of memory so indexing into the data is
+clean and obvious, however it takes up 4 times as much space as UTF-8 for
+ASCII characters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 15</title><link href="http://michaeljones.github.io/blog/posts/2013/10/25/journal-day-15/" rel="alternate"></link><updated>2013-10-25T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-25:posts/2013/10/25/journal-day-15/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue my quest to parse Yaml in Haskell. Or rather, use the data returned
