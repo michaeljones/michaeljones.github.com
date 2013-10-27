@@ -16,6 +16,14 @@ in Haskell and I didn't have the first idea where to start.
 I am new to the language and the ecosystem and this article wanders through my
 discovery process. Skip straight to the review_ for a summary.
 
+Note
+----
+
+This is well covered in the Haskell Wiki on `How to write a Haskell program`_. I
+had not found that guide at the time of working through this.  
+
+.. _How to write a Haskell program: http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program
+
 Working on Ubuntu 13.04
 -----------------------
 
