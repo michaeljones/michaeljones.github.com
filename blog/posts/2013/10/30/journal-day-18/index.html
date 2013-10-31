@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Journal - Day 18</title>
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DevBlog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://michaeljones.github.io/blog/">DevBlog </a></h1>
+                <nav><ul>
+                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                    <li class="active"><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/" rel="bookmark"
+           title="Permalink to Journal - Day 18">Journal - Day 18</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-30T00:00:00">
+                Wed 30 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->      <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Properly explore the idea of directives for <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> which automatically
+handle the doxygen generation.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Rewrote the doxygenindex directive in Breathe to add a custom <tt class="docutils literal">DoxygenNode</tt>
+to the docutils document which is then picked up and processed by a custom
+Transform operation.</p>
+<p>It was then possible to add an autodoxygenindex directive which output a
+<tt class="docutils literal">DoxygenAutoNode</tt> which could be processed, doxygen xml could be generated
+to a temporary folder and then the node would be replaced with an
+appropriately configured <tt class="docutils literal">DoxygenNode</tt> to fit with the standard processing.</p>
+<p>The transforms are quite easy to work with and a really rather excellent part
+of the docutils infrastructure.</p>
+</li>
+</ul>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

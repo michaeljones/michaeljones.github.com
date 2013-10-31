@@ -1,5 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-27T00:00:00+13:00</updated><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-31T00:00:00+13:00</updated><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master and do a new
+PyPI release.&lt;/li&gt;
+&lt;li&gt;Read the first two chapters of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Do some test exploratory coding with the IORef type in Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Released &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; 1.1.0 on &lt;a class="reference external" href="https://pypi.python.org/pypi/breathe"&gt;PyPI&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read the introduction and first chapter of &lt;a class="reference external" href="http://book.realworldhaskell.org/read/"&gt;Real World Haskell&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Written a basic example of working with the &lt;a class="reference external" href="http://hackage.haskell.org/package/base-4.6.0.1/docs/Data-IORef.html"&gt;IORef&lt;/a&gt; type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.IORef&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;R&lt;/span&gt;
+
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Create a new IORef for handling a mutable number&lt;/span&gt;
+    &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;newIORef&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Read the number&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Print the number&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Increment the number in place&lt;/span&gt;
+    &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writeIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;succ&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Prin the number&lt;/span&gt;
+    &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt;
+
+    &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I need to dig some more to attempt to understand what is actually going on and
+the best way to think about it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Wrote a simple &lt;a class="reference external" href="https://github.com/Everzen/RigControls/pull/4"&gt;undo stack&lt;/a&gt; for the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 18</title><link href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/" rel="alternate"></link><updated>2013-10-30T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-30:posts/2013/10/30/journal-day-18/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Properly explore the idea of directives for &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; which automatically
+handle the doxygen generation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Rewrote the doxygenindex directive in Breathe to add a custom &lt;tt class="docutils literal"&gt;DoxygenNode&lt;/tt&gt;
+to the docutils document which is then picked up and processed by a custom
+Transform operation.&lt;/p&gt;
+&lt;p&gt;It was then possible to add an autodoxygenindex directive which output a
+&lt;tt class="docutils literal"&gt;DoxygenAutoNode&lt;/tt&gt; which could be processed, doxygen xml could be generated
+to a temporary folder and then the node would be replaced with an
+appropriately configured &lt;tt class="docutils literal"&gt;DoxygenNode&lt;/tt&gt; to fit with the standard processing.&lt;/p&gt;
+&lt;p&gt;The transforms are quite easy to work with and a really rather excellent part
+of the docutils infrastructure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 17</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-29:posts/2013/10/29/journal-day-17/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue with Yaml library example and article.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finished Yaml library example and article though rapidly learnt how foolishly
+simple it was after further examination of the &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml"&gt;yaml&lt;/a&gt; module. The &lt;tt class="docutils literal"&gt;FromJSON&lt;/tt&gt;
+functionality exposed by it is really rather fantastic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Listened to &lt;a class="reference external" href="http://www.haskellcast.com/episode/003-simon-peyton-jones-on-ghc/"&gt;Haskell Cast 3&lt;/a&gt; with Simon Peyton Jones. Parts are over my head,
+but most is interesting and well layed out for the average programmer
+listener.&lt;/p&gt;
+&lt;p&gt;Includes some fascinating information about improving the national curriculum
+in the UK to include computer science education from a young age. My school
+experience included &lt;abbr&gt;ICT &amp;lt;Information Communcations Techology&amp;gt;&lt;/abbr&gt; which
+really just meant basic use of Word, Excel and Access. Not completely basic
+but very much end user level rather than understanding the machine and how to
+program it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 16</title><link href="http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/" rel="alternate"></link><updated>2013-10-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-28:posts/2013/10/28/journal-day-16/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Begin documenting and working through the issues I am encountering with using
+the Haskell yaml library.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;An still-in-progress article chronicling my flounding attempts as a beginner
+Haskell programmer. I am hopeful that it will be useful to others are my stage
+of development. If not, it is certainly useful to me.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
 &lt;h2&gt;Weekend&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Watched &lt;a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054"&gt;Escape From the Ivory Tower&lt;/a&gt; presentation by Simon Peyton Jones. It

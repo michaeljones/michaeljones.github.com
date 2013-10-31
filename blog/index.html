@@ -24,7 +24,206 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/">End of Week 3</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/">Journal - Day 19</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-10-31T00:00:00">
+                Thu 31 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info --><div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Review work on <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> from yesterday, merge results into master and do a new
+PyPI release.</li>
+<li>Read the first two chapters of Real World Haskell.</li>
+<li>Do some test exploratory coding with the IORef type in Haskell.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Released <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> 1.1.0 on <a class="reference external" href="https://pypi.python.org/pypi/breathe">PyPI</a>.</p>
+</li>
+<li><p class="first">Read the introduction and first chapter of <a class="reference external" href="http://book.realworldhaskell.org/read/">Real World Haskell</a>.</p>
+</li>
+<li><p class="first">Written a basic example of working with the <a class="reference external" href="http://hackage.haskell.org/package/base-4.6.0.1/docs/Data-IORef.html">IORef</a> type:</p>
+<div class="highlight"><pre><span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.IORef</span> <span class="k">as</span> <span class="n">R</span>
+
+<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+
+    <span class="c1">-- Create a new IORef for handling a mutable number</span>
+    <span class="n">intioref</span> <span class="ow">&lt;-</span> <span class="kt">R</span><span class="o">.</span><span class="n">newIORef</span> <span class="mi">5</span>
+
+    <span class="c1">-- Read the number</span>
+    <span class="n">i</span> <span class="ow">&lt;-</span> <span class="kt">R</span><span class="o">.</span><span class="n">readIORef</span> <span class="n">intioref</span>
+
+    <span class="c1">-- Print the number</span>
+    <span class="n">print</span> <span class="n">i</span>
+
+    <span class="c1">-- Increment the number in place</span>
+    <span class="kt">R</span><span class="o">.</span><span class="n">writeIORef</span> <span class="n">intioref</span> <span class="o">$</span> <span class="n">succ</span> <span class="n">i</span>
+
+    <span class="c1">-- Prin the number</span>
+    <span class="kt">R</span><span class="o">.</span><span class="n">readIORef</span> <span class="n">intioref</span> <span class="o">&gt;&gt;=</span> <span class="n">print</span>
+
+    <span class="n">return</span> <span class="nb">()</span>
+</pre></div>
+<p>I need to dig some more to attempt to understand what is actually going on and
+the best way to think about it.</p>
+</li>
+<li><p class="first">Wrote a simple <a class="reference external" href="https://github.com/Everzen/RigControls/pull/4">undo stack</a> for the <a class="reference external" href="https://github.com/Everzen/RigControls">RigControls</a> project.</p>
+</li>
+</ul>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/" rel="bookmark"
+                           title="Permalink to Journal - Day 18">Journal - Day 18</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-30T00:00:00">
+                Wed 30 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Properly explore the idea of directives for <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> which automatically
+handle the doxygen generation.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Rewrote the doxygenindex directive in Breathe to add a custom <tt class="docutils literal">DoxygenNode</tt>
+to the docutils document which is then picked up and processed by a custom
+Transform operation.</p>
+<p>It was then possible to add an ...</p></li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="bookmark"
+                           title="Permalink to A Beginner's Encounter with a Haskell Library">A Beginner's Encounter with a Haskell Library</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-29T00:00:00">
+                Tue 29 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
+</footer><!-- /.post-info -->                <p>I am new to Haskell and as a programming exercise I am attempting to rewrite my
+<tt class="docutils literal">jump</tt> utility program which I use to switch between common directories in my
+shell.</p>
+<p>It is currently written in Python and uses the curses library to provide a
+terminal user interface for selecting a ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/" rel="bookmark"
+                           title="Permalink to Journal - Day 17">Journal - Day 17</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-29T00:00:00">
+                Tue 29 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Continue with Yaml library example and article.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Finished Yaml library example and article though rapidly learnt how foolishly
+simple it was after further examination of the <a class="reference external" href="http://hackage.haskell.org/package/yaml">yaml</a> module. The <tt class="docutils literal">FromJSON</tt>
+functionality exposed by it is really rather fantastic.</p>
+</li>
+<li><p class="first">Listened to <a class="reference external" href="http://www.haskellcast.com/episode/003-simon-peyton-jones-on-ghc/">Haskell Cast 3</a> with Simon Peyton Jones. Parts ...</p></li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/" rel="bookmark"
+                           title="Permalink to Journal - Day 16">Journal - Day 16</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-10-28T00:00:00">
+                Mon 28 October 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Begin documenting and working through the issues I am encountering with using
+the Haskell yaml library.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul class="simple">
+<li>An still-in-progress article chronicling my flounding attempts as a beginner
+Haskell programmer. I am hopeful that it will be useful to others are my stage
+of development. If not, it is certainly ...</li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="bookmark"
+                           title="Permalink to End of Week 3">End of Week 3</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-27T00:00:00">
                 Sun 27 October 2013
@@ -35,85 +234,17 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
 
-</footer><!-- /.post-info --><div class="section" id="weekend">
+</footer><!-- /.post-info -->                <div class="section" id="weekend">
 <h2>Weekend</h2>
 <ul class="simple">
 <li>Watched <a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054">Escape From the Ivory Tower</a> presentation by Simon Peyton Jones. It
 is an approachable easy-listening style talk which gives the history of the
 development of Haskell and the goals of the language. No prior knowledge of
 the language required though, as always, it helps.</li>
-<li>Wrote a <a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/">blog post</a> about stumbling through a Haskell Project set up. The
-content is perhaps better covered on the <a class="reference external" href="http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program">Haskell Wiki</a> though I found that too
-late.</li>
-</ul>
-</div>
-<div class="section" id="week-in-review">
-<h2>Week in Review</h2>
-<ul>
-<li><p class="first">Definitely making progress with Haskell but still nowhere near comfortable
-with it. Clueless on how to begin most tasks but at least I can slowly battle
-my way towards something. Work needs to continue both via exercising the
-knowledge I have and also by moving on to other tutorials. <a class="reference external" href="http://book.realworldhaskell.org/">Real World
-Haskell</a>
-&amp; <a class="reference external" href="https://www.fpcomplete.com/school/haskell-fast-hard">Learn Haskell Hard &amp; Fast</a> might be reasonable guides for this stage,
-especially the former</p>
-</li>
-<li><p class="first">Improved the performance of <a class="reference external" href="https://github.com/EverZen/RigControls">RigControls</a> and began to toy with the idea of
-tests but, as with any unfamiliar codebase which isn't designed for testing,
-there isn't an easy starting place. Might need more effort than first hoped.</p>
-</li>
-<li><p class="first">Fixed an issue with <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">Sphinx-to-Github</a> regarding unicode handling. Gave me some
-motivation to read up on unicode a little more and the best practices
-surrounding it and its use in Python. Lessons learned:</p>
-<ul>
-<li><p class="first">Data is <em>decoded</em> from a particular character-set into unicode point data and
-<em>encoded</em> the other way.</p>
-</li>
-<li><p class="first">You have to write files with a particular encoding. You don't write unicode
-point data to a file, or rather you do, but in one of any number of
-character-sets. There isn't a default.</p>
-</li>
-<li><p class="first">You can't find out the encoding of a file unless it has a Byte Order Mark
-(BOM) which tells you. In which case, you need to worry about removing that
-BOM and not interpreting it as text.</p>
-</li>
-<li><p class="first">Ideally you should know the encoding of the files you are trying to read, if
-you don't you're basicall left trying to guess. UTF-8 is a good first guess.</p>
-</li>
-<li><p class="first">You should try to decode as soon as possible so that you're handling
-proper unicode strings in your code rather than ASCII with potentially
-invalid bytes.</p>
-</li>
-<li><p class="first">Python 2.x attempts to read all files as ASCII by default which is the
-source of some head aches with Python 2.x and unicode.</p>
-<p>You can convert either by decoding the string that you have read or by
-reading via <tt class="docutils literal">codecs.open</tt> which provides an option for the encoding as an
-argument.</p>
-</li>
-<li><p class="first">Python 3.x defaults to reading files at UTF-8 by default and all standard
-strings or unicode by default with the <tt class="docutils literal">bytestring</tt> type there to handle
-encoded data.</p>
-</li>
-<li><p class="first">UTF-8 is best for content which is going to be largely ASCII.</p>
-</li>
-<li><p class="first">UTF-16 is best for some languages or purposes where the majority of the
-characters fits into 2 bytes.</p>
-</li>
-<li><p class="first">UTF-32 is best for the rest. It is also the fastest to deal with as all
-characters takes the same amount of memory so indexing into the data is
-clean and obvious, however it takes up 4 times as much space as UTF-8 for
-ASCII characters.</p>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<li>Wrote a <a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/">blog post ...</a></li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

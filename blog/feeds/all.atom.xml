@@ -1,5 +1,571 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-27T00:00:00+13:00</updated><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-31T00:00:00+13:00</updated><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master and do a new
+PyPI release.&lt;/li&gt;
+&lt;li&gt;Read the first two chapters of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Do some test exploratory coding with the IORef type in Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Released &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; 1.1.0 on &lt;a class="reference external" href="https://pypi.python.org/pypi/breathe"&gt;PyPI&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read the introduction and first chapter of &lt;a class="reference external" href="http://book.realworldhaskell.org/read/"&gt;Real World Haskell&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Written a basic example of working with the &lt;a class="reference external" href="http://hackage.haskell.org/package/base-4.6.0.1/docs/Data-IORef.html"&gt;IORef&lt;/a&gt; type:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.IORef&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;R&lt;/span&gt;
+
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Create a new IORef for handling a mutable number&lt;/span&gt;
+    &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;newIORef&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Read the number&lt;/span&gt;
+    &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Print the number&lt;/span&gt;
+    &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Increment the number in place&lt;/span&gt;
+    &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writeIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;succ&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Prin the number&lt;/span&gt;
+    &lt;span class="kt"&gt;R&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;readIORef&lt;/span&gt; &lt;span class="n"&gt;intioref&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt;
+
+    &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I need to dig some more to attempt to understand what is actually going on and
+the best way to think about it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Wrote a simple &lt;a class="reference external" href="https://github.com/Everzen/RigControls/pull/4"&gt;undo stack&lt;/a&gt; for the &lt;a class="reference external" href="https://github.com/Everzen/RigControls"&gt;RigControls&lt;/a&gt; project.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 18</title><link href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/" rel="alternate"></link><updated>2013-10-30T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-30:posts/2013/10/30/journal-day-18/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Properly explore the idea of directives for &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; which automatically
+handle the doxygen generation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Rewrote the doxygenindex directive in Breathe to add a custom &lt;tt class="docutils literal"&gt;DoxygenNode&lt;/tt&gt;
+to the docutils document which is then picked up and processed by a custom
+Transform operation.&lt;/p&gt;
+&lt;p&gt;It was then possible to add an autodoxygenindex directive which output a
+&lt;tt class="docutils literal"&gt;DoxygenAutoNode&lt;/tt&gt; which could be processed, doxygen xml could be generated
+to a temporary folder and then the node would be replaced with an
+appropriately configured &lt;tt class="docutils literal"&gt;DoxygenNode&lt;/tt&gt; to fit with the standard processing.&lt;/p&gt;
+&lt;p&gt;The transforms are quite easy to work with and a really rather excellent part
+of the docutils infrastructure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>A Beginner's Encounter with a Haskell Library</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-29:posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</id><summary type="html">&lt;p&gt;I am new to Haskell and as a programming exercise I am attempting to rewrite my
+&lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; utility program which I use to switch between common directories in my
+shell.&lt;/p&gt;
+&lt;p&gt;It is currently written in Python and uses the curses library to provide a
+terminal user interface for selecting a directory from a list which is then
+written to a file. The program works with an alias which tends changes directory
+into the contents of that file:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+alias c='$HOME/bin/jump-wrapper; cd `cat /tmp/jump.tmp`'
+&lt;/pre&gt;
+&lt;p&gt;Where &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;jump-wrapper&lt;/span&gt;&lt;/tt&gt; sources the appropriate Python virtualenv and then runs
+the actual Python script.&lt;/p&gt;
+&lt;p&gt;The current Python version is a &amp;quot;good enough&amp;quot; implementation with no real error
+detection or fault tolerance. It doesn't really have to be tolerant as I control
+the input and the simplicity of the script makes it easy to debug.&lt;/p&gt;
+&lt;p&gt;It feels like a good test project for Haskell as it involves a simple UI and
+reading data from a &lt;a class="reference external" href="http://yaml.org"&gt;yaml&lt;/a&gt; file which is used for configuration.&lt;/p&gt;
+&lt;div class="section" id="the-interface"&gt;
+&lt;h2&gt;The Interface&lt;/h2&gt;
+&lt;p&gt;For the interface, after some googling, I've opted for the &lt;a class="reference external" href="http://hackage.haskell.org/package/vty"&gt;vty&lt;/a&gt; &amp;amp; &lt;a class="reference external" href="http://hackage.haskell.org/package/vty-ui"&gt;vty-ui&lt;/a&gt;
+modules, mostly the latter, though that is built on the former.&lt;/p&gt;
+&lt;p&gt;The vty-ui library has excellent &lt;a class="reference external" href="http://jtdaugherty.github.io/vty-ui/manuals/vty-ui-users-manual-1.6.pdf"&gt;documentation&lt;/a&gt; and so after working through
+their example and reading a little more I have a basic program which present two
+options in a list in a terminal UI and allows me to exit from it all with &lt;tt class="docutils literal"&gt;q&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Here it is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.Widgets.All&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.Attributes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nf"&gt;def_attr&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.LLInput&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;KASCII&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;System.Exit&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nf"&gt;exitSuccess&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Text&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;
+
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Create new list&lt;/span&gt;
+    &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newList&lt;/span&gt; &lt;span class="n"&gt;def_attr&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Populate options&lt;/span&gt;
+    &lt;span class="n"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;ui&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;centered&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+
+    &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newFocusGroup&lt;/span&gt;
+    &lt;span class="n"&gt;addToFocusGroup&lt;/span&gt; &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+
+    &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newCollection&lt;/span&gt;
+    &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;addToCollection&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;ui&lt;/span&gt; &lt;span class="n"&gt;fg&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Focus group event handlers&lt;/span&gt;
+    &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="p"&gt;`&lt;/span&gt;&lt;span class="n"&gt;onKeyPressed&lt;/span&gt;&lt;span class="p"&gt;`&lt;/span&gt; &lt;span class="n"&gt;exit&lt;/span&gt;
+
+    &lt;span class="n"&gt;runUi&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;defaultContext&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Callback for exiting via &amp;#39;q&amp;#39;&lt;/span&gt;
+&lt;span class="nf"&gt;exit&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kt"&gt;KASCII&lt;/span&gt; &lt;span class="n"&gt;&amp;#39;q&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;shutdownUi&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;exitSuccess&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+             &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;otherwise&lt;/span&gt;         &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="kt"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Most of this is not fabulously interesting but is included for completeness. The
+relevant section here is really this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;-- Create new list&lt;/span&gt;
+&lt;span class="nf"&gt;list&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newList&lt;/span&gt; &lt;span class="n"&gt;def_attr&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Populate options&lt;/span&gt;
+&lt;span class="nf"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is where we create the list and populate it with the options. This is the
+part that we're interested in for this article. The plan is to replace it with
+code which will read a yaml file and dynamically populate the list based on the
+contents of the file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-file"&gt;
+&lt;h2&gt;The File&lt;/h2&gt;
+&lt;p&gt;The yaml config file looks like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+- - [sph, /home/mike/root/projects/sph]
+- - [alembic-fs, /home/mike/root/projects/alembic-fs]
+- - [profile, /home/mike/root/projects/profile]
+  - [blog, /home/mike/root/projects/profile/blog]
+- - [lastcontact, /home/mike/root/projects/lastcontact]
+- - [rigcontrols, /home/mike/root/projects/rigcontrols]
+- - [blog, /home/mike/root/projects/profile/source]
+- - [jump-hs, /home/mike/root/projects/jump-hs]
+- - [breathe, /home/mike/root/projects/sphinx/breathe]
+- - [dojo, /home/mike/root/projects/dojo]
+- - [taglist, /home/mike/root/projects/taglist]
+- - [git.pde, /home/mike/root/projects/presentations/git]
+&lt;/pre&gt;
+&lt;p&gt;It is a list of list of lists in which:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Top Level&lt;/strong&gt; is a list of the projects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Second Level&lt;/strong&gt; is a list of sub targets within those projects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Third Level&lt;/strong&gt; is a pair of &lt;tt class="docutils literal"&gt;name&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;directory&lt;/tt&gt;. The &lt;tt class="docutils literal"&gt;name&lt;/tt&gt; is
+displayed in the user interface and the directory is what should eventually be
+written to the output file.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="a-start"&gt;
+&lt;h2&gt;A Start&lt;/h2&gt;
+&lt;p&gt;Let's google &amp;quot;haskell yaml&amp;quot;. Sweet, a &lt;a class="reference external" href="http://stackoverflow.com/questions/13059806/reading-yaml-in-haskell"&gt;Reading Yaml in Haskell&lt;/a&gt; question on
+stackoverflow comes up first, though nothing else on the first two pages looks
+like anything more than package references without further documentation. The
+top answer to the question recommends the &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml"&gt;yaml&lt;/a&gt; and &lt;a class="reference external" href="http://hackage.haskell.org/package/HsSyck"&gt;HsSyck&lt;/a&gt; modules with a slight
+preference towards the former.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="reading-the-yaml-data"&gt;
+&lt;h2&gt;Reading the Yaml Data&lt;/h2&gt;
+&lt;p&gt;The &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml-0.8.5.1/docs/Data-Yaml.html"&gt;yaml module docs&lt;/a&gt; are pretty thin for a beginner which is why I'm writing
+this piece. At this stage in my Haskell journey I can't see any obvious places
+to start.&lt;/p&gt;
+&lt;p&gt;From an imperative programming perspective, I would generally expect to provide
+a file path, a stream or a string to some kind of function and get back a data
+structure which containers all the information from the yaml file. This is might
+not be suitable for incredibly large files but then yaml tends to be used for
+the configuration file end of the spectrum rather than large data sets.&lt;/p&gt;
+&lt;p&gt;Checking through the functions shows &lt;tt class="docutils literal"&gt;decodeFile&lt;/tt&gt; to take a file path and
+return some kind of data in an IO action:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;decodeFile&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;FromJSON&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;FilePath&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ok, reasonable starting point. Let's add:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Yaml&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To the import section and add:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;results&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decodeFile&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jumprc&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To the top of the &lt;tt class="docutils literal"&gt;main&lt;/tt&gt; do-block just to try it out.&lt;/p&gt;
+&lt;p&gt;In hindsight, I can see that those people reading along, and wondering exactly
+what I thought the compiler was going to do with that &lt;tt class="docutils literal"&gt;a&lt;/tt&gt; in the type
+signature, were correct to be confused. However, as my naive self still learning
+the language I was armed with nothing more than this error message:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+src/Main.hs:16:16:
+    No instance for (Y.FromJSON a0)
+      arising from a use of `Y.decodeFile'
+    In a stmt of a 'do' block: results &amp;lt;- Y.decodeFile &amp;quot;jumprc&amp;quot;
+    In the expression:
+      do { results &amp;lt;- Y.decodeFile &amp;quot;jumprc&amp;quot;;
+&lt;/pre&gt;
+&lt;p&gt;Which frankly isn't that useful to me even now that I know the answer. I think
+it is basically trying to say &amp;quot;I'm trying to compile this and I'm left holding
+this &lt;tt class="docutils literal"&gt;Y.FromJSON a0&lt;/tt&gt; thing and I've no idea what to do with it.&amp;quot; The &lt;tt class="docutils literal"&gt;a0&lt;/tt&gt; is
+perhaps some kind of clue that it doesn't have enough information to figure out
+all the types as there certainly isn't an &lt;tt class="docutils literal"&gt;a0&lt;/tt&gt; type declared in my program.&lt;/p&gt;
+&lt;p&gt;Ok, so that type signature above? That is going to take &lt;tt class="docutils literal"&gt;FilePath&lt;/tt&gt; and return
+something with an specified type &lt;tt class="docutils literal"&gt;a&lt;/tt&gt; which is an instance of the typeclass
+&lt;tt class="docutils literal"&gt;FromJSON&lt;/tt&gt;.  I'm still pretty clueless but yaml module docs have a &lt;tt class="docutils literal"&gt;Value&lt;/tt&gt;
+data type which is instance of the &lt;tt class="docutils literal"&gt;FromJSON&lt;/tt&gt; typeclass so we try that:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;results&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decodeFile&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jumprc&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This works. Sweet. What can we do with it? I've no idea.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="digging-into-the-yaml-data"&gt;
+&lt;h2&gt;Digging into the Yaml Data&lt;/h2&gt;
+&lt;p&gt;I've never drilled into a Haskell data structure before. No even really sure
+what it looks like. Let's simply the input data a bit and print it. New input
+data in the yaml file:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+- - [sph, /home/mike/root/projects/sph]
+- - [profile, /home/mike/root/projects/profile]
+  - [blog, /home/mike/root/projects/profile/blog]
+&lt;/pre&gt;
+&lt;p&gt;Print statement:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;print&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Result:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Just (Array (fromList [Array (fromList [Array (fromList [String &amp;quot;sph&amp;quot;,String
+&amp;quot;/home/mike/root/projects/sph&amp;quot;])]),Array (fromList [Array (fromList [String
+&amp;quot;profile&amp;quot;,String &amp;quot;/home/mike/root/projects/profile&amp;quot;]),Array (fromList [String
+&amp;quot;blog&amp;quot;,String &amp;quot;/home/mike/root/projects/profile/blog&amp;quot;])])]))
+&lt;/pre&gt;
+&lt;p&gt;Not exactly readable but it gives us a start. First up it is wrapped in a
+&lt;tt class="docutils literal"&gt;Maybe&lt;/tt&gt; which we should be expecting as we asked for it as &lt;tt class="docutils literal"&gt;IO ( Maybe
+Y.Value )&lt;/tt&gt; and then unwrapped the IO action with the &lt;tt class="docutils literal"&gt;&amp;lt;-&lt;/tt&gt; in the do-block.
+Inspecting the &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml-0.8.5.1/docs/Data-Yaml.html#t:Value"&gt;docs&lt;/a&gt; we can see that the &lt;tt class="docutils literal"&gt;Value&lt;/tt&gt; data type as several
+different constructor types include &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt; which as a single piece of data
+which is a &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; of more yaml &lt;tt class="docutils literal"&gt;Value&lt;/tt&gt; data. We can see from the Vector
+docs that it is an instance of the &lt;tt class="docutils literal"&gt;Functor&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;Foldable&lt;/tt&gt; typeclasses
+along with many others which means we can do various map and fold operations
+over it.&lt;/p&gt;
+&lt;p&gt;&lt;tt class="docutils literal"&gt;fromList&lt;/tt&gt; is &lt;a class="reference external" href="http://hackage.haskell.org/package/vector-0.10.9.1/docs/Data-Vector.html#v:fromList"&gt;documented&lt;/a&gt; as a conversion function between a list and a
+&lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;fromList&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Vector&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I've yet to figure out how or why &lt;tt class="docutils literal"&gt;show&lt;/tt&gt;, which is what &lt;tt class="docutils literal"&gt;print&lt;/tt&gt; uses,
+would choose to represent a &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; as &lt;tt class="docutils literal"&gt;fromList &lt;span class="pre"&gt;[...]&lt;/span&gt;&lt;/tt&gt; but it isn't
+unreasonable.&lt;/p&gt;
+&lt;p&gt;Ok, so baby steps. We can remove the &lt;tt class="docutils literal"&gt;Maybe&lt;/tt&gt; wrapper by writing a function and
+pattern matching against the contents. So we change our code to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;results&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decodeFile&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jumprc&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;With:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt;        &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And we get everything inside the &lt;tt class="docutils literal"&gt;Just&lt;/tt&gt; as expected:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Array (fromList [Array (fromList [Array (fromList [String &amp;quot;sph&amp;quot;,String
+&amp;quot;/home/mike/root/projects/sph&amp;quot;])]),Array (fromList [Array (fromList [String
+&amp;quot;profile&amp;quot;,String &amp;quot;/home/mike/root/projects/profile&amp;quot;]),Array (fromList [String
+&amp;quot;blog&amp;quot;,String &amp;quot;/home/mike/root/projects/profile/blog&amp;quot;])])])
+&lt;/pre&gt;
+&lt;p&gt;Makes sense. Well what if we aim to print each entry in the top array on a new
+line. We can change to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt;        &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And then implement &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt;. We could try something like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;fmap&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;putStrLn&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Afterall, we read above that the &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt; is a functor is we can map over it.
+However, on compiling it complains about the return type of the second
+definition of &lt;tt class="docutils literal"&gt;process&lt;/tt&gt;, but that's weird as we're sure that's correct. We're
+just using &lt;tt class="docutils literal"&gt;return&lt;/tt&gt; to create a minimal &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt; action with no interesting
+content. So really, we're screwing up the signature of the first definition and
+then the compiler is telling us that the second definition doesn't match the
+first. But we want the first definition to match the second and we know what
+that is so we add a type signature to tell the compiler what is meant to be
+going on:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. code-block:: haskell
+&lt;/pre&gt;
+&lt;blockquote&gt;
+process :: Maybe a -&amp;gt; IO ()
+process (Just v) = processTop v
+process _        = return ()&lt;/blockquote&gt;
+&lt;p&gt;Excellent, now it is telling us something we want to know:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+src/Main.hs:16:20:
+    Couldn't match type `IO ()' with `()'
+    Expected type: IO ()
+      Actual type: IO (IO ())
+    In the return type of a call of `processTop'
+    In the expression: processTop v
+&lt;/pre&gt;
+&lt;p&gt;I am not entirely sure what this means but I am going to avoid finding out for
+the moment as that is a lot of &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt;'s in a part of the code which could well
+be pure. We're much better return a string array from &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt; and
+printing it in our &lt;tt class="docutils literal"&gt;process&lt;/tt&gt; function than pushing our non-pure &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt; code
+further and further into the call stack.&lt;/p&gt;
+&lt;p&gt;So we change our &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt; to a dummy implementation which returns a string
+array:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;line one&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;line two&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And change &lt;tt class="docutils literal"&gt;process&lt;/tt&gt; to print out the result by mapping &lt;tt class="docutils literal"&gt;putStrLn&lt;/tt&gt; over the
+result of &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt;. We use &lt;tt class="docutils literal"&gt;mapM_&lt;/tt&gt; as it applies a function of type &lt;tt class="docutils literal"&gt;a
+&lt;span class="pre"&gt;-&amp;gt;&lt;/span&gt; m b&lt;/tt&gt; over a &lt;tt class="docutils literal"&gt;[a]&lt;/tt&gt; and returns a simple empty &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt; action which will
+print out all the lines we want:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mapM_&lt;/span&gt; &lt;span class="n"&gt;putStrLn&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt;        &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Great, so now we have &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt; which is nice and pure and now it just
+needs to actually work, y'know, rather than ignoring its inputs.&lt;/p&gt;
+&lt;p&gt;A reasonable first step would be to pattern match against the &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt;
+constructor of the &lt;tt class="docutils literal"&gt;Value&lt;/tt&gt; date type as we're currently only passing a
+&lt;tt class="docutils literal"&gt;Value&lt;/tt&gt;. That will give as the actual array to play with:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then we want to convert the data, &lt;tt class="docutils literal"&gt;a&lt;/tt&gt;, in that &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt; to a list and map
+&lt;tt class="docutils literal"&gt;show&lt;/tt&gt; over it to convert each entry to a representative string. We saw
+earlier that the data in the &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt; is a &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; so we grab the
+appropriate module:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Vector&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;And use the &lt;tt class="docutils literal"&gt;toList&lt;/tt&gt; method to convert it. Then we are free to &lt;tt class="docutils literal"&gt;map&lt;/tt&gt;
+&lt;tt class="docutils literal"&gt;show&lt;/tt&gt; over the result so:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;map&lt;/span&gt; &lt;span class="n"&gt;show&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If we run this, we get:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+Array (fromList [Array (fromList [String &amp;quot;sph&amp;quot;,String &amp;quot;/home/mike/roo...
+Array (fromList [Array (fromList [String &amp;quot;profile&amp;quot;,String &amp;quot;/home/mike...
+&lt;/pre&gt;
+&lt;p&gt;ie. one line per item in our top list. Progress.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="digging-further"&gt;
+&lt;h2&gt;Digging Further&lt;/h2&gt;
+&lt;p&gt;We're getting a bit of a hang of this, so now we should start figuring out what
+we actually want to get back from this function. What would make our lives
+easier for setting up this list?&lt;/p&gt;
+&lt;p&gt;It would seem reasonable to aim for a list of pairs where the pairs of the
+&lt;tt class="docutils literal"&gt;name&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;directory&lt;/tt&gt; parts of the Yaml file. We would then be able to
+iterate over this list and add pairs into our interface.&lt;/p&gt;
+&lt;p&gt;So we want to reduce our hierachy down to a single list of pairs. It seems
+reasonable that we could use a &lt;tt class="docutils literal"&gt;fold&lt;/tt&gt; to achieve this with the accumulator
+being a new list which we add the pairs to.&lt;/p&gt;
+&lt;p&gt;To make things a little more readable we add some nicer types for the components
+of our pairs:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Name&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
+&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can then change &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt; to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foldl&lt;/span&gt; &lt;span class="n"&gt;processGroup&lt;/span&gt; &lt;span class="kt"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which extracts the &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; value from the array as before and folds over
+it using the &lt;tt class="docutils literal"&gt;processGroup&lt;/tt&gt; function with an empty list as an accumulator.
+Ultimately it aims to return a list of &lt;tt class="docutils literal"&gt;Name&lt;/tt&gt;-&lt;tt class="docutils literal"&gt;Directory&lt;/tt&gt; pairs as stated in
+the new type signature.&lt;/p&gt;
+&lt;p&gt;We use &lt;tt class="docutils literal"&gt;V.foldl&lt;/tt&gt; rather than &lt;tt class="docutils literal"&gt;foldl&lt;/tt&gt; as this needs to operate on a &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt;
+rather than a list. I am not sure what the &lt;tt class="docutils literal"&gt;fmap&lt;/tt&gt; equivalent of &lt;tt class="docutils literal"&gt;foldl&lt;/tt&gt; is,
+ie. a &lt;tt class="docutils literal"&gt;foldl&lt;/tt&gt; function that can be applied to any instance of the &lt;tt class="docutils literal"&gt;Foldable&lt;/tt&gt;
+typeclass.&lt;/p&gt;
+&lt;p&gt;So, &lt;tt class="docutils literal"&gt;processGroup&lt;/tt&gt;? That kind of sits in the middle and doesn't do much more
+than repeat the &lt;tt class="docutils literal"&gt;foldl&lt;/tt&gt; on bottom level of our hierarchy:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processGroup&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processGroup&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foldl&lt;/span&gt; &lt;span class="n"&gt;processPair&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We pass the &lt;tt class="docutils literal"&gt;xs&lt;/tt&gt; list from the argument through to the fold so that we
+continue to add to the same list. Otherwise we extract the &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; data from
+the &lt;tt class="docutils literal"&gt;Array&lt;/tt&gt; as standard and all is good.&lt;/p&gt;
+&lt;p&gt;Then &lt;tt class="docutils literal"&gt;processPair&lt;/tt&gt; does something a little more interesting:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;processPair&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processPair&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;case&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="kr"&gt;of&lt;/span&gt;
+   &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="kt"&gt;:&lt;/span&gt;&lt;span class="n"&gt;xs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We extract the &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt; data, then use &lt;tt class="docutils literal"&gt;V.toList&lt;/tt&gt; to convert the &lt;tt class="docutils literal"&gt;Vector&lt;/tt&gt;
+to a standard list, and use a &lt;tt class="docutils literal"&gt;case&lt;/tt&gt; statement to pattern match against the
+contents accounting for the situation where it is a two element list each being
+a &lt;tt class="docutils literal"&gt;Y.String&lt;/tt&gt; value. In that case, we unpack the values into tuple which is
+prepended to our results list.&lt;/p&gt;
+&lt;p&gt;We're now returning a &lt;tt class="docutils literal"&gt;[(Name,Directory)]&lt;/tt&gt; which was can't map &lt;tt class="docutils literal"&gt;putStrLn&lt;/tt&gt;
+over in our first &lt;tt class="docutils literal"&gt;process&lt;/tt&gt; function as &lt;tt class="docutils literal"&gt;putStrLn&lt;/tt&gt; expects a &lt;tt class="docutils literal"&gt;String&lt;/tt&gt;. So
+we can change that to:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mapM_&lt;/span&gt; &lt;span class="n"&gt;print&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="n"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt;        &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add run it and we get:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+(&amp;quot;blog&amp;quot;,&amp;quot;/home/mike/root/projects/profile/blog&amp;quot;)
+(&amp;quot;profile&amp;quot;,&amp;quot;/home/mike/root/projects/profile&amp;quot;)
+(&amp;quot;sph&amp;quot;,&amp;quot;/home/mike/root/projects/sph&amp;quot;)
+&lt;/pre&gt;
+&lt;p&gt;Done! A list of tuples, each with the data we're interested in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="adding-to-the-interface"&gt;
+&lt;h2&gt;Adding to the Interface&lt;/h2&gt;
+&lt;p&gt;So now we're in a good place to add these entries to our UI list. We want to
+replace the following hardcoded section with something which will add the
+results from processing the yaml data:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nf"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 2&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;First we change &lt;tt class="docutils literal"&gt;process&lt;/tt&gt; so that it no longer attempts to print out the
+results and just returns them:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This means it does little more than extract the data from the &lt;tt class="docutils literal"&gt;Maybe&lt;/tt&gt; and pass
+it to &lt;tt class="docutils literal"&gt;processTop&lt;/tt&gt; to be processed.&lt;/p&gt;
+&lt;p&gt;We then create a binding for our processed list of pairs in our &lt;tt class="docutils literal"&gt;main&lt;/tt&gt;
+do-block for easy reading:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;pairs&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then we want to add each pair in this list to our UI list. We know that the
+line:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;choice 1&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Produces some kind of &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt;, probably empty as we're not attempting to use the
+result. So if we're going to map over our pairs list, which seems reasonable to
+handle each result, then we're going to want to &lt;tt class="docutils literal"&gt;mapM_&lt;/tt&gt; as we did before so
+that we collect these &lt;tt class="docutils literal"&gt;IO&lt;/tt&gt; actions together properly and then ignore their
+return.&lt;/p&gt;
+&lt;p&gt;So we can:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;pairs&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;
+&lt;span class="nf"&gt;mapM_&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addPairsToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pairs&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Where &lt;tt class="docutils literal"&gt;addPairsToList&lt;/tt&gt; is curried with the UI list widget to make it available
+during the mapping. We implement &lt;tt class="docutils literal"&gt;addPairsToList&lt;/tt&gt; as:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nf"&gt;addPairsToList&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Widget&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt; &lt;span class="kt"&gt;FormattedText&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;addPairsToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Which is a fairly direct resuse of the &lt;tt class="docutils literal"&gt;addToList&lt;/tt&gt; usage we had before which
+came from the vty-ui documentation. We pattern match the input to get the
+&lt;tt class="docutils literal"&gt;name&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;directory&lt;/tt&gt; from the pair and use them in their appropriate
+locations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="finished"&gt;
+&lt;h2&gt;Finished&lt;/h2&gt;
+&lt;p&gt;Well, not really. Further works needs to be done to write the list choice into a
+file when the user selects it and to allow vim style &lt;tt class="docutils literal"&gt;j/k&lt;/tt&gt; navigation of the
+list for my old habits. And it would be polite to add some error checking as
+this is pretty much devoid of it. Still, we've done the yaml bit which is what
+we came here to do. The final code as we have written it so far looks like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.Widgets.All&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.Attributes&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nf"&gt;def_attr&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;Graphics.Vty.LLInput&lt;/span&gt;    &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;Key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;KASCII&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt;           &lt;span class="nn"&gt;System.Exit&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="nf"&gt;exitSuccess&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Text&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;T&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Yaml&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;Y&lt;/span&gt;
+
+&lt;span class="kr"&gt;import&lt;/span&gt; &lt;span class="k"&gt;qualified&lt;/span&gt; &lt;span class="nn"&gt;Data.Vector&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;
+
+&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Name&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
+&lt;span class="kr"&gt;type&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;String&lt;/span&gt;
+
+&lt;span class="nf"&gt;processPair&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processPair&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;case&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="kr"&gt;of&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;String&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;unpack&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="kt"&gt;:&lt;/span&gt;&lt;span class="n"&gt;xs&lt;/span&gt;
+
+&lt;span class="nf"&gt;processGroup&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processGroup&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;foldl&lt;/span&gt; &lt;span class="n"&gt;processPair&lt;/span&gt; &lt;span class="n"&gt;xs&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;toList&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;processTop&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Array&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kt"&gt;V&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foldl&lt;/span&gt; &lt;span class="n"&gt;processGroup&lt;/span&gt; &lt;span class="kt"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;
+
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="nf"&gt;process&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Just&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;processTop&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;
+
+&lt;span class="nf"&gt;addPairsToList&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;Widget&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt; &lt;span class="kt"&gt;FormattedText&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;Name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;Directory&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;addPairsToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;addToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="o"&gt;=&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;plainText&lt;/span&gt; &lt;span class="o"&gt;$&lt;/span&gt; &lt;span class="kt"&gt;T&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pack&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="nb"&gt;()&lt;/span&gt;
+&lt;span class="nf"&gt;main&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt;
+
+    &lt;span class="n"&gt;results&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;decodeFile&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;jumprc&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;::&lt;/span&gt; &lt;span class="kt"&gt;IO&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="kt"&gt;Maybe&lt;/span&gt; &lt;span class="kt"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="kt"&gt;Value&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Create new list&lt;/span&gt;
+    &lt;span class="n"&gt;list&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newList&lt;/span&gt; &lt;span class="n"&gt;def_attr&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- -- Populate options&lt;/span&gt;
+    &lt;span class="kr"&gt;let&lt;/span&gt; &lt;span class="n"&gt;pairs&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;process&lt;/span&gt; &lt;span class="n"&gt;results&lt;/span&gt;
+    &lt;span class="n"&gt;mapM_&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;addPairsToList&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;pairs&lt;/span&gt;
+
+    &lt;span class="n"&gt;ui&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;centered&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+
+    &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newFocusGroup&lt;/span&gt;
+    &lt;span class="n"&gt;addToFocusGroup&lt;/span&gt; &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="n"&gt;list&lt;/span&gt;
+
+    &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;newCollection&lt;/span&gt;
+    &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="ow"&gt;&amp;lt;-&lt;/span&gt; &lt;span class="n"&gt;addToCollection&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;ui&lt;/span&gt; &lt;span class="n"&gt;fg&lt;/span&gt;
+
+    &lt;span class="c1"&gt;-- Focus group event handlers&lt;/span&gt;
+    &lt;span class="n"&gt;fg&lt;/span&gt; &lt;span class="p"&gt;`&lt;/span&gt;&lt;span class="n"&gt;onKeyPressed&lt;/span&gt;&lt;span class="p"&gt;`&lt;/span&gt; &lt;span class="n"&gt;exit&lt;/span&gt;
+
+    &lt;span class="n"&gt;runUi&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="n"&gt;defaultContext&lt;/span&gt;
+
+&lt;span class="c1"&gt;-- Callback for exiting via &amp;#39;q&amp;#39;&lt;/span&gt;
+&lt;span class="nf"&gt;exit&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="kr"&gt;_&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="kt"&gt;KASCII&lt;/span&gt; &lt;span class="n"&gt;&amp;#39;q&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="kr"&gt;do&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;shutdownUi&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;exitSuccess&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+             &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;otherwise&lt;/span&gt;         &lt;span class="ow"&gt;=&lt;/span&gt; &lt;span class="n"&gt;return&lt;/span&gt; &lt;span class="kt"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I hope this meandering ramble of a post has been useful. It has cleared up some
+issues for me and I hope it will help some people in the early stages of their
+Haskell journey to see something broken down like this.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="haskell"></category></entry><entry><title>Journal - Day 17</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-29:posts/2013/10/29/journal-day-17/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Continue with Yaml library example and article.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finished Yaml library example and article though rapidly learnt how foolishly
+simple it was after further examination of the &lt;a class="reference external" href="http://hackage.haskell.org/package/yaml"&gt;yaml&lt;/a&gt; module. The &lt;tt class="docutils literal"&gt;FromJSON&lt;/tt&gt;
+functionality exposed by it is really rather fantastic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Listened to &lt;a class="reference external" href="http://www.haskellcast.com/episode/003-simon-peyton-jones-on-ghc/"&gt;Haskell Cast 3&lt;/a&gt; with Simon Peyton Jones. Parts are over my head,
+but most is interesting and well layed out for the average programmer
+listener.&lt;/p&gt;
+&lt;p&gt;Includes some fascinating information about improving the national curriculum
+in the UK to include computer science education from a young age. My school
+experience included &lt;abbr&gt;ICT &amp;lt;Information Communcations Techology&amp;gt;&lt;/abbr&gt; which
+really just meant basic use of Word, Excel and Access. Not completely basic
+but very much end user level rather than understanding the machine and how to
+program it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 16</title><link href="http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/" rel="alternate"></link><updated>2013-10-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-28:posts/2013/10/28/journal-day-16/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Begin documenting and working through the issues I am encountering with using
+the Haskell yaml library.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;An still-in-progress article chronicling my flounding attempts as a beginner
+Haskell programmer. I am hopeful that it will be useful to others are my stage
+of development. If not, it is certainly useful to me.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
 &lt;h2&gt;Weekend&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Watched &lt;a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054"&gt;Escape From the Ivory Tower&lt;/a&gt; presentation by Simon Peyton Jones. It
