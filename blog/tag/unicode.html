@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>DevBlog - unicode</title>
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DevBlog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://michaeljones.github.io/blog/">DevBlog </a></h1>
+                <nav><ul>
+                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/">Generating a Broken UTF-8 File</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-11-01T00:00:00">
+                Fri 01 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/unicode.html">unicode</a></p>
+</footer><!-- /.post-info --><div class="section" id="backstory">
+<h2>Backstory</h2>
+<p>Occasionally when looking after <a class="reference external" href="https://github.com/michaeljones/breathe">Breathe</a> and <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">Sphinx-to-Github</a> I get bug reports
+associated with unicode handling errors. Awkwardly, I do not have a huge amount of
+experience with unicode.</p>
+<p>Still, I'm keen that these plugins handle unicode properly or at least provide
+reasonable error messages when things go wrong. However it is not completely
+obvious how to generate invalid files to test these issues.</p>
+<p>After a recent bug, I dug a little deeper into how to do this. There might be
+much better ways but this is the path I took.</p>
+</div>
+<div class="section" id="required-information">
+<h2>Required Information</h2>
+<p>A little googling revealed this <a class="reference external" href="http://stackoverflow.com/questions/13241244/example-of-a-broken-unicode-text">stackoverflow question</a> which points to the
+Wikipedia <a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8">UTF-8</a> page which has a section on <a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8#Invalid%5Fbyte%5Fsequences">invalid codes</a> for a UTF-8 page.</p>
+<p>The page also has a <a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8#Codepage%5Flayout">table</a> of UTF-8 values and includes red boxes for the invalid
+charater codes. I don't fully follow the table but underneath it points out that
+the first two invalid codes are: <tt class="docutils literal">C0</tt> and <tt class="docutils literal">C1</tt>.</p>
+</div>
+<div class="section" id="preparing-the-file">
+<h2>Preparing the File</h2>
+<p>So armed with this information what can we do? Let's prepare a basic file to
+work with. I'm interest in having a test case for <a class="reference external" href="https://github.com/michaeljones/breathe">Breathe</a> so I want some source
+code with some invalid characters:</p>
+<pre class="literal-block">
+/*! \brief This is a test . */
+class Test {}
+</pre>
+<p>This is a very basic C++ class and a doxygen comment. We leave a placeholder
+<tt class="docutils literal">.</tt> in there for us to replace with invalid data. This should be saved as
+UTF-8 from your favourite text editor. You can do this from <tt class="docutils literal">vim</tt> with:</p>
+<pre class="literal-block">
+:set fileencoding=utf8
+:w unicodefile.cpp
+</pre>
+<p>Just to check that this reads fine into Python, we can run:</p>
+<pre class="literal-block">
+$ python -c &quot;import codecs; codecs.open('unicodefile.cpp', 'r', 'utf-8').readlines()
+</pre>
+<p>And it executes withouth issue.</p>
+</div>
+<div class="section" id="breaking-the-file">
+<h2>Breaking the file</h2>
+<p>Now you want to open this file in a hex editor. After a little googling, I've
+installed <a class="reference external" href="http://www.kde.org/applications/utilities/okteta">Okteta</a> on my Ubuntu machine as it is easily available. Opening the
+file, you get a view like this:</p>
+<pre class="literal-block">
+2F 2A 21 20  5C 62 72 69  65 66 20 54  68 69 73 20 | /*! \brief This
+69 73 20 61  20 74 65 73  74 20 2E 20  2A 2F 0A 63 | is a test . */.c
+6C 61 73 73  20 54 65 73  74 20 7B 7D  0A          | lass Test {}.
+</pre>
+<p>This is the hexadecimal layout of the bytes in our file on the left and the
+ASCII interpretation of these values on the right. The ASCII representation
+actually shows new lines as <tt class="docutils literal">.</tt> characters which makes it harder to see quite
+what is going on but the placeholder <tt class="docutils literal">.</tt> we added is relatively clearly
+visible as the one immediately after the word <tt class="docutils literal">test</tt>.</p>
+<p>If we highlight that placeholder <tt class="docutils literal">.</tt>, then the program highlights the <tt class="docutils literal">2E</tt>
+entry in the third block of the second line of the left hand hexadecimal
+representation. If we want to add our invalid data we can select the <tt class="docutils literal">2E</tt> and
+enter one of the invalid values from the Wikipedia article, eg. <tt class="docutils literal">C0</tt>. Do this
+and save it as <tt class="docutils literal">brokenfile.cpp</tt>.</p>
+<p>Now if we run our test on this file, we get:</p>
+<pre class="literal-block">
+$ python -c &quot;import codecs; codecs.open('brokenfile.cpp', 'r', 'utf-8').readlines()&quot;
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&quot;, line 679, in readlines
+    return self.reader.readlines(sizehint)
+  File &quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&quot;, line 588, in readlines
+    data = self.read()
+  File &quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&quot;, line 477, in read
+    newchars, decodedbytes = self.decode(data, self.errors)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xc0 in position 26: invalid start byte
+</pre>
+<p>Yay, it's broken and will act as a good test case for checking that our code can
+handle invalid input and provide useful error messages.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
