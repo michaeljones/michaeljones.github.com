@@ -24,7 +24,72 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/">A Beginner's Encounter with a Haskell Library</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/">Haskell's Sandbox &amp; Python's Virtualenv</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-11-21T00:00:00">
+                Thu 21 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
+</footer><!-- /.post-info --><p>Cabal's sandboxes for Haskell provide an excellent way to contain the
+dependencies of a project and help to resolve clashes with other projects you
+might have on the system.</p>
+<p>They work brilliantly with libraries which are automatically picked up by
+<tt class="docutils literal">cabal build</tt> but they lack decent support for the executables which can some
+with Haskell packages such as <a class="reference external" href="http://hackage.haskell.org/package/hlint">hlint</a> and <a class="reference external" href="http://hackage.haskell.org/package/scan">scan</a>.</p>
+<p>Enter Python's <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>.</p>
+<p>The Python ecosystem has a similar sandbox tool called virtualenv which is used
+for managing dependencies in a isolated manner on a per-project basis.
+Fortunately, virtualenv has solved the executables issue by creating shell
+scripts to be sourced when using the virtual environment which configure the
+user's shell/environment appropriately.</p>
+<p>Both Cabal Sandboxes and Python virtualenv have a similar <tt class="docutils literal">/usr</tt> inspired
+layout including a <tt class="docutils literal">bin</tt> directory for the executables so we can use the setup
+scripts from the virtualenv to put the sandbox executable directory in our
+environment if we make our sandbox into a virtualenv directory as well.</p>
+<p>Fortunately, this is pretty easy. To create a sandbox folder with a specific
+name, we use the <tt class="docutils literal"><span class="pre">--sandbox</span></tt> flag. For example, to create a sandbox called
+<tt class="docutils literal">projectenv</tt> we run:</p>
+<pre class="literal-block">
+$ cabal sandbox init --sandbox=projectenv
+</pre>
+<p>And then to overlay a Python virtualenv setup over this directory we run:</p>
+<pre class="literal-block">
+$ virtualenv projectenv
+</pre>
+<p>Simple as that.</p>
+<p>Now, when we install hlint:</p>
+<pre class="literal-block">
+$ cabal install hlint
+</pre>
+<p>And initialise our Python virtualenv:</p>
+<pre class="literal-block">
+$ source projectenv/bin/activate
+</pre>
+<p>Then we get our sandbox hlint on the path:</p>
+<pre class="literal-block">
+$ which hlint
+/home/user/code/project/projectenv/bin/hlint
+</pre>
+<p>Done!</p>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="bookmark"
+                           title="Permalink to A Beginner's Encounter with a Haskell Library">A Beginner's Encounter with a Haskell Library</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-29T00:00:00">
                 Tue 29 October 2013
@@ -35,471 +100,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info --><p>I am new to Haskell and as a programming exercise I am attempting to rewrite my
+</footer><!-- /.post-info -->                <p>I am new to Haskell and as a programming exercise I am attempting to rewrite my
 <tt class="docutils literal">jump</tt> utility program which I use to switch between common directories in my
 shell.</p>
 <p>It is currently written in Python and uses the curses library to provide a
-terminal user interface for selecting a directory from a list which is then
-written to a file. The program works with an alias which tends changes directory
-into the contents of that file:</p>
-<pre class="literal-block">
-alias c='$HOME/bin/jump-wrapper; cd `cat /tmp/jump.tmp`'
-</pre>
-<p>Where <tt class="docutils literal"><span class="pre">jump-wrapper</span></tt> sources the appropriate Python virtualenv and then runs
-the actual Python script.</p>
-<p>The current Python version is a &quot;good enough&quot; implementation with no real error
-detection or fault tolerance. It doesn't really have to be tolerant as I control
-the input and the simplicity of the script makes it easy to debug.</p>
-<p>It feels like a good test project for Haskell as it involves a simple UI and
-reading data from a <a class="reference external" href="http://yaml.org">yaml</a> file which is used for configuration.</p>
-<div class="section" id="the-interface">
-<h2>The Interface</h2>
-<p>For the interface, after some googling, I've opted for the <a class="reference external" href="http://hackage.haskell.org/package/vty">vty</a> &amp; <a class="reference external" href="http://hackage.haskell.org/package/vty-ui">vty-ui</a>
-modules, mostly the latter, though that is built on the former.</p>
-<p>The vty-ui library has excellent <a class="reference external" href="http://jtdaugherty.github.io/vty-ui/manuals/vty-ui-users-manual-1.6.pdf">documentation</a> and so after working through
-their example and reading a little more I have a basic program which present two
-options in a list in a terminal UI and allows me to exit from it all with <tt class="docutils literal">q</tt>.</p>
-<p>Here it is:</p>
-<div class="highlight"><pre><span class="kr">import</span>           <span class="nn">Graphics.Vty.Widgets.All</span>
-
-<span class="kr">import</span>           <span class="nn">Graphics.Vty.Attributes</span> <span class="p">(</span> <span class="nf">def_attr</span> <span class="p">)</span>
-<span class="kr">import</span>           <span class="nn">Graphics.Vty.LLInput</span>    <span class="p">(</span> <span class="kt">Key</span><span class="p">(</span> <span class="kt">KASCII</span><span class="p">)</span> <span class="p">)</span>
-
-<span class="kr">import</span>           <span class="nn">System.Exit</span> <span class="p">(</span> <span class="nf">exitSuccess</span> <span class="p">)</span>
-
-<span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Text</span> <span class="k">as</span> <span class="n">T</span>
-
-<span class="nf">main</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-
-    <span class="c1">-- Create new list</span>
-    <span class="n">list</span> <span class="ow">&lt;-</span> <span class="n">newList</span> <span class="n">def_attr</span>
-
-    <span class="c1">-- Populate options</span>
-    <span class="n">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 1&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 1&quot;</span> <span class="p">)</span>
-    <span class="n">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 2&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 2&quot;</span> <span class="p">)</span>
-
-    <span class="n">ui</span> <span class="ow">&lt;-</span> <span class="n">centered</span> <span class="n">list</span>
-
-    <span class="n">fg</span> <span class="ow">&lt;-</span> <span class="n">newFocusGroup</span>
-    <span class="n">addToFocusGroup</span> <span class="n">fg</span> <span class="n">list</span>
-
-    <span class="n">c</span> <span class="ow">&lt;-</span> <span class="n">newCollection</span>
-    <span class="kr">_</span> <span class="ow">&lt;-</span> <span class="n">addToCollection</span> <span class="n">c</span> <span class="n">ui</span> <span class="n">fg</span>
-
-    <span class="c1">-- Focus group event handlers</span>
-    <span class="n">fg</span> <span class="p">`</span><span class="n">onKeyPressed</span><span class="p">`</span> <span class="n">exit</span>
-
-    <span class="n">runUi</span> <span class="n">c</span> <span class="n">defaultContext</span>
-
-<span class="c1">-- Callback for exiting via &#39;q&#39;</span>
-<span class="nf">exit</span> <span class="kr">_</span> <span class="n">key</span> <span class="kr">_</span> <span class="o">|</span> <span class="n">key</span> <span class="o">==</span> <span class="kt">KASCII</span> <span class="n">&#39;q&#39;</span> <span class="ow">=</span> <span class="kr">do</span> <span class="p">{</span> <span class="n">shutdownUi</span><span class="p">;</span> <span class="n">exitSuccess</span> <span class="p">}</span>
-             <span class="o">|</span> <span class="n">otherwise</span>         <span class="ow">=</span> <span class="n">return</span> <span class="kt">False</span>
-</pre></div>
-<p>Most of this is not fabulously interesting but is included for completeness. The
-relevant section here is really this:</p>
-<div class="highlight"><pre><span class="c1">-- Create new list</span>
-<span class="nf">list</span> <span class="ow">&lt;-</span> <span class="n">newList</span> <span class="n">def_attr</span>
-
-<span class="c1">-- Populate options</span>
-<span class="nf">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 1&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 1&quot;</span> <span class="p">)</span>
-<span class="nf">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 2&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 2&quot;</span> <span class="p">)</span>
-</pre></div>
-<p>This is where we create the list and populate it with the options. This is the
-part that we're interested in for this article. The plan is to replace it with
-code which will read a yaml file and dynamically populate the list based on the
-contents of the file.</p>
-</div>
-<div class="section" id="the-file">
-<h2>The File</h2>
-<p>The yaml config file looks like this:</p>
-<pre class="literal-block">
-- - [sph, /home/mike/root/projects/sph]
-- - [alembic-fs, /home/mike/root/projects/alembic-fs]
-- - [profile, /home/mike/root/projects/profile]
-  - [blog, /home/mike/root/projects/profile/blog]
-- - [lastcontact, /home/mike/root/projects/lastcontact]
-- - [rigcontrols, /home/mike/root/projects/rigcontrols]
-- - [blog, /home/mike/root/projects/profile/source]
-- - [jump-hs, /home/mike/root/projects/jump-hs]
-- - [breathe, /home/mike/root/projects/sphinx/breathe]
-- - [dojo, /home/mike/root/projects/dojo]
-- - [taglist, /home/mike/root/projects/taglist]
-- - [git.pde, /home/mike/root/projects/presentations/git]
-</pre>
-<p>It is a list of list of lists in which:</p>
-<ul class="simple">
-<li><strong>Top Level</strong> is a list of the projects</li>
-<li><strong>Second Level</strong> is a list of sub targets within those projects</li>
-<li><strong>Third Level</strong> is a pair of <tt class="docutils literal">name</tt> and <tt class="docutils literal">directory</tt>. The <tt class="docutils literal">name</tt> is
-displayed in the user interface and the directory is what should eventually be
-written to the output file.</li>
-</ul>
-</div>
-<div class="section" id="a-start">
-<h2>A Start</h2>
-<p>Let's google &quot;haskell yaml&quot;. Sweet, a <a class="reference external" href="http://stackoverflow.com/questions/13059806/reading-yaml-in-haskell">Reading Yaml in Haskell</a> question on
-stackoverflow comes up first, though nothing else on the first two pages looks
-like anything more than package references without further documentation. The
-top answer to the question recommends the <a class="reference external" href="http://hackage.haskell.org/package/yaml">yaml</a> and <a class="reference external" href="http://hackage.haskell.org/package/HsSyck">HsSyck</a> modules with a slight
-preference towards the former.</p>
-</div>
-<div class="section" id="reading-the-yaml-data">
-<h2>Reading the Yaml Data</h2>
-<p>The <a class="reference external" href="http://hackage.haskell.org/package/yaml-0.8.5.1/docs/Data-Yaml.html">yaml module docs</a> are pretty thin for a beginner which is why I'm writing
-this piece. At this stage in my Haskell journey I can't see any obvious places
-to start.</p>
-<p>From an imperative programming perspective, I would generally expect to provide
-a file path, a stream or a string to some kind of function and get back a data
-structure which containers all the information from the yaml file. This is might
-not be suitable for incredibly large files but then yaml tends to be used for
-the configuration file end of the spectrum rather than large data sets.</p>
-<p>Checking through the functions shows <tt class="docutils literal">decodeFile</tt> to take a file path and
-return some kind of data in an IO action:</p>
-<div class="highlight"><pre><span class="nf">decodeFile</span> <span class="ow">::</span> <span class="kt">FromJSON</span> <span class="n">a</span> <span class="ow">=&gt;</span> <span class="kt">FilePath</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="p">(</span><span class="kt">Maybe</span> <span class="n">a</span><span class="p">)</span>
-</pre></div>
-<p>Ok, reasonable starting point. Let's add:</p>
-<div class="highlight"><pre><span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Yaml</span> <span class="k">as</span> <span class="n">Y</span>
-</pre></div>
-<p>To the import section and add:</p>
-<div class="highlight"><pre><span class="nf">results</span> <span class="ow">&lt;-</span> <span class="kt">Y</span><span class="o">.</span><span class="n">decodeFile</span> <span class="s">&quot;jumprc&quot;</span>
-</pre></div>
-<p>To the top of the <tt class="docutils literal">main</tt> do-block just to try it out.</p>
-<p>In hindsight, I can see that those people reading along, and wondering exactly
-what I thought the compiler was going to do with that <tt class="docutils literal">a</tt> in the type
-signature, were correct to be confused. However, as my naive self still learning
-the language I was armed with nothing more than this error message:</p>
-<pre class="literal-block">
-src/Main.hs:16:16:
-    No instance for (Y.FromJSON a0)
-      arising from a use of `Y.decodeFile'
-    In a stmt of a 'do' block: results &lt;- Y.decodeFile &quot;jumprc&quot;
-    In the expression:
-      do { results &lt;- Y.decodeFile &quot;jumprc&quot;;
-</pre>
-<p>Which frankly isn't that useful to me even now that I know the answer. I think
-it is basically trying to say &quot;I'm trying to compile this and I'm left holding
-this <tt class="docutils literal">Y.FromJSON a0</tt> thing and I've no idea what to do with it.&quot; The <tt class="docutils literal">a0</tt> is
-perhaps some kind of clue that it doesn't have enough information to figure out
-all the types as there certainly isn't an <tt class="docutils literal">a0</tt> type declared in my program.</p>
-<p>Ok, so that type signature above? That is going to take <tt class="docutils literal">FilePath</tt> and return
-something with an specified type <tt class="docutils literal">a</tt> which is an instance of the typeclass
-<tt class="docutils literal">FromJSON</tt>.  I'm still pretty clueless but yaml module docs have a <tt class="docutils literal">Value</tt>
-data type which is instance of the <tt class="docutils literal">FromJSON</tt> typeclass so we try that:</p>
-<div class="highlight"><pre><span class="nf">results</span> <span class="ow">&lt;-</span> <span class="kt">Y</span><span class="o">.</span><span class="n">decodeFile</span> <span class="s">&quot;jumprc&quot;</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="p">(</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="p">)</span>
-</pre></div>
-<p>This works. Sweet. What can we do with it? I've no idea.</p>
-</div>
-<div class="section" id="digging-into-the-yaml-data">
-<h2>Digging into the Yaml Data</h2>
-<p>I've never drilled into a Haskell data structure before. No even really sure
-what it looks like. Let's simply the input data a bit and print it. New input
-data in the yaml file:</p>
-<pre class="literal-block">
-- - [sph, /home/mike/root/projects/sph]
-- - [profile, /home/mike/root/projects/profile]
-  - [blog, /home/mike/root/projects/profile/blog]
-</pre>
-<p>Print statement:</p>
-<div class="highlight"><pre><span class="nf">print</span> <span class="n">results</span>
-</pre></div>
-<p>Result:</p>
-<pre class="literal-block">
-Just (Array (fromList [Array (fromList [Array (fromList [String &quot;sph&quot;,String
-&quot;/home/mike/root/projects/sph&quot;])]),Array (fromList [Array (fromList [String
-&quot;profile&quot;,String &quot;/home/mike/root/projects/profile&quot;]),Array (fromList [String
-&quot;blog&quot;,String &quot;/home/mike/root/projects/profile/blog&quot;])])]))
-</pre>
-<p>Not exactly readable but it gives us a start. First up it is wrapped in a
-<tt class="docutils literal">Maybe</tt> which we should be expecting as we asked for it as <tt class="docutils literal">IO ( Maybe
-Y.Value )</tt> and then unwrapped the IO action with the <tt class="docutils literal">&lt;-</tt> in the do-block.
-Inspecting the <a class="reference external" href="http://hackage.haskell.org/package/yaml-0.8.5.1/docs/Data-Yaml.html#t:Value">docs</a> we can see that the <tt class="docutils literal">Value</tt> data type as several
-different constructor types include <tt class="docutils literal">Array</tt> which as a single piece of data
-which is a <tt class="docutils literal">Vector</tt> of more yaml <tt class="docutils literal">Value</tt> data. We can see from the Vector
-docs that it is an instance of the <tt class="docutils literal">Functor</tt> and <tt class="docutils literal">Foldable</tt> typeclasses
-along with many others which means we can do various map and fold operations
-over it.</p>
-<p><tt class="docutils literal">fromList</tt> is <a class="reference external" href="http://hackage.haskell.org/package/vector-0.10.9.1/docs/Data-Vector.html#v:fromList">documented</a> as a conversion function between a list and a
-<tt class="docutils literal">Vector</tt>:</p>
-<div class="highlight"><pre><span class="nf">fromList</span> <span class="ow">::</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="kt">Vector</span> <span class="n">a</span>
-</pre></div>
-<p>I've yet to figure out how or why <tt class="docutils literal">show</tt>, which is what <tt class="docutils literal">print</tt> uses,
-would choose to represent a <tt class="docutils literal">Vector</tt> as <tt class="docutils literal">fromList <span class="pre">[...]</span></tt> but it isn't
-unreasonable.</p>
-<p>Ok, so baby steps. We can remove the <tt class="docutils literal">Maybe</tt> wrapper by writing a function and
-pattern matching against the contents. So we change our code to:</p>
-<div class="highlight"><pre><span class="nf">results</span> <span class="ow">&lt;-</span> <span class="kt">Y</span><span class="o">.</span><span class="n">decodeFile</span> <span class="s">&quot;jumprc&quot;</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="p">(</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="p">)</span>
-<span class="nf">process</span> <span class="n">results</span>
-</pre></div>
-<p>With:</p>
-<div class="highlight"><pre><span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">print</span> <span class="n">v</span>
-<span class="nf">process</span> <span class="kr">_</span>        <span class="ow">=</span> <span class="n">return</span> <span class="nb">()</span>
-</pre></div>
-<p>And we get everything inside the <tt class="docutils literal">Just</tt> as expected:</p>
-<pre class="literal-block">
-Array (fromList [Array (fromList [Array (fromList [String &quot;sph&quot;,String
-&quot;/home/mike/root/projects/sph&quot;])]),Array (fromList [Array (fromList [String
-&quot;profile&quot;,String &quot;/home/mike/root/projects/profile&quot;]),Array (fromList [String
-&quot;blog&quot;,String &quot;/home/mike/root/projects/profile/blog&quot;])])])
-</pre>
-<p>Makes sense. Well what if we aim to print each entry in the top array on a new
-line. We can change to:</p>
-<div class="highlight"><pre><span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">processTop</span> <span class="n">v</span>
-<span class="nf">process</span> <span class="kr">_</span>        <span class="ow">=</span> <span class="n">return</span> <span class="nb">()</span>
-</pre></div>
-<p>And then implement <tt class="docutils literal">processTop</tt>. We could try something like:</p>
-<div class="highlight"><pre><span class="nf">processTop</span> <span class="n">a</span> <span class="ow">=</span> <span class="n">fmap</span> <span class="p">(</span> <span class="n">putStrLn</span> <span class="o">.</span> <span class="n">show</span> <span class="p">)</span> <span class="n">a</span>
-</pre></div>
-<p>Afterall, we read above that the <tt class="docutils literal">Array</tt> is a functor is we can map over it.
-However, on compiling it complains about the return type of the second
-definition of <tt class="docutils literal">process</tt>, but that's weird as we're sure that's correct. We're
-just using <tt class="docutils literal">return</tt> to create a minimal <tt class="docutils literal">IO</tt> action with no interesting
-content. So really, we're screwing up the signature of the first definition and
-then the compiler is telling us that the second definition doesn't match the
-first. But we want the first definition to match the second and we know what
-that is so we add a type signature to tell the compiler what is meant to be
-going on:</p>
-<pre class="literal-block">
-.. code-block:: haskell
-</pre>
-<blockquote>
-process :: Maybe a -&gt; IO ()
-process (Just v) = processTop v
-process _        = return ()</blockquote>
-<p>Excellent, now it is telling us something we want to know:</p>
-<pre class="literal-block">
-src/Main.hs:16:20:
-    Couldn't match type `IO ()' with `()'
-    Expected type: IO ()
-      Actual type: IO (IO ())
-    In the return type of a call of `processTop'
-    In the expression: processTop v
-</pre>
-<p>I am not entirely sure what this means but I am going to avoid finding out for
-the moment as that is a lot of <tt class="docutils literal">IO</tt>'s in a part of the code which could well
-be pure. We're much better return a string array from <tt class="docutils literal">processTop</tt> and
-printing it in our <tt class="docutils literal">process</tt> function than pushing our non-pure <tt class="docutils literal">IO</tt> code
-further and further into the call stack.</p>
-<p>So we change our <tt class="docutils literal">processTop</tt> to a dummy implementation which returns a string
-array:</p>
-<div class="highlight"><pre><span class="nf">processTop</span> <span class="ow">::</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span>
-<span class="nf">processTop</span> <span class="n">a</span> <span class="ow">=</span> <span class="p">[</span><span class="s">&quot;line one&quot;</span><span class="p">,</span> <span class="s">&quot;line two&quot;</span><span class="p">]</span>
-</pre></div>
-<p>And change <tt class="docutils literal">process</tt> to print out the result by mapping <tt class="docutils literal">putStrLn</tt> over the
-result of <tt class="docutils literal">processTop</tt>. We use <tt class="docutils literal">mapM_</tt> as it applies a function of type <tt class="docutils literal">a
-<span class="pre">-&gt;</span> m b</tt> over a <tt class="docutils literal">[a]</tt> and returns a simple empty <tt class="docutils literal">IO</tt> action which will
-print out all the lines we want:</p>
-<div class="highlight"><pre><span class="nf">process</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">mapM_</span> <span class="n">putStrLn</span> <span class="o">$</span> <span class="n">processTop</span> <span class="n">v</span>
-<span class="nf">process</span> <span class="kr">_</span>        <span class="ow">=</span> <span class="n">return</span> <span class="nb">()</span>
-</pre></div>
-<p>Great, so now we have <tt class="docutils literal">processTop</tt> which is nice and pure and now it just
-needs to actually work, y'know, rather than ignoring its inputs.</p>
-<p>A reasonable first step would be to pattern match against the <tt class="docutils literal">Array</tt>
-constructor of the <tt class="docutils literal">Value</tt> date type as we're currently only passing a
-<tt class="docutils literal">Value</tt>. That will give as the actual array to play with:</p>
-<div class="highlight"><pre><span class="nf">processTop</span> <span class="ow">::</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span>
-<span class="nf">processTop</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="o">...</span>
-</pre></div>
-<p>Then we want to convert the data, <tt class="docutils literal">a</tt>, in that <tt class="docutils literal">Array</tt> to a list and map
-<tt class="docutils literal">show</tt> over it to convert each entry to a representative string. We saw
-earlier that the data in the <tt class="docutils literal">Array</tt> is a <tt class="docutils literal">Vector</tt> so we grab the
-appropriate module:</p>
-<div class="highlight"><pre><span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Vector</span> <span class="k">as</span> <span class="n">V</span>
-</pre></div>
-<p>And use the <tt class="docutils literal">toList</tt> method to convert it. Then we are free to <tt class="docutils literal">map</tt>
-<tt class="docutils literal">show</tt> over the result so:</p>
-<div class="highlight"><pre><span class="nf">processTop</span> <span class="ow">::</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[</span><span class="kt">String</span><span class="p">]</span>
-<span class="nf">processTop</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="n">map</span> <span class="n">show</span> <span class="o">$</span> <span class="kt">V</span><span class="o">.</span><span class="n">toList</span> <span class="n">a</span>
-</pre></div>
-<p>If we run this, we get:</p>
-<pre class="literal-block">
-Array (fromList [Array (fromList [String &quot;sph&quot;,String &quot;/home/mike/roo...
-Array (fromList [Array (fromList [String &quot;profile&quot;,String &quot;/home/mike...
-</pre>
-<p>ie. one line per item in our top list. Progress.</p>
-</div>
-<div class="section" id="digging-further">
-<h2>Digging Further</h2>
-<p>We're getting a bit of a hang of this, so now we should start figuring out what
-we actually want to get back from this function. What would make our lives
-easier for setting up this list?</p>
-<p>It would seem reasonable to aim for a list of pairs where the pairs of the
-<tt class="docutils literal">name</tt> and <tt class="docutils literal">directory</tt> parts of the Yaml file. We would then be able to
-iterate over this list and add pairs into our interface.</p>
-<p>So we want to reduce our hierachy down to a single list of pairs. It seems
-reasonable that we could use a <tt class="docutils literal">fold</tt> to achieve this with the accumulator
-being a new list which we add the pairs to.</p>
-<p>To make things a little more readable we add some nicer types for the components
-of our pairs:</p>
-<div class="highlight"><pre><span class="kr">type</span> <span class="kt">Name</span> <span class="ow">=</span> <span class="kt">String</span>
-<span class="kr">type</span> <span class="kt">Directory</span> <span class="ow">=</span> <span class="kt">String</span>
-</pre></div>
-<p>We can then change <tt class="docutils literal">processTop</tt> to:</p>
-<div class="highlight"><pre><span class="nf">processTop</span> <span class="ow">::</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span> <span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processTop</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">V</span><span class="o">.</span><span class="n">foldl</span> <span class="n">processGroup</span> <span class="kt">[]</span> <span class="n">a</span>
-</pre></div>
-<p>Which extracts the <tt class="docutils literal">Vector</tt> value from the array as before and folds over
-it using the <tt class="docutils literal">processGroup</tt> function with an empty list as an accumulator.
-Ultimately it aims to return a list of <tt class="docutils literal">Name</tt>-<tt class="docutils literal">Directory</tt> pairs as stated in
-the new type signature.</p>
-<p>We use <tt class="docutils literal">V.foldl</tt> rather than <tt class="docutils literal">foldl</tt> as this needs to operate on a <tt class="docutils literal">Vector</tt>
-rather than a list. I am not sure what the <tt class="docutils literal">fmap</tt> equivalent of <tt class="docutils literal">foldl</tt> is,
-ie. a <tt class="docutils literal">foldl</tt> function that can be applied to any instance of the <tt class="docutils literal">Foldable</tt>
-typeclass.</p>
-<p>So, <tt class="docutils literal">processGroup</tt>? That kind of sits in the middle and doesn't do much more
-than repeat the <tt class="docutils literal">foldl</tt> on bottom level of our hierarchy:</p>
-<div class="highlight"><pre><span class="nf">processGroup</span> <span class="ow">::</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span> <span class="ow">-&gt;</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processGroup</span> <span class="n">xs</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">V</span><span class="o">.</span><span class="n">foldl</span> <span class="n">processPair</span> <span class="n">xs</span> <span class="n">a</span>
-</pre></div>
-<p>We pass the <tt class="docutils literal">xs</tt> list from the argument through to the fold so that we
-continue to add to the same list. Otherwise we extract the <tt class="docutils literal">Vector</tt> data from
-the <tt class="docutils literal">Array</tt> as standard and all is good.</p>
-<p>Then <tt class="docutils literal">processPair</tt> does something a little more interesting:</p>
-<div class="highlight"><pre><span class="nf">processPair</span> <span class="ow">::</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span> <span class="ow">-&gt;</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processPair</span> <span class="n">xs</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="kr">case</span> <span class="kt">V</span><span class="o">.</span><span class="n">toList</span> <span class="n">a</span> <span class="kr">of</span>
-   <span class="p">[</span><span class="kt">Y</span><span class="o">.</span><span class="kt">String</span> <span class="n">x</span><span class="p">,</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">String</span> <span class="n">y</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">((</span><span class="kt">T</span><span class="o">.</span><span class="n">unpack</span> <span class="n">x</span><span class="p">,</span> <span class="kt">T</span><span class="o">.</span><span class="n">unpack</span> <span class="n">y</span><span class="p">))</span><span class="kt">:</span><span class="n">xs</span>
-</pre></div>
-<p>We extract the <tt class="docutils literal">Vector</tt> data, then use <tt class="docutils literal">V.toList</tt> to convert the <tt class="docutils literal">Vector</tt>
-to a standard list, and use a <tt class="docutils literal">case</tt> statement to pattern match against the
-contents accounting for the situation where it is a two element list each being
-a <tt class="docutils literal">Y.String</tt> value. In that case, we unpack the values into tuple which is
-prepended to our results list.</p>
-<p>We're now returning a <tt class="docutils literal">[(Name,Directory)]</tt> which was can't map <tt class="docutils literal">putStrLn</tt>
-over in our first <tt class="docutils literal">process</tt> function as <tt class="docutils literal">putStrLn</tt> expects a <tt class="docutils literal">String</tt>. So
-we can change that to:</p>
-<div class="highlight"><pre><span class="nf">process</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">mapM_</span> <span class="n">print</span> <span class="o">$</span> <span class="n">processTop</span> <span class="n">v</span>
-<span class="nf">process</span> <span class="kr">_</span>        <span class="ow">=</span> <span class="n">return</span> <span class="nb">()</span>
-</pre></div>
-<p>Add run it and we get:</p>
-<pre class="literal-block">
-(&quot;blog&quot;,&quot;/home/mike/root/projects/profile/blog&quot;)
-(&quot;profile&quot;,&quot;/home/mike/root/projects/profile&quot;)
-(&quot;sph&quot;,&quot;/home/mike/root/projects/sph&quot;)
-</pre>
-<p>Done! A list of tuples, each with the data we're interested in.</p>
-</div>
-<div class="section" id="adding-to-the-interface">
-<h2>Adding to the Interface</h2>
-<p>So now we're in a good place to add these entries to our UI list. We want to
-replace the following hardcoded section with something which will add the
-results from processing the yaml data:</p>
-<div class="highlight"><pre><span class="nf">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 1&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 1&quot;</span> <span class="p">)</span>
-<span class="nf">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 2&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 2&quot;</span> <span class="p">)</span>
-</pre></div>
-<p>First we change <tt class="docutils literal">process</tt> so that it no longer attempts to print out the
-results and just returns them:</p>
-<div class="highlight"><pre><span class="nf">process</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">processTop</span> <span class="n">v</span>
-</pre></div>
-<p>This means it does little more than extract the data from the <tt class="docutils literal">Maybe</tt> and pass
-it to <tt class="docutils literal">processTop</tt> to be processed.</p>
-<p>We then create a binding for our processed list of pairs in our <tt class="docutils literal">main</tt>
-do-block for easy reading:</p>
-<div class="highlight"><pre><span class="kr">let</span> <span class="n">pairs</span> <span class="ow">=</span> <span class="n">process</span> <span class="n">results</span>
-</pre></div>
-<p>Then we want to add each pair in this list to our UI list. We know that the
-line:</p>
-<div class="highlight"><pre><span class="nf">addToList</span> <span class="n">list</span> <span class="s">&quot;choice 1&quot;</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="s">&quot;choice 1&quot;</span> <span class="p">)</span>
-</pre></div>
-<p>Produces some kind of <tt class="docutils literal">IO</tt>, probably empty as we're not attempting to use the
-result. So if we're going to map over our pairs list, which seems reasonable to
-handle each result, then we're going to want to <tt class="docutils literal">mapM_</tt> as we did before so
-that we collect these <tt class="docutils literal">IO</tt> actions together properly and then ignore their
-return.</p>
-<p>So we can:</p>
-<div class="highlight"><pre><span class="kr">let</span> <span class="n">pairs</span> <span class="ow">=</span> <span class="n">process</span> <span class="n">results</span>
-<span class="nf">mapM_</span> <span class="p">(</span><span class="n">addPairsToList</span> <span class="n">list</span><span class="p">)</span> <span class="n">pairs</span>
-</pre></div>
-<p>Where <tt class="docutils literal">addPairsToList</tt> is curried with the UI list widget to make it available
-during the mapping. We implement <tt class="docutils literal">addPairsToList</tt> as:</p>
-<div class="highlight"><pre><span class="nf">addPairsToList</span> <span class="ow">::</span> <span class="kt">Widget</span> <span class="p">(</span><span class="kt">List</span> <span class="kt">Directory</span> <span class="kt">FormattedText</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="kt">Name</span><span class="p">,</span> <span class="kt">Directory</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">addPairsToList</span> <span class="n">list</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="ow">=</span> <span class="n">addToList</span> <span class="n">list</span> <span class="n">dir</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="n">name</span> <span class="p">)</span>
-</pre></div>
-<p>Which is a fairly direct resuse of the <tt class="docutils literal">addToList</tt> usage we had before which
-came from the vty-ui documentation. We pattern match the input to get the
-<tt class="docutils literal">name</tt> and <tt class="docutils literal">directory</tt> from the pair and use them in their appropriate
-locations.</p>
-</div>
-<div class="section" id="finished">
-<h2>Finished</h2>
-<p>Well, not really. Further works needs to be done to write the list choice into a
-file when the user selects it and to allow vim style <tt class="docutils literal">j/k</tt> navigation of the
-list for my old habits. And it would be polite to add some error checking as
-this is pretty much devoid of it. Still, we've done the yaml bit which is what
-we came here to do. The final code as we have written it so far looks like:</p>
-<div class="highlight"><pre><span class="kr">import</span>           <span class="nn">Graphics.Vty.Widgets.All</span>
-
-<span class="kr">import</span>           <span class="nn">Graphics.Vty.Attributes</span> <span class="p">(</span> <span class="nf">def_attr</span> <span class="p">)</span>
-<span class="kr">import</span>           <span class="nn">Graphics.Vty.LLInput</span>    <span class="p">(</span> <span class="kt">Key</span><span class="p">(</span> <span class="kt">KASCII</span><span class="p">)</span> <span class="p">)</span>
-
-<span class="kr">import</span>           <span class="nn">System.Exit</span> <span class="p">(</span> <span class="nf">exitSuccess</span> <span class="p">)</span>
-
-<span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Text</span> <span class="k">as</span> <span class="n">T</span>
-
-<span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Yaml</span> <span class="k">as</span> <span class="n">Y</span>
-
-<span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.Vector</span> <span class="k">as</span> <span class="n">V</span>
-
-<span class="kr">type</span> <span class="kt">Name</span> <span class="ow">=</span> <span class="kt">String</span>
-<span class="kr">type</span> <span class="kt">Directory</span> <span class="ow">=</span> <span class="kt">String</span>
-
-<span class="nf">processPair</span> <span class="ow">::</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span> <span class="ow">-&gt;</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processPair</span> <span class="n">xs</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="kr">case</span> <span class="kt">V</span><span class="o">.</span><span class="n">toList</span> <span class="n">a</span> <span class="kr">of</span>
-    <span class="p">[</span><span class="kt">Y</span><span class="o">.</span><span class="kt">String</span> <span class="n">x</span><span class="p">,</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">String</span> <span class="n">y</span><span class="p">]</span> <span class="ow">-&gt;</span> <span class="p">((</span><span class="kt">T</span><span class="o">.</span><span class="n">unpack</span> <span class="n">x</span><span class="p">,</span> <span class="kt">T</span><span class="o">.</span><span class="n">unpack</span> <span class="n">y</span><span class="p">))</span><span class="kt">:</span><span class="n">xs</span>
-
-<span class="nf">processGroup</span> <span class="ow">::</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span> <span class="ow">-&gt;</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processGroup</span> <span class="n">xs</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="n">foldl</span> <span class="n">processPair</span> <span class="n">xs</span> <span class="o">$</span> <span class="kt">V</span><span class="o">.</span><span class="n">toList</span> <span class="n">a</span>
-
-<span class="nf">processTop</span> <span class="ow">::</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">processTop</span> <span class="p">(</span><span class="kt">Y</span><span class="o">.</span><span class="kt">Array</span> <span class="n">a</span><span class="p">)</span> <span class="ow">=</span> <span class="kt">V</span><span class="o">.</span><span class="n">foldl</span> <span class="n">processGroup</span> <span class="kt">[]</span> <span class="n">a</span>
-
-<span class="nf">process</span> <span class="ow">::</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="ow">-&gt;</span> <span class="p">[(</span><span class="kt">Name</span><span class="p">,</span><span class="kt">Directory</span><span class="p">)]</span>
-<span class="nf">process</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">v</span><span class="p">)</span> <span class="ow">=</span> <span class="n">processTop</span> <span class="n">v</span>
-
-<span class="nf">addPairsToList</span> <span class="ow">::</span> <span class="kt">Widget</span> <span class="p">(</span><span class="kt">List</span> <span class="kt">Directory</span> <span class="kt">FormattedText</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="p">(</span><span class="kt">Name</span><span class="p">,</span> <span class="kt">Directory</span><span class="p">)</span> <span class="ow">-&gt;</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">addPairsToList</span> <span class="n">list</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">dir</span><span class="p">)</span> <span class="ow">=</span> <span class="n">addToList</span> <span class="n">list</span> <span class="n">dir</span> <span class="o">=&lt;&lt;</span> <span class="p">(</span> <span class="n">plainText</span> <span class="o">$</span> <span class="kt">T</span><span class="o">.</span><span class="n">pack</span> <span class="n">name</span> <span class="p">)</span>
-
-<span class="nf">main</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="nb">()</span>
-<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-
-    <span class="n">results</span> <span class="ow">&lt;-</span> <span class="kt">Y</span><span class="o">.</span><span class="n">decodeFile</span> <span class="s">&quot;jumprc&quot;</span> <span class="ow">::</span> <span class="kt">IO</span> <span class="p">(</span> <span class="kt">Maybe</span> <span class="kt">Y</span><span class="o">.</span><span class="kt">Value</span> <span class="p">)</span>
-
-    <span class="c1">-- Create new list</span>
-    <span class="n">list</span> <span class="ow">&lt;-</span> <span class="n">newList</span> <span class="n">def_attr</span>
-
-    <span class="c1">-- -- Populate options</span>
-    <span class="kr">let</span> <span class="n">pairs</span> <span class="ow">=</span> <span class="n">process</span> <span class="n">results</span>
-    <span class="n">mapM_</span> <span class="p">(</span><span class="n">addPairsToList</span> <span class="n">list</span><span class="p">)</span> <span class="n">pairs</span>
-
-    <span class="n">ui</span> <span class="ow">&lt;-</span> <span class="n">centered</span> <span class="n">list</span>
-
-    <span class="n">fg</span> <span class="ow">&lt;-</span> <span class="n">newFocusGroup</span>
-    <span class="n">addToFocusGroup</span> <span class="n">fg</span> <span class="n">list</span>
-
-    <span class="n">c</span> <span class="ow">&lt;-</span> <span class="n">newCollection</span>
-    <span class="kr">_</span> <span class="ow">&lt;-</span> <span class="n">addToCollection</span> <span class="n">c</span> <span class="n">ui</span> <span class="n">fg</span>
-
-    <span class="c1">-- Focus group event handlers</span>
-    <span class="n">fg</span> <span class="p">`</span><span class="n">onKeyPressed</span><span class="p">`</span> <span class="n">exit</span>
-
-    <span class="n">runUi</span> <span class="n">c</span> <span class="n">defaultContext</span>
-
-<span class="c1">-- Callback for exiting via &#39;q&#39;</span>
-<span class="nf">exit</span> <span class="kr">_</span> <span class="n">key</span> <span class="kr">_</span> <span class="o">|</span> <span class="n">key</span> <span class="o">==</span> <span class="kt">KASCII</span> <span class="n">&#39;q&#39;</span> <span class="ow">=</span> <span class="kr">do</span> <span class="p">{</span> <span class="n">shutdownUi</span><span class="p">;</span> <span class="n">exitSuccess</span> <span class="p">}</span>
-             <span class="o">|</span> <span class="n">otherwise</span>         <span class="ow">=</span> <span class="n">return</span> <span class="kt">False</span>
-</pre></div>
-<p>I hope this meandering ramble of a post has been useful. It has cleared up some
-issues for me and I hope it will help some people in the early stages of their
-Haskell journey to see something broken down like this.</p>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+terminal user interface for selecting a ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

@@ -1,5 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-31T00:00:00+13:00</updated><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-21T00:00:00+13:00</updated><entry><title>Haskell's Sandbox &amp; Python's Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="alternate"></link><updated>2013-11-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-21:posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</id><summary type="html">&lt;p&gt;Cabal's sandboxes for Haskell provide an excellent way to contain the
+dependencies of a project and help to resolve clashes with other projects you
+might have on the system.&lt;/p&gt;
+&lt;p&gt;They work brilliantly with libraries which are automatically picked up by
+&lt;tt class="docutils literal"&gt;cabal build&lt;/tt&gt; but they lack decent support for the executables which can some
+with Haskell packages such as &lt;a class="reference external" href="http://hackage.haskell.org/package/hlint"&gt;hlint&lt;/a&gt; and &lt;a class="reference external" href="http://hackage.haskell.org/package/scan"&gt;scan&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Enter Python's &lt;a class="reference external" href="http://www.virtualenv.org/en/latest/"&gt;virtualenv&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Python ecosystem has a similar sandbox tool called virtualenv which is used
+for managing dependencies in a isolated manner on a per-project basis.
+Fortunately, virtualenv has solved the executables issue by creating shell
+scripts to be sourced when using the virtual environment which configure the
+user's shell/environment appropriately.&lt;/p&gt;
+&lt;p&gt;Both Cabal Sandboxes and Python virtualenv have a similar &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt; inspired
+layout including a &lt;tt class="docutils literal"&gt;bin&lt;/tt&gt; directory for the executables so we can use the setup
+scripts from the virtualenv to put the sandbox executable directory in our
+environment if we make our sandbox into a virtualenv directory as well.&lt;/p&gt;
+&lt;p&gt;Fortunately, this is pretty easy. To create a sandbox folder with a specific
+name, we use the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--sandbox&lt;/span&gt;&lt;/tt&gt; flag. For example, to create a sandbox called
+&lt;tt class="docutils literal"&gt;projectenv&lt;/tt&gt; we run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal sandbox init --sandbox=projectenv
+&lt;/pre&gt;
+&lt;p&gt;And then to overlay a Python virtualenv setup over this directory we run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ virtualenv projectenv
+&lt;/pre&gt;
+&lt;p&gt;Simple as that.&lt;/p&gt;
+&lt;p&gt;Now, when we install hlint:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ cabal install hlint
+&lt;/pre&gt;
+&lt;p&gt;And initialise our Python virtualenv:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ source projectenv/bin/activate
+&lt;/pre&gt;
+&lt;p&gt;Then we get our sandbox hlint on the path:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ which hlint
+/home/user/code/project/projectenv/bin/hlint
+&lt;/pre&gt;
+&lt;p&gt;Done!&lt;/p&gt;
+</summary><category term="haskell"></category></entry><entry><title>Generating a Broken UTF-8 File</title><link href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/" rel="alternate"></link><updated>2013-11-01T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-01:posts/2013/11/01/generating-a-broken-utf-8-file/</id><summary type="html">&lt;div class="section" id="backstory"&gt;
+&lt;h2&gt;Backstory&lt;/h2&gt;
+&lt;p&gt;Occasionally when looking after &lt;a class="reference external" href="https://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/michaeljones/sphinx-to-github"&gt;Sphinx-to-Github&lt;/a&gt; I get bug reports
+associated with unicode handling errors. Awkwardly, I do not have a huge amount of
+experience with unicode.&lt;/p&gt;
+&lt;p&gt;Still, I'm keen that these plugins handle unicode properly or at least provide
+reasonable error messages when things go wrong. However it is not completely
+obvious how to generate invalid files to test these issues.&lt;/p&gt;
+&lt;p&gt;After a recent bug, I dug a little deeper into how to do this. There might be
+much better ways but this is the path I took.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="required-information"&gt;
+&lt;h2&gt;Required Information&lt;/h2&gt;
+&lt;p&gt;A little googling revealed this &lt;a class="reference external" href="http://stackoverflow.com/questions/13241244/example-of-a-broken-unicode-text"&gt;stackoverflow question&lt;/a&gt; which points to the
+Wikipedia &lt;a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8"&gt;UTF-8&lt;/a&gt; page which has a section on &lt;a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8#Invalid%5Fbyte%5Fsequences"&gt;invalid codes&lt;/a&gt; for a UTF-8 page.&lt;/p&gt;
+&lt;p&gt;The page also has a &lt;a class="reference external" href="http://en.wikipedia.org/wiki/UTF-8#Codepage%5Flayout"&gt;table&lt;/a&gt; of UTF-8 values and includes red boxes for the invalid
+charater codes. I don't fully follow the table but underneath it points out that
+the first two invalid codes are: &lt;tt class="docutils literal"&gt;C0&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;C1&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="preparing-the-file"&gt;
+&lt;h2&gt;Preparing the File&lt;/h2&gt;
+&lt;p&gt;So armed with this information what can we do? Let's prepare a basic file to
+work with. I'm interest in having a test case for &lt;a class="reference external" href="https://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; so I want some source
+code with some invalid characters:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+/*! \brief This is a test . */
+class Test {}
+&lt;/pre&gt;
+&lt;p&gt;This is a very basic C++ class and a doxygen comment. We leave a placeholder
+&lt;tt class="docutils literal"&gt;.&lt;/tt&gt; in there for us to replace with invalid data. This should be saved as
+UTF-8 from your favourite text editor. You can do this from &lt;tt class="docutils literal"&gt;vim&lt;/tt&gt; with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+:set fileencoding=utf8
+:w unicodefile.cpp
+&lt;/pre&gt;
+&lt;p&gt;Just to check that this reads fine into Python, we can run:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ python -c &amp;quot;import codecs; codecs.open('unicodefile.cpp', 'r', 'utf-8').readlines()
+&lt;/pre&gt;
+&lt;p&gt;And it executes withouth issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="breaking-the-file"&gt;
+&lt;h2&gt;Breaking the file&lt;/h2&gt;
+&lt;p&gt;Now you want to open this file in a hex editor. After a little googling, I've
+installed &lt;a class="reference external" href="http://www.kde.org/applications/utilities/okteta"&gt;Okteta&lt;/a&gt; on my Ubuntu machine as it is easily available. Opening the
+file, you get a view like this:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+2F 2A 21 20  5C 62 72 69  65 66 20 54  68 69 73 20 | /*! \brief This
+69 73 20 61  20 74 65 73  74 20 2E 20  2A 2F 0A 63 | is a test . */.c
+6C 61 73 73  20 54 65 73  74 20 7B 7D  0A          | lass Test {}.
+&lt;/pre&gt;
+&lt;p&gt;This is the hexadecimal layout of the bytes in our file on the left and the
+ASCII interpretation of these values on the right. The ASCII representation
+actually shows new lines as &lt;tt class="docutils literal"&gt;.&lt;/tt&gt; characters which makes it harder to see quite
+what is going on but the placeholder &lt;tt class="docutils literal"&gt;.&lt;/tt&gt; we added is relatively clearly
+visible as the one immediately after the word &lt;tt class="docutils literal"&gt;test&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;If we highlight that placeholder &lt;tt class="docutils literal"&gt;.&lt;/tt&gt;, then the program highlights the &lt;tt class="docutils literal"&gt;2E&lt;/tt&gt;
+entry in the third block of the second line of the left hand hexadecimal
+representation. If we want to add our invalid data we can select the &lt;tt class="docutils literal"&gt;2E&lt;/tt&gt; and
+enter one of the invalid values from the Wikipedia article, eg. &lt;tt class="docutils literal"&gt;C0&lt;/tt&gt;. Do this
+and save it as &lt;tt class="docutils literal"&gt;brokenfile.cpp&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Now if we run our test on this file, we get:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+$ python -c &amp;quot;import codecs; codecs.open('brokenfile.cpp', 'r', 'utf-8').readlines()&amp;quot;
+Traceback (most recent call last):
+  File &amp;quot;&amp;lt;string&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt;
+  File &amp;quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&amp;quot;, line 679, in readlines
+    return self.reader.readlines(sizehint)
+  File &amp;quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&amp;quot;, line 588, in readlines
+    data = self.read()
+  File &amp;quot;/home/mike/root/projects/profile/source/python-2.7.4/lib/python2.7/codecs.py&amp;quot;, line 477, in read
+    newchars, decodedbytes = self.decode(data, self.errors)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xc0 in position 26: invalid start byte
+&lt;/pre&gt;
+&lt;p&gt;Yay, it's broken and will act as a good test case for checking that our code can
+handle invalid input and provide useful error messages.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="unicode"></category></entry><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master and do a new

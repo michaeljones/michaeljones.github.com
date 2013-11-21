@@ -24,7 +24,100 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/">Journal - Day 19</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/">Haskell's Sandbox &amp; Python's Virtualenv</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-11-21T00:00:00">
+                Thu 21 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
+</footer><!-- /.post-info --><p>Cabal's sandboxes for Haskell provide an excellent way to contain the
+dependencies of a project and help to resolve clashes with other projects you
+might have on the system.</p>
+<p>They work brilliantly with libraries which are automatically picked up by
+<tt class="docutils literal">cabal build</tt> but they lack decent support for the executables which can some
+with Haskell packages such as <a class="reference external" href="http://hackage.haskell.org/package/hlint">hlint</a> and <a class="reference external" href="http://hackage.haskell.org/package/scan">scan</a>.</p>
+<p>Enter Python's <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>.</p>
+<p>The Python ecosystem has a similar sandbox tool called virtualenv which is used
+for managing dependencies in a isolated manner on a per-project basis.
+Fortunately, virtualenv has solved the executables issue by creating shell
+scripts to be sourced when using the virtual environment which configure the
+user's shell/environment appropriately.</p>
+<p>Both Cabal Sandboxes and Python virtualenv have a similar <tt class="docutils literal">/usr</tt> inspired
+layout including a <tt class="docutils literal">bin</tt> directory for the executables so we can use the setup
+scripts from the virtualenv to put the sandbox executable directory in our
+environment if we make our sandbox into a virtualenv directory as well.</p>
+<p>Fortunately, this is pretty easy. To create a sandbox folder with a specific
+name, we use the <tt class="docutils literal"><span class="pre">--sandbox</span></tt> flag. For example, to create a sandbox called
+<tt class="docutils literal">projectenv</tt> we run:</p>
+<pre class="literal-block">
+$ cabal sandbox init --sandbox=projectenv
+</pre>
+<p>And then to overlay a Python virtualenv setup over this directory we run:</p>
+<pre class="literal-block">
+$ virtualenv projectenv
+</pre>
+<p>Simple as that.</p>
+<p>Now, when we install hlint:</p>
+<pre class="literal-block">
+$ cabal install hlint
+</pre>
+<p>And initialise our Python virtualenv:</p>
+<pre class="literal-block">
+$ source projectenv/bin/activate
+</pre>
+<p>Then we get our sandbox hlint on the path:</p>
+<pre class="literal-block">
+$ which hlint
+/home/user/code/project/projectenv/bin/hlint
+</pre>
+<p>Done!</p>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/" rel="bookmark"
+                           title="Permalink to Generating a Broken UTF-8 File">Generating a Broken UTF-8 File</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-11-01T00:00:00">
+                Fri 01 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/unicode.html">unicode</a></p>
+</footer><!-- /.post-info -->                <div class="section" id="backstory">
+<h2>Backstory</h2>
+<p>Occasionally when looking after <a class="reference external" href="https://github.com/michaeljones/breathe">Breathe</a> and <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">Sphinx-to-Github</a> I get bug reports
+associated with unicode handling errors. Awkwardly, I do not have a huge amount of
+experience with unicode.</p>
+<p>Still, I'm keen that these plugins handle unicode properly or at least provide
+reasonable error messages when things go wrong ...</p></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="bookmark"
+                           title="Permalink to Journal - Day 19">Journal - Day 19</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-10-31T00:00:00">
                 Thu 31 October 2013
@@ -35,7 +128,7 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
 
-</footer><!-- /.post-info --><div class="section" id="intentions">
+</footer><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Review work on <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> from yesterday, merge results into master and do a new
@@ -49,43 +142,10 @@ PyPI release.</li>
 <ul>
 <li><p class="first">Released <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> 1.1.0 on <a class="reference external" href="https://pypi.python.org/pypi/breathe">PyPI</a>.</p>
 </li>
-<li><p class="first">Read the introduction and first chapter of <a class="reference external" href="http://book.realworldhaskell.org/read/">Real World Haskell</a>.</p>
-</li>
-<li><p class="first">Written a basic example of working with the <a class="reference external" href="http://hackage.haskell.org/package/base-4.6.0.1/docs/Data-IORef.html">IORef</a> type:</p>
-<div class="highlight"><pre><span class="kr">import</span> <span class="k">qualified</span> <span class="nn">Data.IORef</span> <span class="k">as</span> <span class="n">R</span>
-
-<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-
-    <span class="c1">-- Create a new IORef for handling a mutable number</span>
-    <span class="n">intioref</span> <span class="ow">&lt;-</span> <span class="kt">R</span><span class="o">.</span><span class="n">newIORef</span> <span class="mi">5</span>
-
-    <span class="c1">-- Read the number</span>
-    <span class="n">i</span> <span class="ow">&lt;-</span> <span class="kt">R</span><span class="o">.</span><span class="n">readIORef</span> <span class="n">intioref</span>
-
-    <span class="c1">-- Print the number</span>
-    <span class="n">print</span> <span class="n">i</span>
-
-    <span class="c1">-- Increment the number in place</span>
-    <span class="kt">R</span><span class="o">.</span><span class="n">writeIORef</span> <span class="n">intioref</span> <span class="o">$</span> <span class="n">succ</span> <span class="n">i</span>
-
-    <span class="c1">-- Prin the number</span>
-    <span class="kt">R</span><span class="o">.</span><span class="n">readIORef</span> <span class="n">intioref</span> <span class="o">&gt;&gt;=</span> <span class="n">print</span>
-
-    <span class="n">return</span> <span class="nb">()</span>
-</pre></div>
-<p>I need to dig some more to attempt to understand what is actually going on and
-the best way to think about it.</p>
-</li>
-<li><p class="first">Wrote a simple <a class="reference external" href="https://github.com/Everzen/RigControls/pull/4">undo stack</a> for the <a class="reference external" href="https://github.com/Everzen/RigControls">RigControls</a> project.</p>
-</li>
-</ul>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<li><p class="first">Read the introduction and first ...</p></li></ul></div>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
