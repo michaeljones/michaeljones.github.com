@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/video.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-09T00:00:00+13:00</updated><entry><title>Video: Rust - InfoQ</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/" rel="alternate"></link><updated>2013-10-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-09:posts/2013/10/09/video-rust-infoq/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Rust"&gt;Short talk&lt;/a&gt; about the Rust
+<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/video.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-24T00:00:00+13:00</updated><entry><title>Video: Simple Made Easy</title><link href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/" rel="alternate"></link><updated>2013-11-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-24:posts/2013/11/24/video-simple-made-easy/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy"&gt;A talk&lt;/a&gt; from &lt;a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/"&gt;Rich Hickey's Greatest Hits&lt;/a&gt; in which he tries to define a
+difference between easy and simple and the importance of the latter. He
+highlights various elements of a programmer's toolkit which promote simplicity
+within your code base.&lt;/p&gt;
+&lt;p&gt;It is definitely in favour of functional programming approaches, in particular
+aspects of Clojure, unsurprisingly, and Haskell. Certainly makes me want to try
+to pick up Clojure after Haskell.&lt;/p&gt;
+&lt;div class="section" id="queues"&gt;
+&lt;h2&gt;Queues&lt;/h2&gt;
+&lt;p&gt;A particular 'Ah-ha' moment for me is where he emphasises the use of queues to
+decouple two parts of a system. He recommends them over having part &lt;tt class="docutils literal"&gt;A&lt;/tt&gt; call
+directly into part &lt;tt class="docutils literal"&gt;B&lt;/tt&gt;. Whilst he does not go into detail on the concept, I
+assume you have part &lt;tt class="docutils literal"&gt;A&lt;/tt&gt; pushing items on to the queue and part &lt;tt class="docutils literal"&gt;B&lt;/tt&gt; reading
+out of the queue to find its next workload.&lt;/p&gt;
+&lt;p&gt;This is new to me as an idea but his phrasing: &amp;quot;if you're not doing this, start
+doing it now&amp;quot;, reminds of the exactly what I resort to when I try to convey
+aspects of programming that I consider important. Some ideas grow on you to seem
+so critical that you just want people to embrace them now and learn the
+importance for themselves through their own experience.&lt;/p&gt;
+&lt;p&gt;That said, there is a huge amount to take away from this talk. The simple vs
+easy division puts words to feeling I've had for a while and what frustrates me
+in subtle ways about the way some people program.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="haskell"></category></entry><entry><title>Video: Rust - InfoQ</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/" rel="alternate"></link><updated>2013-10-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-09:posts/2013/10/09/video-rust-infoq/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Rust"&gt;Short talk&lt;/a&gt; about the Rust
 programming language from Mozilla. Excellent broad overview of the language
 which gives a feel for what inspired it and what it is trying to achieve.&lt;/p&gt;
 &lt;p&gt;To a C++ programmer that is growing frustrated with the growing complexity of

@@ -24,7 +24,54 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/">Haskell's Sandbox &amp; Python's Virtualenv</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/">Video: Simple Made Easy</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2013-11-24T00:00:00">
+                Sun 24 November 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
+</footer><!-- /.post-info --><p><a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy">A talk</a> from <a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/">Rich Hickey's Greatest Hits</a> in which he tries to define a
+difference between easy and simple and the importance of the latter. He
+highlights various elements of a programmer's toolkit which promote simplicity
+within your code base.</p>
+<p>It is definitely in favour of functional programming approaches, in particular
+aspects of Clojure, unsurprisingly, and Haskell. Certainly makes me want to try
+to pick up Clojure after Haskell.</p>
+<div class="section" id="queues">
+<h2>Queues</h2>
+<p>A particular 'Ah-ha' moment for me is where he emphasises the use of queues to
+decouple two parts of a system. He recommends them over having part <tt class="docutils literal">A</tt> call
+directly into part <tt class="docutils literal">B</tt>. Whilst he does not go into detail on the concept, I
+assume you have part <tt class="docutils literal">A</tt> pushing items on to the queue and part <tt class="docutils literal">B</tt> reading
+out of the queue to find its next workload.</p>
+<p>This is new to me as an idea but his phrasing: &quot;if you're not doing this, start
+doing it now&quot;, reminds of the exactly what I resort to when I try to convey
+aspects of programming that I consider important. Some ideas grow on you to seem
+so critical that you just want people to embrace them now and learn the
+importance for themselves through their own experience.</p>
+<p>That said, there is a huge amount to take away from this talk. The simple vs
+easy division puts words to feeling I've had for a while and what frustrates me
+in subtle ways about the way some people program.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="bookmark"
+                           title="Permalink to Haskell's Sandbox & Python's Virtualenv">Haskell's Sandbox &amp; Python's Virtualenv</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-11-21T00:00:00">
                 Thu 21 November 2013
@@ -35,53 +82,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info --><p>Cabal's sandboxes for Haskell provide an excellent way to contain the
+</footer><!-- /.post-info -->                <p>Cabal's sandboxes for Haskell provide an excellent way to contain the
 dependencies of a project and help to resolve clashes with other projects you
 might have on the system.</p>
 <p>They work brilliantly with libraries which are automatically picked up by
-<tt class="docutils literal">cabal build</tt> but they lack decent support for the executables which can some
-with Haskell packages such as <a class="reference external" href="http://hackage.haskell.org/package/hlint">hlint</a> and <a class="reference external" href="http://hackage.haskell.org/package/scan">scan</a>.</p>
-<p>Enter Python's <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>.</p>
-<p>The Python ecosystem has a similar sandbox tool called virtualenv which is used
-for managing dependencies in a isolated manner on a per-project basis.
-Fortunately, virtualenv has solved the executables issue by creating shell
-scripts to be sourced when using the virtual environment which configure the
-user's shell/environment appropriately.</p>
-<p>Both Cabal Sandboxes and Python virtualenv have a similar <tt class="docutils literal">/usr</tt> inspired
-layout including a <tt class="docutils literal">bin</tt> directory for the executables so we can use the setup
-scripts from the virtualenv to put the sandbox executable directory in our
-environment if we make our sandbox into a virtualenv directory as well.</p>
-<p>Fortunately, this is pretty easy. To create a sandbox folder with a specific
-name, we use the <tt class="docutils literal"><span class="pre">--sandbox</span></tt> flag. For example, to create a sandbox called
-<tt class="docutils literal">projectenv</tt> we run:</p>
-<pre class="literal-block">
-$ cabal sandbox init --sandbox=projectenv
-</pre>
-<p>And then to overlay a Python virtualenv setup over this directory we run:</p>
-<pre class="literal-block">
-$ virtualenv projectenv
-</pre>
-<p>Simple as that.</p>
-<p>Now, when we install hlint:</p>
-<pre class="literal-block">
-$ cabal install hlint
-</pre>
-<p>And initialise our Python virtualenv:</p>
-<pre class="literal-block">
-$ source projectenv/bin/activate
-</pre>
-<p>Then we get our sandbox hlint on the path:</p>
-<pre class="literal-block">
-$ which hlint
-/home/user/code/project/projectenv/bin/hlint
-</pre>
-<p>Done!</p>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<tt class="docutils literal">cabal build</tt> but they lack decent support for the ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
