@@ -1,5 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>DevBlog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-10-31T00:00:00+13:00</updated><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-29T00:00:00+13:00</updated><entry><title>Journal - Day 22</title><link href="http://michaeljones.github.io/blog/posts/2013/11/29/journal-day-22/" rel="alternate"></link><updated>2013-11-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-29:posts/2013/11/29/journal-day-22/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 4 and read chapter 5 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Investigate HTTP libraries in Haskell for requesting information from the
+Github Rest API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read chapters 4 &amp;amp; 5.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Looked into using the &lt;a class="reference external" href="http://hackage.haskell.org/package/HTTP"&gt;HTTP&lt;/a&gt; Haskell library but that doesn't handle HTTPs
+which is required for Github's API. Looked into &lt;a class="reference external" href="http://hackage.haskell.org/package/http-conduit"&gt;http-conduit&lt;/a&gt; which handles
+HTTPs but the &lt;a class="reference external" href="http://hackage.haskell.org/package/http-conduit-1.9.5.2/docs/Network-HTTP-Conduit.html#v:simpleHttp"&gt;simpleHttp&lt;/a&gt; function in that fails with only
+&lt;tt class="docutils literal"&gt;InternalIOException&lt;/tt&gt; which doesn't help much.&lt;/p&gt;
+&lt;p&gt;Ended up trying to use the &lt;a class="reference external" href="http://hackage.haskell.org/package/github"&gt;github&lt;/a&gt; package from Hackage which handles the HTTP
+requests for you but that seems to be tripping over the content of what is
+returned so needs more investigation to understand what is going on.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 21</title><link href="http://michaeljones.github.io/blog/posts/2013/11/28/journal-day-21/" rel="alternate"></link><updated>2013-11-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-28:posts/2013/11/28/journal-day-21/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 3 and read chapters 4 &amp;amp; 5 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Investigate adding Github issues and pull requests information to project
+browser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Finished chapter 3 and half of chapter 4. I forgot how long they are.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Started initial investigations in github issues api. Primarily by looking
+through the &lt;a class="reference external" href="http://developer.github.com/v3/issues"&gt;developer documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Watched a talk called &lt;a class="reference external" href="http://www.infoq.com/presentations/8-lines-code-refactoring"&gt;8 Lines of Code&lt;/a&gt; which focussed on arguing against the
+use of layers of magic in Java code when the end goals can be achieved with
+sensible refactorings of the original code. A convincing argument arching over
+some concepts I am familiar with and pushing things a little further. I am a
+bit of fan of factories but can see the logic here of replacing them with
+lambdas where possible.&lt;/p&gt;
+&lt;p&gt;Factories, as I use them, are normally to bundle up some state and provide an
+interface for creating objects which need that state. Factory classes are the
+go to tool for this in languages which don't provide currying, closures or
+first class functions. In languages like C++98, objects are more composable
+than functions so it makes sense to make a lot of things into objects as
+composability is a key tool in handling complexity in a growing system. As
+such I use instances of Factory classes for managing object creation and other
+concepts. The talk's speaker argues that a Factory is an anti-pattern
+primarily based on the amount of boiler plate you have to churn out for one in
+C++ or particular Java. The preference for using closures or partially
+function application is based on the reward of stripping out this boiler plate
+whilst maintaining much the same functionality.&lt;/p&gt;
+&lt;p&gt;The only downside I can see involves wondering how these closures appear in
+stacktraces when things go wrong. Factories do provide a certain documentation
+of intent in that scenario. Balancing that is my experience knowing I've
+written quite a few nearly pointless factories in my time and stripping them
+away in favour of a single line function application where possible is a
+tempting prospect.&lt;/p&gt;
+&lt;p&gt;A similar theme is taken up by Jack Diederich in his &lt;a class="reference external" href="https://www.youtube.com/watch?v=o9pEzgHorH0"&gt;Stop Writing Classes&lt;/a&gt;
+talk where he rails against single method classes which can be replaced by
+closures and partial application. He is quite invested in this approach as the
+author of the functools module in the Python standard library. Personally, I
+think he takes some of the examples to extreme and loses the shape and self
+documenting nature that classes can bring to code in a quest for maximum reuse
+and minimal line counts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Listened to the &lt;a class="reference external" href="http://mostlyerlang.com"&gt;Mostly Erlang&lt;/a&gt; podcast on &lt;a class="reference external" href="http://mostlyerlang.com/2013/11/27/023-yesod-and-fp-complete/"&gt;Yesod and FP Complete&lt;/a&gt;. It
+provides an interesting overview of the motivation behind Yesod and FP
+Complete along with some general Haskell banter. Excellent for general
+knowledge and building up a bigger picture of Haskell.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 20</title><link href="http://michaeljones.github.io/blog/posts/2013/11/27/journal-day-20/" rel="alternate"></link><updated>2013-11-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-27:posts/2013/11/27/journal-day-20/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master.&lt;/li&gt;
+&lt;li&gt;Review first chapter of &lt;a class="reference external" href="http://book.realworldhaskell.org/read/"&gt;Real World Haskell&lt;/a&gt; and read the next.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Merged &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; changes with a few additional clean ups into master and
+pushed.&lt;/li&gt;
+&lt;li&gt;Read first and second chapter of &lt;a class="reference external" href="http://book.realworldhaskell.org/read/"&gt;Real World Haskell&lt;/a&gt; and some of chapter 3.&lt;/li&gt;
+&lt;li&gt;Watched &lt;a class="reference external" href="https://www.youtube.com/watch?v=u404SLJj7ig"&gt;Code Rush&lt;/a&gt; documentary on Youtube. An interesting slice of history
+though I found it some what of a tease to the lack of detail on the technical
+side which left me with questions but it has an understandable focus for its
+intended audience and subject.&lt;/li&gt;
+&lt;li&gt;Came across &lt;a class="reference external" href="http://hello.processing.org/editor/"&gt;Hello Processing&lt;/a&gt; which looks pretty cool as an introduction to
+programming or at least I enjoyed the presentation of the first section.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-31:posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master and do a new
