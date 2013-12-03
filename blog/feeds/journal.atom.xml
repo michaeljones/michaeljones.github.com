@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-29T00:00:00+13:00</updated><entry><title>Journal - Day 22</title><link href="http://michaeljones.github.io/blog/posts/2013/11/29/journal-day-22/" rel="alternate"></link><updated>2013-11-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-29:posts/2013/11/29/journal-day-22/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-03T00:00:00+13:00</updated><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-03:posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read chapter 8 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Refactor &lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; program source code to introduce modules.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read half of chapter 8.&lt;/li&gt;
+&lt;li&gt;Refactored source code to split separate concerns into modules. This reduces
+the import clutter at the top of the &lt;tt class="docutils literal"&gt;Main.hs&lt;/tt&gt; and makes things a little
+more manageable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 23</title><link href="http://michaeljones.github.io/blog/posts/2013/12/02/journal-day-23/" rel="alternate"></link><updated>2013-12-02T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-02:posts/2013/12/02/journal-day-23/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read chapter 6 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Attempt to debug why issue query with github hackage package is failing.&lt;/li&gt;
+&lt;li&gt;Attempt to install Autodesk Maya 2014 on Ubuntu 13.04.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read chapter 6 and chapter 7.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Not exactly sure why the github package query was failing but grabbing the
+latest source for the package from github and using that instead seemed to
+resolve the issue. Adding source to a cabal sandbox can be done with the
+following steps:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+# In sandbox
+$ mkdir source-packages
+$ cd source-packages
+$ git clone https://github.com/fpco/github.git
+$ cd ..
+$ cabal sandbox add-source source-packages/github
+$ cabal install --dependencies-only
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Failed to get around to install Maya 2014.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 22</title><link href="http://michaeljones.github.io/blog/posts/2013/11/29/journal-day-22/" rel="alternate"></link><updated>2013-11-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-29:posts/2013/11/29/journal-day-22/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 4 and read chapter 5 of Real World Haskell.&lt;/li&gt;
