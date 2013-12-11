@@ -1,5 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-03T00:00:00+13:00</updated><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-03:posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-12T00:00:00+13:00</updated><entry><title>Video: Developers, Entrepreneurs and Depression</title><link href="http://michaeljones.github.io/blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/" rel="alternate"></link><updated>2013-12-12T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-12:posts/2013/12/12/video-developers-entrepreneurs-and-depression/</id><summary type="html">&lt;p&gt;An excellent talk about going through and dealing with mental illness in the
+form of Type II Bipolar and ADHD. I don't feel that I have had to deal with
+these issues myself nor am I aware of any close friends going through it but I
+am guilty of not understanding it well. Greg Baugues opens up the door a little
+to allow me begin to see and understand what it might be to deal with these
+conditions.&lt;/p&gt;
+&lt;p&gt;He has given the talk a number of times as detailed and linked to on his
+&lt;a class="reference external" href="http://blog.baugues.com/speaking"&gt;speaking page&lt;/a&gt;.&lt;/p&gt;
+</summary></entry><entry><title>Journal - Day 27</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/journal-day-27/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-09:posts/2013/12/09/journal-day-27/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Triage issues in the Breathe github project. Figure out what is outstanding
+and what is fixed but neglected.&lt;/li&gt;
+&lt;li&gt;Read chapter 10 of Real World Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Triaged.&lt;/li&gt;
+&lt;li&gt;Read.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Video Round Up</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/video-round-up/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-09:posts/2013/12/09/video-round-up/</id><summary type="html">&lt;p&gt;I've watched a few videos and listened to a few podcasts recently which deserve
+a mention but which I failed to integrate into the journal entries. Mostly from
+the &lt;a class="reference external" href="http://functionaltalks.org"&gt;functionaltalks.org&lt;/a&gt; site.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/06/10/brian-osullivan-running-a-startup-on-haskell/"&gt;Running a Startup on Haskell&lt;/a&gt; - Brian O'Sullivan&lt;/p&gt;
+&lt;blockquote&gt;
+An entertaining and quite casual talk taking an overview of the decisions
+made in using Haskell for a startup. Not technical, I didn't have the slides
+up and didn't feel like I missed anything.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/07/03/katie-miller-superhero-monads/"&gt;Superhero monads&lt;/a&gt; - Katie Miller&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A look into Monads with attempts to illustrate their structure and use in
+particular situations, mostly the &lt;tt class="docutils literal"&gt;Maybe&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;List&lt;/tt&gt; monads. Includes
+reference code in Haskell and Java.&lt;/p&gt;
+&lt;p&gt;It is interesting to see the Java implementations both for how much more
+succinct the Haskell code is but also simply to show that it is possible to
+use the idea of monads in other languages and to get a feel for what that
+looks like.&lt;/p&gt;
+&lt;p&gt;A good talk which happily provides another reference for learning monads and their potential.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/06/24/brian-mckenna-roy-rescuing-javascript-from-itself/"&gt;Roy: rescuing JavaScript from itself&lt;/a&gt; - Brian McKenna&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short but interesting talk of a function language which compiles down to
+Javascript and attempts to tackle some of the short comings in the target
+language.&lt;/p&gt;
+&lt;p&gt;An impressive collection of features insprired by functional languages.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/07/21/wilkes-joiner-functional-reactive-programming/"&gt;Functional Reactive Programming&lt;/a&gt; - Wilkes Joiner&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short introduction to FRP which doesn't necessarily have the time to do it
+justice but is still an interesting watch. I've little experience with GUIs
+and the kinds of event driven problems that the presenter demostrates solving
+but the he makes a good case for the advertised approach being simple,
+understandable and a great deal clearer that nested callbacks.&lt;/p&gt;
+&lt;p&gt;I've no idea how it compares to other solutions to &amp;quot;callback hell&amp;quot; but it
+seems to be backed by a number of big players.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.haskellcast.com/episode/004-simon-marlow-on-parallelism-and-concurrency/"&gt;Simon Marlow on Parallelism and Concurrency&lt;/a&gt; - Haskell Cast&lt;/p&gt;
+&lt;blockquote&gt;
+Podcast with Simon Marlow; covering his move to Facebook and his work on the
+free book on Parallelism and Concurrency in Haskell.&lt;/blockquote&gt;
+</summary></entry><entry><title>Journal - Day 26</title><link href="http://michaeljones.github.io/blog/posts/2013/12/05/journal-day-26/" rel="alternate"></link><updated>2013-12-05T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-05:posts/2013/12/05/journal-day-26/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read chapter 9 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Figure out how to replace the text in Group widget in the Jump interface once
+we have information back from the Github API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read chapter 9 of Real World Haskell.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Did not get around to actually querying the Github API but created functions
+for formatting the information panel in the Jump UI which are ready to take
+the Github data.&lt;/p&gt;
+&lt;p&gt;Involved my first attempt to right something in the wild in the Maybe monad.
+I've done a lot in the IO Monad but I don't really understand the role of bind
+in that situation. Took a while to get a feel for it and how best to express
+the functions and whether they should know about the Maybe Monad or be lifted
+into it.&lt;/p&gt;
+&lt;p&gt;It also became a lesson in knowing when you want to recover from errors and
+when you want to just let the Nothing state of the Maybe propagate. I feel
+like my situation had places where bind was not the best choice and something
+which took a Nothing and propagated a default value would be preferable. Still
+interesting to experiment with it and feel how seemlessly it fits in to the
+Haskell experience.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 25</title><link href="http://michaeljones.github.io/blog/posts/2013/12/04/journal-day-25/" rel="alternate"></link><updated>2013-12-04T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-04:posts/2013/12/04/journal-day-25/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 8 of Real World Haskell and read chapter 9.&lt;/li&gt;
+&lt;li&gt;Try to figure out how to have a panel in a vty-ui interface in which the
+content can easily be changed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Busy day so only finished chapter 8.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Discovered that vty-ui has a group concept for parts of the UI which need to
+switch between different widgets. Unfortunately the API involves the Group
+structure being parametrised on its contents so you can have a Group with
+different types of widgets in different pages within it.&lt;/p&gt;
+&lt;p&gt;Fortunately the FormattedText type in vty-ui will most likely prove
+sufficient for displaying some basic information.&lt;/p&gt;
+&lt;p&gt;In an attempt to see how one might deal with the situation in Haskell I came
+across &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/Existential_type"&gt;Existential Types&lt;/a&gt; which seems like they would do the job and there
+is even a &lt;a class="reference external" href="http://lukepalmer.wordpress.com/2010/01/24/haskell-antipattern-existential-typeclass/"&gt;blog post&lt;/a&gt; referencing them in vty-ui but I can't see any trace in
+the current API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-03:posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read chapter 8 of Real World Haskell.&lt;/li&gt;

@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-03T00:00:00+13:00</updated><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-03:posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/journal.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-09T00:00:00+13:00</updated><entry><title>Journal - Day 27</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/journal-day-27/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-09:posts/2013/12/09/journal-day-27/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Triage issues in the Breathe github project. Figure out what is outstanding
+and what is fixed but neglected.&lt;/li&gt;
+&lt;li&gt;Read chapter 10 of Real World Haskell.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Triaged.&lt;/li&gt;
+&lt;li&gt;Read.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 26</title><link href="http://michaeljones.github.io/blog/posts/2013/12/05/journal-day-26/" rel="alternate"></link><updated>2013-12-05T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-05:posts/2013/12/05/journal-day-26/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Read chapter 9 of Real World Haskell.&lt;/li&gt;
+&lt;li&gt;Figure out how to replace the text in Group widget in the Jump interface once
+we have information back from the Github API.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Read chapter 9 of Real World Haskell.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Did not get around to actually querying the Github API but created functions
+for formatting the information panel in the Jump UI which are ready to take
+the Github data.&lt;/p&gt;
+&lt;p&gt;Involved my first attempt to right something in the wild in the Maybe monad.
+I've done a lot in the IO Monad but I don't really understand the role of bind
+in that situation. Took a while to get a feel for it and how best to express
+the functions and whether they should know about the Maybe Monad or be lifted
+into it.&lt;/p&gt;
+&lt;p&gt;It also became a lesson in knowing when you want to recover from errors and
+when you want to just let the Nothing state of the Maybe propagate. I feel
+like my situation had places where bind was not the best choice and something
+which took a Nothing and propagated a default value would be preferable. Still
+interesting to experiment with it and feel how seemlessly it fits in to the
+Haskell experience.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 25</title><link href="http://michaeljones.github.io/blog/posts/2013/12/04/journal-day-25/" rel="alternate"></link><updated>2013-12-04T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-04:posts/2013/12/04/journal-day-25/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+&lt;h2&gt;Intentions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Finish chapter 8 of Real World Haskell and read chapter 9.&lt;/li&gt;
+&lt;li&gt;Try to figure out how to have a panel in a vty-ui interface in which the
+content can easily be changed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="results"&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Busy day so only finished chapter 8.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Discovered that vty-ui has a group concept for parts of the UI which need to
+switch between different widgets. Unfortunately the API involves the Group
+structure being parametrised on its contents so you can have a Group with
+different types of widgets in different pages within it.&lt;/p&gt;
+&lt;p&gt;Fortunately the FormattedText type in vty-ui will most likely prove
+sufficient for displaying some basic information.&lt;/p&gt;
+&lt;p&gt;In an attempt to see how one might deal with the situation in Haskell I came
+across &lt;a class="reference external" href="http://www.haskell.org/haskellwiki/Existential_type"&gt;Existential Types&lt;/a&gt; which seems like they would do the job and there
+is even a &lt;a class="reference external" href="http://lukepalmer.wordpress.com/2010/01/24/haskell-antipattern-existential-typeclass/"&gt;blog post&lt;/a&gt; referencing them in vty-ui but I can't see any trace in
+the current API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-03:posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read chapter 8 of Real World Haskell.&lt;/li&gt;

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Journal - Day 25</title>
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Barely Functional Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://michaeljones.github.io/blog/">Barely Functional </a></h1>
+                <nav><ul>
+                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                    <li class="active"><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2013/12/04/journal-day-25/" rel="bookmark"
+           title="Permalink to Journal - Day 25">Journal - Day 25</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-12-04T00:00:00">
+                Wed 04 December 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->      <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Finish chapter 8 of Real World Haskell and read chapter 9.</li>
+<li>Try to figure out how to have a panel in a vty-ui interface in which the
+content can easily be changed.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Busy day so only finished chapter 8.</p>
+</li>
+<li><p class="first">Discovered that vty-ui has a group concept for parts of the UI which need to
+switch between different widgets. Unfortunately the API involves the Group
+structure being parametrised on its contents so you can have a Group with
+different types of widgets in different pages within it.</p>
+<p>Fortunately the FormattedText type in vty-ui will most likely prove
+sufficient for displaying some basic information.</p>
+<p>In an attempt to see how one might deal with the situation in Haskell I came
+across <a class="reference external" href="http://www.haskell.org/haskellwiki/Existential_type">Existential Types</a> which seems like they would do the job and there
+is even a <a class="reference external" href="http://lukepalmer.wordpress.com/2010/01/24/haskell-antipattern-existential-typeclass/">blog post</a> referencing them in vty-ui but I can't see any trace in
+the current API.</p>
+</li>
+</ul>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

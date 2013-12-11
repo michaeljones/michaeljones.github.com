@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Journal - Day 26</title>
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Barely Functional Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://michaeljones.github.io/blog/">Barely Functional </a></h1>
+                <nav><ul>
+                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                    <li class="active"><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2013/12/05/journal-day-26/" rel="bookmark"
+           title="Permalink to Journal - Day 26">Journal - Day 26</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2013-12-05T00:00:00">
+                Thu 05 December 2013
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+
+</footer><!-- /.post-info -->      <div class="section" id="intentions">
+<h2>Intentions</h2>
+<ul class="simple">
+<li>Read chapter 9 of Real World Haskell.</li>
+<li>Figure out how to replace the text in Group widget in the Jump interface once
+we have information back from the Github API.</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h2>Results</h2>
+<ul>
+<li><p class="first">Read chapter 9 of Real World Haskell.</p>
+</li>
+<li><p class="first">Did not get around to actually querying the Github API but created functions
+for formatting the information panel in the Jump UI which are ready to take
+the Github data.</p>
+<p>Involved my first attempt to right something in the wild in the Maybe monad.
+I've done a lot in the IO Monad but I don't really understand the role of bind
+in that situation. Took a while to get a feel for it and how best to express
+the functions and whether they should know about the Maybe Monad or be lifted
+into it.</p>
+<p>It also became a lesson in knowing when you want to recover from errors and
+when you want to just let the Nothing state of the Maybe propagate. I feel
+like my situation had places where bind was not the best choice and something
+which took a Nothing and propagated a default value would be preferable. Still
+interesting to experiment with it and feel how seemlessly it fits in to the
+Haskell experience.</p>
+</li>
+</ul>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

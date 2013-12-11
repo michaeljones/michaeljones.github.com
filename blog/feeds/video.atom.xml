@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/video.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-24T00:00:00+13:00</updated><entry><title>Video: Simple Made Easy</title><link href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/" rel="alternate"></link><updated>2013-11-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-24:posts/2013/11/24/video-simple-made-easy/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy"&gt;A talk&lt;/a&gt; from &lt;a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/"&gt;Rich Hickey's Greatest Hits&lt;/a&gt; in which he tries to define a
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/video.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-12-12T00:00:00+13:00</updated><entry><title>Video: Developers, Entrepreneurs and Depression</title><link href="http://michaeljones.github.io/blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/" rel="alternate"></link><updated>2013-12-12T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-12:posts/2013/12/12/video-developers-entrepreneurs-and-depression/</id><summary type="html">&lt;p&gt;An excellent talk about going through and dealing with mental illness in the
+form of Type II Bipolar and ADHD. I don't feel that I have had to deal with
+these issues myself nor am I aware of any close friends going through it but I
+am guilty of not understanding it well. Greg Baugues opens up the door a little
+to allow me begin to see and understand what it might be to deal with these
+conditions.&lt;/p&gt;
+&lt;p&gt;He has given the talk a number of times as detailed and linked to on his
+&lt;a class="reference external" href="http://blog.baugues.com/speaking"&gt;speaking page&lt;/a&gt;.&lt;/p&gt;
+</summary></entry><entry><title>Video Round Up</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/video-round-up/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-12-09:posts/2013/12/09/video-round-up/</id><summary type="html">&lt;p&gt;I've watched a few videos and listened to a few podcasts recently which deserve
+a mention but which I failed to integrate into the journal entries. Mostly from
+the &lt;a class="reference external" href="http://functionaltalks.org"&gt;functionaltalks.org&lt;/a&gt; site.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/06/10/brian-osullivan-running-a-startup-on-haskell/"&gt;Running a Startup on Haskell&lt;/a&gt; - Brian O'Sullivan&lt;/p&gt;
+&lt;blockquote&gt;
+An entertaining and quite casual talk taking an overview of the decisions
+made in using Haskell for a startup. Not technical, I didn't have the slides
+up and didn't feel like I missed anything.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/07/03/katie-miller-superhero-monads/"&gt;Superhero monads&lt;/a&gt; - Katie Miller&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A look into Monads with attempts to illustrate their structure and use in
+particular situations, mostly the &lt;tt class="docutils literal"&gt;Maybe&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;List&lt;/tt&gt; monads. Includes
+reference code in Haskell and Java.&lt;/p&gt;
+&lt;p&gt;It is interesting to see the Java implementations both for how much more
+succinct the Haskell code is but also simply to show that it is possible to
+use the idea of monads in other languages and to get a feel for what that
+looks like.&lt;/p&gt;
+&lt;p&gt;A good talk which happily provides another reference for learning monads and their potential.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/06/24/brian-mckenna-roy-rescuing-javascript-from-itself/"&gt;Roy: rescuing JavaScript from itself&lt;/a&gt; - Brian McKenna&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short but interesting talk of a function language which compiles down to
+Javascript and attempts to tackle some of the short comings in the target
+language.&lt;/p&gt;
+&lt;p&gt;An impressive collection of features insprired by functional languages.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/07/21/wilkes-joiner-functional-reactive-programming/"&gt;Functional Reactive Programming&lt;/a&gt; - Wilkes Joiner&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A short introduction to FRP which doesn't necessarily have the time to do it
+justice but is still an interesting watch. I've little experience with GUIs
+and the kinds of event driven problems that the presenter demostrates solving
+but the he makes a good case for the advertised approach being simple,
+understandable and a great deal clearer that nested callbacks.&lt;/p&gt;
+&lt;p&gt;I've no idea how it compares to other solutions to &amp;quot;callback hell&amp;quot; but it
+seems to be backed by a number of big players.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.haskellcast.com/episode/004-simon-marlow-on-parallelism-and-concurrency/"&gt;Simon Marlow on Parallelism and Concurrency&lt;/a&gt; - Haskell Cast&lt;/p&gt;
+&lt;blockquote&gt;
+Podcast with Simon Marlow; covering his move to Facebook and his work on the
+free book on Parallelism and Concurrency in Haskell.&lt;/blockquote&gt;
+</summary></entry><entry><title>Video: Simple Made Easy</title><link href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/" rel="alternate"></link><updated>2013-11-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-24:posts/2013/11/24/video-simple-made-easy/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy"&gt;A talk&lt;/a&gt; from &lt;a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/"&gt;Rich Hickey's Greatest Hits&lt;/a&gt; in which he tries to define a
 difference between easy and simple and the importance of the latter. He
 highlights various elements of a programmer's toolkit which promote simplicity
 within your code base.&lt;/p&gt;
