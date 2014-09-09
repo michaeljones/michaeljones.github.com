@@ -25,7 +25,79 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/">Remove Chunks from Your Last Commit</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/">Install Pip on a Fresh Setup</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-09-09T00:00:00">
+                Tue 09 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a><a href="http://michaeljones.github.io/blog/tag/pip.html">pip</a></p>
+</footer><!-- /.post-info --><p>I've recently switch to a fresh Linux machine and needed to begin setting up my
+standard environment. Part of the set up is creating some Python virtual
+environments from which to runs various helpers scripts that I like to have
+access to.</p>
+<p>However, my fresh machine does not have <tt class="docutils literal">pip</tt> installed on it and as I never
+want to <tt class="docutils literal">pip install</tt> modules to my <tt class="docutils literal">/usr</tt> area, I'd rather keep it that
+way <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<p>So we need to install <tt class="docutils literal">pip</tt> on a clean set up. The pip installion
+documentation shows that they provide a <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> script for exactly this
+situation.</p>
+<p>The only trouble is that <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> seems to want to install into <tt class="docutils literal">/usr</tt>
+by default, which is understandable but not what I am after.</p>
+<p>Further to this, I have had no luck with the <tt class="docutils literal"><span class="pre">--install-option</span></tt> flag that is
+advertised by <tt class="docutils literal">python <span class="pre">get-pip.py</span> <span class="pre">-h</span></tt>.</p>
+<p>What does work though is:</p>
+<pre class="literal-block">
+python get-pip.py --user
+</pre>
+<p>Which adopts the Python <em>user scheme</em> for installations which on Linux installs
+to <tt class="docutils literal"><span class="pre">~/.local</span></tt> by default. You can check the install location with:</p>
+<pre class="literal-block">
+python -c &quot;import site; print site.USER_BASE&quot;
+</pre>
+<p>The base directory for the <em>user scheme</em> can be controlled with the
+<tt class="docutils literal">PYTHONUSERBASE</tt> environment variable so we can create a temporary install of
+pip with:</p>
+<pre class="literal-block">
+PYTHONUSERBASE=/tmp/python2.x python get-pip.py --user
+</pre>
+<p>You can then install <tt class="docutils literal">virtualenv</tt> with:</p>
+<pre class="literal-block">
+PYTHONUSERBASE=/tmp/python2.x /tmp/python2.x/bin/pip install --user virtualenv
+</pre>
+<p>Then you can create a proper virtualenv with:</p>
+<pre class="literal-block">
+PYTHONPATH=/tmp/python2.x/lib/python2.7/site-packages /tmp/python2.x/bin/virtualenv ~/myvirtualenv
+</pre>
+<p>And then you have something to work with.</p>
+<p>Having written all this out, maybe there is an easier way. But until I figure
+that out, I have this for reference.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>If I do not have <tt class="docutils literal">pip</tt> installed at the system level then I can only
+run <tt class="docutils literal">pip install</tt> from inside virtualenvs which is nice and contained and so
+there is a little less to worry about.</td></tr>
+</tbody>
+</table>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="bookmark"
+                           title="Permalink to Remove Chunks from Your Last Commit">Remove Chunks from Your Last Commit</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
@@ -36,43 +108,13 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
-</footer><!-- /.post-info --><p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
+</footer><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.</p>
-<p>Sometimes, however, I am not concentrating and I either do a straight <tt class="docutils literal">git
-commit</tt> when I think I can get away with it but can't, or I do <tt class="docutils literal">git add <span class="pre">-p</span></tt>
-and accept the wrong thing before commiting. Either way, I end up with a commit
-that has some changes, or chunks, in it that I don't want.</p>
-<p>Up until recently, I have been doing a <tt class="docutils literal">git reset HEAD^</tt> to completely undo
-the commit and start again. This is a bit of a pain and feels somewhat
-ponderous.</p>
-<p>I would rather generate a pair of patches: one which removes the chunks for the
-last commit and one which adds them as a new commit. This can be awkwardly
-managed by dancing around with <tt class="docutils literal">git revert</tt> and <tt class="docutils literal">git reset</tt>, but I have just
-realised it can be more cleanly achieved with:</p>
-<pre class="literal-block">
-git reset -p HEAD^
-</pre>
-<p>Then selecting the chunks you want to revert. This perfectly creates staged
-changes that undo the chunks and unstaged changes which redo them. You can
-then:</p>
-<pre class="literal-block">
-git commit --amend
-</pre>
-<p>To commit the staged chunks that remove the targetted changes from the previous
-commit and then:</p>
-<pre class="literal-block">
-git commit -a
-</pre>
-<p>To commit the removed changes as a new separate commit. Or if they should be
-split over multiple commits, use <tt class="docutils literal">git commit <span class="pre">-p</span></tt> otherwise you'll be back
-to square one.</p>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>Sometimes, however, I am not concentrating ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
