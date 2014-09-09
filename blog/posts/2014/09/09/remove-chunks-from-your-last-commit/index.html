@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>Haskell's Sandbox & Python's Virtualenv</title>
+        <title>Remove Chunks from Your Last Commit</title>
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="mjones dev blog Atom Feed" />
 
@@ -26,62 +26,52 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="bookmark"
-           title="Permalink to Haskell's Sandbox & Python's Virtualenv">Haskell's Sandbox &amp; Python's Virtualenv</a></h1>
+        <a href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="bookmark"
+           title="Permalink to Remove Chunks from Your Last Commit">Remove Chunks from Your Last Commit</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2013-11-21T00:00:00">
-                Thu 21 November 2013
+        <abbr class="published" title="2014-09-09T00:00:00">
+                Tue 09 September 2014
         </abbr>
 
         <address class="vcard author">
                 By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->      <p>Cabal's sandboxes for Haskell provide an excellent way to contain the
-dependencies of a project and help to resolve clashes with other projects you
-might have on the system.</p>
-<p>They work brilliantly with libraries which are automatically picked up by
-<tt class="docutils literal">cabal build</tt> but they lack decent support for the executables which can some
-with Haskell packages such as <a class="reference external" href="http://hackage.haskell.org/package/hlint">hlint</a> and <a class="reference external" href="http://hackage.haskell.org/package/scan">scan</a>.</p>
-<p>Enter Python's <a class="reference external" href="http://www.virtualenv.org/en/latest/">virtualenv</a>.</p>
-<p>The Python ecosystem has a similar sandbox tool called virtualenv which is used
-for managing dependencies in a isolated manner on a per-project basis.
-Fortunately, virtualenv has solved the executables issue by creating shell
-scripts to be sourced when using the virtual environment which configure the
-user's shell/environment appropriately.</p>
-<p>Both Cabal Sandboxes and Python virtualenv have a similar <tt class="docutils literal">/usr</tt> inspired
-layout including a <tt class="docutils literal">bin</tt> directory for the executables so we can use the setup
-scripts from the virtualenv to put the sandbox executable directory in our
-environment if we make our sandbox into a virtualenv directory as well.</p>
-<p>Fortunately, this is pretty easy. To create a sandbox folder with a specific
-name, we use the <tt class="docutils literal"><span class="pre">--sandbox</span></tt> flag. For example, to create a sandbox called
-<tt class="docutils literal">projectenv</tt> we run:</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
+</footer><!-- /.post-info -->      <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
+over what I am commiting and it allows me to accummulate additional changes, as
+I work, confident that I can commit them separately for a pleasing history.</p>
+<p>Sometimes, however, I am not concentrating and I either do a straight <tt class="docutils literal">git
+commit</tt> when I think I can get away with it but can't, or I do <tt class="docutils literal">git add <span class="pre">-p</span></tt>
+and accept the wrong thing before commiting. Either way, I end up with a commit
+that has some changes, or chunks, in it that I don't want.</p>
+<p>Up until recently, I have been doing a <tt class="docutils literal">git reset HEAD^</tt> to completely undo
+the commit and start again. This is a bit of a pain and feels somewhat
+ponderous.</p>
+<p>I would rather generate a pair of patches: one which removes the chunks for the
+last commit and one which adds them as a new commit. This can be awkwardly
+managed by dancing around with <tt class="docutils literal">git revert</tt> and <tt class="docutils literal">git reset</tt>, but I have just
+realised it can be more cleanly achieved with:</p>
 <pre class="literal-block">
-$ cabal sandbox init --sandbox=projectenv
+git reset -p HEAD^
 </pre>
-<p>And then to overlay a Python virtualenv setup over this directory we run:</p>
+<p>Then selecting the chunks you want to revert. This perfectly creates staged
+changes that undo the chunks and unstaged changes which redo them. You can
+then:</p>
 <pre class="literal-block">
-$ virtualenv projectenv
+git commit --amend
 </pre>
-<p>Simple as that.</p>
-<p>Now, when we install hlint:</p>
+<p>To commit the staged chunks that remove the targetted changes from the previous
+commit and then:</p>
 <pre class="literal-block">
-$ cabal install hlint
+git commit -a
 </pre>
-<p>And initialise our Python virtualenv:</p>
-<pre class="literal-block">
-$ source projectenv/bin/activate
-</pre>
-<p>Then we get our sandbox hlint on the path:</p>
-<pre class="literal-block">
-$ which hlint
-/home/user/code/project/projectenv/bin/hlint
-</pre>
-<p>Done!</p>
+<p>To commit the removed changes as a new separate commit. Or if they should be
+split over multiple commits, use <tt class="docutils literal">git commit <span class="pre">-p</span></tt> otherwise you'll be back
+to square one.</p>
 
     </div><!-- /.entry-content -->
 
