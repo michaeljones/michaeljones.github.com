@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-09T00:00:00+12:00</updated><entry><title>Remove Chunks from Your Last Commit</title><link href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="alternate"></link><updated>2014-09-09T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</id><summary type="html">&lt;p&gt;I tend to use &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; most of the time as I enjoy the granular control
+<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-09T00:00:00+12:00</updated><entry><title>Install Pip on a Fresh Setup</title><link href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/" rel="alternate"></link><updated>2014-09-09T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/install-pip-on-a-fresh-setup/</id><summary type="html">&lt;p&gt;I've recently switch to a fresh Linux machine and needed to begin setting up my
+standard environment. Part of the set up is creating some Python virtual
+environments from which to runs various helpers scripts that I like to have
+access to.&lt;/p&gt;
+&lt;p&gt;However, my fresh machine does not have &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; installed on it and as I never
+want to &lt;tt class="docutils literal"&gt;pip install&lt;/tt&gt; modules to my &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt; area, I'd rather keep it that
+way &lt;a class="footnote-reference" href="#id2" id="id1"&gt;[1]&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So we need to install &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; on a clean set up. The pip installion
+documentation shows that they provide a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;get-pip.py&lt;/span&gt;&lt;/tt&gt; script for exactly this
+situation.&lt;/p&gt;
+&lt;p&gt;The only trouble is that &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;get-pip.py&lt;/span&gt;&lt;/tt&gt; seems to want to install into &lt;tt class="docutils literal"&gt;/usr&lt;/tt&gt;
+by default, which is understandable but not what I am after.&lt;/p&gt;
+&lt;p&gt;Further to this, I have had no luck with the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--install-option&lt;/span&gt;&lt;/tt&gt; flag that is
+advertised by &lt;tt class="docutils literal"&gt;python &lt;span class="pre"&gt;get-pip.py&lt;/span&gt; &lt;span class="pre"&gt;-h&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;What does work though is:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python get-pip.py --user
+&lt;/pre&gt;
+&lt;p&gt;Which adopts the Python &lt;em&gt;user scheme&lt;/em&gt; for installations which on Linux installs
+to &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.local&lt;/span&gt;&lt;/tt&gt; by default. You can check the install location with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+python -c &amp;quot;import site; print site.USER_BASE&amp;quot;
+&lt;/pre&gt;
+&lt;p&gt;The base directory for the &lt;em&gt;user scheme&lt;/em&gt; can be controlled with the
+&lt;tt class="docutils literal"&gt;PYTHONUSERBASE&lt;/tt&gt; environment variable so we can create a temporary install of
+pip with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+PYTHONUSERBASE=/tmp/python2.x python get-pip.py --user
+&lt;/pre&gt;
+&lt;p&gt;You can then install &lt;tt class="docutils literal"&gt;virtualenv&lt;/tt&gt; with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+PYTHONUSERBASE=/tmp/python2.x /tmp/python2.x/bin/pip install --user virtualenv
+&lt;/pre&gt;
+&lt;p&gt;Then you can create a proper virtualenv with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+PYTHONPATH=/tmp/python2.x/lib/python2.7/site-packages /tmp/python2.x/bin/virtualenv ~/myvirtualenv
+&lt;/pre&gt;
+&lt;p&gt;And then you have something to work with.&lt;/p&gt;
+&lt;p&gt;Having written all this out, maybe there is an easier way. But until I figure
+that out, I have this for reference.&lt;/p&gt;
+&lt;table class="docutils footnote" frame="void" id="id2" rules="none"&gt;
+&lt;colgroup&gt;&lt;col class="label" /&gt;&lt;col /&gt;&lt;/colgroup&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td class="label"&gt;&lt;a class="fn-backref" href="#id1"&gt;[1]&lt;/a&gt;&lt;/td&gt;&lt;td&gt;If I do not have &lt;tt class="docutils literal"&gt;pip&lt;/tt&gt; installed at the system level then I can only
+run &lt;tt class="docutils literal"&gt;pip install&lt;/tt&gt; from inside virtualenvs which is nice and contained and so
+there is a little less to worry about.&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</summary><category term="python"></category><category term="pip"></category></entry><entry><title>Remove Chunks from Your Last Commit</title><link href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="alternate"></link><updated>2014-09-09T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</id><summary type="html">&lt;p&gt;I tend to use &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.&lt;/p&gt;
 &lt;p&gt;Sometimes, however, I am not concentrating and I either do a straight &lt;tt class="docutils literal"&gt;git
