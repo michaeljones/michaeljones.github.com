@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Barely Functional</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/article.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2013-11-21T00:00:00+13:00</updated><entry><title>Haskell's Sandbox &amp; Python's Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="alternate"></link><updated>2013-11-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-21:posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</id><summary type="html">&lt;p&gt;Cabal's sandboxes for Haskell provide an excellent way to contain the
+<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/article.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-09T00:00:00+12:00</updated><entry><title>Remove Chunks from Your Last Commit</title><link href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="alternate"></link><updated>2014-09-09T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</id><summary type="html">&lt;p&gt;I tend to use &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; most of the time as I enjoy the granular control
+over what I am commiting and it allows me to accummulate additional changes, as
+I work, confident that I can commit them separately for a pleasing history.&lt;/p&gt;
+&lt;p&gt;Sometimes, however, I am not concentrating and I either do a straight &lt;tt class="docutils literal"&gt;git
+commit&lt;/tt&gt; when I think I can get away with it but can't, or I do &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt;
+and accept the wrong thing before commiting. Either way, I end up with a commit
+that has some changes, or chunks, in it that I don't want.&lt;/p&gt;
+&lt;p&gt;Up until recently, I have been doing a &lt;tt class="docutils literal"&gt;git reset HEAD^&lt;/tt&gt; to completely undo
+the commit and start again. This is a bit of a pain and feels somewhat
+ponderous.&lt;/p&gt;
+&lt;p&gt;I would rather generate a pair of patches: one which removes the chunks for the
+last commit and one which adds them as a new commit. This can be awkwardly
+managed by dancing around with &lt;tt class="docutils literal"&gt;git revert&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;git reset&lt;/tt&gt;, but I have just
+realised it can be more cleanly achieved with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+git reset -p HEAD^
+&lt;/pre&gt;
+&lt;p&gt;Then selecting the chunks you want to revert. This perfectly creates staged
+changes that undo the chunks and unstaged changes which redo them. You can
+then:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+git commit --amend
+&lt;/pre&gt;
+&lt;p&gt;To commit the staged chunks that remove the targetted changes from the previous
+commit and then:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+git commit -a
+&lt;/pre&gt;
+&lt;p&gt;To commit the removed changes as a new separate commit. Or if they should be
+split over multiple commits, use &lt;tt class="docutils literal"&gt;git commit &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; otherwise you'll be back
+to square one.&lt;/p&gt;
+</summary><category term="git"></category></entry><entry><title>Haskell's Sandbox &amp; Python's Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="alternate"></link><updated>2013-11-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-21:blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</id><summary type="html">&lt;p&gt;Cabal's sandboxes for Haskell provide an excellent way to contain the
 dependencies of a project and help to resolve clashes with other projects you
 might have on the system.&lt;/p&gt;
 &lt;p&gt;They work brilliantly with libraries which are automatically picked up by
@@ -40,7 +71,7 @@ $ which hlint
 /home/user/code/project/projectenv/bin/hlint
 &lt;/pre&gt;
 &lt;p&gt;Done!&lt;/p&gt;
-</summary><category term="haskell"></category></entry><entry><title>Generating a Broken UTF-8 File</title><link href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/" rel="alternate"></link><updated>2013-11-01T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-11-01:posts/2013/11/01/generating-a-broken-utf-8-file/</id><summary type="html">&lt;div class="section" id="backstory"&gt;
+</summary><category term="haskell"></category></entry><entry><title>Generating a Broken UTF-8 File</title><link href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/" rel="alternate"></link><updated>2013-11-01T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-01:blog/posts/2013/11/01/generating-a-broken-utf-8-file/</id><summary type="html">&lt;div class="section" id="backstory"&gt;
 &lt;h2&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;Occasionally when looking after &lt;a class="reference external" href="https://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/michaeljones/sphinx-to-github"&gt;Sphinx-to-Github&lt;/a&gt; I get bug reports
 associated with unicode handling errors. Awkwardly, I do not have a huge amount of
@@ -117,7 +148,7 @@ UnicodeDecodeError: 'utf8' codec can't decode byte 0xc0 in position 26: invalid 
 &lt;p&gt;Yay, it's broken and will act as a good test case for checking that our code can
 handle invalid input and provide useful error messages.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="unicode"></category></entry><entry><title>A Beginner's Encounter with a Haskell Library</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-29:posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</id><summary type="html">&lt;p&gt;I am new to Haskell and as a programming exercise I am attempting to rewrite my
+</summary><category term="unicode"></category></entry><entry><title>A Beginner's Encounter with a Haskell Library</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-29:blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</id><summary type="html">&lt;p&gt;I am new to Haskell and as a programming exercise I am attempting to rewrite my
 &lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; utility program which I use to switch between common directories in my
 shell.&lt;/p&gt;
 &lt;p&gt;It is currently written in Python and uses the curses library to provide a
@@ -576,7 +607,7 @@ we came here to do. The final code as we have written it so far looks like:&lt;/
 issues for me and I hope it will help some people in the early stages of their
 Haskell journey to see something broken down like this.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="haskell"></category></entry><entry><title>Setting Up a Haskell Project</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-27:posts/2013/10/27/setting-up-a-haskell-project/</id><summary type="html">&lt;p&gt;This is an attempt to share the my initial discoveries on how to set up a
+</summary><category term="haskell"></category></entry><entry><title>Setting Up a Haskell Project</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-27:blog/posts/2013/10/27/setting-up-a-haskell-project/</id><summary type="html">&lt;p&gt;This is an attempt to share the my initial discoveries on how to set up a
 Haskell project. My plan was to create a small project for an executable written
 in Haskell and I didn't have the first idea where to start.&lt;/p&gt;
 &lt;p&gt;I am new to the language and the ecosystem and this article wanders through my
@@ -851,7 +882,7 @@ executable jump
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary><category term="haskell cabal"></category></entry><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io/blog,2013-10-17:posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
+</summary><category term="haskell cabal"></category></entry><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-17:blog/posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
 the visual effects industry so it gets used for all kinds of glue between other
 programs and for interfaces for tools.&lt;/p&gt;
 &lt;p&gt;In this role, I've never had to set up a server or do a deployment of a some

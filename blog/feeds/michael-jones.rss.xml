@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-09T00:00:00+12:00</updated><entry><title>Remove Chunks from Your Last Commit</title><link href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="alternate"></link><updated>2014-09-09T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</id><summary type="html">&lt;p&gt;I tend to use &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; most of the time as I enjoy the granular control
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>mjones dev blog</title><link>http://michaeljones.github.io/blog/</link><description></description><atom:link href="http://michaeljones.github.io/blog/feeds/michael-jones.rss.xml" rel="self"></atom:link><lastBuildDate>Tue, 09 Sep 2014 00:00:00 +1200</lastBuildDate><item><title>Remove Chunks from Your Last Commit</title><link>http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</link><description>&lt;p&gt;I tend to use &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.&lt;/p&gt;
 &lt;p&gt;Sometimes, however, I am not concentrating and I either do a straight &lt;tt class="docutils literal"&gt;git
@@ -30,7 +30,7 @@ git commit -a
 &lt;p&gt;To commit the removed changes as a new separate commit. Or if they should be
 split over multiple commits, use &lt;tt class="docutils literal"&gt;git commit &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; otherwise you'll be back
 to square one.&lt;/p&gt;
-</summary><category term="git"></category></entry><entry><title>Django CSRF React Component</title><link href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/" rel="alternate"></link><updated>2014-06-08T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-06-08:blog/posts/2014/06/08/django-csrf-react-component/</id><summary type="html">&lt;p&gt;I've been doing some web development recently and getting in to &lt;a class="reference external" href="http://djangoproject.com"&gt;Django&lt;/a&gt; and
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 09 Sep 2014 00:00:00 +1200</pubDate><guid>tag:michaeljones.github.io,2014-09-09:blog/posts/2014/09/09/remove-chunks-from-your-last-commit/</guid><category>git</category></item><item><title>Django CSRF React Component</title><link>http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/</link><description>&lt;p&gt;I've been doing some web development recently and getting in to &lt;a class="reference external" href="http://djangoproject.com"&gt;Django&lt;/a&gt; and
 &lt;a class="reference external" href="http://facebook.github.io/react/"&gt;Facebook's React&lt;/a&gt; framework.&lt;/p&gt;
 &lt;p&gt;When creating forms in React for submission to a Django app you need to include
 the &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;Django CSRF token&lt;/a&gt; for Django's form processing. A simple way to do this
@@ -87,7 +87,7 @@ return (
        &amp;lt;/form
        );
 &lt;/pre&gt;
-</summary><category term="django"></category><category term="react"></category></entry><entry><title>Video: Developers, Entrepreneurs and Depression</title><link href="http://michaeljones.github.io/blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/" rel="alternate"></link><updated>2013-12-12T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-12:blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/</id><summary type="html">&lt;p&gt;An excellent talk about going through and dealing with mental illness in the
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 08 Jun 2014 00:00:00 +1200</pubDate><guid>tag:michaeljones.github.io,2014-06-08:blog/posts/2014/06/08/django-csrf-react-component/</guid><category>django</category><category>react</category></item><item><title>Video: Developers, Entrepreneurs and Depression</title><link>http://michaeljones.github.io/blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/</link><description>&lt;p&gt;An excellent talk about going through and dealing with mental illness in the
 form of Type II Bipolar and ADHD. I don't feel that I have had to deal with
 these issues myself nor am I aware of any close friends going through it but I
 am guilty of not understanding it well. Greg Baugues opens up the door a little
@@ -95,7 +95,7 @@ to allow me begin to see and understand what it might be to deal with these
 conditions.&lt;/p&gt;
 &lt;p&gt;He has given the talk a number of times as detailed and linked to on his
 &lt;a class="reference external" href="http://blog.baugues.com/speaking"&gt;speaking page&lt;/a&gt;.&lt;/p&gt;
-</summary></entry><entry><title>Journal - Day 27</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/journal-day-27/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-09:blog/posts/2013/12/09/journal-day-27/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 12 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-12:blog/posts/2013/12/12/video-developers-entrepreneurs-and-depression/</guid></item><item><title>Journal - Day 27</title><link>http://michaeljones.github.io/blog/posts/2013/12/09/journal-day-27/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Triage issues in the Breathe github project. Figure out what is outstanding
@@ -110,7 +110,7 @@ and what is fixed but neglected.&lt;/li&gt;
 &lt;li&gt;Read.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Video Round Up</title><link href="http://michaeljones.github.io/blog/posts/2013/12/09/video-round-up/" rel="alternate"></link><updated>2013-12-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-09:blog/posts/2013/12/09/video-round-up/</id><summary type="html">&lt;p&gt;I've watched a few videos and listened to a few podcasts recently which deserve
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 09 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-09:blog/posts/2013/12/09/journal-day-27/</guid></item><item><title>Video Round Up</title><link>http://michaeljones.github.io/blog/posts/2013/12/09/video-round-up/</link><description>&lt;p&gt;I've watched a few videos and listened to a few podcasts recently which deserve
 a mention but which I failed to integrate into the journal entries. Mostly from
 the &lt;a class="reference external" href="http://functionaltalks.org"&gt;functionaltalks.org&lt;/a&gt; site.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://functionaltalks.org/2013/06/10/brian-osullivan-running-a-startup-on-haskell/"&gt;Running a Startup on Haskell&lt;/a&gt; - Brian O'Sullivan&lt;/p&gt;
@@ -150,7 +150,7 @@ seems to be backed by a number of big players.&lt;/p&gt;
 &lt;blockquote&gt;
 Podcast with Simon Marlow; covering his move to Facebook and his work on the
 free book on Parallelism and Concurrency in Haskell.&lt;/blockquote&gt;
-</summary></entry><entry><title>Journal - Day 26</title><link href="http://michaeljones.github.io/blog/posts/2013/12/05/journal-day-26/" rel="alternate"></link><updated>2013-12-05T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-05:blog/posts/2013/12/05/journal-day-26/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 09 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-09:blog/posts/2013/12/09/video-round-up/</guid></item><item><title>Journal - Day 26</title><link>http://michaeljones.github.io/blog/posts/2013/12/05/journal-day-26/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read chapter 9 of Real World Haskell.&lt;/li&gt;
@@ -180,7 +180,7 @@ Haskell experience.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 25</title><link href="http://michaeljones.github.io/blog/posts/2013/12/04/journal-day-25/" rel="alternate"></link><updated>2013-12-04T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-04:blog/posts/2013/12/04/journal-day-25/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 05 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-05:blog/posts/2013/12/05/journal-day-26/</guid></item><item><title>Journal - Day 25</title><link>http://michaeljones.github.io/blog/posts/2013/12/04/journal-day-25/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 8 of Real World Haskell and read chapter 9.&lt;/li&gt;
@@ -206,7 +206,7 @@ the current API.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 24</title><link href="http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/" rel="alternate"></link><updated>2013-12-03T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-03:blog/posts/2013/12/03/journal-day-24/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 04 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-04:blog/posts/2013/12/04/journal-day-25/</guid></item><item><title>Journal - Day 24</title><link>http://michaeljones.github.io/blog/posts/2013/12/03/journal-day-24/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read chapter 8 of Real World Haskell.&lt;/li&gt;
@@ -222,7 +222,7 @@ the import clutter at the top of the &lt;tt class="docutils literal"&gt;Main.hs&
 more manageable.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 23</title><link href="http://michaeljones.github.io/blog/posts/2013/12/02/journal-day-23/" rel="alternate"></link><updated>2013-12-02T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-12-02:blog/posts/2013/12/02/journal-day-23/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 03 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-03:blog/posts/2013/12/03/journal-day-24/</guid></item><item><title>Journal - Day 23</title><link>http://michaeljones.github.io/blog/posts/2013/12/02/journal-day-23/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read chapter 6 of Real World Haskell.&lt;/li&gt;
@@ -253,7 +253,7 @@ $ cabal install --dependencies-only
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 22</title><link href="http://michaeljones.github.io/blog/posts/2013/11/29/journal-day-22/" rel="alternate"></link><updated>2013-11-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-29:blog/posts/2013/11/29/journal-day-22/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 02 Dec 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-12-02:blog/posts/2013/12/02/journal-day-23/</guid></item><item><title>Journal - Day 22</title><link>http://michaeljones.github.io/blog/posts/2013/11/29/journal-day-22/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 4 and read chapter 5 of Real World Haskell.&lt;/li&gt;
@@ -276,7 +276,7 @@ returned so needs more investigation to understand what is going on.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 21</title><link href="http://michaeljones.github.io/blog/posts/2013/11/28/journal-day-21/" rel="alternate"></link><updated>2013-11-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-28:blog/posts/2013/11/28/journal-day-21/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Fri, 29 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-29:blog/posts/2013/11/29/journal-day-22/</guid></item><item><title>Journal - Day 21</title><link>http://michaeljones.github.io/blog/posts/2013/11/28/journal-day-21/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 3 and read chapters 4 &amp;amp; 5 of Real World Haskell.&lt;/li&gt;
@@ -331,7 +331,7 @@ knowledge and building up a bigger picture of Haskell.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 20</title><link href="http://michaeljones.github.io/blog/posts/2013/11/27/journal-day-20/" rel="alternate"></link><updated>2013-11-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-27:blog/posts/2013/11/27/journal-day-20/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 28 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-28:blog/posts/2013/11/28/journal-day-21/</guid></item><item><title>Journal - Day 20</title><link>http://michaeljones.github.io/blog/posts/2013/11/27/journal-day-20/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master.&lt;/li&gt;
@@ -352,7 +352,7 @@ intended audience and subject.&lt;/li&gt;
 programming or at least I enjoyed the presentation of the first section.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Video: Simple Made Easy</title><link href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/" rel="alternate"></link><updated>2013-11-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-24:blog/posts/2013/11/24/video-simple-made-easy/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy"&gt;A talk&lt;/a&gt; from &lt;a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/"&gt;Rich Hickey's Greatest Hits&lt;/a&gt; in which he tries to define a
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 27 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-27:blog/posts/2013/11/27/journal-day-20/</guid></item><item><title>Video: Simple Made Easy</title><link>http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy"&gt;A talk&lt;/a&gt; from &lt;a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/"&gt;Rich Hickey's Greatest Hits&lt;/a&gt; in which he tries to define a
 difference between easy and simple and the importance of the latter. He
 highlights various elements of a programmer's toolkit which promote simplicity
 within your code base.&lt;/p&gt;
@@ -375,7 +375,7 @@ importance for themselves through their own experience.&lt;/p&gt;
 easy division puts words to feeling I've had for a while and what frustrates me
 in subtle ways about the way some people program.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="haskell"></category></entry><entry><title>Haskell's Sandbox &amp; Python's Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/" rel="alternate"></link><updated>2013-11-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-21:blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</id><summary type="html">&lt;p&gt;Cabal's sandboxes for Haskell provide an excellent way to contain the
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 24 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-24:blog/posts/2013/11/24/video-simple-made-easy/</guid><category>haskell</category></item><item><title>Haskell's Sandbox &amp; Python's Virtualenv</title><link>http://michaeljones.github.io/blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</link><description>&lt;p&gt;Cabal's sandboxes for Haskell provide an excellent way to contain the
 dependencies of a project and help to resolve clashes with other projects you
 might have on the system.&lt;/p&gt;
 &lt;p&gt;They work brilliantly with libraries which are automatically picked up by
@@ -416,7 +416,7 @@ $ which hlint
 /home/user/code/project/projectenv/bin/hlint
 &lt;/pre&gt;
 &lt;p&gt;Done!&lt;/p&gt;
-</summary><category term="haskell"></category></entry><entry><title>Generating a Broken UTF-8 File</title><link href="http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/" rel="alternate"></link><updated>2013-11-01T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-11-01:blog/posts/2013/11/01/generating-a-broken-utf-8-file/</id><summary type="html">&lt;div class="section" id="backstory"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 21 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-21:blog/posts/2013/11/21/haskells-sandbox-pythons-virtualenv/</guid><category>haskell</category></item><item><title>Generating a Broken UTF-8 File</title><link>http://michaeljones.github.io/blog/posts/2013/11/01/generating-a-broken-utf-8-file/</link><description>&lt;div class="section" id="backstory"&gt;
 &lt;h2&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;Occasionally when looking after &lt;a class="reference external" href="https://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/michaeljones/sphinx-to-github"&gt;Sphinx-to-Github&lt;/a&gt; I get bug reports
 associated with unicode handling errors. Awkwardly, I do not have a huge amount of
@@ -493,7 +493,7 @@ UnicodeDecodeError: 'utf8' codec can't decode byte 0xc0 in position 26: invalid 
 &lt;p&gt;Yay, it's broken and will act as a good test case for checking that our code can
 handle invalid input and provide useful error messages.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="unicode"></category></entry><entry><title>Journal - Day 19</title><link href="http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/" rel="alternate"></link><updated>2013-10-31T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-31:blog/posts/2013/10/31/journal-day-19/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Fri, 01 Nov 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-11-01:blog/posts/2013/11/01/generating-a-broken-utf-8-file/</guid><category>unicode</category></item><item><title>Journal - Day 19</title><link>http://michaeljones.github.io/blog/posts/2013/10/31/journal-day-19/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Review work on &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; from yesterday, merge results into master and do a new
@@ -538,7 +538,7 @@ the best way to think about it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 18</title><link href="http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/" rel="alternate"></link><updated>2013-10-30T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-30:blog/posts/2013/10/30/journal-day-18/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 31 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-31:blog/posts/2013/10/31/journal-day-19/</guid></item><item><title>Journal - Day 18</title><link>http://michaeljones.github.io/blog/posts/2013/10/30/journal-day-18/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Properly explore the idea of directives for &lt;a class="reference external" href="http://github.com/michaeljones/breathe"&gt;Breathe&lt;/a&gt; which automatically
@@ -560,7 +560,7 @@ of the docutils infrastructure.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>A Beginner's Encounter with a Haskell Library</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-29:blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</id><summary type="html">&lt;p&gt;I am new to Haskell and as a programming exercise I am attempting to rewrite my
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 30 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-30:blog/posts/2013/10/30/journal-day-18/</guid></item><item><title>A Beginner's Encounter with a Haskell Library</title><link>http://michaeljones.github.io/blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</link><description>&lt;p&gt;I am new to Haskell and as a programming exercise I am attempting to rewrite my
 &lt;tt class="docutils literal"&gt;jump&lt;/tt&gt; utility program which I use to switch between common directories in my
 shell.&lt;/p&gt;
 &lt;p&gt;It is currently written in Python and uses the curses library to provide a
@@ -1019,7 +1019,7 @@ we came here to do. The final code as we have written it so far looks like:&lt;/
 issues for me and I hope it will help some people in the early stages of their
 Haskell journey to see something broken down like this.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="haskell"></category></entry><entry><title>Journal - Day 17</title><link href="http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/" rel="alternate"></link><updated>2013-10-29T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-29:blog/posts/2013/10/29/journal-day-17/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 29 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-29:blog/posts/2013/10/29/a-beginners-encounter-with-a-haskell-library/</guid><category>haskell</category></item><item><title>Journal - Day 17</title><link>http://michaeljones.github.io/blog/posts/2013/10/29/journal-day-17/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue with Yaml library example and article.&lt;/li&gt;
@@ -1044,7 +1044,7 @@ program it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 16</title><link href="http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/" rel="alternate"></link><updated>2013-10-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-28:blog/posts/2013/10/28/journal-day-16/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 29 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-29:blog/posts/2013/10/29/journal-day-17/</guid></item><item><title>Journal - Day 16</title><link>http://michaeljones.github.io/blog/posts/2013/10/28/journal-day-16/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Begin documenting and working through the issues I am encountering with using
@@ -1059,7 +1059,7 @@ Haskell programmer. I am hopeful that it will be useful to others are my stage
 of development. If not, it is certainly useful to me.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>End of Week 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-27:blog/posts/2013/10/27/end-of-week-3/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 28 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-28:blog/posts/2013/10/28/journal-day-16/</guid></item><item><title>End of Week 3</title><link>http://michaeljones.github.io/blog/posts/2013/10/27/end-of-week-3/</link><description>&lt;div class="section" id="weekend"&gt;
 &lt;h2&gt;Weekend&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Watched &lt;a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054"&gt;Escape From the Ivory Tower&lt;/a&gt; presentation by Simon Peyton Jones. It
@@ -1132,7 +1132,7 @@ ASCII characters.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Setting Up a Haskell Project</title><link href="http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/" rel="alternate"></link><updated>2013-10-27T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-27:blog/posts/2013/10/27/setting-up-a-haskell-project/</id><summary type="html">&lt;p&gt;This is an attempt to share the my initial discoveries on how to set up a
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 27 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-27:blog/posts/2013/10/27/end-of-week-3/</guid></item><item><title>Setting Up a Haskell Project</title><link>http://michaeljones.github.io/blog/posts/2013/10/27/setting-up-a-haskell-project/</link><description>&lt;p&gt;This is an attempt to share the my initial discoveries on how to set up a
 Haskell project. My plan was to create a small project for an executable written
 in Haskell and I didn't have the first idea where to start.&lt;/p&gt;
 &lt;p&gt;I am new to the language and the ecosystem and this article wanders through my
@@ -1407,7 +1407,7 @@ executable jump
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary><category term="haskell cabal"></category></entry><entry><title>Journal - Day 15</title><link href="http://michaeljones.github.io/blog/posts/2013/10/25/journal-day-15/" rel="alternate"></link><updated>2013-10-25T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-25:blog/posts/2013/10/25/journal-day-15/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 27 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-27:blog/posts/2013/10/27/setting-up-a-haskell-project/</guid><category>haskell cabal</category></item><item><title>Journal - Day 15</title><link>http://michaeljones.github.io/blog/posts/2013/10/25/journal-day-15/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue my quest to parse Yaml in Haskell. Or rather, use the data returned
@@ -1426,7 +1426,7 @@ appropriately clueless way.&lt;/li&gt;
 &lt;li&gt;Failed to write any tests. Dammit.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 14</title><link href="http://michaeljones.github.io/blog/posts/2013/10/24/journal-day-14/" rel="alternate"></link><updated>2013-10-24T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-24:blog/posts/2013/10/24/journal-day-14/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Fri, 25 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-25:blog/posts/2013/10/25/journal-day-15/</guid></item><item><title>Journal - Day 14</title><link>http://michaeljones.github.io/blog/posts/2013/10/24/journal-day-14/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue working on vty-ui example to at least emulate the functionality of my
@@ -1462,7 +1462,7 @@ moment.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 13</title><link href="http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/" rel="alternate"></link><updated>2013-10-23T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-23:blog/posts/2013/10/23/journal-day-13/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 24 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-24:blog/posts/2013/10/24/journal-day-14/</guid></item><item><title>Journal - Day 13</title><link>http://michaeljones.github.io/blog/posts/2013/10/23/journal-day-13/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Improve &amp;amp; update information on michaeljones.github.io.&lt;/li&gt;
@@ -1559,7 +1559,7 @@ bestow magical powers on the functions.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 12</title><link href="http://michaeljones.github.io/blog/posts/2013/10/22/journal-day-12/" rel="alternate"></link><updated>2013-10-22T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-22:blog/posts/2013/10/22/journal-day-12/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 23 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-23:blog/posts/2013/10/23/journal-day-13/</guid></item><item><title>Journal - Day 12</title><link>http://michaeljones.github.io/blog/posts/2013/10/22/journal-day-12/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read &lt;a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html"&gt;cabal sandbox post&lt;/a&gt; and set up a sandbox area for my Haskell dev
@@ -1585,7 +1585,7 @@ skips over particular details early on in order to get to more practical
 examples. It will be interesting to see if this tutorial takes that approach.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 11</title><link href="http://michaeljones.github.io/blog/posts/2013/10/21/journal-day-11/" rel="alternate"></link><updated>2013-10-21T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-21:blog/posts/2013/10/21/journal-day-11/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 22 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-22:blog/posts/2013/10/22/journal-day-12/</guid></item><item><title>Journal - Day 11</title><link>http://michaeljones.github.io/blog/posts/2013/10/21/journal-day-11/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read through chapter 13 of Learn You a Haskell.&lt;/li&gt;
@@ -1603,7 +1603,7 @@ application I've attempted with the knowledge so far.&lt;/li&gt;
 based factory instead.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>End of Week 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/20/end-of-week-2/" rel="alternate"></link><updated>2013-10-20T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-20:blog/posts/2013/10/20/end-of-week-2/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 21 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-21:blog/posts/2013/10/21/journal-day-11/</guid></item><item><title>End of Week 2</title><link>http://michaeljones.github.io/blog/posts/2013/10/20/end-of-week-2/</link><description>&lt;div class="section" id="weekend"&gt;
 &lt;h2&gt;Weekend&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Decided to start looking at the &lt;a class="reference external" href="https://github.com/coreyoconnor/vty"&gt;Vty&lt;/a&gt; module for Haskell based on the
@@ -1668,7 +1668,7 @@ need for a widget library on top of the core Vty module.&lt;/td&gt;&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 10</title><link href="http://michaeljones.github.io/blog/posts/2013/10/18/journal-day-10/" rel="alternate"></link><updated>2013-10-18T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-18:blog/posts/2013/10/18/journal-day-10/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 20 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-20:blog/posts/2013/10/20/end-of-week-2/</guid></item><item><title>Journal - Day 10</title><link>http://michaeljones.github.io/blog/posts/2013/10/18/journal-day-10/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read through chapter 12 of Learn You a Haskell. Starting on the big scary
@@ -1701,7 +1701,7 @@ no-prior-knowledge-required talk about the language.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Discovering Virtualenv</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-17:blog/posts/2013/10/17/discovering-virtualenv/</id><summary type="html">&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Fri, 18 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-18:blog/posts/2013/10/18/journal-day-10/</guid></item><item><title>Discovering Virtualenv</title><link>http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/</link><description>&lt;p&gt;I've used Python for around 8 years now. It is the main scripting language of
 the visual effects industry so it gets used for all kinds of glue between other
 programs and for interfaces for tools.&lt;/p&gt;
 &lt;p&gt;In this role, I've never had to set up a server or do a deployment of a some
@@ -1813,7 +1813,7 @@ jump-impl
 happily finds the &lt;tt class="docutils literal"&gt;yaml&lt;/tt&gt; module that I've installed to the virtual environment
 in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;/home/mike/local/python/python-2.7.4&lt;/span&gt;&lt;/tt&gt;.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="python"></category></entry><entry><title>Journal - Day 9</title><link href="http://michaeljones.github.io/blog/posts/2013/10/17/journal-day-9/" rel="alternate"></link><updated>2013-10-17T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-17:blog/posts/2013/10/17/journal-day-9/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 17 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-17:blog/posts/2013/10/17/discovering-virtualenv/</guid><category>python</category></item><item><title>Journal - Day 9</title><link>http://michaeljones.github.io/blog/posts/2013/10/17/journal-day-9/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 11 of Learn You a Haskell.&lt;/li&gt;
@@ -1859,7 +1859,7 @@ Qt 5 purely out of interest but I don't think that is going to happen.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 8</title><link href="http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/" rel="alternate"></link><updated>2013-10-16T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-16:blog/posts/2013/10/16/journal-day-8/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 17 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-17:blog/posts/2013/10/17/journal-day-9/</guid></item><item><title>Journal - Day 8</title><link>http://michaeljones.github.io/blog/posts/2013/10/16/journal-day-8/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 9 of Learn You a Haskell and start on chapter 10.&lt;/li&gt;
@@ -1872,7 +1872,7 @@ Qt 5 purely out of interest but I don't think that is going to happen.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;What can I say, it was a sunny day.&lt;/p&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 7</title><link href="http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/" rel="alternate"></link><updated>2013-10-15T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-15:blog/posts/2013/10/15/journal-day-7/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 16 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-16:blog/posts/2013/10/16/journal-day-8/</guid></item><item><title>Journal - Day 7</title><link>http://michaeljones.github.io/blog/posts/2013/10/15/journal-day-7/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 8 and read chapter 9 of Learn You a Haskell.&lt;/li&gt;
@@ -1897,7 +1897,7 @@ watch my town go down in flames.&lt;/li&gt;
 &lt;li&gt;Watched a &lt;a class="reference external" href="http://channel9.msdn.com/Blogs/Charles/Alexandrescu-Bright-Meijer-Moran-Pure-versus-Native-and-much-more"&gt;discussion&lt;/a&gt; on D &amp;amp; Haskell and their development and ecosystems.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 6</title><link href="http://michaeljones.github.io/blog/posts/2013/10/14/journal-day-6/" rel="alternate"></link><updated>2013-10-14T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-14:blog/posts/2013/10/14/journal-day-6/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 15 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-15:blog/posts/2013/10/15/journal-day-7/</guid></item><item><title>Journal - Day 6</title><link>http://michaeljones.github.io/blog/posts/2013/10/14/journal-day-6/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Finish chapter 6 and read chapter 7 from Learn You a Haskell.&lt;/li&gt;
@@ -1928,13 +1928,13 @@ import qualified Data.Yaml as Y
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Links</title><link href="http://michaeljones.github.io/blog/posts/2013/10/14/links/" rel="alternate"></link><updated>2013-10-14T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-14:blog/posts/2013/10/14/links/</id><summary type="html">&lt;ul class="simple"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 14 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-14:blog/posts/2013/10/14/journal-day-6/</guid></item><item><title>Links</title><link>http://michaeljones.github.io/blog/posts/2013/10/14/links/</link><description>&lt;ul class="simple"&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://hackflow.com/blog/2013/10/13/functional-python-made-easy/"&gt;Funcy&lt;/a&gt; Python module for functional programming made easy. &lt;a class="reference external" href="https://news.ycombinator.com/item?id=6542224"&gt;Discussion&lt;/a&gt; on
 Hacker News.&lt;/li&gt;
 &lt;li&gt;New &lt;a class="reference external" href="http://sourceforge.net/p/cppcheck/news/2013/10/cppcheck-162/"&gt;CppCheck&lt;/a&gt; release. I only used it briefly at work but it is open source
 and does static analysis of your C++ code to help point out potential issues.&lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry><entry><title>End of Week 1</title><link href="http://michaeljones.github.io/blog/posts/2013/10/13/end-of-week-1/" rel="alternate"></link><updated>2013-10-13T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-13:blog/posts/2013/10/13/end-of-week-1/</id><summary type="html">&lt;div class="section" id="weekend"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 14 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-14:blog/posts/2013/10/14/links/</guid></item><item><title>End of Week 1</title><link>http://michaeljones.github.io/blog/posts/2013/10/13/end-of-week-1/</link><description>&lt;div class="section" id="weekend"&gt;
 &lt;h2&gt;Weekend&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Worked through chapter 5 and half of chapter 6 of Learn You a Haskell.&lt;/li&gt;
@@ -1995,7 +1995,7 @@ bindings, should be introduced to improve readability.&lt;/li&gt;
 Peyton-Jones' talks were great but initial googling is no uncovering any more.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 5</title><link href="http://michaeljones.github.io/blog/posts/2013/10/11/journal-day-5/" rel="alternate"></link><updated>2013-10-11T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-11:blog/posts/2013/10/11/journal-day-5/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Sun, 13 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-13:blog/posts/2013/10/13/end-of-week-1/</guid></item><item><title>Journal - Day 5</title><link>http://michaeljones.github.io/blog/posts/2013/10/11/journal-day-5/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Read first 6 chapters of Learn You a Haskell for Great Good.&lt;/li&gt;
@@ -2013,7 +2013,7 @@ early target, I imagine. I have no particular love for the Libre Office project,
 but a great deal of respect as I have used it often.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 4</title><link href="http://michaeljones.github.io/blog/posts/2013/10/10/journal-day-4/" rel="alternate"></link><updated>2013-10-10T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-10:blog/posts/2013/10/10/journal-day-4/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Fri, 11 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-11:blog/posts/2013/10/11/journal-day-5/</guid></item><item><title>Journal - Day 4</title><link>http://michaeljones.github.io/blog/posts/2013/10/10/journal-day-4/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Work through the &lt;strong&gt;#31&lt;/strong&gt; to &lt;strong&gt;#41&lt;/strong&gt; Haskell problems.&lt;/li&gt;
@@ -2057,7 +2057,7 @@ though more investigation might uncover it.&lt;/p&gt;
 &lt;p&gt;I did go to the gym, tour the New Zealand parliament, have a singing lesson and
 have drinks with friends. Some days have other ideas than coding.&lt;/p&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Journal - Day 3</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/journal-day-3/" rel="alternate"></link><updated>2013-10-09T09:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-09:blog/posts/2013/10/09/journal-day-3/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Thu, 10 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-10:blog/posts/2013/10/10/journal-day-4/</guid></item><item><title>Journal - Day 3</title><link>http://michaeljones.github.io/blog/posts/2013/10/09/journal-day-3/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue &lt;strong&gt;99 Haskell Problems&lt;/strong&gt; and reach #25.&lt;/li&gt;
@@ -2083,7 +2083,7 @@ still do not understand the constructors for the docutils node classes.&lt;/li&g
 &lt;li&gt;Extend folder navigation script to source python virtualenv where desirable.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Video: Rust - InfoQ</title><link href="http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/" rel="alternate"></link><updated>2013-10-09T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-09:blog/posts/2013/10/09/video-rust-infoq/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Rust"&gt;Short talk&lt;/a&gt; about the Rust
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 09 Oct 2013 09:01:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-09:blog/posts/2013/10/09/journal-day-3/</guid></item><item><title>Video: Rust - InfoQ</title><link>http://michaeljones.github.io/blog/posts/2013/10/09/video-rust-infoq/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://www.infoq.com/presentations/Rust"&gt;Short talk&lt;/a&gt; about the Rust
 programming language from Mozilla. Excellent broad overview of the language
 which gives a feel for what inspired it and what it is trying to achieve.&lt;/p&gt;
 &lt;p&gt;To a C++ programmer that is growing frustrated with the growing complexity of
@@ -2093,7 +2093,7 @@ the language, Rust feels like it is a good thing.&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://smallcultfollowing.com/babysteps/"&gt;Baby Steps&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://pcwalton.github.com"&gt;pcwalton&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</summary><category term="rust"></category></entry><entry><title>Journal - Day 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/08/journal-day-2/" rel="alternate"></link><updated>2013-10-08T10:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-08:blog/posts/2013/10/08/journal-day-2/</id><summary type="html">&lt;div class="section" id="intentions"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Wed, 09 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-09:blog/posts/2013/10/09/video-rust-infoq/</guid><category>rust</category></item><item><title>Journal - Day 2</title><link>http://michaeljones.github.io/blog/posts/2013/10/08/journal-day-2/</link><description>&lt;div class="section" id="intentions"&gt;
 &lt;h2&gt;Intentions&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Continue 99 Haskell Problems and reach no. 20.&lt;/li&gt;
@@ -2117,7 +2117,7 @@ I've been late in picking up.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>Video: Taste of Haskell - Part 1</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-1/" rel="alternate"></link><updated>2013-10-07T19:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/video-taste-of-haskell-part-1/</id><summary type="html">&lt;p&gt;An &lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701"&gt;OSCON 2007 talk&lt;/a&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Tue, 08 Oct 2013 10:01:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-08:blog/posts/2013/10/08/journal-day-2/</guid></item><item><title>Video: Taste of Haskell - Part 1</title><link>http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-1/</link><description>&lt;p&gt;An &lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701"&gt;OSCON 2007 talk&lt;/a&gt;
 introducing Haskell to imperative programmers by Simon Peyton Jones.&lt;/p&gt;
 &lt;p&gt;I like his pacing and attitude and I think there is a reasonable amount to be
 learnt despite the fact that the slides are not provided on the site or
@@ -2125,7 +2125,7 @@ displayed in the video. I am sure they can be tracked down.&lt;/p&gt;
 &lt;p&gt;I can't tell at the moment how much I understood purely from the quality of the
 talk and how much from the previous efforts I've made to get to grips with
 Haskell.&lt;/p&gt;
-</summary><category term="haskell"></category></entry><entry><title>Journal - Day 1</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/journal-day-1/" rel="alternate"></link><updated>2013-10-07T15:01:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/journal-day-1/</id><summary type="html">&lt;ul&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 07 Oct 2013 19:01:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/video-taste-of-haskell-part-1/</guid><category>haskell</category></item><item><title>Journal - Day 1</title><link>http://michaeljones.github.io/blog/posts/2013/10/07/journal-day-1/</link><description>&lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;I have managed to get this &lt;a class="reference external" href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt; based blog
 up. I choose Pelican because a simple google unearthed &lt;a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html"&gt;this&lt;/a&gt; from
 pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
@@ -2140,7 +2140,7 @@ nothing works first time.&lt;/p&gt;
 &lt;li&gt;&lt;p class="first"&gt;I watched &lt;a class="reference external" href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-1/"&gt;Simon Peyton-Jones - A Taste of Haskell Part I&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry><entry><title>Beginning</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/beginning/" rel="alternate"></link><updated>2013-10-07T13:46:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/beginning/</id><summary type="html">&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 07 Oct 2013 15:01:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/journal-day-1/</guid></item><item><title>Beginning</title><link>http://michaeljones.github.io/blog/posts/2013/10/07/beginning/</link><description>&lt;p&gt;I am embarking on some time for some personal projects and this blog is designed
 to mark my progress and keep on track. I am currently far from clear about what
 to work on but I have a few loose ideas:&lt;/p&gt;
 &lt;ul&gt;
@@ -2180,7 +2180,7 @@ that form.&lt;/p&gt;
 &lt;p&gt;I have been in graphics for too long without getting to grips with either.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</summary></entry><entry><title>Video: Taste of Haskell - Part 2</title><link href="http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-2/" rel="alternate"></link><updated>2013-10-07T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/video-taste-of-haskell-part-2/</id><summary type="html">&lt;p&gt;Second half of the Simon Peyton-Jones' introduction to Haskell. If I was not
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 07 Oct 2013 13:46:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/beginning/</guid></item><item><title>Video: Taste of Haskell - Part 2</title><link>http://michaeljones.github.io/blog/posts/2013/10/07/video-taste-of-haskell-part-2/</link><description>&lt;p&gt;Second half of the Simon Peyton-Jones' introduction to Haskell. If I was not
 convinced before, I am now; this is a really excellent talk to give you some
 background to Haskell and some pleasantly gentle steps towards understanding it.&lt;/p&gt;
 &lt;p&gt;Provides examples of pure functions and combining them with code that needs to
@@ -2189,4 +2189,4 @@ do the IO before going on to discuss the wider Haskell community.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-ii-330372"&gt;Talk&lt;/a&gt;
 and &lt;a class="reference external" href="http://research.microsoft.com/en-us/um/people/simonpj/papers/haskell-tutorial/"&gt;slides&lt;/a&gt;
 (required as the video does not show them.)&lt;/p&gt;
-</summary><category term="haskell"></category></entry></feed>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Michael Jones</dc:creator><pubDate>Mon, 07 Oct 2013 00:00:00 +1300</pubDate><guid>tag:michaeljones.github.io,2013-10-07:blog/posts/2013/10/07/video-taste-of-haskell-part-2/</guid><category>haskell</category></item></channel></rss>
