@@ -3,7 +3,7 @@ Watch Out for Python's HasAttr & AttributeError
 ===============================================
 
 :date: 2014-09-21
-:category: post
+:category: blog
 :tags: python
 
 I was recently trying to contribute to the `django-datetime-widget`_ repository
