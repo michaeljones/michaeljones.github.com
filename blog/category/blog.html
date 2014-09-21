@@ -19,14 +19,97 @@
                     <li class="active"><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
-                    <li><a href="http://michaeljones.github.io/blog/category/post.html">post</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/">Django CSRF React Component</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-09-21T00:00:00">
+                Sun 21 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
+and encountered an issue with my changes not working but no error being reported
+from Django or Python.</p>
+<p>I was working on the widget's <tt class="docutils literal">_media</tt> method which is converted to a
+read-only <tt class="docutils literal">media</tt> property. Django is meant to use the value of the <tt class="docutils literal">media</tt>
+attribute on a widget class to help include any additional CSS, images &amp;
+Javascript files into the final web page template that uses the widget.</p>
+<p>In order to test for the presence of the <tt class="docutils literal">media</tt> attribute, Django uses the
+following code:</p>
+<pre class="literal-block">
+try:
+    base = sup_cls.media
+except AttributeError:
+    base = Media()
+</pre>
+<p>It tries to access the attribute and if it receives an <tt class="docutils literal">AttributeError</tt> then
+it uses the replacement value <tt class="docutils literal">Media()</tt> instead. This is reasonable for basic
+attributes on classes, but when combined with Python properties which can allow
+attribute access to result in complex method calls then there is room for
+trouble.</p>
+<p>My issue was that in my <tt class="docutils literal">_media</tt> implementation I had made a mistake that was
+resulting in an <tt class="docutils literal">AttributeError</tt> being raised. And the trouble was that this
+was being silently caught by Django which was intepretting it as there not being
+a <tt class="docutils literal">media</tt> attribute at all and so I was neither seeing the error or my
+expected includes in the final rendered HTML.</p>
+<div class="section" id="my-proposed-solution">
+<h2>My Proposed Solution</h2>
+<p>Hoping to make the world a better place, I headed over to the Django-users
+mailing and posted that maybe we could approach this differently. I thought that
+maybe the following implementation would avoid this issue:</p>
+<pre class="literal-block">
+if hasattr(sup_cls, 'media'):
+    base = sup_cls.media
+else:
+    base = Media()
+</pre>
+<p>I thought that using the <tt class="docutils literal">hasattr</tt> check instead of waiting for an exception
+to be raised would avoid this issue. I assumed that all that <tt class="docutils literal">hasattr</tt> did was
+to check if the object in question had a particular attribute. Crazy right?</p>
+</div>
+<div class="section" id="the-problem-with-my-solution">
+<h2>The Problem with my Solution</h2>
+<p>It turns out this does not work. The kind people on the list educated me in
+the ways of <tt class="docutils literal">hasattr</tt> and why this approach doesn't help. I had been foolish
+enough not to test my proposed solution and it turns out that the documentation
+covers why it won't actually work:</p>
+<pre class="literal-block">
+hasattr(object, name) -&gt; bool
+
+Return whether the object has an attribute with the given name.
+(This is done by calling getattr(object, name) and catching exceptions.)
+</pre>
+<p>There it is: <tt class="docutils literal">hasattr</tt> is implemented in terms of calling <tt class="docutils literal">getattr</tt> and
+catching all exceptions. So it would fail on my buggy implementation of
+<tt class="docutils literal">_media</tt> in just the same way that the current test does.</p>
+<p>Damn shame really, as it is incredibly confusing to have no results and no
+feedback.</p>
+<p>Fortunately, Python 3 fixes this issue apparently and Python 2 is stuck with the
+current functionality for backwards compatibility.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/" rel="bookmark"
+                           title="Permalink to Django CSRF React Component">Django CSRF React Component</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-06-08T00:00:00">
                 Sun 08 June 2014
@@ -37,65 +120,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a><a href="http://michaeljones.github.io/blog/tag/react.html">react</a></p>
-</footer><!-- /.post-info --><p>I've been doing some web development recently and getting in to <a class="reference external" href="http://djangoproject.com">Django</a> and
+</footer><!-- /.post-info -->                <p>I've been doing some web development recently and getting in to <a class="reference external" href="http://djangoproject.com">Django</a> and
 <a class="reference external" href="http://facebook.github.io/react/">Facebook's React</a> framework.</p>
 <p>When creating forms in React for submission to a Django app you need to include
 the <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">Django CSRF token</a> for Django's form processing. A simple way to do this
-is to wrap it up as a reusable React component. Like:</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">React</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;react&#39;</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">DjangoCSRFToken</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-
-  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="kd">var</span> <span class="nx">csrfToken</span> <span class="o">=</span> <span class="nx">Django</span><span class="p">.</span><span class="nx">csrf_token</span><span class="p">();</span>
-
-    <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">input</span><span class="p">(</span>
-      <span class="p">{</span><span class="nx">type</span><span class="o">:</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="nx">name</span><span class="o">:</span><span class="s2">&quot;csrfmiddlewaretoken&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span><span class="nx">csrfToken</span><span class="p">}</span>
-      <span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">DjangoCSRFToken</span><span class="o">:</span> <span class="nx">DjangoCSRFToken</span><span class="p">;</span>
-</pre></div>
-<p>Retrieving the actual CRSF token is done here with help of the <a class="reference external" href="https://github.com/noirbizarre/django.js">Django.js</a>
-helper.  However from the <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/#ajax">Django docs</a> you can do it with <a class="reference external" href="http://jquery.com">jQuery</a>:</p>
-<div class="highlight"><pre><span class="c1">// using jQuery</span>
-<span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">cookieValue</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">cookies</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">);</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cookies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">cookie</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">.</span><span class="nx">trim</span><span class="p">(</span><span class="nx">cookies</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
-            <span class="c1">// Does this cookie string begin with the name we want?</span>
-            <span class="k">if</span> <span class="p">(</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="nx">name</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span><span class="p">))</span> <span class="p">{</span>
-                <span class="nx">cookieValue</span> <span class="o">=</span> <span class="nb">decodeURIComponent</span><span class="p">(</span>
-                  <span class="nx">cookie</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-                  <span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">cookieValue</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kd">var</span> <span class="nx">csrftoken</span> <span class="o">=</span> <span class="nx">getCookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">);</span>
-</pre></div>
-<p>Or with the <a class="reference external" href="http://plugins.jquery.com/cookie/">jQuery cookie plugin</a>:</p>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">csrftoken</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">cookie</span><span class="p">(</span><span class="s1">&#39;csrftoken&#39;</span><span class="p">);</span>
-</pre></div>
-<p>Then save the final component code into a new node module and use it in your
-browser javascript with <a class="reference external" href="http://browserify.org/">Browserify</a> like:</p>
-<pre class="literal-block">
-return (
-       &lt;form method='post' action={this.props.acceptUrl}&gt;
-         &lt;DjangoCSRFToken /&gt;
-         &lt;input type=&quot;text&quot; name=&quot;edit_id&quot; value={edit.id} /&gt;
-         &lt;input type=&quot;submit&quot; name=&quot;accept&quot; value=&quot;Accept&quot; /&gt;
-       &lt;/form
-       );
-</pre>
-                </article>
-            </aside><!-- /#featured -->
+is to ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
