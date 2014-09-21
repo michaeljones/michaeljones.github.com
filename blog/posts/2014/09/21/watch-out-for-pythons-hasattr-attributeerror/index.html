@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>mjones dev blog - python</title>
+        <title>Watch Out for Python's HasAttr & AttributeError</title>
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="mjones dev blog Atom Feed" />
 
@@ -19,14 +19,19 @@
                     <li><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
-                    <li><a href="http://michaeljones.github.io/blog/category/post.html">post</a></li>
+                    <li class="active"><a href="http://michaeljones.github.io/blog/category/post.html">post</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/" rel="bookmark"
+           title="Permalink to Watch Out for Python's HasAttr & AttributeError">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-09-21T00:00:00">
                 Sun 21 September 2014
@@ -37,7 +42,7 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/post.html">post</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
-</footer><!-- /.post-info --><p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
+</footer><!-- /.post-info -->      <p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
 and encountered an issue with my changes not working but no error being reported
 from Django or Python.</p>
 <p>I was working on the widget's <tt class="docutils literal">_media</tt> method which is converted to a
@@ -97,65 +102,11 @@ feedback.</p>
 <p>Fortunately, Python 3 fixes this issue apparently and Python 2 is stuck with the
 current functionality for backwards compatibility.</p>
 </div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/" rel="bookmark"
-                           title="Permalink to Install Pip on a Fresh Setup">Install Pip on a Fresh Setup</a></h1>
-                </header>
+    </div><!-- /.entry-content -->
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-09-09T00:00:00">
-                Tue 09 September 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
-        </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a><a href="http://michaeljones.github.io/blog/tag/pip.html">pip</a></p>
-</footer><!-- /.post-info -->                <p>I've recently switch to a fresh Linux machine and needed to begin setting up my
-standard environment. Part of the set up is creating some Python virtual
-environments from which to runs various helpers scripts that I like to have
-access to.</p>
-<p>However, my fresh machine does not have ...</p>
-                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/" rel="bookmark"
-                           title="Permalink to Discovering Virtualenv">Discovering Virtualenv</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2013-10-17T00:00:00">
-                Thu 17 October 2013
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
-        </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
-</footer><!-- /.post-info -->                <p>I've used Python for around 8 years now. It is the main scripting language of
-the visual effects industry so it gets used for all kinds of glue between other
-programs and for interfaces for tools.</p>
-<p>In this role, I've never had to set up a server or ...</p>
-                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/10/17/discovering-virtualenv/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

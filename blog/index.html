@@ -19,13 +19,98 @@
                     <li><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                    <li><a href="http://michaeljones.github.io/blog/category/post.html">post</a></li>
                     <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/">Install Pip on a Fresh Setup</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-09-21T00:00:00">
+                Sun 21 September 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/post.html">post</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
+</footer><!-- /.post-info --><p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
+and encountered an issue with my changes not working but no error being reported
+from Django or Python.</p>
+<p>I was working on the widget's <tt class="docutils literal">_media</tt> method which is converted to a
+read-only <tt class="docutils literal">media</tt> property. Django is meant to use the value of the <tt class="docutils literal">media</tt>
+attribute on a widget class to help include any additional CSS, images &amp;
+Javascript files into the final web page template that uses the widget.</p>
+<p>In order to test for the presence of the <tt class="docutils literal">media</tt> attribute, Django uses the
+following code:</p>
+<pre class="literal-block">
+try:
+    base = sup_cls.media
+except AttributeError:
+    base = Media()
+</pre>
+<p>It tries to access the attribute and if it receives an <tt class="docutils literal">AttributeError</tt> then
+it uses the replacement value <tt class="docutils literal">Media()</tt> instead. This is reasonable for basic
+attributes on classes, but when combined with Python properties which can allow
+attribute access to result in complex method calls then there is room for
+trouble.</p>
+<p>My issue was that in my <tt class="docutils literal">_media</tt> implementation I had made a mistake that was
+resulting in an <tt class="docutils literal">AttributeError</tt> being raised. And the trouble was that this
+was being silently caught by Django which was intepretting it as there not being
+a <tt class="docutils literal">media</tt> attribute at all and so I was neither seeing the error or my
+expected includes in the final rendered HTML.</p>
+<div class="section" id="my-proposed-solution">
+<h2>My Proposed Solution</h2>
+<p>Hoping to make the world a better place, I headed over to the Django-users
+mailing and posted that maybe we could approach this differently. I thought that
+maybe the following implementation would avoid this issue:</p>
+<pre class="literal-block">
+if hasattr(sup_cls, 'media'):
+    base = sup_cls.media
+else:
+    base = Media()
+</pre>
+<p>I thought that using the <tt class="docutils literal">hasattr</tt> check instead of waiting for an exception
+to be raised would avoid this issue. I assumed that all that <tt class="docutils literal">hasattr</tt> did was
+to check if the object in question had a particular attribute. Crazy right?</p>
+</div>
+<div class="section" id="the-problem-with-my-solution">
+<h2>The Problem with my Solution</h2>
+<p>It turns out this does not work. The kind people on the list educated me in
+the ways of <tt class="docutils literal">hasattr</tt> and why this approach doesn't help. I had been foolish
+enough not to test my proposed solution and it turns out that the documentation
+covers why it won't actually work:</p>
+<pre class="literal-block">
+hasattr(object, name) -&gt; bool
+
+Return whether the object has an attribute with the given name.
+(This is done by calling getattr(object, name) and catching exceptions.)
+</pre>
+<p>There it is: <tt class="docutils literal">hasattr</tt> is implemented in terms of calling <tt class="docutils literal">getattr</tt> and
+catching all exceptions. So it would fail on my buggy implementation of
+<tt class="docutils literal">_media</tt> in just the same way that the current test does.</p>
+<p>Damn shame really, as it is incredibly confusing to have no results and no
+feedback.</p>
+<p>Fortunately, Python 3 fixes this issue apparently and Python 2 is stuck with the
+current functionality for backwards compatibility.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/" rel="bookmark"
+                           title="Permalink to Install Pip on a Fresh Setup">Install Pip on a Fresh Setup</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
@@ -36,60 +121,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a><a href="http://michaeljones.github.io/blog/tag/pip.html">pip</a></p>
-</footer><!-- /.post-info --><p>I've recently switch to a fresh Linux machine and needed to begin setting up my
+</footer><!-- /.post-info -->                <p>I've recently switch to a fresh Linux machine and needed to begin setting up my
 standard environment. Part of the set up is creating some Python virtual
 environments from which to runs various helpers scripts that I like to have
 access to.</p>
-<p>However, my fresh machine does not have <tt class="docutils literal">pip</tt> installed on it and as I never
-want to <tt class="docutils literal">pip install</tt> modules to my <tt class="docutils literal">/usr</tt> area, I'd rather keep it that
-way <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<p>So we need to install <tt class="docutils literal">pip</tt> on a clean set up. The pip installion
-documentation shows that they provide a <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> script for exactly this
-situation.</p>
-<p>The only trouble is that <tt class="docutils literal"><span class="pre">get-pip.py</span></tt> seems to want to install into <tt class="docutils literal">/usr</tt>
-by default, which is understandable but not what I am after.</p>
-<p>Further to this, I have had no luck with the <tt class="docutils literal"><span class="pre">--install-option</span></tt> flag that is
-advertised by <tt class="docutils literal">python <span class="pre">get-pip.py</span> <span class="pre">-h</span></tt>.</p>
-<p>What does work though is:</p>
-<pre class="literal-block">
-python get-pip.py --user
-</pre>
-<p>Which adopts the Python <em>user scheme</em> for installations which on Linux installs
-to <tt class="docutils literal"><span class="pre">~/.local</span></tt> by default. You can check the install location with:</p>
-<pre class="literal-block">
-python -c &quot;import site; print site.USER_BASE&quot;
-</pre>
-<p>The base directory for the <em>user scheme</em> can be controlled with the
-<tt class="docutils literal">PYTHONUSERBASE</tt> environment variable so we can create a temporary install of
-pip with:</p>
-<pre class="literal-block">
-PYTHONUSERBASE=/tmp/python2.x python get-pip.py --user
-</pre>
-<p>You can then install <tt class="docutils literal">virtualenv</tt> with:</p>
-<pre class="literal-block">
-PYTHONUSERBASE=/tmp/python2.x /tmp/python2.x/bin/pip install --user virtualenv
-</pre>
-<p>Then you can create a proper virtualenv with:</p>
-<pre class="literal-block">
-PYTHONPATH=/tmp/python2.x/lib/python2.7/site-packages /tmp/python2.x/bin/virtualenv ~/myvirtualenv
-</pre>
-<p>And then you have something to work with.</p>
-<p>Having written all this out, maybe there is an easier way. But until I figure
-that out, I have this for reference.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>If I do not have <tt class="docutils literal">pip</tt> installed at the system level then I can only
-run <tt class="docutils literal">pip install</tt> from inside virtualenvs which is nice and contained and so
-there is a little less to worry about.</td></tr>
-</tbody>
-</table>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>However, my fresh machine does not have ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/09/09/install-pip-on-a-fresh-setup/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
