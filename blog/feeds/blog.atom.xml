@@ -1,5 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/blog.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-06-08T00:00:00+12:00</updated><entry><title>Django CSRF React Component</title><link href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/" rel="alternate"></link><updated>2014-06-08T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-06-08:blog/posts/2014/06/08/django-csrf-react-component/</id><summary type="html">&lt;p&gt;I've been doing some web development recently and getting in to &lt;a class="reference external" href="http://djangoproject.com"&gt;Django&lt;/a&gt; and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/blog.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-21T00:00:00+12:00</updated><entry><title>Watch Out for Python's HasAttr &amp; AttributeError</title><link href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/" rel="alternate"></link><updated>2014-09-21T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-21:blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/</id><summary type="html">&lt;p&gt;I was recently trying to contribute to the &lt;a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget"&gt;django-datetime-widget&lt;/a&gt; repository
+and encountered an issue with my changes not working but no error being reported
+from Django or Python.&lt;/p&gt;
+&lt;p&gt;I was working on the widget's &lt;tt class="docutils literal"&gt;_media&lt;/tt&gt; method which is converted to a
+read-only &lt;tt class="docutils literal"&gt;media&lt;/tt&gt; property. Django is meant to use the value of the &lt;tt class="docutils literal"&gt;media&lt;/tt&gt;
+attribute on a widget class to help include any additional CSS, images &amp;amp;
+Javascript files into the final web page template that uses the widget.&lt;/p&gt;
+&lt;p&gt;In order to test for the presence of the &lt;tt class="docutils literal"&gt;media&lt;/tt&gt; attribute, Django uses the
+following code:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+try:
+    base = sup_cls.media
+except AttributeError:
+    base = Media()
+&lt;/pre&gt;
+&lt;p&gt;It tries to access the attribute and if it receives an &lt;tt class="docutils literal"&gt;AttributeError&lt;/tt&gt; then
+it uses the replacement value &lt;tt class="docutils literal"&gt;Media()&lt;/tt&gt; instead. This is reasonable for basic
+attributes on classes, but when combined with Python properties which can allow
+attribute access to result in complex method calls then there is room for
+trouble.&lt;/p&gt;
+&lt;p&gt;My issue was that in my &lt;tt class="docutils literal"&gt;_media&lt;/tt&gt; implementation I had made a mistake that was
+resulting in an &lt;tt class="docutils literal"&gt;AttributeError&lt;/tt&gt; being raised. And the trouble was that this
+was being silently caught by Django which was intepretting it as there not being
+a &lt;tt class="docutils literal"&gt;media&lt;/tt&gt; attribute at all and so I was neither seeing the error or my
+expected includes in the final rendered HTML.&lt;/p&gt;
+&lt;div class="section" id="my-proposed-solution"&gt;
+&lt;h2&gt;My Proposed Solution&lt;/h2&gt;
+&lt;p&gt;Hoping to make the world a better place, I headed over to the Django-users
+mailing and posted that maybe we could approach this differently. I thought that
+maybe the following implementation would avoid this issue:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+if hasattr(sup_cls, 'media'):
+    base = sup_cls.media
+else:
+    base = Media()
+&lt;/pre&gt;
+&lt;p&gt;I thought that using the &lt;tt class="docutils literal"&gt;hasattr&lt;/tt&gt; check instead of waiting for an exception
+to be raised would avoid this issue. I assumed that all that &lt;tt class="docutils literal"&gt;hasattr&lt;/tt&gt; did was
+to check if the object in question had a particular attribute. Crazy right?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-problem-with-my-solution"&gt;
+&lt;h2&gt;The Problem with my Solution&lt;/h2&gt;
+&lt;p&gt;It turns out this does not work. The kind people on the list educated me in
+the ways of &lt;tt class="docutils literal"&gt;hasattr&lt;/tt&gt; and why this approach doesn't help. I had been foolish
+enough not to test my proposed solution and it turns out that the documentation
+covers why it won't actually work:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+hasattr(object, name) -&amp;gt; bool
+
+Return whether the object has an attribute with the given name.
+(This is done by calling getattr(object, name) and catching exceptions.)
+&lt;/pre&gt;
+&lt;p&gt;There it is: &lt;tt class="docutils literal"&gt;hasattr&lt;/tt&gt; is implemented in terms of calling &lt;tt class="docutils literal"&gt;getattr&lt;/tt&gt; and
+catching all exceptions. So it would fail on my buggy implementation of
+&lt;tt class="docutils literal"&gt;_media&lt;/tt&gt; in just the same way that the current test does.&lt;/p&gt;
+&lt;p&gt;Damn shame really, as it is incredibly confusing to have no results and no
+feedback.&lt;/p&gt;
+&lt;p&gt;Fortunately, Python 3 fixes this issue apparently and Python 2 is stuck with the
+current functionality for backwards compatibility.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="python"></category></entry><entry><title>Django CSRF React Component</title><link href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/" rel="alternate"></link><updated>2014-06-08T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-06-08:blog/posts/2014/06/08/django-csrf-react-component/</id><summary type="html">&lt;p&gt;I've been doing some web development recently and getting in to &lt;a class="reference external" href="http://djangoproject.com"&gt;Django&lt;/a&gt; and
 &lt;a class="reference external" href="http://facebook.github.io/react/"&gt;Facebook's React&lt;/a&gt; framework.&lt;/p&gt;
 &lt;p&gt;When creating forms in React for submission to a Django app you need to include
 the &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;Django CSRF token&lt;/a&gt; for Django's form processing. A simple way to do this
