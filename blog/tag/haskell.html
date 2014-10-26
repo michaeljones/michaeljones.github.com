@@ -25,7 +25,51 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/">Video: Simple Made Easy</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/">Nix &amp; Yesod</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-10-26T00:00:00">
+                Sun 26 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a><a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a><a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
+</footer><!-- /.post-info --><p>I've spent the day messing around with the Nix package manager and trying to get
+a basic Yesod project up a running.</p>
+<p>I very much like what I've managed to understand but it is early days and not
+everything is clear. So for those attempting similar things I thought I would
+share the <tt class="docutils literal">default.nix</tt> file contents that I ended up with. Set up a folder
+with this and run <tt class="docutils literal"><span class="pre">nix-shell</span></tt> and you should be able to run <tt class="docutils literal">yesod init</tt> and
+<tt class="docutils literal">yesod devel</tt> in the resulting environment.</p>
+<p>No promises though as I've no idea what I'm doing:</p>
+<pre class="literal-block">
+{ haskellPackages ? (import &lt;nixpkgs&gt; {}).haskellPackages }:
+
+let inherit (haskellPackages);
+
+in with haskellPackages; cabal.mkDerivation (self: {
+  pname = &quot;project-name&quot;;
+  version = &quot;0.0.1&quot;;
+  src = ./.;
+  buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+})
+</pre>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/" rel="bookmark"
+                           title="Permalink to Video: Simple Made Easy">Video: Simple Made Easy</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2013-11-24T00:00:00">
                 Sun 24 November 2013
@@ -36,35 +80,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info --><p><a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy">A talk</a> from <a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/">Rich Hickey's Greatest Hits</a> in which he tries to define a
+</footer><!-- /.post-info -->                <p><a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy">A talk</a> from <a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/">Rich Hickey's Greatest Hits</a> in which he tries to define a
 difference between easy and simple and the importance of the latter. He
 highlights various elements of a programmer's toolkit which promote simplicity
 within your code base.</p>
-<p>It is definitely in favour of functional programming approaches, in particular
-aspects of Clojure, unsurprisingly, and Haskell. Certainly makes me want to try
-to pick up Clojure after Haskell.</p>
-<div class="section" id="queues">
-<h2>Queues</h2>
-<p>A particular 'Ah-ha' moment for me is where he emphasises the use of queues to
-decouple two parts of a system. He recommends them over having part <tt class="docutils literal">A</tt> call
-directly into part <tt class="docutils literal">B</tt>. Whilst he does not go into detail on the concept, I
-assume you have part <tt class="docutils literal">A</tt> pushing items on to the queue and part <tt class="docutils literal">B</tt> reading
-out of the queue to find its next workload.</p>
-<p>This is new to me as an idea but his phrasing: &quot;if you're not doing this, start
-doing it now&quot;, reminds of the exactly what I resort to when I try to convey
-aspects of programming that I consider important. Some ideas grow on you to seem
-so critical that you just want people to embrace them now and learn the
-importance for themselves through their own experience.</p>
-<p>That said, there is a huge amount to take away from this talk. The simple vs
-easy division puts words to feeling I've had for a while and what frustrates me
-in subtle ways about the way some people program.</p>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>It is definitely in favour of functional programming ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2013/11/24/video-simple-made-easy/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

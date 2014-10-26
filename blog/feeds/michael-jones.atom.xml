@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-09-21T00:00:00+12:00</updated><entry><title>Watch Out for Python's HasAttr &amp; AttributeError</title><link href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/" rel="alternate"></link><updated>2014-09-21T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-21:blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/</id><summary type="html">&lt;p&gt;I was recently trying to contribute to the &lt;a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget"&gt;django-datetime-widget&lt;/a&gt; repository
+<feed xmlns="http://www.w3.org/2005/Atom"><title>mjones dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-10-26T00:00:00+13:00</updated><entry><title>Nix &amp; Yesod</title><link href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/" rel="alternate"></link><updated>2014-10-26T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-10-26:blog/posts/2014/10/26/nix-yesod/</id><summary type="html">&lt;p&gt;I've spent the day messing around with the Nix package manager and trying to get
+a basic Yesod project up a running.&lt;/p&gt;
+&lt;p&gt;I very much like what I've managed to understand but it is early days and not
+everything is clear. So for those attempting similar things I thought I would
+share the &lt;tt class="docutils literal"&gt;default.nix&lt;/tt&gt; file contents that I ended up with. Set up a folder
+with this and run &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;nix-shell&lt;/span&gt;&lt;/tt&gt; and you should be able to run &lt;tt class="docutils literal"&gt;yesod init&lt;/tt&gt; and
+&lt;tt class="docutils literal"&gt;yesod devel&lt;/tt&gt; in the resulting environment.&lt;/p&gt;
+&lt;p&gt;No promises though as I've no idea what I'm doing:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+{ haskellPackages ? (import &amp;lt;nixpkgs&amp;gt; {}).haskellPackages }:
+
+let inherit (haskellPackages);
+
+in with haskellPackages; cabal.mkDerivation (self: {
+  pname = &amp;quot;project-name&amp;quot;;
+  version = &amp;quot;0.0.1&amp;quot;;
+  src = ./.;
+  buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+})
+&lt;/pre&gt;
+</summary><category term="nix"></category><category term="haskell"></category><category term="yesod"></category></entry><entry><title>Watch Out for Python's HasAttr &amp; AttributeError</title><link href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/" rel="alternate"></link><updated>2014-09-21T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-09-21:blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/</id><summary type="html">&lt;p&gt;I was recently trying to contribute to the &lt;a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget"&gt;django-datetime-widget&lt;/a&gt; repository
 and encountered an issue with my changes not working but no error being reported
 from Django or Python.&lt;/p&gt;
 &lt;p&gt;I was working on the widget's &lt;tt class="docutils literal"&gt;_media&lt;/tt&gt; method which is converted to a
