@@ -3,8 +3,11 @@
 <head>
         <meta charset="utf-8" />
         <title>Nix & Yesod</title>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
-        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="mjones dev blog Atom Feed" />
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="michael jones | dev blog Atom Feed" />
+
+            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?6a19e19d">
 
         <!--[if IE]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -12,16 +15,21 @@
 </head>
 
 <body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://michaeljones.github.io/blog/">mjones dev blog </a></h1>
-                <nav><ul>
-                    <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
-                    <li class="active"><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
-                    <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
-                    <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
-                    <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
-                </ul></nav>
+        <header id="banner">
+                <span id="header-title" class="body">
+                    <a href="http://michaeljones.github.io/blog/">michael jones | dev blog </a>
+                </span>
+                <nav>
+                    <ul>
+                            <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                            <li class="active"><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                    </ul>
+                </nav>
         </header><!-- /#banner -->
+        <section>
 <section id="content" class="body">
   <article>
     <header>
@@ -58,14 +66,20 @@ in with haskellPackages; cabal.mkDerivation (self: {
   pname = &quot;project-name&quot;;
   version = &quot;0.0.1&quot;;
   src = ./.;
-  buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+  buildDepends = with haskellPackages; [
+    yesod yesodStatic yesodTest
+    yesodBin
+    hjsmin persistentSqlite hspec
+    ];
 })
 </pre>
+<p>Update: Tweaked to support <tt class="docutils literal">yesod test</tt> as well.</p>
 
     </div><!-- /.entry-content -->
 
   </article>
 </section>
+        </section>
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>
@@ -75,14 +89,6 @@ in with haskellPackages; cabal.mkDerivation (self: {
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>
