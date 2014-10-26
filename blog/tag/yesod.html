@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>mjones dev blog - Authors</title>
+        <title>mjones dev blog - yesod</title>
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="mjones dev blog Atom Feed" />
 
@@ -23,10 +23,43 @@
                 </ul></nav>
         </header><!-- /#banner -->
 
-<section id="content" class="body">
-    <h1>Authors on mjones dev blog</h1>        <li><a href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a> (48)</li>
-</section>
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/">Nix &amp; Yesod</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-10-26T00:00:00">
+                Sun 26 October 2014
+        </abbr>
 
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a><a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a><a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
+</footer><!-- /.post-info --><p>I've spent the day messing around with the Nix package manager and trying to get
+a basic Yesod project up a running.</p>
+<p>I very much like what I've managed to understand but it is early days and not
+everything is clear. So for those attempting similar things I thought I would
+share the <tt class="docutils literal">default.nix</tt> file contents that I ended up with. Set up a folder
+with this and run <tt class="docutils literal"><span class="pre">nix-shell</span></tt> and you should be able to run <tt class="docutils literal">yesod init</tt> and
+<tt class="docutils literal">yesod devel</tt> in the resulting environment.</p>
+<p>No promises though as I've no idea what I'm doing:</p>
+<pre class="literal-block">
+{ haskellPackages ? (import &lt;nixpkgs&gt; {}).haskellPackages }:
+
+let inherit (haskellPackages);
+
+in with haskellPackages; cabal.mkDerivation (self: {
+  pname = &quot;project-name&quot;;
+  version = &quot;0.0.1&quot;;
+  src = ./.;
+  buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+})
+</pre>
+                </article>
+            </aside><!-- /#featured -->
+            </ol><!-- /#posts-list -->
+            </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="social">
                         <h2>social</h2>

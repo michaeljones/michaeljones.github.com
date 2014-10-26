@@ -25,7 +25,51 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/">Nix &amp; Yesod</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-10-26T00:00:00">
+                Sun 26 October 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a><a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a><a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
+</footer><!-- /.post-info --><p>I've spent the day messing around with the Nix package manager and trying to get
+a basic Yesod project up a running.</p>
+<p>I very much like what I've managed to understand but it is early days and not
+everything is clear. So for those attempting similar things I thought I would
+share the <tt class="docutils literal">default.nix</tt> file contents that I ended up with. Set up a folder
+with this and run <tt class="docutils literal"><span class="pre">nix-shell</span></tt> and you should be able to run <tt class="docutils literal">yesod init</tt> and
+<tt class="docutils literal">yesod devel</tt> in the resulting environment.</p>
+<p>No promises though as I've no idea what I'm doing:</p>
+<pre class="literal-block">
+{ haskellPackages ? (import &lt;nixpkgs&gt; {}).haskellPackages }:
+
+let inherit (haskellPackages);
+
+in with haskellPackages; cabal.mkDerivation (self: {
+  pname = &quot;project-name&quot;;
+  version = &quot;0.0.1&quot;;
+  src = ./.;
+  buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+})
+</pre>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/" rel="bookmark"
+                           title="Permalink to Watch Out for Python's HasAttr & AttributeError">Watch Out for Python's HasAttr &amp; AttributeError</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-09-21T00:00:00">
                 Sun 21 September 2014
@@ -36,72 +80,14 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
-</footer><!-- /.post-info --><p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
+</footer><!-- /.post-info -->                <p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
 and encountered an issue with my changes not working but no error being reported
 from Django or Python.</p>
 <p>I was working on the widget's <tt class="docutils literal">_media</tt> method which is converted to a
-read-only <tt class="docutils literal">media</tt> property. Django is meant to use the value of the <tt class="docutils literal">media</tt>
-attribute on a widget class to help include any additional CSS, images &amp;
-Javascript files into the final web page template that uses the widget.</p>
-<p>In order to test for the presence of the <tt class="docutils literal">media</tt> attribute, Django uses the
-following code:</p>
-<pre class="literal-block">
-try:
-    base = sup_cls.media
-except AttributeError:
-    base = Media()
-</pre>
-<p>It tries to access the attribute and if it receives an <tt class="docutils literal">AttributeError</tt> then
-it uses the replacement value <tt class="docutils literal">Media()</tt> instead. This is reasonable for basic
-attributes on classes, but when combined with Python properties which can allow
-attribute access to result in complex method calls then there is room for
-trouble.</p>
-<p>My issue was that in my <tt class="docutils literal">_media</tt> implementation I had made a mistake that was
-resulting in an <tt class="docutils literal">AttributeError</tt> being raised. And the trouble was that this
-was being silently caught by Django which was intepretting it as there not being
-a <tt class="docutils literal">media</tt> attribute at all and so I was neither seeing the error or my
-expected includes in the final rendered HTML.</p>
-<div class="section" id="my-proposed-solution">
-<h2>My Proposed Solution</h2>
-<p>Hoping to make the world a better place, I headed over to the Django-users
-mailing and posted that maybe we could approach this differently. I thought that
-maybe the following implementation would avoid this issue:</p>
-<pre class="literal-block">
-if hasattr(sup_cls, 'media'):
-    base = sup_cls.media
-else:
-    base = Media()
-</pre>
-<p>I thought that using the <tt class="docutils literal">hasattr</tt> check instead of waiting for an exception
-to be raised would avoid this issue. I assumed that all that <tt class="docutils literal">hasattr</tt> did was
-to check if the object in question had a particular attribute. Crazy right?</p>
-</div>
-<div class="section" id="the-problem-with-my-solution">
-<h2>The Problem with my Solution</h2>
-<p>It turns out this does not work. The kind people on the list educated me in
-the ways of <tt class="docutils literal">hasattr</tt> and why this approach doesn't help. I had been foolish
-enough not to test my proposed solution and it turns out that the documentation
-covers why it won't actually work:</p>
-<pre class="literal-block">
-hasattr(object, name) -&gt; bool
-
-Return whether the object has an attribute with the given name.
-(This is done by calling getattr(object, name) and catching exceptions.)
-</pre>
-<p>There it is: <tt class="docutils literal">hasattr</tt> is implemented in terms of calling <tt class="docutils literal">getattr</tt> and
-catching all exceptions. So it would fail on my buggy implementation of
-<tt class="docutils literal">_media</tt> in just the same way that the current test does.</p>
-<p>Damn shame really, as it is incredibly confusing to have no results and no
-feedback.</p>
-<p>Fortunately, Python 3 fixes this issue apparently and Python 2 is stuck with the
-current functionality for backwards compatibility.</p>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+read-only <tt class="docutils literal">media</tt> property. Django is meant to use ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/09/21/watch-out-for-pythons-hasattr-attributeerror/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
