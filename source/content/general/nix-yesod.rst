@@ -25,6 +25,12 @@ No promises though as I've no idea what I'm doing::
      pname = "project-name";
      version = "0.0.1";
      src = ./.;
-     buildDepends = with haskellPackages; [ yesodBin yesod yesodStatic hjsmin persistentSqlite ];
+     buildDepends = with haskellPackages; [
+       yesod yesodStatic yesodTest
+       yesodBin
+       hjsmin persistentSqlite hspec
+       ];
    })
+
+Update: Tweaked to support ``yesod test`` as well.
 
