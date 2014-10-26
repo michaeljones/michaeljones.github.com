@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
+import os
+
 AUTHOR = u'Michael Jones'
-SITENAME = u'mjones dev blog'
-SITEURL = ''
+SITENAME = u'michael jones | dev blog'
+SITEURL = 'devurl'
 
 TIMEZONE = 'Pacific/Auckland'
 
@@ -38,3 +40,9 @@ DEFAULT_PAGINATION = False
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+PLUGIN_PATHS = ['./pelican-plugins']
+PLUGINS = ['assets']
+
+ASSET_CONFIG = (('LESS_BIN', '{path}/node_modules/.bin/lessc'.format(path=os.getcwd())),)
+
