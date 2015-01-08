@@ -33,7 +33,99 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/">Nix &amp; Yesod</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/">Vim, Git &amp; Line Endings</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-01-08T00:00:00">
+                Thu 08 January 2015
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a><a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info --><p>I currently work on a team using both Unix &amp; Windows platforms for developing a
+Python &amp; Django codebase. I work in Ubuntu and today made changes to a file
+which was created by the Windows developer on our team. With a tighter process
+this wouldn't be a problem, but the set up is pretty loose in this respect and I
+ended up in the zone of line ending despair. 'Line ending hell' seems to strong
+a term.</p>
+<div class="section" id="the-problem">
+<h2>The Problem</h2>
+<p>The issue ended up being that some files in the codebase have CRLF (Windows)
+style line endings and some don't. Not great.</p>
+<p>And it seems that <tt class="docutils literal">git</tt> converts all line endings to LF (Unix) when staging
+and committing files.</p>
+<p>When vim is set to <tt class="docutils literal">fileformats=unix,dos</tt>, it is open to both styles of line
+endings and silently preserves whatever is in the file without showing you. As
+do most modern editors I imagine.</p>
+<p>So vim handles the CRLF file transparently, but when you <tt class="docutils literal">git add <span class="pre">-p</span></tt> the
+changes into the index git converts all CRLFs to LFs and then shows you that
+your working copy, which still has the CRLFs, has changes against your index,
+which only has LFs. This appears a little confusing if you didn't realise your
+file had Windows line endings to begin with.</p>
+<p>My trouble is that the team generally uses Mercurial (I use git-remote-hg) and
+Mercurial never attempts to convert line endings so in our codebase all CRLF
+files &amp; LF files just get passed around happily and everyone's editors silently
+deal with whatever they are given.</p>
+<p>I respect Mercurial's choice as if you perform CRLF to LF conversion on a binary
+file then you'll corrupt it and these tools cannot figure out text from binary
+files with 100% accurary. I respect git's because in cross-platform teams like
+this one you kind of want to settle on a particular line ending as a convention
+instead of having different files with different conventions.</p>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution</h2>
+<p>The answer should be to establish a convention within the team. My answer, as
+I'm pretty new and don't want to rock the boat, is to tell git to mimic
+Mercurial and just ignore all line endings. This can be achieved with a
+<tt class="docutils literal">.gitattributes</tt> file and the following lines:</p>
+<pre class="literal-block">
+*.py -text
+*.html -text
+*.css -text
+</pre>
+<p>Repeated for as many text file types as you have. The <tt class="docutils literal"><span class="pre">-text</span></tt> value tells git
+not to apply any kind of text processing to it when adding, committing or
+checking out. The difference between <tt class="docutils literal"><span class="pre">-text</span></tt> and <tt class="docutils literal">binary</tt> in this context,
+which is another option, is that <tt class="docutils literal">binary</tt> also prevents git from attempting to
+show you a diff of the file at any point with the usual commands that normally
+would.</p>
+</div>
+<div class="section" id="and-then-whitespace">
+<h2>And then Whitespace</h2>
+<p>If you use <tt class="docutils literal">apply.whitespace=fix</tt> to make sure your <tt class="docutils literal">git add <span class="pre">-p</span></tt> code
+changes are sanitized for whitespace then you still have a problem. We haven't
+told git to respect the line endings in the file, we've just told it to ignore
+them. So it is still thinking in terms of LFs and when it see some line ending
+with:</p>
+<pre class="literal-block">
+... my_variable;&lt;CR&gt;&lt;LF&gt;
+</pre>
+<p>It sees the <tt class="docutils literal">CR</tt> as trailing whitespace before the line ending. So we have to
+use the:</p>
+<pre class="literal-block">
+core.whitespace=cr-at-eol
+</pre>
+<p>config option which is a special setting to instruct git not to view <tt class="docutils literal">CR</tt>
+characters as trailing whitespace. <tt class="docutils literal">core.whitespace</tt> can take a comma
+separated list of different values so make sure you check yours before adding
+that additional value.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/" rel="bookmark"
+                           title="Permalink to Nix & Yesod">Nix &amp; Yesod</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-10-26T00:00:00">
                 Sun 26 October 2014
@@ -44,37 +136,13 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a><a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a><a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
-</footer><!-- /.post-info --><p>I've spent the day messing around with the Nix package manager and trying to get
+</footer><!-- /.post-info -->                <p>I've spent the day messing around with the Nix package manager and trying to get
 a basic Yesod project up a running.</p>
 <p>I very much like what I've managed to understand but it is early days and not
-everything is clear. So for those attempting similar things I thought I would
-share the <tt class="docutils literal">default.nix</tt> file contents that I ended up with. Set up a folder
-with this and run <tt class="docutils literal"><span class="pre">nix-shell</span></tt> and you should be able to run <tt class="docutils literal">yesod init</tt> and
-<tt class="docutils literal">yesod devel</tt> in the resulting environment.</p>
-<p>No promises though as I've no idea what I'm doing:</p>
-<pre class="literal-block">
-{ haskellPackages ? (import &lt;nixpkgs&gt; {}).haskellPackages }:
-
-let inherit (haskellPackages);
-
-in with haskellPackages; cabal.mkDerivation (self: {
-  pname = &quot;project-name&quot;;
-  version = &quot;0.0.1&quot;;
-  src = ./.;
-  buildDepends = with haskellPackages; [
-    yesod yesodStatic yesodTest
-    yesodBin
-    hjsmin persistentSqlite hspec
-    ];
-})
-</pre>
-<p>Update: Tweaked to support <tt class="docutils literal">yesod test</tt> as well.</p>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+everything is clear. So for those attempting similar things I ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

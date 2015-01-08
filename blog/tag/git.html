@@ -33,7 +33,99 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/">Remove Chunks from Your Last Commit</a></h1>
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/">Vim, Git &amp; Line Endings</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2015-01-08T00:00:00">
+                Thu 08 January 2015
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a><a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
+</footer><!-- /.post-info --><p>I currently work on a team using both Unix &amp; Windows platforms for developing a
+Python &amp; Django codebase. I work in Ubuntu and today made changes to a file
+which was created by the Windows developer on our team. With a tighter process
+this wouldn't be a problem, but the set up is pretty loose in this respect and I
+ended up in the zone of line ending despair. 'Line ending hell' seems to strong
+a term.</p>
+<div class="section" id="the-problem">
+<h2>The Problem</h2>
+<p>The issue ended up being that some files in the codebase have CRLF (Windows)
+style line endings and some don't. Not great.</p>
+<p>And it seems that <tt class="docutils literal">git</tt> converts all line endings to LF (Unix) when staging
+and committing files.</p>
+<p>When vim is set to <tt class="docutils literal">fileformats=unix,dos</tt>, it is open to both styles of line
+endings and silently preserves whatever is in the file without showing you. As
+do most modern editors I imagine.</p>
+<p>So vim handles the CRLF file transparently, but when you <tt class="docutils literal">git add <span class="pre">-p</span></tt> the
+changes into the index git converts all CRLFs to LFs and then shows you that
+your working copy, which still has the CRLFs, has changes against your index,
+which only has LFs. This appears a little confusing if you didn't realise your
+file had Windows line endings to begin with.</p>
+<p>My trouble is that the team generally uses Mercurial (I use git-remote-hg) and
+Mercurial never attempts to convert line endings so in our codebase all CRLF
+files &amp; LF files just get passed around happily and everyone's editors silently
+deal with whatever they are given.</p>
+<p>I respect Mercurial's choice as if you perform CRLF to LF conversion on a binary
+file then you'll corrupt it and these tools cannot figure out text from binary
+files with 100% accurary. I respect git's because in cross-platform teams like
+this one you kind of want to settle on a particular line ending as a convention
+instead of having different files with different conventions.</p>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution</h2>
+<p>The answer should be to establish a convention within the team. My answer, as
+I'm pretty new and don't want to rock the boat, is to tell git to mimic
+Mercurial and just ignore all line endings. This can be achieved with a
+<tt class="docutils literal">.gitattributes</tt> file and the following lines:</p>
+<pre class="literal-block">
+*.py -text
+*.html -text
+*.css -text
+</pre>
+<p>Repeated for as many text file types as you have. The <tt class="docutils literal"><span class="pre">-text</span></tt> value tells git
+not to apply any kind of text processing to it when adding, committing or
+checking out. The difference between <tt class="docutils literal"><span class="pre">-text</span></tt> and <tt class="docutils literal">binary</tt> in this context,
+which is another option, is that <tt class="docutils literal">binary</tt> also prevents git from attempting to
+show you a diff of the file at any point with the usual commands that normally
+would.</p>
+</div>
+<div class="section" id="and-then-whitespace">
+<h2>And then Whitespace</h2>
+<p>If you use <tt class="docutils literal">apply.whitespace=fix</tt> to make sure your <tt class="docutils literal">git add <span class="pre">-p</span></tt> code
+changes are sanitized for whitespace then you still have a problem. We haven't
+told git to respect the line endings in the file, we've just told it to ignore
+them. So it is still thinking in terms of LFs and when it see some line ending
+with:</p>
+<pre class="literal-block">
+... my_variable;&lt;CR&gt;&lt;LF&gt;
+</pre>
+<p>It sees the <tt class="docutils literal">CR</tt> as trailing whitespace before the line ending. So we have to
+use the:</p>
+<pre class="literal-block">
+core.whitespace=cr-at-eol
+</pre>
+<p>config option which is a special setting to instruct git not to view <tt class="docutils literal">CR</tt>
+characters as trailing whitespace. <tt class="docutils literal">core.whitespace</tt> can take a comma
+separated list of different values so make sure you check yours before adding
+that additional value.</p>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/" rel="bookmark"
+                           title="Permalink to Remove Chunks from Your Last Commit">Remove Chunks from Your Last Commit</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
@@ -44,39 +136,13 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
-</footer><!-- /.post-info --><p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
+</footer><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.</p>
-<p>Sometimes, however, I am not concentrating and I either do a straight <tt class="docutils literal">git
-commit</tt> when I think I can get away with it but can't, or I do <tt class="docutils literal">git add <span class="pre">-p</span></tt>
-and accept the wrong thing before commiting. Either way, I end up with a commit
-that has some changes, or chunks, in it that I don't want.</p>
-<p>Up until recently, I have been doing a <tt class="docutils literal">git reset HEAD^</tt> to completely undo
-the commit and start again. This is a bit of a pain and feels somewhat
-ponderous.</p>
-<p>I would rather generate a pair of patches: one which removes the chunks for the
-last commit and one which adds them as a new commit. This can be awkwardly
-managed by dancing around with <tt class="docutils literal">git revert</tt> and <tt class="docutils literal">git reset</tt>, but I have just
-realised it can be more cleanly achieved with:</p>
-<pre class="literal-block">
-git reset -p HEAD^
-</pre>
-<p>Then selecting the chunks you want to revert. This perfectly creates staged
-changes that undo the chunks and unstaged changes which redo them. You can
-then:</p>
-<pre class="literal-block">
-git commit --amend
-</pre>
-<p>To commit the staged chunks that remove the targetted changes from the previous
-commit and then:</p>
-<pre class="literal-block">
-git commit -a
-</pre>
-<p>To commit the removed changes as a new separate commit. Or if they should be
-split over multiple commits, use <tt class="docutils literal">git commit <span class="pre">-p</span></tt> otherwise you'll be back
-to square one.</p>
-                </article>
-            </aside><!-- /#featured -->
+<p>Sometimes, however, I am not concentrating ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/09/09/remove-chunks-from-your-last-commit/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
             </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         </section>
