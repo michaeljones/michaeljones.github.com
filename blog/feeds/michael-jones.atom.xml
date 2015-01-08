@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>michael jones | dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2014-10-26T00:00:00+13:00</updated><entry><title>Nix &amp; Yesod</title><link href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/" rel="alternate"></link><updated>2014-10-26T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-10-26:blog/posts/2014/10/26/nix-yesod/</id><summary type="html">&lt;p&gt;I've spent the day messing around with the Nix package manager and trying to get
+<feed xmlns="http://www.w3.org/2005/Atom"><title>michael jones | dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2015-01-08T00:00:00+13:00</updated><entry><title>Vim, Git &amp; Line Endings</title><link href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/" rel="alternate"></link><updated>2015-01-08T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2015-01-08:blog/posts/2015/01/08/vim-git-line-endings/</id><summary type="html">&lt;p&gt;I currently work on a team using both Unix &amp;amp; Windows platforms for developing a
+Python &amp;amp; Django codebase. I work in Ubuntu and today made changes to a file
+which was created by the Windows developer on our team. With a tighter process
+this wouldn't be a problem, but the set up is pretty loose in this respect and I
+ended up in the zone of line ending despair. 'Line ending hell' seems to strong
+a term.&lt;/p&gt;
+&lt;div class="section" id="the-problem"&gt;
+&lt;h2&gt;The Problem&lt;/h2&gt;
+&lt;p&gt;The issue ended up being that some files in the codebase have CRLF (Windows)
+style line endings and some don't. Not great.&lt;/p&gt;
+&lt;p&gt;And it seems that &lt;tt class="docutils literal"&gt;git&lt;/tt&gt; converts all line endings to LF (Unix) when staging
+and committing files.&lt;/p&gt;
+&lt;p&gt;When vim is set to &lt;tt class="docutils literal"&gt;fileformats=unix,dos&lt;/tt&gt;, it is open to both styles of line
+endings and silently preserves whatever is in the file without showing you. As
+do most modern editors I imagine.&lt;/p&gt;
+&lt;p&gt;So vim handles the CRLF file transparently, but when you &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; the
+changes into the index git converts all CRLFs to LFs and then shows you that
+your working copy, which still has the CRLFs, has changes against your index,
+which only has LFs. This appears a little confusing if you didn't realise your
+file had Windows line endings to begin with.&lt;/p&gt;
+&lt;p&gt;My trouble is that the team generally uses Mercurial (I use git-remote-hg) and
+Mercurial never attempts to convert line endings so in our codebase all CRLF
+files &amp;amp; LF files just get passed around happily and everyone's editors silently
+deal with whatever they are given.&lt;/p&gt;
+&lt;p&gt;I respect Mercurial's choice as if you perform CRLF to LF conversion on a binary
+file then you'll corrupt it and these tools cannot figure out text from binary
+files with 100% accurary. I respect git's because in cross-platform teams like
+this one you kind of want to settle on a particular line ending as a convention
+instead of having different files with different conventions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-solution"&gt;
+&lt;h2&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;The answer should be to establish a convention within the team. My answer, as
+I'm pretty new and don't want to rock the boat, is to tell git to mimic
+Mercurial and just ignore all line endings. This can be achieved with a
+&lt;tt class="docutils literal"&gt;.gitattributes&lt;/tt&gt; file and the following lines:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+*.py -text
+*.html -text
+*.css -text
+&lt;/pre&gt;
+&lt;p&gt;Repeated for as many text file types as you have. The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-text&lt;/span&gt;&lt;/tt&gt; value tells git
+not to apply any kind of text processing to it when adding, committing or
+checking out. The difference between &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;-text&lt;/span&gt;&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;binary&lt;/tt&gt; in this context,
+which is another option, is that &lt;tt class="docutils literal"&gt;binary&lt;/tt&gt; also prevents git from attempting to
+show you a diff of the file at any point with the usual commands that normally
+would.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="and-then-whitespace"&gt;
+&lt;h2&gt;And then Whitespace&lt;/h2&gt;
+&lt;p&gt;If you use &lt;tt class="docutils literal"&gt;apply.whitespace=fix&lt;/tt&gt; to make sure your &lt;tt class="docutils literal"&gt;git add &lt;span class="pre"&gt;-p&lt;/span&gt;&lt;/tt&gt; code
+changes are sanitized for whitespace then you still have a problem. We haven't
+told git to respect the line endings in the file, we've just told it to ignore
+them. So it is still thinking in terms of LFs and when it see some line ending
+with:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+... my_variable;&amp;lt;CR&amp;gt;&amp;lt;LF&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;It sees the &lt;tt class="docutils literal"&gt;CR&lt;/tt&gt; as trailing whitespace before the line ending. So we have to
+use the:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+core.whitespace=cr-at-eol
+&lt;/pre&gt;
+&lt;p&gt;config option which is a special setting to instruct git not to view &lt;tt class="docutils literal"&gt;CR&lt;/tt&gt;
+characters as trailing whitespace. &lt;tt class="docutils literal"&gt;core.whitespace&lt;/tt&gt; can take a comma
+separated list of different values so make sure you check yours before adding
+that additional value.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="git"></category><category term="vim"></category></entry><entry><title>Nix &amp; Yesod</title><link href="http://michaeljones.github.io/blog/posts/2014/10/26/nix-yesod/" rel="alternate"></link><updated>2014-10-26T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2014-10-26:blog/posts/2014/10/26/nix-yesod/</id><summary type="html">&lt;p&gt;I've spent the day messing around with the Nix package manager and trying to get
 a basic Yesod project up a running.&lt;/p&gt;
 &lt;p&gt;I very much like what I've managed to understand but it is early days and not
 everything is clear. So for those attempting similar things I thought I would
