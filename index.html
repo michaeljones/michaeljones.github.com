@@ -13,14 +13,13 @@
         <![endif]-->
 
         <!-- Le styles -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="extra.css" rel="stylesheet">
         <style>
             body {
                 padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
             }
         </style>
-        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="images/favicon.ico">
@@ -31,36 +30,80 @@
 
     <body>
 
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="container">
 
-            <h1>Michael Jones</h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Michael Jones</h1>
 
-            <h2>Current Status</h2>
+                    <h2>Current Status</h2>
 
-            <p>Pursuing projects in Manchester, UK.</p>
-            <p>For further information you can check my profiles on <a
-                href="https://github.com/michaeljones">Github</a> and <a
-                href="http://www.linkedin.com/in/mpjones">Linked-in</a>.</p>
+                    <p>Contracting in a Python/Django web developer role near Manchester, UK.</p>
+                    <p>For further information you can check my profiles on <a
+                        href="https://github.com/michaeljones">Github</a> and <a
+                        href="http://www.linkedin.com/in/mpjones">Linked-in</a>.</p>
+
+                    <h2>Bio</h2>
+
+                    <p>I am the lead developer on a Python/Django community focussed website
+                    providing a calendaring solution for dance teachers and event organisers. The
+                    site runs on Linode with Apache, Postgresql, Python, &amp; Django for the
+                    backend and Javascript, jQuery, React.js &amp; bacon.js for the front end.
+                    Selenium is used for testing.</p>
+
+                    <p>I have worked with Python and C++ for 8 years creating graphics applications
+                    and tools for artists in the film industry. Additionally I have written pipeline
+                    programs to improve the workflow and efficiency of the companies I have worked
+                    it.</p>
+
+                    <p>My last role included planning and designing a new tool and carrying out the
+                    implementation whilst managing the project and a team of 3 developers. I enjoy
+                    working in teams and working with the strengths and preferences of my
+                    colleagues.</p>
+
+                    <p>I am a keen advocate of the git revision control system and became the point
+                    person for the transition to git in my department at Weta Digital. I am also
+                    actively involved in open source work on Github with two successful projects,
+                    and many other ones, which I maintain and support for the users.</p>
+
+                </div>
+            </div>
 
 
-            <h2>Open Source</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Websites</h2>
+                    <h3>Dance Timetable Network</h3>
+                    <p>Community calendaring websites built with Django &amp; React.</p>
+                    <ul>
+                        <li><a href="https://www.tangotimetable.com">TangoTimetable.com</a></li>
+                        <li><a href="https://www.zouktimetable.com">ZoukTimetable.com</a></li>
+                    </ul>
+                </div>
+            </div>
 
-            <h3>Computer Graphics</h3>
 
-            <div class="row padded">
-                <div class="span6">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Talks</h2>
+                    <ul>
+                        <li><strong>2014-12-05</strong> - Programming in VFX <span class="text-muted">@ Special and Visual Effects Festival,  Bolton University</span></li>
+                        <li><strong>2014-10-18</strong> - Programming in VFX <span class="text-muted">@ BarCamp Manchester</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Open Source</h2>
+
+                    <h3>Computer Graphics</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/alembic-fs">Alembic FS</a></h4>
                     <p>A FUSE filesystem for Alembic files.</p>
                     <p>It allow you to mount an Alembic file as a directory and
@@ -68,7 +111,7 @@
                     files.</p>
                     <p>Language: <strong>C++</strong></p>
                 </div>
-                <div class="span6">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/kdtree">Kd-tree</a></h4>
                     <p>A basic implementation of a Kd-tree.</p>
                     <p>Templated on the data type and number of dimensions.</p>
@@ -76,10 +119,14 @@
                 </div>
             </div>
 
-            <h3>Sphinx</h3>
 
-            <div class="row padded">
-                <div class="span6">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Sphinx</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/breathe">Breathe</a></h4>
                     <p>A Doxygen-Sphinx bridge.</p>
                     <p>An extension to reStructuredText and Sphinx which is able to
@@ -89,7 +136,7 @@
                     Development has a strong emphasis on supporting C++.</p>
                     <p>Language: <strong>Python</strong></p>
                 </div>
-                <div class="span6">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/sphinx-to-github">Sphinx to Github</a></h4>
                     <p>Convert Sphinx output for use with Github pages</p>
                     <p>A Sphinx extension and command line tool that prepares the
@@ -98,10 +145,14 @@
                 </div>
             </div>
 
-            <h3>Minor</h3>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Minor</h3>
+                </div>
+            </div>
 
-            <div class="row padded">
-                <div class="span6">
+            <div class="row">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/porter">Porter</a></h4>
                     <p>A map-based import hook for Python.</p>
                     <p>Supports encoding the module name and its location into a
@@ -112,7 +163,7 @@
                     network.</p>
                     <p>Language: <strong>Python</strong></p>
                 </div>
-                <div class="span6">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/sphinx-xref">Sphinx-xref</a></h4>
                     <p>Restructured text role for keyword based external links.</p>
                     <p>Enables a documentation strategy in which the maintainers of
@@ -124,8 +175,8 @@
                     <p>Language: <strong>Python</strong></p>
                 </div>
             </div>
-            <div class="row padded">
-                <div class="span6">
+            <div class="row">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones/maya-plugin-handler">Maya Plugin Handler</a></h4>
                     <p>Helper classes for initializePlugin &amp; unintializePlugin.</p>
                     <p>Aims to reduce code duplication between the two
@@ -135,46 +186,31 @@
                     experimental basic template meta-programming approach.</p>
                     <p>Language: <strong>C++</strong></p>
                 </div>
-                <div class="span6">
+                <div class="col-lg-6">
                     <h4><a href="https://github.com/michaeljones">And more...</a></h4>
                 </div>
             </div>
 
-            <h3>Contributions</h3>
 
-            <div class="row padded">
-                <div class="span6">
-                    <p>I have also made minor contributions to the following projects:</p>
-                    <p><a href="https://github.com/github/markup">github/markup</a> and <a href="https://github.com/AdamN/python-webkit2png">AdamN/python-webkit2png</a></p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Contributions</h3>
                 </div>
-                <div class="span6">
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>I have also made contributions to the following projects:</p>
+                    <p><a href="https://github.com/github/markup">github/markup</a> and <a href="https://github.com/AdamN/python-webkit2png">AdamN/python-webkit2png</a></p>
                 </div>
             </div>
 
             <hr>
 
             <footer>
-                <p>&copy; Michael Jones 2012. Using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> from Twitter.</p>
+                <p>&copy; Michael Jones 2012. Using <a href="http://getbootstrap.com/">Bootstrap</a></p>
             </footer>
 
-        </div> <!-- /container -->
-
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="assets/js/jquery.js"></script>
-        <script src="assets/js/bootstrap-transition.js"></script>
-        <script src="assets/js/bootstrap-alert.js"></script>
-        <script src="assets/js/bootstrap-modal.js"></script>
-        <script src="assets/js/bootstrap-dropdown.js"></script>
-        <script src="assets/js/bootstrap-scrollspy.js"></script>
-        <script src="assets/js/bootstrap-tab.js"></script>
-        <script src="assets/js/bootstrap-tooltip.js"></script>
-        <script src="assets/js/bootstrap-popover.js"></script>
-        <script src="assets/js/bootstrap-button.js"></script>
-        <script src="assets/js/bootstrap-collapse.js"></script>
-        <script src="assets/js/bootstrap-carousel.js"></script>
-        <script src="assets/js/bootstrap-typeahead.js"></script>
-
+        </div>
     </body>
 </html>
