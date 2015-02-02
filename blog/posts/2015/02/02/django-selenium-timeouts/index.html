@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>michael jones | dev blog - django</title>
+        <title>Django, Selenium & Timeouts</title>
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="michael jones | dev blog Atom Feed" />
 
@@ -23,7 +23,7 @@
                 <nav>
                     <ul>
                             <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
-                            <li><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
+                            <li class="active"><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
                             <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
                             <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
                             <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
@@ -31,10 +31,15 @@
                 </nav>
         </header><!-- /#banner -->
         <section>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2015/02/02/django-selenium-timeouts/" rel="bookmark"
+           title="Permalink to Django, Selenium & Timeouts">Django, Selenium &amp; Timeouts</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/02/02/django-selenium-timeouts/">Django, Selenium &amp; Timeouts</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-02-02T00:00:00">
                 Mon 02 February 2015
@@ -45,7 +50,7 @@
         </address>
 <p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a><a href="http://michaeljones.github.io/blog/tag/selenium.html">selenium</a></p>
-</footer><!-- /.post-info --><p>My Selenium tests in my Django testsuite have been failing from intermittent
+</footer><!-- /.post-info -->      <p>My Selenium tests in my Django testsuite have been failing from intermittent
 timeouts. Nothing repeatable which makes debugging it an nightmare. I am not
 wise in the ways of Selenium so Google &amp; Stackoverflow were my tools but they
 failed me this time.</p>
@@ -94,40 +99,11 @@ seems to be working:</p>
                 <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
                     <span class="k">raise</span>
 </pre></div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/" rel="bookmark"
-                           title="Permalink to Django CSRF React Component">Django CSRF React Component</a></h1>
-                </header>
+    </div><!-- /.entry-content -->
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2014-06-08T00:00:00">
-                Sun 08 June 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
-        </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a><a href="http://michaeljones.github.io/blog/tag/react.html">react</a></p>
-</footer><!-- /.post-info -->                <p>I've been doing some web development recently and getting in to <a class="reference external" href="http://djangoproject.com">Django</a> and
-<a class="reference external" href="http://facebook.github.io/react/">Facebook's React</a> framework.</p>
-<p>When creating forms in React for submission to a Django app you need to include
-the <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">Django CSRF token</a> for Django's form processing. A simple way to do this
-is to ...</p>
-                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2014/06/08/django-csrf-react-component/">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-            </section><!-- /#content -->
+  </article>
+</section>
         </section>
         <section id="extras" class="body">
                 <div class="social">
