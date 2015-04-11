@@ -79,7 +79,8 @@ function start_up(){
     echo "pelican.server didn't start. Is there something else which uses port 8000?"
     return 1
   fi
-  echo 'Pelican and pelican.server processes now running in background.'
+  # echo 'Pelican and pelican.server processes now running in background.'
+  wait
 }
 
 ###
