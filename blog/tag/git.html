@@ -6,7 +6,7 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="michael jones | dev blog Atom Feed" />
 
-            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?6a19e19d">
+            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?3d4d0007">
 
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
 
@@ -20,6 +20,7 @@
                 <span id="header-title" class="body">
                     <a href="http://michaeljones.github.io/blog/">michael jones | dev blog </a>
                 </span>
+                <!--
                 <nav>
                     <ul>
                             <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
@@ -29,96 +30,194 @@
                             <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
                     </ul>
                 </nav>
+                -->
         </header><!-- /#banner -->
         <section>
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/">Vim, Git &amp; Line Endings</a></h1>
-<footer class="post-info">
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/03/28/source-control-live-in-the-past/">Source Control: Live in the Past</a></h1>
+<section class="post-info">
+        <abbr class="published" title="2015-03-28T00:00:00">
+                Sat 28 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
+</section><!-- /.post-info --><p>I am going to propose that there are two broad ways of using source control and
+that developers generally fall into one camp or the other. The two ways are:</p>
+<ul>
+<li><p class="first">Viewing source control as a kind of back up mechanism like making regular
+copies of your project. Useful in case you screw up your current code base as
+you can to go back and recover a reasonable state of the code.</p>
+<p>What is important about these back ups is that they exist and that the latest
+one is recent enough that restoring from it isn't going to be a massive pain.</p>
+<p>This view is living in the present.</p>
+</li>
+<li><p class="first">Viewing source control as the story of your project with a feeling that the
+whole story is required for full understanding. The major events and the minor
+details of the past are important if not quite as important as the current
+state of the code.</p>
+<p>This view is living in the past.</p>
+</li>
+</ul>
+<p>I identify more with the second view and sometimes struggle when working with
+developers from the first group.</p>
+<div class="section" id="symptoms-of-living-in-the-present">
+<h2>Symptoms of Living in the Present</h2>
+<p>These are the symptoms I see of living in the present in a source control sense:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Weak commit messages</strong></p>
+<p>If you only really value the current state of your code base then commit
+messages have no meaning. Why carefully document the last back up you made?
+Back up services don't do that. They timestamp the back ups so that you know
+which is the latest. Backups should be automatic and in the background. Don't
+ask me for a commit message.</p>
+<p>And this shows in commit messages from these developers. They become cursory
+and dismissive. Sometimes only one word or a few, sometimes only referencing
+a ticket with no further explanation <a class="footnote-reference" href="#id3" id="id1">[1]</a>.</p>
+</li>
+<li><p class="first"><strong>Commiting commented out code</strong></p>
+<p>If the commit history is out of the picture then it isn't a safe place for
+code that might be useful some day. Best not delete the code, but instead
+comment it out so that it is available for future developers <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+</li>
+<li><p class="first"><strong>Commiting debug code</strong></p>
+<p>If the current state of the code base is all that matters then the diff with
+the previous state is not relevant. You've made your changes and it works so
+commit them and move on.</p>
+<p>It can lead to you commiting print statements and debug code as you don't
+check over the diff you are creating in your commit.</p>
+</li>
+<li><p class="first"><strong>Messy branching history</strong></p>
+<p>Again, if history doesn't matter then why pay any attention to how you are
+interacting with it. Pull the latest code and run whatever commands you have
+to to get to a point where you can push you code back. What matters is your
+code and the changes you've made not what else you might have pulled in.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="personal-experience">
+<h2>Personal Experience</h2>
+<p>I used to work in the present as it were. For at least a year or so, I worked
+with centralised source control systems and didn't pay much attention to the
+history of the project. I was new to the tools and was learning my way around
+the core commands and I didn't get far beyond <tt class="docutils literal">update</tt> and <tt class="docutils literal">commit</tt>.</p>
+<p>I think that a strong influence was the lack of easy branching centralised
+version control systems. If you're never branching then <tt class="docutils literal">update</tt> and
+<tt class="docutils literal">commit</tt> might be all you really need to know. The cutting edge of the project
+development is a point, not an 'edge' at all. You only have to be aware of that
+one state because that is the only place where development was going on. The
+<tt class="docutils literal">update</tt> command got you the latest changes and <tt class="docutils literal">commit</tt> sent yours back.</p>
+<p>The world changed a little for me when shifting to git. First the easy branching
+meant numerous local branches for different features &amp; bug fixes which called
+for better visualisation. A single thread of development doesn't need to be
+visualised but in multiple threads everything is relative. You know the changes
+you've made but when and where? How are they going to be combined again? I began
+to rely on <tt class="docutils literal">gitk</tt> as a quick and simple viewer for the state of my repository.
+I used it to track my branches but what it showed me was the history. There it
+was laid out before me; an extra dimension that I hadn't looked at before.</p>
+<p>Suddenly your collorators' changes aren't just a bump to <tt class="docutils literal">update</tt> over, they
+are visible individual commits with diffs &amp; messages. A timeline of progress and
+reason which can be read and understood.</p>
+<p>Only if they don't have terrible commit messages. You start looking at diffs and
+wanting to know why those changes are being made. Diffs rarely make much sense
+without context and those messages provide a change to understand and to learn.</p>
+<p>So now I live in the past. Gitk is my home.</p>
+</div>
+<div class="section" id="symptoms-of-living-in-the-past">
+<h2>Symptoms of Living in the Past</h2>
+<p>I'll attempt to provide a little balance. Obviously I feel there are good
+symptoms of living in the past. Namely the opposite of those I've listed above,
+clean history, cleaner commits and better commit messages, but there is a bad
+one as well.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Endlessly massaging commits</strong></p>
+<p>I love git's interactive rebase command because it allows me to develop
+without thinking of a clean history and then clean it up afterwards. My
+coding doesn't lose momentum to worrying about modular commits with good
+messages and my co-workers don't suffer because I can clean up my mess before
+they see it.</p>
+<p>Unfortunately, if I'm not careful I can end up cleaning up for a long time.
+Once the code is working I can then be stuck rebasing and writing clean
+commits for up to an hour in the rare worst case scenario. Such bulky history
+editing can sometimes introduce bugs if there are conflicts during rebasing
+that are resolved with due care and attention.</p>
+<p>This is a price I'm willing to pay on these occaisions but it is a price none
+the less.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Consider your development practices. Do you think in terms of your project
+history? Do your commits leave a trail that your collaborators can easily
+follow? Or are they out of sight and out of mind?</p>
+<p>Consider finding a program like gitk and keeping it open as much as possible.
+When you pull in work from your colleagues have a glance through and see if you
+can follow their steps and understand what they've done and why they've done it.</p>
+<p>When writing commits messages, consider keeping the current diff to hand and
+making sure that your commit message explains why you are making these changes
+in a way which covers everything you can see in the diff.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>My personal experience with this kind of thinking is my memory of my
+early confused days working with RCS. For commit messages in RCS you had to
+enter a '.' on a new line to finish the message. I approached this as 'you
+have to enter a dot on a new line to make it go away.' It was like learning
+the key I had to press to get past this thing that was blocking my progress.
+The purpose of the step didn't cross my mind.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">I am a little sympathetic towards this though I don't agree with it as a
+practice. If I see some code that needs to be improved in some way I don't
+scan the entire history of that part of the code in source control to see
+possible past attempts that might need to be resurrected.</p>
+<p class="last">That said, I think the middle ground here is to leave a comment documenting
+previous approaches so that future developers know to look back if they
+decide something similar is needed once more.</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1 id="other-articles-title">Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/" rel="bookmark"
+                           title="Permalink to Vim, Git & Line Endings">Vim, Git &amp; Line Endings</a></h1>
+                </header>
+
+                <div class="entry-content">
+<section class="post-info">
         <abbr class="published" title="2015-01-08T00:00:00">
                 Thu 08 January 2015
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a><a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
-</footer><!-- /.post-info --><p>I currently work on a team using both Unix &amp; Windows platforms for developing a
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a>, <a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
+</section><!-- /.post-info -->                <p>I currently work on a team using both Unix &amp; Windows platforms for developing a
 Python &amp; Django codebase. I work in Ubuntu and today made changes to a file
 which was created by the Windows developer on our team. With a tighter process
-this wouldn't be a problem, but the set up is pretty loose in this respect and I
-ended up in the zone of line ending despair. 'Line ending hell' seems to strong
-a term.</p>
-<div class="section" id="the-problem">
-<h2>The Problem</h2>
-<p>The issue ended up being that some files in the codebase have CRLF (Windows)
-style line endings and some don't. Not great.</p>
-<p>And it seems that <tt class="docutils literal">git</tt> converts all line endings to LF (Unix) when staging
-and committing files.</p>
-<p>When vim is set to <tt class="docutils literal">fileformats=unix,dos</tt>, it is open to both styles of line
-endings and silently preserves whatever is in the file without showing you. As
-do most modern editors I imagine.</p>
-<p>So vim handles the CRLF file transparently, but when you <tt class="docutils literal">git add <span class="pre">-p</span></tt> the
-changes into the index git converts all CRLFs to LFs and then shows you that
-your working copy, which still has the CRLFs, has changes against your index,
-which only has LFs. This appears a little confusing if you didn't realise your
-file had Windows line endings to begin with.</p>
-<p>My trouble is that the team generally uses Mercurial (I use git-remote-hg) and
-Mercurial never attempts to convert line endings so in our codebase all CRLF
-files &amp; LF files just get passed around happily and everyone's editors silently
-deal with whatever they are given.</p>
-<p>I respect Mercurial's choice as if you perform CRLF to LF conversion on a binary
-file then you'll corrupt it and these tools cannot figure out text from binary
-files with 100% accurary. I respect git's because in cross-platform teams like
-this one you kind of want to settle on a particular line ending as a convention
-instead of having different files with different conventions.</p>
-</div>
-<div class="section" id="the-solution">
-<h2>The Solution</h2>
-<p>The answer should be to establish a convention within the team. My answer, as
-I'm pretty new and don't want to rock the boat, is to tell git to mimic
-Mercurial and just ignore all line endings. This can be achieved with a
-<tt class="docutils literal">.gitattributes</tt> file and the following lines:</p>
-<pre class="literal-block">
-*.py -text
-*.html -text
-*.css -text
-</pre>
-<p>Repeated for as many text file types as you have. The <tt class="docutils literal"><span class="pre">-text</span></tt> value tells git
-not to apply any kind of text processing to it when adding, committing or
-checking out. The difference between <tt class="docutils literal"><span class="pre">-text</span></tt> and <tt class="docutils literal">binary</tt> in this context,
-which is another option, is that <tt class="docutils literal">binary</tt> also prevents git from attempting to
-show you a diff of the file at any point with the usual commands that normally
-would.</p>
-</div>
-<div class="section" id="and-then-whitespace">
-<h2>And then Whitespace</h2>
-<p>If you use <tt class="docutils literal">apply.whitespace=fix</tt> to make sure your <tt class="docutils literal">git add <span class="pre">-p</span></tt> code
-changes are sanitized for whitespace then you still have a problem. We haven't
-told git to respect the line endings in the file, we've just told it to ignore
-them. So it is still thinking in terms of LFs and when it see some line ending
-with:</p>
-<pre class="literal-block">
-... my_variable;&lt;CR&gt;&lt;LF&gt;
-</pre>
-<p>It sees the <tt class="docutils literal">CR</tt> as trailing whitespace before the line ending. So we have to
-use the:</p>
-<pre class="literal-block">
-core.whitespace=cr-at-eol
-</pre>
-<p>config option which is a special setting to instruct git not to view <tt class="docutils literal">CR</tt>
-characters as trailing whitespace. <tt class="docutils literal">core.whitespace</tt> can take a comma
-separated list of different values so make sure you check yours before adding
-that additional value.</p>
-</div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+this wouldn't be a problem, but the ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2015/01/08/vim-git-line-endings/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -127,17 +226,17 @@ that additional value.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
-</footer><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
+</section><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.</p>
 <p>Sometimes, however, I am not concentrating ...</p>

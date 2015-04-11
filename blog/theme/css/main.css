@@ -15,11 +15,9 @@
 /***** Global *****/
 /* Body */
 body {
-  background: #ece0d1;
+  background: #fff9ef;
   color: #000305;
-  font-size: 87.5%;
-  /* Base font size: 14px */
-  font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.429;
   margin: 0;
   padding: 0;
@@ -58,8 +56,6 @@ h6 {
   font-weight: 400;
   line-height: 1.1;
   margin-bottom: .8em;
-  /*font-family: 'Yanone Kaffeesatz', arial, serif; */
-  font-family: 'Oswald', sans-serif;
 }
 h3,
 h4,
@@ -82,14 +78,11 @@ a:link,
 a:visited {
   color: #d7621a;
   padding: 0 1px;
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover,
 a:active {
-  background-color: #d7621a;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: 1px 1px 1px #333;
+  text-decoration: underline;
 }
 h1 a:hover {
   background-color: inherit;
@@ -121,13 +114,18 @@ li {
   margin-top: 0.5em;
 }
 .post-info {
-  float: right;
-  margin: 10px;
-  padding: 5px;
+  margin: 10px 0;
 }
 .post-info p {
   margin-top: 1px;
   margin-bottom: 1px;
+}
+.published {
+  display: inline;
+}
+.author {
+  display: inline;
+  font-style: normal;
 }
 .readmore {
   float: right;
@@ -205,8 +203,8 @@ figure.left {
   font-size: 3em;
   display: block;
   font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  margin-bottom: 30px;
+  padding-bottom: 0px;
+  margin-bottom: 15px;
   color: #EEE;
 }
 #header-title a {
@@ -220,8 +218,10 @@ figure.left {
   background-color: inherit;
 }
 #banner {
-  padding: 2.5em 0 0 0;
+  padding: 30px 0 0 0;
+  margin-bottom: 30px;
   background-color: #434d53;
+  border-bottom: 10px solid #63747E;
 }
 /* Banner */
 #banner h1 {
@@ -240,7 +240,6 @@ figure.left {
 #banner h1 a:active {
   background: none;
   color: #d7621a;
-  text-shadow: none;
 }
 #banner h1 strong {
   font-size: 0.36em;
@@ -274,14 +273,6 @@ figure.left {
   height: 30px;
   padding: 5px 1.5em;
   text-decoration: none;
-}
-#banner nav a:hover,
-#banner nav a:active,
-#banner nav .active a:link,
-#banner nav .active a:visited {
-  background: #d7621a;
-  color: #fff;
-  text-shadow: none !important;
 }
 /*
 	Featured
@@ -514,7 +505,9 @@ li:last-child .hentry,
   display: none ;
 }
 .entry-title {
-  font-size: 3em;
+  font-size: 2em;
+  border-bottom: 4px solid #eee;
+  padding-bottom: 5px;
   margin-bottom: 10px;
   margin-top: 0;
 }
@@ -525,6 +518,9 @@ li:last-child .hentry,
 }
 .entry-title a:visited {
   background-color: #fff;
+}
+#other-articles-title {
+  margin-bottom: 0px;
 }
 .hentry .post-info * {
   font-style: normal;
