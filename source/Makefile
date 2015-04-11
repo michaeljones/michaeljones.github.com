@@ -108,7 +108,7 @@ TIME=`date +"%H:%M %d-%m-%Y"`
 github: publish
 	@git checkout -b publish
 	@git add content
-	@git commit -m "Content: $(TIME)"
+	@git commit -m "Content: $(TIME)" || true
 	@git add ../blog
 	@git commit -m "Build: $(TIME)"
 	@git checkout master
