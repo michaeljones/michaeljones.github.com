@@ -6,7 +6,7 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
         <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="michael jones | dev blog Atom Feed" />
 
-            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?6a19e19d">
+            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?3d4d0007">
 
         <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
 
@@ -20,6 +20,7 @@
                 <span id="header-title" class="body">
                     <a href="http://michaeljones.github.io/blog/">michael jones | dev blog </a>
                 </span>
+                <!--
                 <nav>
                     <ul>
                             <li><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
@@ -29,77 +30,195 @@
                             <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
                     </ul>
                 </nav>
+                -->
         </header><!-- /#banner -->
         <section>
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/02/02/django-selenium-timeouts/">Django, Selenium &amp; Timeouts</a></h1>
-<footer class="post-info">
+                    <h1 class="entry-title"><a href="http://michaeljones.github.io/blog/posts/2015/03/28/source-control-live-in-the-past/">Source Control: Live in the Past</a></h1>
+<section class="post-info">
+        <abbr class="published" title="2015-03-28T00:00:00">
+                Sat 28 March 2015
+        </abbr>
+
+        <address class="vcard author">
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
+</section><!-- /.post-info --><p>I am going to propose that there are two broad ways of using source control and
+that developers generally fall into one camp or the other. The two ways are:</p>
+<ul>
+<li><p class="first">Viewing source control as a kind of back up mechanism like making regular
+copies of your project. Useful in case you screw up your current code base as
+you can to go back and recover a reasonable state of the code.</p>
+<p>What is important about these back ups is that they exist and that the latest
+one is recent enough that restoring from it isn't going to be a massive pain.</p>
+<p>This view is living in the present.</p>
+</li>
+<li><p class="first">Viewing source control as the story of your project with a feeling that the
+whole story is required for full understanding. The major events and the minor
+details of the past are important if not quite as important as the current
+state of the code.</p>
+<p>This view is living in the past.</p>
+</li>
+</ul>
+<p>I identify more with the second view and sometimes struggle when working with
+developers from the first group.</p>
+<div class="section" id="symptoms-of-living-in-the-present">
+<h2>Symptoms of Living in the Present</h2>
+<p>These are the symptoms I see of living in the present in a source control sense:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Weak commit messages</strong></p>
+<p>If you only really value the current state of your code base then commit
+messages have no meaning. Why carefully document the last back up you made?
+Back up services don't do that. They timestamp the back ups so that you know
+which is the latest. Backups should be automatic and in the background. Don't
+ask me for a commit message.</p>
+<p>And this shows in commit messages from these developers. They become cursory
+and dismissive. Sometimes only one word or a few, sometimes only referencing
+a ticket with no further explanation <a class="footnote-reference" href="#id3" id="id1">[1]</a>.</p>
+</li>
+<li><p class="first"><strong>Commiting commented out code</strong></p>
+<p>If the commit history is out of the picture then it isn't a safe place for
+code that might be useful some day. Best not delete the code, but instead
+comment it out so that it is available for future developers <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+</li>
+<li><p class="first"><strong>Commiting debug code</strong></p>
+<p>If the current state of the code base is all that matters then the diff with
+the previous state is not relevant. You've made your changes and it works so
+commit them and move on.</p>
+<p>It can lead to you commiting print statements and debug code as you don't
+check over the diff you are creating in your commit.</p>
+</li>
+<li><p class="first"><strong>Messy branching history</strong></p>
+<p>Again, if history doesn't matter then why pay any attention to how you are
+interacting with it. Pull the latest code and run whatever commands you have
+to to get to a point where you can push you code back. What matters is your
+code and the changes you've made not what else you might have pulled in.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="personal-experience">
+<h2>Personal Experience</h2>
+<p>I used to work in the present as it were. For at least a year or so, I worked
+with centralised source control systems and didn't pay much attention to the
+history of the project. I was new to the tools and was learning my way around
+the core commands and I didn't get far beyond <tt class="docutils literal">update</tt> and <tt class="docutils literal">commit</tt>.</p>
+<p>I think that a strong influence was the lack of easy branching centralised
+version control systems. If you're never branching then <tt class="docutils literal">update</tt> and
+<tt class="docutils literal">commit</tt> might be all you really need to know. The cutting edge of the project
+development is a point, not an 'edge' at all. You only have to be aware of that
+one state because that is the only place where development was going on. The
+<tt class="docutils literal">update</tt> command got you the latest changes and <tt class="docutils literal">commit</tt> sent yours back.</p>
+<p>The world changed a little for me when shifting to git. First the easy branching
+meant numerous local branches for different features &amp; bug fixes which called
+for better visualisation. A single thread of development doesn't need to be
+visualised but in multiple threads everything is relative. You know the changes
+you've made but when and where? How are they going to be combined again? I began
+to rely on <tt class="docutils literal">gitk</tt> as a quick and simple viewer for the state of my repository.
+I used it to track my branches but what it showed me was the history. There it
+was laid out before me; an extra dimension that I hadn't looked at before.</p>
+<p>Suddenly your collorators' changes aren't just a bump to <tt class="docutils literal">update</tt> over, they
+are visible individual commits with diffs &amp; messages. A timeline of progress and
+reason which can be read and understood.</p>
+<p>Only if they don't have terrible commit messages. You start looking at diffs and
+wanting to know why those changes are being made. Diffs rarely make much sense
+without context and those messages provide a change to understand and to learn.</p>
+<p>So now I live in the past. Gitk is my home.</p>
+</div>
+<div class="section" id="symptoms-of-living-in-the-past">
+<h2>Symptoms of Living in the Past</h2>
+<p>I'll attempt to provide a little balance. Obviously I feel there are good
+symptoms of living in the past. Namely the opposite of those I've listed above,
+clean history, cleaner commits and better commit messages, but there is a bad
+one as well.</p>
+<ol class="arabic">
+<li><p class="first"><strong>Endlessly massaging commits</strong></p>
+<p>I love git's interactive rebase command because it allows me to develop
+without thinking of a clean history and then clean it up afterwards. My
+coding doesn't lose momentum to worrying about modular commits with good
+messages and my co-workers don't suffer because I can clean up my mess before
+they see it.</p>
+<p>Unfortunately, if I'm not careful I can end up cleaning up for a long time.
+Once the code is working I can then be stuck rebasing and writing clean
+commits for up to an hour in the rare worst case scenario. Such bulky history
+editing can sometimes introduce bugs if there are conflicts during rebasing
+that are resolved with due care and attention.</p>
+<p>This is a price I'm willing to pay on these occaisions but it is a price none
+the less.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion</h2>
+<p>Consider your development practices. Do you think in terms of your project
+history? Do your commits leave a trail that your collaborators can easily
+follow? Or are they out of sight and out of mind?</p>
+<p>Consider finding a program like gitk and keeping it open as much as possible.
+When you pull in work from your colleagues have a glance through and see if you
+can follow their steps and understand what they've done and why they've done it.</p>
+<p>When writing commits messages, consider keeping the current diff to hand and
+making sure that your commit message explains why you are making these changes
+in a way which covers everything you can see in the diff.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>My personal experience with this kind of thinking is my memory of my
+early confused days working with RCS. For commit messages in RCS you had to
+enter a '.' on a new line to finish the message. I approached this as 'you
+have to enter a dot on a new line to make it go away.' It was like learning
+the key I had to press to get past this thing that was blocking my progress.
+The purpose of the step didn't cross my mind.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">I am a little sympathetic towards this though I don't agree with it as a
+practice. If I see some code that needs to be improved in some way I don't
+scan the entire history of that part of the code in source control to see
+possible past attempts that might need to be resurrected.</p>
+<p class="last">That said, I think the middle ground here is to leave a comment documenting
+previous approaches so that future developers know to look back if they
+decide something similar is needed once more.</p>
+</td></tr>
+</tbody>
+</table>
+</div>
+                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1 id="other-articles-title">Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://michaeljones.github.io/blog/posts/2015/02/02/django-selenium-timeouts/" rel="bookmark"
+                           title="Permalink to Django, Selenium & Timeouts">Django, Selenium &amp; Timeouts</a></h1>
+                </header>
+
+                <div class="entry-content">
+<section class="post-info">
         <abbr class="published" title="2015-02-02T00:00:00">
                 Mon 02 February 2015
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a><a href="http://michaeljones.github.io/blog/tag/selenium.html">selenium</a></p>
-</footer><!-- /.post-info --><p>My Selenium tests in my Django testsuite have been failing from intermittent
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a>, <a href="http://michaeljones.github.io/blog/tag/selenium.html">selenium</a></p>
+</section><!-- /.post-info -->                <p>My Selenium tests in my Django testsuite have been failing from intermittent
 timeouts. Nothing repeatable which makes debugging it an nightmare. I am not
 wise in the ways of Selenium so Google &amp; Stackoverflow were my tools but they
 failed me this time.</p>
-<p>The timeouts occur at the start of a test when running the first <tt class="docutils literal">get</tt> on the
-starting URL. The correct page would load but no further commands would have any
-effect and it would just hang there before the tests timed out.</p>
-<p>After much head scratching and attempts at adding waits &amp; delays, I've finally
-settled on this. I use the <tt class="docutils literal">open</tt> method below for these calls now and in the
-case of a timeout it kills the process and starts again. To my great relief it
-seems to be working:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">socket</span>
-
-<span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">LiveServerTestCase</span>
-
-<span class="kn">from</span> <span class="nn">.webdriver</span> <span class="kn">import</span> <span class="n">CustomWebDriver</span>
-
-
-<span class="k">class</span> <span class="nc">SeleniumTestCase</span><span class="p">(</span><span class="n">LiveServerTestCase</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wd</span> <span class="o">=</span> <span class="n">CustomWebDriver</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wd</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Open helper with brutal management of socket.timeout exceptions</span>
-<span class="sd">        that can arise from the selenium driver. We catch them, kill the</span>
-<span class="sd">        browser, restart everything and try again.</span>
-
-<span class="sd">        Should be ok as there is no relevant state in the browser itself at</span>
-<span class="sd">        the point of page load.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">wd</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">live_server_url</span><span class="p">,</span> <span class="n">url</span><span class="p">))</span>
-                <span class="k">break</span>
-            <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s">&quot;socket.timeout - caught &amp; suppressed. Restarting.&quot;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">wd</span><span class="o">.</span><span class="n">binary</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">wd</span> <span class="o">=</span> <span class="n">CustomWebDriver</span><span class="p">()</span>
-
-                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-                    <span class="k">raise</span>
-</pre></div>
-                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+<p>The timeouts occur at the start of a ...</p>
+                <a class="readmore" href="http://michaeljones.github.io/blog/posts/2015/02/02/django-selenium-timeouts/">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -108,17 +227,17 @@ seems to be working:</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2015-01-08T00:00:00">
                 Thu 08 January 2015
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a><a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
-</footer><!-- /.post-info -->                <p>I currently work on a team using both Unix &amp; Windows platforms for developing a
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a>, <a href="http://michaeljones.github.io/blog/tag/vim.html">vim</a></p>
+</section><!-- /.post-info -->                <p>I currently work on a team using both Unix &amp; Windows platforms for developing a
 Python &amp; Django codebase. I work in Ubuntu and today made changes to a file
 which was created by the Windows developer on our team. With a tighter process
 this wouldn't be a problem, but the ...</p>
@@ -133,17 +252,17 @@ this wouldn't be a problem, but the ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-10-26T00:00:00">
                 Sun 26 October 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a><a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a><a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
-</footer><!-- /.post-info -->                <p>I've spent the day messing around with the Nix package manager and trying to get
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/nix.html">nix</a>, <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a>, <a href="http://michaeljones.github.io/blog/tag/yesod.html">yesod</a></p>
+</section><!-- /.post-info -->                <p>I've spent the day messing around with the Nix package manager and trying to get
 a basic Yesod project up a running.</p>
 <p>I very much like what I've managed to understand but it is early days and not
 everything is clear. So for those attempting similar things I ...</p>
@@ -158,17 +277,17 @@ everything is clear. So for those attempting similar things I ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-09-21T00:00:00">
                 Sun 21 September 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
-</footer><!-- /.post-info -->                <p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
+</section><!-- /.post-info -->                <p>I was recently trying to contribute to the <a class="reference external" href="https://github.com/asaglimbeni/django-datetime-widget">django-datetime-widget</a> repository
 and encountered an issue with my changes not working but no error being reported
 from Django or Python.</p>
 <p>I was working on the widget's <tt class="docutils literal">_media</tt> method which is converted to a
@@ -184,17 +303,17 @@ read-only <tt class="docutils literal">media</tt> property. Django is meant to u
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a><a href="http://michaeljones.github.io/blog/tag/pip.html">pip</a></p>
-</footer><!-- /.post-info -->                <p>I've recently switch to a fresh Linux machine and needed to begin setting up my
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a>, <a href="http://michaeljones.github.io/blog/tag/pip.html">pip</a></p>
+</section><!-- /.post-info -->                <p>I've recently switch to a fresh Linux machine and needed to begin setting up my
 standard environment. Part of the set up is creating some Python virtual
 environments from which to runs various helpers scripts that I like to have
 access to.</p>
@@ -210,17 +329,17 @@ access to.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-09-09T00:00:00">
                 Tue 09 September 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/git.html">git</a></p>
-</footer><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
+</section><!-- /.post-info -->                <p>I tend to use <tt class="docutils literal">git add <span class="pre">-p</span></tt> most of the time as I enjoy the granular control
 over what I am commiting and it allows me to accummulate additional changes, as
 I work, confident that I can commit them separately for a pleasing history.</p>
 <p>Sometimes, however, I am not concentrating ...</p>
@@ -235,17 +354,17 @@ I work, confident that I can commit them separately for a pleasing history.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2014-06-08T00:00:00">
                 Sun 08 June 2014
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/blog.html">blog</a>. </p>
-<p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a><a href="http://michaeljones.github.io/blog/tag/react.html">react</a></p>
-</footer><!-- /.post-info -->                <p>I've been doing some web development recently and getting in to <a class="reference external" href="http://djangoproject.com">Django</a> and
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/django.html">django</a>, <a href="http://michaeljones.github.io/blog/tag/react.html">react</a></p>
+</section><!-- /.post-info -->                <p>I've been doing some web development recently and getting in to <a class="reference external" href="http://djangoproject.com">Django</a> and
 <a class="reference external" href="http://facebook.github.io/react/">Facebook's React</a> framework.</p>
 <p>When creating forms in React for submission to a Django app you need to include
 the <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">Django CSRF token</a> for Django's form processing. A simple way to do this
@@ -261,17 +380,17 @@ is to ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-12T00:00:00">
                 Thu 12 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <p>An excellent talk about going through and dealing with mental illness in the
+</section><!-- /.post-info -->                <p>An excellent talk about going through and dealing with mental illness in the
 form of Type II Bipolar and ADHD. I don't feel that I have had to deal with
 these issues myself nor am I aware of any close friends going through it but I
 am guilty of ...</p>
@@ -286,17 +405,17 @@ am guilty of ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-09T00:00:00">
                 Mon 09 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Triage issues in the Breathe github project. Figure out what is outstanding
@@ -323,17 +442,17 @@ and what is fixed but neglected.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-09T00:00:00">
                 Mon 09 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <p>I've watched a few videos and listened to a few podcasts recently which deserve
+</section><!-- /.post-info -->                <p>I've watched a few videos and listened to a few podcasts recently which deserve
 a mention but which I failed to integrate into the journal entries. Mostly from
 the <a class="reference external" href="http://functionaltalks.org">functionaltalks.org</a> site.</p>
 <p><a class="reference external" href="http://functionaltalks.org/2013/06/10/brian-osullivan-running-a-startup-on-haskell/">Running a Startup on Haskell</a> - Brian O'Sullivan</p>
@@ -350,17 +469,17 @@ An entertaining and quite casual talk taking an overview ...</blockquote>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-05T00:00:00">
                 Thu 05 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read chapter 9 of Real World Haskell.</li>
@@ -385,17 +504,17 @@ we have information back from the Github API.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-04T00:00:00">
                 Wed 04 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 8 of Real World Haskell and read chapter 9.</li>
@@ -420,17 +539,17 @@ content can easily be changed.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-03T00:00:00">
                 Tue 03 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read chapter 8 of Real World Haskell.</li>
@@ -458,17 +577,17 @@ more manageable.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-12-02T00:00:00">
                 Mon 02 December 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read chapter 6 of Real World Haskell.</li>
@@ -493,17 +612,17 @@ more manageable.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-29T00:00:00">
                 Fri 29 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 4 and read chapter 5 of Real World Haskell.</li>
@@ -529,17 +648,17 @@ which is required for Github's API ...</p></li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-28T00:00:00">
                 Thu 28 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 3 and read chapters 4 &amp; 5 of Real World Haskell.</li>
@@ -565,17 +684,17 @@ through ...</p></li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-27T00:00:00">
                 Wed 27 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Review work on <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> from yesterday, merge results into master.</li>
@@ -599,17 +718,17 @@ pushed.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-24T00:00:00">
                 Sun 24 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->                <p><a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy">A talk</a> from <a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/">Rich Hickey's Greatest Hits</a> in which he tries to define a
+</section><!-- /.post-info -->                <p><a class="reference external" href="http://www.infoq.com/presentations/Simple-Made-Easy">A talk</a> from <a class="reference external" href="http://thechangelog.com/rich-hickeys-greatest-hits/">Rich Hickey's Greatest Hits</a> in which he tries to define a
 difference between easy and simple and the importance of the latter. He
 highlights various elements of a programmer's toolkit which promote simplicity
 within your code base.</p>
@@ -625,17 +744,17 @@ within your code base.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-21T00:00:00">
                 Thu 21 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->                <p>Cabal's sandboxes for Haskell provide an excellent way to contain the
+</section><!-- /.post-info -->                <p>Cabal's sandboxes for Haskell provide an excellent way to contain the
 dependencies of a project and help to resolve clashes with other projects you
 might have on the system.</p>
 <p>They work brilliantly with libraries which are automatically picked up by
@@ -651,17 +770,17 @@ might have on the system.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-11-01T00:00:00">
                 Fri 01 November 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/unicode.html">unicode</a></p>
-</footer><!-- /.post-info -->                <div class="section" id="backstory">
+</section><!-- /.post-info -->                <div class="section" id="backstory">
 <h2>Backstory</h2>
 <p>Occasionally when looking after <a class="reference external" href="https://github.com/michaeljones/breathe">Breathe</a> and <a class="reference external" href="https://github.com/michaeljones/sphinx-to-github">Sphinx-to-Github</a> I get bug reports
 associated with unicode handling errors. Awkwardly, I do not have a huge amount of
@@ -679,17 +798,17 @@ reasonable error messages when things go wrong ...</p></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-31T00:00:00">
                 Thu 31 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Review work on <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> from yesterday, merge results into master and do a new
@@ -715,17 +834,17 @@ PyPI release.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-30T00:00:00">
                 Wed 30 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Properly explore the idea of directives for <a class="reference external" href="http://github.com/michaeljones/breathe">Breathe</a> which automatically
@@ -750,17 +869,17 @@ Transform operation.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-29T00:00:00">
                 Tue 29 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->                <p>I am new to Haskell and as a programming exercise I am attempting to rewrite my
+</section><!-- /.post-info -->                <p>I am new to Haskell and as a programming exercise I am attempting to rewrite my
 <tt class="docutils literal">jump</tt> utility program which I use to switch between common directories in my
 shell.</p>
 <p>It is currently written in Python and uses the curses library to provide a
@@ -776,17 +895,17 @@ terminal user interface for selecting a ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-29T00:00:00">
                 Tue 29 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Continue with Yaml library example and article.</li>
@@ -811,17 +930,17 @@ functionality exposed by it is really rather fantastic.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-28T00:00:00">
                 Mon 28 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Begin documenting and working through the issues I am encountering with using
@@ -845,17 +964,17 @@ of development. If not, it is certainly ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-27T00:00:00">
                 Sun 27 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="weekend">
+</section><!-- /.post-info -->                <div class="section" id="weekend">
 <h2>Weekend</h2>
 <ul class="simple">
 <li>Watched <a class="reference external" href="http://yow.eventer.com/events/1004/talks/1054">Escape From the Ivory Tower</a> presentation by Simon Peyton Jones. It
@@ -874,17 +993,17 @@ the language required though, as always, it helps.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-27T00:00:00">
                 Sun 27 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell-cabal.html">haskell cabal</a></p>
-</footer><!-- /.post-info -->                <p>This is an attempt to share the my initial discoveries on how to set up a
+</section><!-- /.post-info -->                <p>This is an attempt to share the my initial discoveries on how to set up a
 Haskell project. My plan was to create a small project for an executable written
 in Haskell and I didn't have the first idea where to start.</p>
 <p>I am new to the language and ...</p>
@@ -899,17 +1018,17 @@ in Haskell and I didn't have the first idea where to start.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-25T00:00:00">
                 Fri 25 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Continue my quest to parse Yaml in Haskell. Or rather, use the data returned
@@ -933,17 +1052,17 @@ that perhaps it would be ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-24T00:00:00">
                 Thu 24 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Continue working on vty-ui example to at least emulate the functionality of my
@@ -968,17 +1087,17 @@ that perhaps it would be ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-23T00:00:00">
                 Wed 23 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Improve &amp; update information on michaeljones.github.io.</li>
@@ -1006,17 +1125,17 @@ that perhaps it would be ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-22T00:00:00">
                 Tue 22 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read <a class="reference external" href="http://coldwa.st/e/blog/2013-08-20-Cabal-sandbox.html">cabal sandbox post</a> and set up a sandbox area for my Haskell dev
@@ -1041,17 +1160,17 @@ performance.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-21T00:00:00">
                 Mon 21 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read through chapter 13 of Learn You a Haskell.</li>
@@ -1074,17 +1193,17 @@ far. It all just about holds together but I'm ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-20T00:00:00">
                 Sun 20 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="weekend">
+</section><!-- /.post-info -->                <div class="section" id="weekend">
 <h2>Weekend</h2>
 <ul class="simple">
 <li>Decided to start looking at the <a class="reference external" href="https://github.com/coreyoconnor/vty">Vty</a> module for Haskell based on the
@@ -1109,17 +1228,17 @@ front end.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-18T00:00:00">
                 Fri 18 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read through chapter 12 of Learn You a Haskell. Starting on the big scary
@@ -1144,17 +1263,17 @@ course, I might not ...</p></li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-17T00:00:00">
                 Thu 17 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/article.html">article</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/python.html">python</a></p>
-</footer><!-- /.post-info -->                <p>I've used Python for around 8 years now. It is the main scripting language of
+</section><!-- /.post-info -->                <p>I've used Python for around 8 years now. It is the main scripting language of
 the visual effects industry so it gets used for all kinds of glue between other
 programs and for interfaces for tools.</p>
 <p>In this role, I've never had to set up a server or ...</p>
@@ -1169,17 +1288,17 @@ programs and for interfaces for tools.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-17T00:00:00">
                 Thu 17 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 11 of Learn You a Haskell.</li>
@@ -1204,17 +1323,17 @@ to get the feeling that Haskell is not a complex language ...</p></li></ul></div
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-16T00:00:00">
                 Wed 16 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 9 of Learn You a Haskell and start on chapter 10.</li>
@@ -1239,17 +1358,17 @@ to get the feeling that Haskell is not a complex language ...</p></li></ul></div
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-15T00:00:00">
                 Tue 15 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 8 and read chapter 9 of Learn You a Haskell.</li>
@@ -1274,17 +1393,17 @@ swear.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-14T00:00:00">
                 Mon 14 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Finish chapter 6 and read chapter 7 from Learn You a Haskell.</li>
@@ -1307,17 +1426,17 @@ swear.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-14T00:00:00">
                 Mon 14 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/links.html">links</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <ul class="simple">
+</section><!-- /.post-info -->                <ul class="simple">
 <li><a class="reference external" href="http://hackflow.com/blog/2013/10/13/functional-python-made-easy/">Funcy</a> Python module for functional programming made easy. <a class="reference external" href="https://news.ycombinator.com/item?id=6542224">Discussion</a> on
 Hacker News.</li>
 <li>New <a class="reference external" href="http://sourceforge.net/p/cppcheck/news/2013/10/cppcheck-162/">CppCheck</a> release. I only used it briefly at work but it is open source
@@ -1335,17 +1454,17 @@ and does static analysis of your C++ code to help point out potential issues.</l
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-13T00:00:00">
                 Sun 13 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="weekend">
+</section><!-- /.post-info -->                <div class="section" id="weekend">
 <h2>Weekend</h2>
 <ul class="simple">
 <li>Worked through chapter 5 and half of chapter 6 of Learn You a Haskell.</li>
@@ -1363,17 +1482,17 @@ ghc they shipped on 13.04 so there isn ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-11T00:00:00">
                 Fri 11 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Read first 6 chapters of Learn You a Haskell for Great Good.</li>
@@ -1397,17 +1516,17 @@ ghc they shipped on 13.04 so there isn ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-10T00:00:00">
                 Thu 10 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Work through the <strong>#31</strong> to <strong>#41</strong> Haskell problems.</li>
@@ -1431,17 +1550,17 @@ ghc they shipped on 13.04 so there isn ...</li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-09T09:01:00">
                 Wed 09 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Continue <strong>99 Haskell Problems</strong> and reach #25.</li>
@@ -1466,17 +1585,17 @@ numbers which I did at the recommendations of this post.</li>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-09T00:00:00">
                 Wed 09 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/rust.html">rust</a></p>
-</footer><!-- /.post-info -->                <p><a class="reference external" href="http://www.infoq.com/presentations/Rust">Short talk</a> about the Rust
+</section><!-- /.post-info -->                <p><a class="reference external" href="http://www.infoq.com/presentations/Rust">Short talk</a> about the Rust
 programming language from Mozilla. Excellent broad overview of the language
 which gives a feel for what inspired it and what it is trying to achieve.</p>
 <p>To a C++ programmer that is growing frustrated with the growing complexity of
@@ -1492,17 +1611,17 @@ the language, Rust feels like it is ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-08T10:01:00">
                 Tue 08 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <div class="section" id="intentions">
+</section><!-- /.post-info -->                <div class="section" id="intentions">
 <h2>Intentions</h2>
 <ul class="simple">
 <li>Continue 99 Haskell Problems and reach no. 20.</li>
@@ -1526,17 +1645,17 @@ approachable code that did some real work ...</p></li></ul></div>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-07T19:01:00">
                 Mon 07 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->                <p>An <a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701">OSCON 2007 talk</a>
+</section><!-- /.post-info -->                <p>An <a class="reference external" href="http://blip.tv/oreilly-open-source-convention/oscon-2007-simon-peyton-jones-a-taste-of-haskell-part-i-329701">OSCON 2007 talk</a>
 introducing Haskell to imperative programmers by Simon Peyton Jones.</p>
 <p>I like his pacing and attitude and I think there is a reasonable amount to be
 learnt despite the fact that the slides are not provided on the site or
@@ -1552,17 +1671,17 @@ displayed in the video. I am sure ...</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-07T15:01:00">
                 Mon 07 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <ul>
+</section><!-- /.post-info -->                <ul>
 <li><p class="first">I have managed to get this <a class="reference external" href="http://blog.getpelican.com/">Pelican</a> based blog
 up. I choose Pelican because a simple google unearthed <a class="reference external" href="http://pydanny.com/choosing-a-new-python-based-blog-engine.html">this</a> from
 pydanny with a comment from Kenneth Reitz and that is enough of an endorsement
@@ -1580,17 +1699,17 @@ for me.</p>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-07T13:46:00">
                 Mon 07 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/journal.html">journal</a>. </p>
+</p>
 
-</footer><!-- /.post-info -->                <p>I am embarking on some time for some personal projects and this blog is designed
+</section><!-- /.post-info -->                <p>I am embarking on some time for some personal projects and this blog is designed
 to mark my progress and keep on track. I am currently far from clear about what
 to work on but I have a few loose ideas:</p>
 <ul>
@@ -1607,17 +1726,17 @@ feel ...</p></li></ul>
                 </header>
 
                 <div class="entry-content">
-<footer class="post-info">
+<section class="post-info">
         <abbr class="published" title="2013-10-07T00:00:00">
                 Mon 07 October 2013
         </abbr>
 
         <address class="vcard author">
-                By <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
         </address>
-<p>In <a href="http://michaeljones.github.io/blog/category/video.html">video</a>. </p>
+</p>
 <p>tags: <a href="http://michaeljones.github.io/blog/tag/haskell.html">haskell</a></p>
-</footer><!-- /.post-info -->                <p>Second half of the Simon Peyton-Jones' introduction to Haskell. If I was not
+</section><!-- /.post-info -->                <p>Second half of the Simon Peyton-Jones' introduction to Haskell. If I was not
 convinced before, I am now; this is a really excellent talk to give you some
 background to Haskell and some pleasantly gentle steps towards understanding it.</p>
 <p>Provides examples of pure functions and combining them with code that ...</p>
