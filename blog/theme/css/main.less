@@ -144,6 +144,35 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
 	tfoot th {}
 	tfoot td {}
 	
+
+table.footnote {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 2px;
+    margin-top: 0;
+    width: 100%;
+
+    tr td:nth-of-type(1) {
+        padding-left: 10px;
+    }
+    tr td:nth-of-type(2) {
+        padding-right: 20px;
+    }
+
+    p.first {
+        margin-top: 0;
+    }
+}
+
+table.footnote:nth-of-type(1) {
+    margin-top: 30px;
+    border-top: 4px solid #eee;
+
+    tr td {
+        padding-top: 20px;
+    }
+}
+
 /* HTML5 tags */
 header, section, footer,
 aside, nav, article, figure {
