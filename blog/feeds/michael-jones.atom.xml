@@ -1,5 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>michael jones | dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2015-03-28T00:00:00+13:00</updated><entry><title>Source Control: Live in the Past</title><link href="http://michaeljones.github.io/blog/posts/2015/03/28/source-control-live-in-the-past/" rel="alternate"></link><updated>2015-03-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2015-03-28:blog/posts/2015/03/28/source-control-live-in-the-past/</id><summary type="html">&lt;p&gt;I am going to propose that there are two broad ways of using source control and
+<feed xmlns="http://www.w3.org/2005/Atom"><title>michael jones | dev blog</title><link href="http://michaeljones.github.io/blog/" rel="alternate"></link><link href="http://michaeljones.github.io/blog/feeds/michael-jones.atom.xml" rel="self"></link><id>http://michaeljones.github.io/blog/</id><updated>2015-05-31T00:00:00+12:00</updated><entry><title>Idea: Maintain projects as a community through a bot that responds to voting on pull requests &amp; issues</title><link href="http://michaeljones.github.io/blog/posts/2015/05/31/idea-maintain-projects-as-a-community-through-a-bot-that-responds-to-voting-on-pull-requests-issues/" rel="alternate"></link><updated>2015-05-31T00:00:00+12:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2015-05-31:blog/posts/2015/05/31/idea-maintain-projects-as-a-community-through-a-bot-that-responds-to-voting-on-pull-requests-issues/</id><summary type="html">&lt;div class="section" id="problem"&gt;
+&lt;h2&gt;Problem&lt;/h2&gt;
+&lt;p&gt;Some Github projects suffer from being abandoned by their maintainers for many
+different and completely understandable reasons. This can even happen to quite
+popular projects as there is often no clear mechanism for someone else taking
+over without the current maintainer actively engaging.&lt;/p&gt;
+&lt;p&gt;This can be very frustrating for the users of the projects and those who submit
+issues &amp;amp; pull requests. Forking is of course an option but what stops that fork
+dying and how to do you figure out which fork to use?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="proposed-solution"&gt;
+&lt;h2&gt;Proposed Solution&lt;/h2&gt;
+&lt;p&gt;We create a Github account which is run by a bot. You can request that the bot
+forks any other repository on Github. You can then submit pull requests to the
+bot's repository and users can vote on whether or not that pull request is
+accepted. Votes are made through a clear syntax in pull request comments and the
+bot performs the merge if the vote is successful.&lt;/p&gt;
+&lt;p&gt;The bot should also have accounts with packaging repositories, like npm &amp;amp; PyPI,
+and users can create votes around tagging certain commits and releasing those
+tags to the packaging repositories as new versions of the software.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="strengths-of-the-solution"&gt;
+&lt;h2&gt;Strengths of the Solution&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The vote driven nature allows development to continue as users come and go
+from the project without needing to find new maintainers and new forks each
+time.&lt;/li&gt;
+&lt;li&gt;Users could vote other users, including possibly the original project auther,
+into a maintainer role (a registered contributor on the project) to allow more
+direct contribution to the project.&lt;/li&gt;
+&lt;li&gt;If successful on a large scale, users would know to look for the
+'community-bot' fork of a project as the best place to find a more maintained
+version of the software.&lt;/li&gt;
+&lt;li&gt;You could potentially build a network of trust between projects &amp;amp; users. If I
+make good contributions to a project, I might be gain some trust towards
+contributing to a related project.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="problems-with-the-solution"&gt;
+&lt;h2&gt;Problems with the Solution&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Who gets a vote? Maybe people who had contributed in some way to the original
+repository before it was forked by the bot? But you would need a way for more
+to get involved in the project.&lt;/li&gt;
+&lt;li&gt;Do you have to wait for a critical mass of interested voters? What if one
+person needs an abandoned project, can they use this approach if no one else
+gets involved? Is that even an issue?&lt;/li&gt;
+&lt;li&gt;The original maintainer would have to give the bot permissions to release to
+the project on PyPI or npm otherwise you'd have to release a npm package
+called 'package-x' as 'community-package-x' or some such approach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="questions"&gt;
+&lt;h2&gt;Questions&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Has this been done before?&lt;/li&gt;
+&lt;li&gt;Are there any more obvious problems?&lt;/li&gt;
+&lt;li&gt;Are there any solutions to the problems? Does anyone know any approaches that
+allow you to build trusted networks of people like this? I assume it is
+generally a well studied area.&lt;/li&gt;
+&lt;li&gt;Any other thoughts? Good idea? Crazy idea?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="section" id="motivation"&gt;
+&lt;h2&gt;Motivation&lt;/h2&gt;
+&lt;p&gt;You see references to abandoned projects quite a bit but most recently it has
+been &lt;a class="reference external" href="https://github.com/maraujop/django-crispy-forms"&gt;django-crispy-forms&lt;/a&gt;, a
+very popular but currently largely unmaintained project, which has got me
+thinking about this issue.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="github"></category></entry><entry><title>Source Control: Live in the Past</title><link href="http://michaeljones.github.io/blog/posts/2015/03/28/source-control-live-in-the-past/" rel="alternate"></link><updated>2015-03-28T00:00:00+13:00</updated><author><name>Michael Jones</name></author><id>tag:michaeljones.github.io,2015-03-28:blog/posts/2015/03/28/source-control-live-in-the-past/</id><summary type="html">&lt;p&gt;I am going to propose that there are two broad ways of using source control and
 that developers generally fall into one camp or the other. The two ways are:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class="first"&gt;Viewing source control as a kind of back up mechanism like making regular

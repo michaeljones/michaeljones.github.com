@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Idea: Maintain projects as a community through a bot that responds to voting on pull requests & issues</title>
+        <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+        <link href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="michael jones | dev blog Atom Feed" />
+
+            <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/main.css?52d7fe13">
+
+        <link rel="stylesheet" href="http://michaeljones.github.io/blog/theme/css/custom.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner">
+                <span id="header-title" class="body">
+                    <a href="http://michaeljones.github.io/blog/">michael jones | dev blog </a>
+                </span>
+                <!--
+                <nav>
+                    <ul>
+                            <li class="active"><a href="http://michaeljones.github.io/blog/category/article.html">article</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/blog.html">blog</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/journal.html">journal</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/links.html">links</a></li>
+                            <li><a href="http://michaeljones.github.io/blog/category/video.html">video</a></li>
+                    </ul>
+                </nav>
+                -->
+        </header><!-- /#banner -->
+        <section>
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://michaeljones.github.io/blog/posts/2015/05/31/idea-maintain-projects-as-a-community-through-a-bot-that-responds-to-voting-on-pull-requests-issues/" rel="bookmark"
+           title="Permalink to Idea: Maintain projects as a community through a bot that responds to voting on pull requests & issues">Idea: Maintain projects as a community through a bot that responds to voting on pull requests &amp; issues</a></h1>
+    </header>
+
+    <div class="entry-content">
+<section class="post-info">
+        <abbr class="published" title="2015-05-31T00:00:00">
+                Sun 31 May 2015
+        </abbr>
+
+        <address class="vcard author">
+                by <a class="url fn" href="http://michaeljones.github.io/blog/author/michael-jones.html">Michael Jones</a>
+        </address>
+</p>
+<p>tags: <a href="http://michaeljones.github.io/blog/tag/github.html">github</a></p>
+</section><!-- /.post-info -->      <div class="section" id="problem">
+<h2>Problem</h2>
+<p>Some Github projects suffer from being abandoned by their maintainers for many
+different and completely understandable reasons. This can even happen to quite
+popular projects as there is often no clear mechanism for someone else taking
+over without the current maintainer actively engaging.</p>
+<p>This can be very frustrating for the users of the projects and those who submit
+issues &amp; pull requests. Forking is of course an option but what stops that fork
+dying and how to do you figure out which fork to use?</p>
+</div>
+<div class="section" id="proposed-solution">
+<h2>Proposed Solution</h2>
+<p>We create a Github account which is run by a bot. You can request that the bot
+forks any other repository on Github. You can then submit pull requests to the
+bot's repository and users can vote on whether or not that pull request is
+accepted. Votes are made through a clear syntax in pull request comments and the
+bot performs the merge if the vote is successful.</p>
+<p>The bot should also have accounts with packaging repositories, like npm &amp; PyPI,
+and users can create votes around tagging certain commits and releasing those
+tags to the packaging repositories as new versions of the software.</p>
+</div>
+<div class="section" id="strengths-of-the-solution">
+<h2>Strengths of the Solution</h2>
+<ul class="simple">
+<li>The vote driven nature allows development to continue as users come and go
+from the project without needing to find new maintainers and new forks each
+time.</li>
+<li>Users could vote other users, including possibly the original project auther,
+into a maintainer role (a registered contributor on the project) to allow more
+direct contribution to the project.</li>
+<li>If successful on a large scale, users would know to look for the
+'community-bot' fork of a project as the best place to find a more maintained
+version of the software.</li>
+<li>You could potentially build a network of trust between projects &amp; users. If I
+make good contributions to a project, I might be gain some trust towards
+contributing to a related project.</li>
+</ul>
+</div>
+<div class="section" id="problems-with-the-solution">
+<h2>Problems with the Solution</h2>
+<ul class="simple">
+<li>Who gets a vote? Maybe people who had contributed in some way to the original
+repository before it was forked by the bot? But you would need a way for more
+to get involved in the project.</li>
+<li>Do you have to wait for a critical mass of interested voters? What if one
+person needs an abandoned project, can they use this approach if no one else
+gets involved? Is that even an issue?</li>
+<li>The original maintainer would have to give the bot permissions to release to
+the project on PyPI or npm otherwise you'd have to release a npm package
+called 'package-x' as 'community-package-x' or some such approach.</li>
+</ul>
+</div>
+<div class="section" id="questions">
+<h2>Questions</h2>
+<ul class="simple">
+<li>Has this been done before?</li>
+<li>Are there any more obvious problems?</li>
+<li>Are there any solutions to the problems? Does anyone know any approaches that
+allow you to build trusted networks of people like this? I assume it is
+generally a well studied area.</li>
+<li>Any other thoughts? Good idea? Crazy idea?</li>
+</ul>
+</div>
+<div class="section" id="motivation">
+<h2>Motivation</h2>
+<p>You see references to abandoned projects quite a bit but most recently it has
+been <a class="reference external" href="https://github.com/maraujop/django-crispy-forms">django-crispy-forms</a>, a
+very popular but currently largely unmaintained project, which has got me
+thinking about this issue.</p>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        </section>
+        <section id="extras" class="body">
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://michaeljones.github.io/blog/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+</body>
+</html>
