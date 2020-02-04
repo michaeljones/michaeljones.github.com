@@ -14,8 +14,20 @@
     />
     <link href="extra.css" rel="stylesheet" />
     <style>
-      body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      .grid-box {
+        display: grid;
+        grid-template-columns: minmax(15px, 1fr) minmax(300px, 800px) minmax(15px, 1fr);
+        grid-template-areas:
+          ". main ."
+          ". footer .";
+      }
+
+      main {
+        grid-area: main;
+      }
+
+      footer {
+        grid-area: footer;
       }
     </style>
 
@@ -27,11 +39,11 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h1>Michael P. Jones</h1>
+    <div class="grid-box">
+      <main>
+        <h1>Michael P. Jones</h1>
 
+        <section>
           <h2>Current Status</h2>
 
           <p>Available for contracting in Manchester, UK, or remote.</p>
@@ -44,7 +56,9 @@
             I am enthusiastic about team organisation, structuring meetings, group culture, 1-on-1s
             and retrospectives.
           </p>
+        </section>
 
+        <section>
           <h2>Bio</h2>
 
           <p>
@@ -72,11 +86,9 @@
             open source work on Github with two successful projects, and many other ones, which I
             maintain and support for the users.
           </p>
-        </div>
-      </div>
+        </section>
 
-      <div class="row">
-        <div class="col-lg-12">
+        <section>
           <h2>Talks</h2>
           <ul>
             <li>
@@ -112,22 +124,18 @@
               <span class="text-muted">@ BarCamp Manchester</span>
             </li>
           </ul>
-        </div>
-      </div>
+        </section>
 
-      <div class="row">
-        <div class="col-lg-12">
+        <section>
           <h2>Profiles</h2>
           <ul>
             <li><a href="https://github.com/michaeljones">Github</a></li>
             <li><a href="http://www.linkedin.com/in/mpjones">Linked-in</a></li>
             <li><a href="https://twitter.com/michaelpjones">Twitter</a></li>
           </ul>
-        </div>
-      </div>
+        </section>
 
-      <div class="row">
-        <div class="col-lg-12">
+        <section>
           <h2>Websites</h2>
           <h3>Dance Timetable Network</h3>
           <p>Community calendaring websites built with Django &amp; React.</p>
@@ -139,19 +147,13 @@
               <a href="https://www.zouktimetable.com">zouktimetable.com</a>
             </li>
           </ul>
-        </div>
-      </div>
+        </section>
 
-      <div class="row">
-        <div class="col-lg-12">
+        <section>
           <h2>Open Source</h2>
 
           <h3>Computer Graphics</h3>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6">
           <h4>
             <a href="https://github.com/michaeljones/alembic-fs">Alembic FS</a>
           </h4>
@@ -161,22 +163,13 @@
             hierarchy of subdirectories and files.
           </p>
           <p>Language: <strong>C++</strong></p>
-        </div>
-        <div class="col-lg-6">
+
           <h4><a href="https://github.com/michaeljones/kdtree">Kd-tree</a></h4>
           <p>A basic implementation of a Kd-tree.</p>
           <p>Templated on the data type and number of dimensions.</p>
           <p>Language: <strong>C++</strong></p>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-12">
           <h3>Sphinx</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
           <h4><a href="https://github.com/michaeljones/breathe">Breathe</a></h4>
           <p>A Doxygen-Sphinx bridge.</p>
           <p>
@@ -186,8 +179,6 @@
             emphasis on supporting C++.
           </p>
           <p>Language: <strong>Python</strong></p>
-        </div>
-        <div class="col-lg-6">
           <h4>
             <a href="https://github.com/michaeljones/sphinx-to-github">Sphinx to Github</a>
           </h4>
@@ -197,17 +188,9 @@
             suitable for use with Github pages.
           </p>
           <p>Language: <strong>Python</strong></p>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-12">
           <h3>Minor</h3>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-lg-6">
           <h4><a href="https://github.com/michaeljones/porter">Porter</a></h4>
           <p>A map-based import hook for Python.</p>
           <p>
@@ -217,8 +200,6 @@
             for large numbers of entries over a network.
           </p>
           <p>Language: <strong>Python</strong></p>
-        </div>
-        <div class="col-lg-6">
           <h4>
             <a href="https://github.com/michaeljones/sphinx-xref">Sphinx-xref</a>
           </h4>
@@ -230,10 +211,6 @@
             latest published module to stay up to date.
           </p>
           <p>Language: <strong>Python</strong></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
           <h4>
             <a href="https://github.com/michaeljones/maya-plugin-handler">Maya Plugin Handler</a>
           </h4>
@@ -247,35 +224,23 @@
             meta-programming approach.
           </p>
           <p>Language: <strong>C++</strong></p>
-        </div>
-        <div class="col-lg-6">
           <h4><a href="https://github.com/michaeljones">And more...</a></h4>
-        </div>
-      </div>
+        </section>
 
-      <div class="row">
-        <div class="col-lg-12">
+        <section>
           <h3>Contributions</h3>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
           <p>I have also made contributions to the following projects:</p>
           <p>
             <a href="https://github.com/github/markup">github/markup</a> and
             <a href="https://github.com/AdamN/python-webkit2png">AdamN/python-webkit2png</a>
           </p>
-        </div>
-      </div>
+        </section>
+      </main>
 
       <hr />
 
       <footer>
-        <p>
-          &copy; Michael Jones 2012-2019. Using
-          <a href="http://getbootstrap.com/">Bootstrap</a>
-        </p>
+        <p>&copy; Michael Jones 2012-2019.</p>
       </footer>
     </div>
   </body>
