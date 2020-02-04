@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+scp index.html extra.css tangotimetable.com:/var/www/michaelpjones
