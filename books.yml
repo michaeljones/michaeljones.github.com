@@ -1,99 +1,553 @@
 
+---
+
+books:
 - author: David Gemmell
+  books:
   - title: Legend
+    date: 199
+  - title: The First Chronicles of Druss the Legend
+    date: 199
+  - title: The Legend of Deathwalker
+    date: 199
+
   - title: Waylander
+    date: 199
   - title: Waylander II
+    date: 199
+  - title: Hero in the Shadows
+    date: 199
+
   - title: Echoes of the Great Song
+    date: 199
 
+  - title: Lord of the Silver Bow
+    date: 199
+  - title: Shield of Thunder
+    date: 199
+  - title: Fall of Kings
+    date: 199
 
-- author: Raymond E. Fiest
+  - title: Lion of Macedon
+    date: 199
+  - title: Dark Prince
+    date: 199
+
+  - title: Wolf in Shadow
+    date: 199
+  - title: The Last Guardian
+    date: 199
+  - title: Bloodstone
+    date: 199
+
+  - title: Sword in the Storm
+    date: 199
+  - title: Midnight Falcon
+    date: 199
+  - title: Ravenheart
+    date: 199
+  - title: Stormrider
+    date: 199
+
+- author: Raymond E Fiest
+  books:
   - title: Magician
+    date: 199
   - title: Silverthorn
+    date: 199
+  - title: A Darkness at Sethanon
+    date: 199
+
   - title: Daughter of the Empire
+    date: 199
   - title: Servant of the Empire
+    date: 199
   - title: Mistress of the Empire
+    date: 199
+
   - title: Talon of the Silver Hawk
+    date: 199
+  - title: King of Foxes
+    date: 199
+  - title: Exiles Return
+    date: 199
+  - title: Shadow of a Dark Queen
+    date: 199
+  - title: Rise of a Merchant Prince
+    date: 199
+  - title: Rage of a Demon King
+    date: 199
+  - title: Shards of a Broken Crown
+    date: 199
 
 - author: Katherine Kerr
+  books:
   - title: A Time of Exile
-
-- author: Sean Russell
-  - title: Initiate Brother
-  - title: Gatherer of Clouds
-  - title: World Without End
-  - title: Sea Without Shore
-
-- author: George R R Martin
-  - title: A Game of Thrones
-  - title: A Clash of Kings
+    date: 199
+  - title: A Time of Omens
+    date: 199
+  - title: A Time of War
+    date: 199
+  - title: A Time of Justice
+    date: 199
+  - title: Palace
+    date: 199
 
 - author: J R Tolkien
+  books:
   - title: The Lord of the Rings
+    date: 199
   - title: The Hobbit
+    date: 199
 
-- author:
+- author: Jane Austen
+  books:
+  - title: Pride and Prejudice
+    date: 199
+
+- author: John Steinbeck
+  books:
+  - title: Of Mice And Men
+    date: 199
+
+- author: William Golding
+  books:
+  - title: Lord Of The Flies
+    date: 199
+
+- author: CS Lewis
+  books:
+  - title: The Lion, the Witch and the Wardrobe
+    date: 199
+
+- author: Robert Jordan
+  books:
+  - title: The Eye of the World
+    date: 200
+  - title: The Great Hunt
+    date: 200
+  - title: The Dragon Reborn
+    date: 200
+  - title: The Shadow Rising
+    date: 200
+
+- author: Stephen R Donaldson
+  books:
+  - title: The Chronicles of Thomas Covenant the Unbeliever
+    date: 200
+  - title: The Second Chronicles of Thomas Covenant
+    date: 200
+
+- author: Robin Hobb
+  books:
+  - title: Assassin's Apprentice
+    date: 200
+  - title: Royal Assassin
+    date: 200
+  - title: Assassin's Quest
+    date: 200
+
+#  - title: Ship of Magic
+#  - title: The Mad Ship
+#  - title: Ship of Destiny
+#
+#  - title: Fool's Errand
+#  - title: The Golden Fool
+#  - title: Fool's Fate
+
+- author: Sean Russell
+  books:
+  - title: Initiate Brother
+    date: 200
+  - title: Gatherer of Clouds
+    date: 200
+  - title: World Without End
+    date: 200
+  - title: Sea Without Shore
+    date: 200
+
+- author: George R R Martin
+  books:
+  - title: A Game of Thrones
+    date: 200
+  - title: A Clash of Kings
+    date: 200
+
+- author: Khaled Hosseini
+  books:
+  - title: The Kite Runner
+    date: 200
   - title: A Thousand Splendid Suns
     date: 2021-06
-  - title: The Kite Runner
 
-- author:
+- authors:
+  - Gene Kim
+  - George Spafford
+  - Kevin Behr
+  books:
   - title: The Phoenix Project
+    date: 2021-07
 
-- author:
+- author: Angela Duckworth
+  books:
   - title: Grit
+    date: 2020
 
-- author:
+- author: Dale Carnegie
+  books:
   - title: How to Win Friends and Influence People
+    date: 2010
 
-- author:
+- author: Marshall Rosenberg
+  books:
   - title: Non-violent Communication
+    date: 2019
 
-- author:
+- author: David Graeber
+  books:
   - title: Bullshit Jobs
     date: 2020
 
 - author: Brandon Sanderson
+  books:
   - title: The Final Empire
     date: 2021
 
-- author:
+- author: Rachel Hartman
+  books:
   - title: Seraphina
     date: 2020
 
-- author:
-  - title: Seraphina
-    date: 2020
-
-- author:
+- author: Eric Ries
+  books:
   - title: The Lean Startup
     date: 2020
 
 - author: Atul Gawande
+  books:
   - title: The Checklist Manifesto
     date: 2019
 
+- author: Zeynep Ton
+  books: 
+  - title: The Good Jobs Strategy
+    date: 2018
+
 - author: Sasa Juric
+  books:
   - title: Elixir in Action
+    date: 2019
 
-- author: 
+- authors:
+  - Bruce Tate
+  - Chris McCord
+  - Jose Valim
+  books:
   - title: Programming Phoenix
+    date: 2019
 
-- author: 
+- author: Dave Thomas
+  books:
   - title: Programming Elixir
+    date: 2019
 
-- author: Alexandrescu
+- author: Andrei Alexandrescu
+  books:
   - title: Modern C++ Design
+    date: 200
 
-- author: 
+- authors:
+  - Andrei Alexandrescu
+  - Herb Sutter
+  books:
   - title: C++ Coding Standards
+    date: 200
 
-- author: 
+- author: Robert Cecil Martin
+  books:
+  - title: Clean Code
+    date: 200
+
+- authors:
+  - David Thomas
+  - Andrew Hunt
+  books:
+  - title: The Pragmatic Programmer
+    date: 201
+
+- authors:
+  - Erich Gamma
+  - John Vlissides
+  - Richard Helm
+  - Ralph Johnson
+  books:
+  - title: Design Patterns
+    date: 200
+
+- author: Fred Brooks
+  books:
+  - title: The Mythical Man Month
+    date: 200
+
+- authors:
+  - Timothy Lister
+  - Tom DeMarco
+  books:
+  - title: Peopleware
+    date: 200
+
+- author: Douglas Hofstadter
+  books:
+  - title: Gödel, Escher, Bach
+    date: 200
+
+- author: Scott Meyers 
+  books:
+  - title: Effective C++
+    date: 200
+  - title: More Effective C++
+    date: 200
+
+- author: Robert M Pirsig
+  books:
+  - title: Zen and the Art of Motorcycle Maintenance
+    date: 2012
+
+- author: Max Brooks
+  books:
+  - title: World War Z
+    date: 2012
+
+- author: Herb Sutter
+  books:
   - title: Exceptional C++
+    date: 201
 
-- author:
+- authors:
+  - Amir Levine
+  - Rachel S F Heller
+  books:
   - title: Attached
     date: 2020
 
-- author:
+- author: Emily Nagoski
+  books:
   - title: Come As You Are
     date: 2020
+
+- author: Lee Child
+  books:
+  - title: Unknown
+    date: 201
+  - title: Unknown
+    date: 201
+
+- author: S A Chakraborty
+  books:
+  - title: City of Brass
+    date: 2020
+
+- author: Margaret Atwood
+  books:
+  - title: The Handmaid's Tale
+    date: 201
+
+- author: Reni Eddo-Lodge
+  books:
+  - title: Why I'm No Longer Talking to White People about Race
+    date: 201
+
+- author: Eoin Colfer
+  books:
+  - title: Artemis Foul
+    date: 201
+
+- author: David Allen
+  books:
+  - title: Getting Things Done
+    date: 200
+
+- author: Michael Mosley
+  books:
+  - title: The Clever Guts Diet
+    date: 201
+
+- author: Steve Biddulph
+  books:
+  - title: Manhood
+    date: 200
+  - title: Raising Boys
+    date: 200
+
+- author: Marie Kondo
+  books:
+  - title: The Life-Changing Magic of Tidying Up
+    date: 201
+
+- author: Simon Sinek
+  books:
+  - title: Start with Why
+    date: 2020
+
+- author: Philippa Perry
+  books:
+  - title: How to Stay Sane
+    date: 2019
+
+- author: The School of Life
+  books:
+  - title: "The School of Life: An Emotional Education"
+    date: 2020
+
+- author: Yann Martel
+  books:
+  - title: Life of Pi
+    date: 200
+
+- author: Markus Zusak
+  books:
+  - title: The Book Thief
+    date: 200
+
+- author: Kim Stanley Robinson
+  books:
+  - title: Red Mars
+    date: 200
+  - title: Blue Mars
+    date: 200
+  - title: Green Mars
+    date: 200
+
+- author: Philip Pullman
+  books:
+  - title: Northern Lights
+    date: 200
+  - title: The Subtle Knife
+    date: 200
+  - title: The Amber Spyglass
+    date: 200
+
+- author: Douglas Adams 
+  books:
+  - title: The Hitchhiker's Guide to the Galaxy
+    date: 200
+  - title: The Restaurant at the End of the Universe
+    date: 200
+  - title: Life, the Universe and Everything
+    date: 200
+  - title: So Long, and Thanks for All the Fish
+    date: 200
+
+- author: JK Rowling
+  books:
+  - title: Harry Potter and The Philosopher's Stone
+    date: 200
+  - title: Harry Potter and The Chamber Of Secrets
+    date: 200
+  - title: Harry Potter and The Prisoner Of Azkaban
+    date: 200
+  - title: Harry Potter and The Goblet of Fire
+    date: 200
+  - title: Harry Potter and The Goblet of Fire
+    date: 200
+  - title: Harry Potter and The Order of the Phoenix
+    date: 200
+  - title: Harry Potter and The Half-Blood Prince
+    date: 200
+  - title: Harry Potter and The Deathly Hallows
+    date: 200
+
+- author: Joseph Heller
+  books:
+  - title: Catch-22
+    date: 200
+
+- author: F Scott Fitzgerald
+  books:
+  - title: The Great Gatsby
+    date: 200
+
+- author: George Orwell
+  books:
+  - title: Animal Farm
+    date: 201
+  - title: Down and Out in Paris and London
+    date: 201
+
+- author: Paulo Coelho
+  books:
+  - title: The Alchemist
+    date: 200
+
+- author: Cormac McCarthy
+  books:
+  - title: The Road
+    date: 200
+
+- author: Stieg Larsson
+  books:
+  - title: The Girl With the Dragon Tattoo
+    date: 200
+  - title: The Girl Who Played with Fire 
+    date: 200
+  - title: The Girl Who Kicked the Hornets' Nest
+    date: 200
+
+- author: Neil Gaiman
+  books:
+  - title: American Gods
+    date: 200
+
+- author: Stephen Hawking
+  books:
+  - title: A Brief History of Time
+    date: 200
+
+- author: John Carreyrou
+  books:
+  - title: Bad Blood
+    date: 2019
+
+- author: Ian McEwan
+  books:
+  - title: Atonement
+    date: 200
+
+- author: Mark Haddon
+  books:
+  - title: The Curious Incident of the Dog in the Night‑Time
+    date: 200
+
+- author: David Mitchell
+  books:
+  - title: Cloud Atlas
+    date: 200
+
+- author: Oscar Wild
+  books:
+  - title: The Picture of Dorian Gray
+    date: 200
+
+- author: John le Carré
+  books:
+  - title: Tinker Tailor Soldier Spy
+    date: 200
+
+- authors:
+  - Annie Barrows
+  - Mary Ann Shaffer
+  books:
+  - title: The Guernsey Literary and Potato Peel Pie Society
+    date: 200
+
+- author: Hermann Hesse
+  books:
+  - title: Siddhartha
+    date: 200
+
+- author: John Irving
+  books:
+  - title: The World According to Garp
+    date: 201
+
+# Keto diet books
