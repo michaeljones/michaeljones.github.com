@@ -1,8 +1,9 @@
 {
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "prettier": "^1.19.1"
   },
   "prettier": {
-      "printWidth": 100
+    "printWidth": 100
   }
 }
