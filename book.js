@@ -168,6 +168,7 @@ const order = [
     { section: "199", title: "1990s" },
 ];
 
+// Reduce first names to single letters to save space
 function shortenAuthor(name) {
     const names = name.split(" ");
     const firstNames = names.slice(0, -1);
@@ -187,23 +188,23 @@ for (let entry of order) {
 
         bookList.sort((a, b) => {
             // Sort by date, then author, then index
-            if (a.date === b.date) {
+            if (a.date !== b.date) {
+                if (new Date(a.date) > new Date(b.date)) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            } else {
                 const aAuthors = a.authors.join(",");
                 const bAuthors = b.authors.join(",");
-                if (aAuthors === bAuthors) {
-                    return a.index - b.index;
-                } else {
+                if (aAuthors !== bAuthors) {
                     if (aAuthors > bAuthors) {
                         return 1;
                     } else {
                         return -1;
                     }
-                }
-            } else {
-                if (new Date(a.date) > new Date(b.date)) {
-                    return -1;
                 } else {
-                    return 1;
+                    return a.index - b.index;
                 }
             }
         });
@@ -211,6 +212,7 @@ for (let entry of order) {
         for (book of bookList) {
             let authors = book.authors.join(", ");
             if (book.authors.length > 1) {
+                // If there are multiple authors then contract the names to safe space
                 authors = book.authors.map(shortenAuthor).join(", ");
             }
 
