@@ -93,6 +93,51 @@ books:
   - title: Palace
     date: 199
 
+- author: David Eddings
+  books:
+  - title: Pawn of Prophecy
+    date: 199
+  - title: Queen of Sorcery
+    date: 199
+  - title: Magician's Gambit
+    date: 199
+  - title: Castle of Wizardry
+    date: 199
+  - title: Enchanters' End Game
+    date: 199
+
+  - title: Guardians of the West
+    date: 199
+  - title: King of the Murgos
+    date: 199
+  - title: Demon Lord of Karanda
+    date: 199
+  - title: The Sorceress of Darshiva
+    date: 199
+  - title: The Seeress of Kell
+    date: 199
+
+  - title: The Diamond Throne
+    date: 199
+  - title: The Ruby Knight
+    date: 199
+  - title: The Sapphire Rose
+    date: 199
+
+  - title: Belgarath the Sorcerer
+    date: 199
+  - title: Polgara the Sorceress
+    date: 199
+
+- authors:
+  - David Eddings
+  - Leigh Eddings
+  books:
+  - title: The Rivan Codex
+    date: 200
+  - title: The Redemption of Althalus
+    date: 200
+
 - author: J R Tolkien
   books:
   - title: The Lord of the Rings
@@ -337,9 +382,9 @@ books:
 
 - author: Lee Child
   books:
-  - title: Unknown
+  - title: Killing Floor
     date: 201
-  - title: Unknown
+  - title: Without Fail
     date: 201
 
 - author: S A Chakraborty
@@ -555,5 +600,212 @@ books:
   - title: "The No. 1 Ladies' Detective Agency"
     date: 200
 
+- author: Terry Pratchett
+  books:
+  - title: Reaper Man
+    date: 199
+  - title: Men at Arms
+    date: 199
 
+- author: Alan Moore
+  books:
+  - title: Watchmen 
+    date: 200
+
+- author: Neil Strauss
+  books:
+  - title: The Game
+    date: 200
+
+- author: Paula Hawkins
+  books:
+  - title: The Girl on the Train 
+    date: 200
+
+- author: Stephenie Meyer
+  books:
+  - title: Twilight
+    date: 201
+  - title: New Moon
+    date: 201
+  - title: Eclipse
+    date: 201
+  - title: Breaking Dawn
+    date: 201
+
+- author: Suzanne Collins
+  books:
+  - title: The Hunger Games
+    date: 201
+  - title: Catching Fire
+    date: 201
+  - title: Mockingjay
+    date: 201
+
+- author: T H White
+  books:
+  - title: "The Once & Future King"
+    date: 200
+
+- author: Terry Goodkind
+  books:
+  - title: Wizard's First Rule
+    date: 200
+  - title: Stone of Tears
+    date: 200
+  - title: Blood of the Fold
+    date: 200
+  - title: Temple of the Winds
+    date: 200
+  - title: Soul of the Fire
+    date: 200
+  - title: Faith of the Fallen
+    date: 200
+  - title: The Pillars of Creation
+    date: 200
+
+- author: William Goldman
+  books:
+  - title: The Princess Bride
+    date: 200
+
+- author: H G Wells
+  books:
+  - title: Time Machine
+    date: 200
+
+- author: Alan Garner
+  books:
+  - title: The Weirdstone of Brisingamen
+    date: 199
+  - title: The Moon of Gomrath
+    date: 199
+
+- author: Brian Jacques
+  books:
+  - title: Redwall
+    date: 199
+  - title: Mossflower
+    date: 199
+  - title: Mattimeo
+    date: 199
+  - title: Mariel of Redwall
+    date: 199
+  - title: Salamandastron
+    date: 199
+  - title: Martin the Warrior
+    date: 199
+
+- author: Susan Cooper
+  books:
+  - title: The Dark Is Rising
+    date: 199
+
+- author: Colin Dann
+  books:
+  - title: The Animals of Farthing Wood
+    date: 199
+  - title: In the Grip of Winter
+    date: 199
+  - title: Fox's Feud
+    date: 199
+  - title: The Fox Cub Bold
+    date: 199
+  - title: The Siege of White Deer Park
+    date: 199
+  - title: In the Path of the Storm
+    date: 199
+  - title: Battle for the Park
+    date: 199
+
+- author: Stephen King
+  books:
+  - title: Duma Key
+    date: 201
+
+- author: Mitch Albom
+  books:
+  - title: The Five People You Meet in Heaven 
+    date: 200
+
+- author: Carlos Ruiz Zafón
+  books:
+  - title: The Shadow of the Wind
+    date: 201
+
+- author: Jonas Jonasson
+  books:
+  - title: The Hundred-Year-Old Man Who Climbed Out of the Window and Disappeared 
+    date: 200
+
+- author: Ernest Cline
+  books:
+  - title: Ready Player One 
+    date: 201
+
+- author: Ready Player One 
+  books:
+  - title: The Tiger and the Wolf
+    date: 2019
+
+- author: Station Eleven
+  books:
+  - title: Emily St John Mandel
+    date: 201
+
+- author: Cory Doctorow
+  books:
+  - title: Little Brother
+    date: 201
+
+- author: Michael Lewis
+  books:
+  - title: The Big Short
+    date: 201
+
+- author: Jon Ronson
+  books:
+  - title: The Psychopath Test
+    date: 201
+
+- author: Carol Dweck
+  books:
+  - title: Mindset
+    date: 2020
+
+- author: Neale Donald Walsch
+  books:
+  - title: Conversations with God
+    date: 200
+
+- author: Isaac Asimov
+  books:
+  - title: I, Robot
+    date: 200
+
+- author: Sam Sykes
+  books:
+  - title: The City Stained Red
+    date: 2019
+
+- author: Andrzej Sapkowski
+  books:
+  - title: The Witcher
+    date: 201
+
+- authors:
+  - Stephen J Dubner
+  - Steven Levitt
+  books:
+  - title: Freakonomics
+    date: 200
+
+- author: Haruki Murakami 
+  books:
+  - title: What I Talk About When I Talk About Running
+    date: 200
+
+# Fermat's Last Theorem  Simon Singh
+# Richard Feynman book - testicle check
 # Keto diet books
+# Sci-fi book about teleporting to explore an alien object

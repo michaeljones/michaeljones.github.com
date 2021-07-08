@@ -174,7 +174,7 @@ function shortenAuthor(name) {
     const firstNames = names.slice(0, -1);
     const lastName = names[names.length - 1];
 
-    return `${firstNames.map((name) => name[0]).join(" ")} ${lastName}`;
+    return `${firstNames.map((name) => name[0]).join("&nbsp;")}&nbsp;${lastName}`;
 }
 
 for (let entry of order) {
