@@ -211,7 +211,7 @@ books:
 - author: Brandon Sanderson
   books:
   - title: The Final Empire
-    date: 2021
+    date: 2021-03
 
 - author: Rachel Hartman
   books:
@@ -386,7 +386,7 @@ books:
 
 - author: Simon Sinek
   books:
-  - title: Start with Why
+  - title: Start With Why
     date: 2020
 
 - author: Philippa Perry
@@ -438,7 +438,7 @@ books:
   - title: So Long, and Thanks for All the Fish
     date: 200
 
-- author: JK Rowling
+- author: J K Rowling
   books:
   - title: Harry Potter and The Philosopher's Stone
     date: 200
@@ -549,5 +549,11 @@ books:
   books:
   - title: The World According to Garp
     date: 201
+
+- author: Alexander McCall Smith
+  books:
+  - title: "The No. 1 Ladies' Detective Agency"
+    date: 200
+
 
 # Keto diet books

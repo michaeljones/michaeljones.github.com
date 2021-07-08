@@ -87,6 +87,20 @@ console.log(`
         color: #a24400;
       }
 
+      table {
+        margin-bottom: 2rem;
+      }
+
+      td {
+        vertical-align: top;
+      }
+
+      @media (max-width: 800px) {
+        td {
+          padding-bottom: 1rem;
+        }
+      }
+
       td:nth-child(2) {
         text-align: right;
       }
@@ -117,15 +131,21 @@ let index = 0;
 for (let entry of doc.books) {
     for (book of entry.books) {
         const authors = entry.authors !== undefined ? entry.authors : [entry.author];
-        books.push({ index, title: book.title, date: book.date.toString().slice(0, 3), authors });
+        books.push({
+            index,
+            title: book.title,
+            sectionDate: book.date.toString().slice(0, 4),
+            date: book.date,
+            authors,
+        });
         index++;
     }
 }
 
 const sections = {};
 for (let book of books) {
-    sections[book.date] =
-        sections[book.date] === undefined ? [book] : [...sections[book.date], book];
+    sections[book.sectionDate] =
+        sections[book.sectionDate] === undefined ? [book] : [...sections[book.sectionDate], book];
 }
 
 // console.error(sections);
@@ -133,7 +153,6 @@ for (let book of books) {
 const order = [
     { section: "2021", title: "2021" },
     { section: "2020", title: "2020" },
-    { section: "202", title: "2020s" },
     { section: "2019", title: "2019" },
     { section: "2018", title: "2018" },
     { section: "2017", title: "2017" },
@@ -145,8 +164,17 @@ const order = [
     { section: "2011", title: "2011" },
     { section: "2010", title: "2010" },
     { section: "201", title: "2010s" },
+    { section: "200", title: "2000s" },
     { section: "199", title: "1990s" },
 ];
+
+function shortenAuthor(name) {
+    const names = name.split(" ");
+    const firstNames = names.slice(0, -1);
+    const lastName = names[names.length - 1];
+
+    return `${firstNames.map((name) => name[0]).join(" ")} ${lastName}`;
+}
 
 for (let entry of order) {
     const bookList = sections[entry.section];
@@ -158,11 +186,34 @@ for (let entry of order) {
             `);
 
         bookList.sort((a, b) => {
-            return a.index - b.index;
+            // Sort by date, then author, then index
+            if (a.date === b.date) {
+                const aAuthors = a.authors.join(",");
+                const bAuthors = b.authors.join(",");
+                if (aAuthors === bAuthors) {
+                    return a.index - b.index;
+                } else {
+                    if (aAuthors > bAuthors) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
+            } else {
+                if (new Date(a.date) > new Date(b.date)) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            }
         });
 
         for (book of bookList) {
-            const authors = book.authors.join(", ");
+            let authors = book.authors.join(", ");
+            if (book.authors.length > 1) {
+                authors = book.authors.map(shortenAuthor).join(", ");
+            }
+
             console.log(`
 <tr>
     <td>${book.title}</td>

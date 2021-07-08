@@ -1,3 +1,4 @@
 #!/bin/bash -e
 
 scp index.html tangotimetable.com:/var/www/michaelpjones
+scp books.html tangotimetable.com:/var/www/michaelpjones/books/index.html
